@@ -6,5 +6,5 @@ baseurl: ""
 url: "http://data-science-sequencing.github.io"
 github_username:  data-science-sequencing
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 permalink: pretty
