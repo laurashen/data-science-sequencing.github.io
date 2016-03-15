@@ -19,7 +19,7 @@ permalink: /lectures/lecture0/
 
 	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacific Biosciences and Oxford Nanopore, linked read technologies like 10x)
 
-	c.	Base calling
+	b.	Base calling
 
 3. **De novo Genome Assembly** (3-4 lectures)
 
