@@ -19,8 +19,6 @@ permalink: /lectures/lecture0/
 
 	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacific Biosciences and Oxford Nanopore, linked read technologies like 10x)
 
-	b. Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016
-
 	c.	Base calling
 
 3. **De novo Genome Assembly** (3-4 lectures)
@@ -79,9 +77,15 @@ permalink: /lectures/lecture0/
 
 10. **Genome Compression** (1 lecture)
 
+Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016.
+
 ## Useful Resources
 
 
 1. [Ben Langmead's lecture notes](http://www.langmead-lab.org/teaching-materials/)
 
-2. [Bioinformatics algorithms by Compeau and Pevzner](http://bioinformaticsalgorithms.com/index.htm)-----------------[This lecture as a pdf](/lectures/lecture0.pdf)
+2. [Bioinformatics algorithms by Compeau and Pevzner](http://bioinformaticsalgorithms.com/index.htm)
+
+-----------------
+
+[This lecture as a pdf](/lectures/lecture0.pdf)
