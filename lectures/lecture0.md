@@ -19,7 +19,7 @@ permalink: /lectures/lecture0/
 
 	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacific Biosciences and Oxford Nanopore, linked read technologies like 10x)
 
-	b. Guest lecture by [StephenTurner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016
+	b. Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016
 
 	c.	Base calling
 
