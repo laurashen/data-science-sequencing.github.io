@@ -4,7 +4,8 @@ mathjax: true
 permalink: /lectures/lecture0/
 ---
 
-##Course Outline
+## Course Outline
+
 
 1. **Overview of the problems discussed in the course** (1 lecture)
 
@@ -70,7 +71,8 @@ permalink: /lectures/lecture0/
 
 10. **Genome Compression** (1 lecture)
 
-##Useful Resources
+## Useful Resources
+
 
 1. [Ben Langmead's lecture notes](http://www.langmead-lab.org/teaching-materials/)
 
