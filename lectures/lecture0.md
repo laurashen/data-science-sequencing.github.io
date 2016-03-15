@@ -9,11 +9,19 @@ permalink: /lectures/lecture0/
 
 1. **Overview of the problems discussed in the course** (1 lecture)
 
+	a. Problems in computational biology including genome assembly in different flavours, RNA-seq, Chip-seq, ATAC-seq, and other assays
+	 
+	b. Single cell versions of various assays
+	
+	c. A discussion about the statistical and algorithmic challenges that are faced in these problems
+
 2. **High throughput sequencing** (1 lecture)
 
-	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacbio and Oxford Nanopore, linked read technologies like 10x)
+	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacific Biosciences and Oxford Nanopore, linked read technologies like 10x)
 	
-	b.	Base calling
+	b. Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016
+	
+	c.	Base calling
 	
 3. **De novo Genome Assembly** (3-4 lectures)
 
@@ -65,7 +73,7 @@ permalink: /lectures/lecture0/
 	
 	b. Cell Differentiation
 	
-	c. Visualization
+	c. Visualisation
 	
 	d. Trend Analysis
 
