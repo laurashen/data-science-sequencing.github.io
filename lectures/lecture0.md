@@ -81,10 +81,13 @@ Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/
 
 ## Useful Resources
 
+1. Lawrence Hunter, [Molecular Biology for Computer Scientists](http://compbio.ucdenver.edu/hunter/01-Hunter.pdf) - An crisp write-up on the basics of biology which motivate, and provide insights into problems we discuss in class. This is written in a non-biologist friendly manner.
 
-1. [Ben Langmead's lecture notes](http://www.langmead-lab.org/teaching-materials/)
+3. Eric Lander, [Fundamentals of Biology, MIT Open Course Ware]( http://ocw.mit.edu/courses/biology/7-01sc-fundamentals-of-biology-fall-2011/) - Lectures covering the basics of biology. Very friendly to non-biologists.
 
-2. [Bioinformatics algorithms by Compeau and Pevzner](http://bioinformaticsalgorithms.com/index.htm)
+2. [Ben Langmead's lecture notes](http://www.langmead-lab.org/teaching-materials/) - Covers many topics that we cover in class. Some very nice video lectures and example code in ipython notebooks.
+
+3. [Bioinformatics algorithms by Compeau and Pevzner](http://bioinformaticsalgorithms.com/index.htm) - Covers many topics that we cover in this class. Video lectures are also available on the book site.
 
 -----------------
 
