@@ -7,7 +7,7 @@ permalink: /lectures/lecture0/
 ## Course Outline
 
 
-1. **Course Overview and biological background** (1 lecture)
+1. **Course overview and biological background** (1 lecture)
 
 	a. Problems in computational biology including genome assembly in different flavours, RNA-seq, Chip-seq, ATAC-seq, and other assays
 
@@ -17,7 +17,7 @@ permalink: /lectures/lecture0/
 	
 	d. Brief discussion of biological background
 
-2. **High throughput sequencing** (1 lecture)
+2. **High-throughput sequencing** (1 lecture)
 
 	a. Sequencing technologies (short read technologies like Illumina, long read technologies like Pacific Biosciences and Oxford Nanopore, linked read technologies like 10x)
 
