@@ -7,13 +7,15 @@ permalink: /lectures/lecture0/
 ## Course Outline
 
 
-1. **Overview of the problems discussed in the course** (1 lecture)
+1. **Course Overview and biological background** (1 lecture)
 
 	a. Problems in computational biology including genome assembly in different flavours, RNA-seq, Chip-seq, ATAC-seq, and other assays
 
 	b. Single cell versions of various assays
 
 	c. A discussion about the statistical and algorithmic challenges that are faced in these problems
+	
+	d. Brief discussion of biological background
 
 2. **High throughput sequencing** (1 lecture)
 
@@ -81,7 +83,7 @@ Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/
 
 ## Useful Resources
 
-1. Lawrence Hunter, [Molecular Biology for Computer Scientists](http://compbio.ucdenver.edu/hunter/01-Hunter.pdf) - An crisp write-up on the basics of biology which motivate, and provide insights into problems we discuss in class. This is written in a non-biologist friendly manner.
+1. Lawrence Hunter, [Molecular Biology for Computer Scientists](http://compbio.ucdenver.edu/hunter/01-Hunter.pdf) - A crisp write-up on the basics of biology which motivate, and provide insights into problems we discuss in class. This is written in a non-biologist friendly manner.
 
 3. Eric Lander, [Fundamentals of Biology, MIT Open Course Ware]( http://ocw.mit.edu/courses/biology/7-01sc-fundamentals-of-biology-fall-2011/) - Lectures covering the basics of biology. Very friendly to non-biologists.
 
