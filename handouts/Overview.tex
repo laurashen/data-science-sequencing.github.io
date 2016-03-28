@@ -1,0 +1,136 @@
+\documentclass[11pt,onecolumn]{article}
+
+\usepackage[lmargin=0.75in,rmargin=0.75in,tmargin=.75in,bmargin=0.7in]{geometry}
+
+
+\usepackage[tbtags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{epsfig}
+%\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+% \usepackage{cite}
+
+\usepackage{caption}
+
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{constr}[thm]{Construction}
+\newtheorem{note}{Remark}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\bcor}{\begin{cor}}
+\newcommand{\ecor}{\end{cor}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqn}{\begin{equation*}}
+\newcommand{\eeqn}{\end{equation*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+\newcommand{\eean}{\end{eqnarray*}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\bdefn}{\begin{defn}}
+\newcommand{\edefn}{\end{defn}}
+\newcommand{\bnote}{\begin{note}}
+\newcommand{\enote}{\end{note}}
+\newcommand{\bprop}{\begin{prop}}
+\newcommand{\eprop}{\end{prop}}
+\newcommand{\blem}{\begin{lem}}
+\newcommand{\elem}{\end{lem}}
+\newcommand{\bthm}{\begin{thm}}
+\newcommand{\ethm}{\end{thm}}
+\newcommand{\bconj}{\begin{conj}}
+\newcommand{\econj}{\end{conj}}
+\newcommand{\bconstr}{\begin{constr}}
+\newcommand{\econstr}{\end{constr}}
+\newcommand{\bpf}{\begin{proof}}
+\newcommand{\epf}{\end{proof}}
+\newcommand{\bprf}{{\em Proof: }}
+\newcommand{\bproof}{{\em Proof of }}
+\newcommand{\eproof}{\hfill $\Box$}
+\newcommand{\argmin}{\operatornamewithlimits{arg \ min}}
+\newcommand{\argmax}{\operatornamewithlimits{arg \ max}}
+
+\setlength\parindent{0pt} %noindent for all paragraphs
+\algnewcommand{\And}{\textbf{and}\xspace} 
+\def\today{\number\day\space\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\space\number\year} %the 'right' date format
+
+
+%\pdfinfo{%
+%  /Title    (HADOOP : NetApp's Perspective - Our Understanding)
+%  /Author   (GK)
+%  /Creator  ()
+%  /Producer ()
+%  /Subject  (Documentation)
+%  /Keywords (Coding for Hadoop)
+%}
+
+\title{EE 372: Data Science for High Throughput Sequencing}
+\author{Course Overview}
+\date{\vspace{-5ex}}
+
+\begin{document}
+\maketitle
+
+\section*{Course Description}
+Extraordinary advances in sequencing technology in the past decade have revolutionized biology and medicine. Many high-throughput sequencing based assays have been designed to make various biological measurements of interest. This course explores the various computational and data science problems that arises from processing, managing and performing predictive analytics on high throughput sequencing data. Specific problems we will study include genome assembly, haplotype phasing, RNA-Seq assembly, RNA-Seq quantification, single cell RNA-seq analysis, multi-omics analysis, and genome compression. We attack these problems through a combination of tools from information theory, combinatorial algorithms, machine learning and signal processing. Through this course, the student will also get familiar with various software tools developed for the analysis of real sequencing data. The target audience for the course include
+\begin{enumerate}
+	\itemsep0em 
+	\item students specializing in information theory / algorithms/ signal processing / machine learning who want to learn of applications in biology and get exposure to real data
+	\item students specializing in computational biology, who want to strengthen their knowledge of basic information theory / signal processing / machine learning
+\end{enumerate}
+Course news and assignments will be posted at \texttt{ee372.stanford.edu}, which redirects to the course's GitHub website.
+
+\subsection*{Prerequisites}
+\begin{itemize}
+	\itemsep0em 
+	\item Undergraduate level probability
+	\item Some programming experience. We will be using Python.
+	\item Some undergraduate background in algorithms would be beneficial
+	\item NO PRIOR background in biology will be assumed
+\end{itemize}
+
+\subsection*{Lecture Times}
+Monday, Wednesday 3:00 PM - 4:20 PM at McCullough 115
+
+\subsection*{Course Staff}
+Instructor: David Tse (dntse@stanford.edu) \\
+Teaching assistants: Govinda Kamath (gkamath@stanford.edu) , Jesse Zhang (jessez@stanford.edu) \\
+Office hours to be decided.
+\pagebreak
+
+\section*{Course Grading}
+The grading for the course will be broken down as follows:
+\begin{itemize}
+	\itemsep0em 
+	\item Attendance 10\%
+	\item Scribing 10\%
+	\item Assignments 40\%
+	\item Project 40\%
+\end{itemize}
+There will be 4 assignments. The assignments will involve a theory component and a programming component. The programming component is aimed at exposing students to the messiness involved in real data, and various popular tools (so that they can gauge the pros and cons of these tools). The programming assignments will include
+\begin{itemize}
+	\itemsep0em
+	\item experiments demonstrating biases of different types in various types of data,
+	\item implementing simple algorithms for assembly, alignment, and quantification,
+	\item using popular software packages to perform simple experiments. 
+\end{itemize}
+All programming assignments will require require only laptop-level computing. The main language used to code will be Python. UNIX/LINUX/osX may be needed for some of the software packages. We recommend that windows users use the Corn cluster. Projects can be theoretic or practical in nature (ideally a mix of the two). A list of possible projects will be put up shortly. Students can also come up with project topics that they are interested in (in consultation with the teaching staff) \\
+\end{document}
