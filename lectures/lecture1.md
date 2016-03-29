@@ -6,7 +6,7 @@ permalink: /lectures/lecture1/
 
 ## Introduction
 
-Monday 3/28/16
+Monday 28 March 2016
 
 (Detailed notes will be put up shortly.)
 
