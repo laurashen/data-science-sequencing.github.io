@@ -4,7 +4,9 @@ mathjax: true
 permalink: /lectures/lecture1/
 ---
 
-## Lecture 1: Introduction
+## Introduction
+
+Monday 3/28/16
 
 (Detailed notes will be put up shortly.)
 
