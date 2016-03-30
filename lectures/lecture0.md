@@ -79,6 +79,8 @@ permalink: /lectures/lecture0/
 
 10. **Genome Compression** (1 lecture)
 
+Guest lecture by [Bikash Sabata](https://www.linkedin.com/in/bikashsabata), Vice President of Software at [Genia](http://www.geniachip.com/), [Roche Sequencing](http://sequencing.roche.com/) on 6 April 2016.
+
 Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/), Co-founder and Chief Technology Officer, [Pacific Biosciences](http://www.pacb.com/) on 13 April 2016.
 
 ## Useful Resources
