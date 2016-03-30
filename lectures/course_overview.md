@@ -30,14 +30,12 @@ Lab hour: Friday (exact time and location TBA)
 
 #### Teaching assistants:
 
-Govinda Kamath (gkamath \_at\_ stanford.edu) ,
-
-Jesse Zhang (jessez \_at\_ stanford.edu)
+[Govinda Kamath](https://web.stanford.edu/~gkamath/) (gkamath \_at\_ stanford.edu)  
+[Jesse Zhang](https://web.stanford.edu/~jessez/) (jessez \_at\_ stanford.edu)
 
 #### Office hours:
 
-4:20pm-5:05pm MW for instructor
-
+4:20pm-5:05pm MW for instructor  
 2:00pm-3:00pm M for teaching assistants
 
 ### Communication
