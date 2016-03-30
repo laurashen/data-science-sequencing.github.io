@@ -19,8 +19,7 @@ Extraordinary advances in sequencing technology in the past decade have revoluti
 
 ### Lecture Times
 
-Monday, Wednesday 3:00 PM - 4:20 PM at McCullough 115
-
+Monday, Wednesday 3:00 PM - 4:20 PM at McCullough 115  
 Lab hour: Friday (exact time and location TBA)
 
 ### Course Staff
