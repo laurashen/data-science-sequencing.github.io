@@ -95,4 +95,4 @@ Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/
 
 -----------------
 
-[This lecture as a pdf](/lectures/lecture0.pdf)
+[This lecture as a pdf.](/lectures/lecture0.pdf)
