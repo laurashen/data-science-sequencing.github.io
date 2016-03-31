@@ -69,7 +69,7 @@ Students are encouraged to participate in class either during lecture or by leav
 
 ### Scribing
 
-Each student will be responsible for scribing a lecture. To ensure that the notes will be available for students currently in the course, **scribed notes are due within 72 hours after lecture** (no late submissions accepted). Please reserve lectures using this [Google doc](https://docs.google.com/spreadsheets/d/1LkE4W4aFc7vi4FPkl4BeRQl9rD0pV1_CaGuqdqcHB38/edit#gid=0).
+Each student will be responsible for scribing a lecture. To ensure that the notes will be available for students currently in the course, **scribed notes are due within 72 hours after lecture** (no late submissions accepted). Please reserve lectures using this [Google doc](https://docs.google.com/spreadsheets/d/1LkE4W4aFc7vi4FPkl4BeRQl9rD0pV1_CaGuqdqcHB38/edit#gid=0). The scribed notes should both give a complete coverage of lecture and be understandable by someone who was not at the lecture. Section off the notes in a way that's consistent with how Prof. Tse presented the material (with appropriate figures in the right place) and detailed enough to convey all the information. The text does not need to be verbatim as long as it captures the main idea. Scribes will be provided via email with figures used in class. Scribes can also use figures either from the internet (with proper attribution) or figures they make on their own. Do not worry too much about the formatting. Email the text and figures to the course staff and they will take care of the rest.
 
 ### Assignments
 
