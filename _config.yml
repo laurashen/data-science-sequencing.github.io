@@ -6,5 +6,14 @@ baseurl: ""
 url: "http://data-science-sequencing.github.io"
 github_username:  data-science-sequencing
 # Build settings
-markdown: kramdown
+gems:
+  - jekyll-pandoc
+markdown: pandoc
 permalink: pretty
+pandoc:
+  extensions:
+    - normalize
+    - smart
+    - mathjax
+    # - csl: _styles/apa.csl
+    # - bibliography: bibliography/references.bib
