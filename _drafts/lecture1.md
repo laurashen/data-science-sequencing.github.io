@@ -149,8 +149,6 @@ from many measurement tools in the fact that it
 has a significant computational component.
 
 
-The flow diagram shows a sequencing machine taking a DNA molecule to generate a bunch of (read) data. It is because of these types of read data that leads to so many interesting computational problems. so we should thank the biochemists for not figuring out how to sequence the entire DNA from beginning to end (3 billion symbols, 23 chromosomes). Instead, the data is pretty bad. Fortunately, it still contains significant information, but the extraction of the information comes at a price, and thats where the computational part comes in.
-
 -----------------
 
 [Slides](/lectures/lecture1_slides.pdf)
