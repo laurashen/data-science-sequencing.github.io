@@ -140,7 +140,7 @@ repeated using A*, C*, and G* ddNTPs in parallel.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture2/Figure4_SangerExample.png" width="75%">
-  <div class="figcaption">The DNA double-helix.</div>
+  <div class="figcaption">Sanger sequencing through an example.</div>
 </div>
 
 
@@ -149,7 +149,7 @@ Second-generation sequencing, or Illumina sequencing, makes a few modifications 
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture2/Figure5_IlluminaInfoCollection.png" width="95%">
-  <div class="figcaption">The DNA double-helix.</div>
+  <div class="figcaption">An illustration of Illumina sequencing.</div>
 </div>
 
 Illumina sequencing also uses _reversible termination_, a
