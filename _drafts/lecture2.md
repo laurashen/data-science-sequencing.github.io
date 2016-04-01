@@ -10,6 +10,9 @@ Wednesday 30 March 2016
 -----------------
 
 ### Basics of DNA
+
+
+
 We start by exploring briefly the basics of the human genetic
 code. The human _genome_ is the entire DNA sequence of an
 individual, or all of the individual’s chromosomes. Humans have
@@ -31,7 +34,7 @@ below, one parent cell yields two identical child cells.
 
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure1_mitosis.png" width="99%">
+  <img src="/assets/lecture2/Figure1_Mitosis.png" width="99%">
   <div class="figcaption">A figure illustrating mitosis.</div>
 </div>
 
@@ -165,3 +168,11 @@ Next lecture, we’ll explore the answers to two questions
 regarding sequencing by synthesis. First, how are errors
 introduced? And second, why is the read length limited with this
 method?
+
+-----------------
+
+- [Slides on Biological Background](/lectures/lecture2_slides1.pdf) : Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/biological_background.pdf)
+
+- [Slides on Sequencing by Synthesis ](/lectures/lecture2_slides2.pdf) : Borrowed from Ben Langmead's [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/dna_sequencing.pdf)
+
+- Ben Langmead's [animation showing Sequencing by Synthesis](https://github.com/BenLangmead/ads1-slides/blob/master/0055_dnaseq__sequencing_by_synthesis.pdf)
