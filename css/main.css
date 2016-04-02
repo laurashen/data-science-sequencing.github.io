@@ -17,11 +17,19 @@ body {
   background-color: #fdfdfd;
 }
 
+table {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
+
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: 400; }
 
 a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
 a:visited { color: #205caa; }
+
+
 
 /* Utility */
 
@@ -34,6 +42,8 @@ a:visited { color: #205caa; }
   margin: 0 auto;
   zoom: 1;
 }
+
+
 
 
 /* Layout Styles */
