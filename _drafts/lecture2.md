@@ -331,4 +331,4 @@ The rest are taken from Ben Langmead's notes.
 
 -------------------------
 
-<!-- [This lecture as a pdf.](/assets/lecture2/lecture2.pdf) -->
+[This lecture as a pdf.](/assets/lecture2/lecture2.pdf)
