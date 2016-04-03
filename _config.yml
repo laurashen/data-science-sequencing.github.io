@@ -1,6 +1,7 @@
 # Site settings
 title: Data Science for High-Throughput Sequencing
-email: dntse@stanford.edu
+email: gkamath@stanford.edu,jessez@stanford.edu,dntse@stanford.edu
+email_string:  "&#123 gkamath, jessez, dntse &#125  @stanford.edu"
 description: "Course materials and notes for Stanford class EE 372: Data Science for High-Throughput Sequencing."
 baseurl: ""
 url: "http://data-science-sequencing.github.io"
