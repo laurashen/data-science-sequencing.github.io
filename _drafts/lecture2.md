@@ -1,8 +1,8 @@
----
+<!-- ---
 layout: page
 mathjax: true
 permalink: /drafts/lecture2/
----
+--- -->
 ## Biology Background, First and Second-generation sequencing
 
 Wednesday 30 March 2016
@@ -317,3 +317,7 @@ Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
 due to Claire Margolis. The DNA replication figure is taken
 from Alberts B, Johnson A, Lewis J, _et al_, [Molecular Biology of the Cell. 4th edition](http://www.ncbi.nlm.nih.gov/books/NBK26850/figure/A756/?report=objectonly).
 The rest are taken from Ben Langmead's notes.
+
+-------------------------
+
+[This lecture as a pdf.](/assets/lecture2/lecture2.pdf)
