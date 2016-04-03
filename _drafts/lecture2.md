@@ -1,8 +1,8 @@
-<!-- ---
+---
 layout: page
 mathjax: true
 permalink: /drafts/lecture2/
---- -->
+---
 ## Biology Background, First and Second-generation sequencing
 
 Wednesday 30 March 2016
@@ -299,9 +299,10 @@ is due to time steps where no ddNTP attaches
 to some sequence and hence the same base is read
 twice. Another source of error is some ddNTPs spuriously
 being not terminated. These lead to a base not being called
-at all.
+at all.  
 
---------------------------------------------
+
+------------------
 
 - [Slides on Biological Background](/lectures/lecture2_slides1.pdf) :
 Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
