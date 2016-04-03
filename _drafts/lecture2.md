@@ -313,6 +313,7 @@ Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
 
 - Ben Langmead's [animation showing Sequencing by Synthesis](https://github.com/BenLangmead/ads1-slides/blob/master/0055_dnaseq__sequencing_by_synthesis.pdf)
 
-- These notes are based on notes scribed by Claire Margolis. The
-reverse complement figure, and the Sanger sequencing figure are both
-due to her. The rest are taken from Ben Langmead's notes.
+-  The Sanger sequencing figure is
+due to Claire Margolis. The DNA replication figure is taken
+from Alberts B, Johnson A, Lewis J, _et al_, [Molecular Biology of the Cell. 4th edition](http://www.ncbi.nlm.nih.gov/books/NBK26850/figure/A756/?report=objectonly).
+The rest are taken from Ben Langmead's notes.
