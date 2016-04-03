@@ -273,7 +273,17 @@ molecular weight. Such errors in measuring mass
 are also a reason for errors in Sanger sequencing, though
 the error rate is around 0.001%.
 
-Additionally, Sanger sequencing is slow (low-throughput) because the mass measuring process is time consuming. Sanger sequencing allowed scientists to sequence around 3000 bases per week.
+Additionally, Sanger sequencing is slow (low-throughput) because
+the mass measuring process is time consuming. Sanger sequencing
+allowed scientists to sequence around 3000 bases per week.
+One of the main reasons this is slow is because it requires
+measuring the mass of many molecules, and that is
+a slow process. The  equipment used for Sanger sequencing
+is shown below
+<div class="fig figcenter fighighlight">
+  <img src="/assets/lecture2/Figure7_sanger_equipment.png" width="25%">
+  <div class="figcaption">A Sanger sequencer.</div>
+</div>
 
 ### Illumina sequencing <a id='illumina'></a>
 
@@ -321,4 +331,4 @@ The rest are taken from Ben Langmead's notes.
 
 -------------------------
 
-[This lecture as a pdf.](/assets/lecture2/lecture2.pdf)
+<!-- [This lecture as a pdf.](/assets/lecture2/lecture2.pdf) -->
