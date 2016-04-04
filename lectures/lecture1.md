@@ -14,9 +14,19 @@ couple of days._
 
 -----------------
 
+### Topics
 
+1. <a href='#need'> Need to understand high-throughput sequencing </a>  
+2. <a href='#what'> What is High-throughput sequencing? </a>  
+3. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>  
+  - <a href='#tools'> Tools used </a>
+4. <a href='#examples'> Two example problems </a>  
+  - <a href='#assembly'> _de novo_ DNA assembly </a>  
+  - <a href='#scrnaseq'> Single-cell RNA-seq analysis </a>
 
-### Need to understand high-throughput sequencing
+----------------
+
+### Need to understand high-throughput sequencing <a id='need'></a>
 
 The main object of interest in this course
 is the [genome](https://en.wikipedia.org/wiki/Genome) of a
@@ -150,7 +160,7 @@ try to infer foetal genetic birth defects from it.
 This has been used successfully to detect
 [Down's syndrome](http://www.mayoclinic.org/diseases-conditions/down-syndrome/basics/tests-diagnosis/con-20020948).
 
-## What is High-throughput sequencing?
+## What is High-throughput sequencing? <a id='what'></a>
 
 Science is basically progressed by the
 invention of measuring methods.
@@ -222,7 +232,7 @@ The figure below shows the characteristics of different sequencing technologies.
   <div class="figcaption">Characteristics of different sequencing technologies.</div>
 </div>
 
-## Data science of high-throughput sequencing
+## Data science of high-throughput sequencing <a id='ds-or-hts'></a>
 
 The success of high-throughput sequencing is mainly due to
 the creative use of read data to solve various problems. This involves
@@ -269,7 +279,7 @@ These different problems are illustrated below:
   <div class="figcaption">Data science of High-throughput sequencing.</div>
 </div>
 
-### Tools used
+### Tools used <a id='tools'></a>
 
 - Combinatorial algorithms: Problems like genome assembly involve working on
 combinatorial objects like graphs and use of many interesting combinatorial
@@ -288,12 +298,12 @@ algorithms. These algorithms are then tried on real data. As real data does
 not satisfy these assumptions, it takes some effort to get these algorithms
 working on real data, even when the modelling is reasonable.
 
-## Two Examples
+## Two Example Applications <a id='examples'></a>
 
 In this section, we discuss two representative problems that will be
 covered in this course.
 
-### DNA-assembly
+### DNA-assembly<a id='assembly'></a>
 
 The DNA sequencing machine outputs an analog signal (this may be light signals,
 or electric signals depending upon the technology). We want to process this
@@ -326,7 +336,7 @@ in most cases. However, there are cases where smart algorithm design,
 and low level  optimised software allows one to use upto $$O(n^2)$$ algorithms.
 
 
-### Single-cell RNA quantification and analysis
+### Single-cell RNA quantification and analysis<a id='scrnaseq'></a>
 
 As discussed above, RNA is another important biological molecule.
 One can think there existing around 10,000 RNA sequences observed in cells,
