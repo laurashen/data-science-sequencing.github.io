@@ -16,7 +16,8 @@ Monday 28 March 2016
 The main object of interest in this course
 is the [genome](https://en.wikipedia.org/wiki/Genome) of a
 organism. The genome of an organism is its genetic material
-which is usually made of [deoxyribonucleic acid](https://ghr.nlm.nih.gov/handbook/basics/dna).
+which is usually made of
+[deoxyribonucleic acid](https://ghr.nlm.nih.gov/handbook/basics/dna).
 All computational methods we discuss in this course will
 try to solve a problem which is related to deducing genome
 or some property that is quite close to the genome.
@@ -54,7 +55,8 @@ at a rate faster than Moore's law over the last
 
 DNA is a very important biological molecule,
 but it’s only one of many important biological molecules.
-Other important biological molecules include [ribonucleic acids](https://en.wikipedia.org/wiki/RNA)
+Other important biological molecules include
+[ribonucleic acids](https://en.wikipedia.org/wiki/RNA)
 and [proteins](https://en.wikipedia.org/wiki/Protein).
 Some innovative bio-chemistry has allowed the
 use of DNA sequencing technology to measure properties of
@@ -91,7 +93,8 @@ a lot of variation over time, and the environment.
 RNA-Seq is an assay to "measure" RNA.  
 This was the first assay in which high-throughput
 sequencing was used to measure a molecule other than
-DNA. It was developed in 2008 by [Mortazavi _et al_](http://www.nature.com/nmeth/journal/v5/n7/abs/nmeth.1226.html).
+DNA. It was developed in 2008 by
+[Mortazavi _et al_](http://www.nature.com/nmeth/journal/v5/n7/abs/nmeth.1226.html).
 
 - ChIP-Seq: The difference in RNA across cells is
 to a large extent due to the fact that DNA in cells
@@ -101,8 +104,10 @@ histones. Only parts of the DNA that are not
 bound to histones get converted to RNA. This is
 an assay which was developed measure the
 regions of the genome that are bound to histones in
-cells. This was developed in 2007 by [Johnson _et al_](http://science.sciencemag.org/content/316/5830/1497).
-Another recent assay called [ATAC-seq](http://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2688.html)
+cells. This was developed in 2007 by
+[Johnson _et al_](http://science.sciencemag.org/content/316/5830/1497).
+Another recent assay called
+[ATAC-seq](http://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2688.html)
 measures regions of the genome that are _not_ bound to histones.
 
 - Hi-C-Seq: This is an assay used to measure measure the 3D
@@ -118,7 +123,8 @@ from the person's genotype (DNA sequenced).
 This is important in medicine to predict susceptibility
 to diseases. A big success-story here is the
 discovery of that presence of a particular mutation in the
-gene [BRCA1](http://www.cancer.gov/about-cancer/causes-prevention/genetics/brca-fact-sheet) increases the risk of breast cancer to around
+gene [BRCA1](http://www.cancer.gov/about-cancer/causes-prevention/genetics/brca-fact-sheet)
+increases the risk of breast cancer to around
 45%.
 
 Another important application of high-throughput sequencing is
@@ -140,13 +146,25 @@ This has been used successfully to detect
 [Down's syndrome](http://www.mayoclinic.org/diseases-conditions/down-syndrome/basics/tests-diagnosis/con-20020948).
 
 ### What is High-throughput sequencing?
+
 Science is basically progressed by the
 invention of measuring methods.
 High-throughput Sequencing is one such measurement
 tool.  However,
 high-throughput Sequencing is different
 from many measurement tools in the fact that it
-has a significant computational component.
+has a significant computational component. High-throughput
+sequencing (also called _shotgun sequencing_) basically consists 
+
+
+
+Sequencing is different from many measurement tools. Science is basically progressed by the invention of measuring methods. Sequencing has a significant computational component. The flow diagram shows a sequencing machine taking a DNA molecule to generate a bunch of (read) data. It is because of these types of read data that leads to so many interesting computational problems. so we should thank the biochemists for not figuring out how to sequence the entire DNA from beginning to end (3 billion symbols, 23 chromosomes). Instead, the data is pretty bad. Fortunately, it still contains significant information, but the extraction of the information comes at a price, and thats where the computational part comes in.
+
+Instead of reading the DNA sequence from beginning to end, what we get from the output of the sequencer is a lot of very short fragments called reads (a subsequence of the DNA which is very short, on the order of 100 symbols). One single read contains of course very little information about the DNA, but in a typical experiment we can get a few hundred million of such reads (hence “high-throughput”) relatively cheaply (in terms of both time and money). Read data is very fragmented and noisy. The sequencing process is noisy. Each of these reads can potentially be different from the original sequence from which the read came from.
+The revolution is because of the evolution of sequencing technologies. Sequencing started by Sanger, who invented the idea of sequencing (very low throughput), which was the dominant technology until the human genome project (second-generation sequencing). The dominant technology is by a company called illumina. In the past few years, theres been a new third0 generation of sequencing (single-cell, Nanopore, PacBio).
+HTS is a fast changing area with new technologies emerging constantly. The basic data you get from each of these technologies is a lot of reads. However, different technologies are based on different chemistry. This is interesting to us is because the computational stuff has to do with dealing with noise. understanding the chemistry gives us a feeling of where these errors come from (the nature of these errors). e.g. understanding the physics of the technology for the channel.
+Key parameter #1 is the read length. the longer they are the better. ideally we want the entire genome, but no chemistry has been able to accomplish this yet. Illumine can get reads that are about 100 bp (base pairs) long. PacBio can get reads that are > 10000 bp. We have a wide range of genome lengths but all of them are considerably shorter than the genome.
+For Illumina, we have short reads but also low error (2%). On the other hand, long errors (PacBio) has large numbers of reads (10-15%).
 
 
 -----------------
