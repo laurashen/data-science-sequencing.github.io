@@ -34,7 +34,7 @@ Lab hour: Friday (exact time and location TBA)
 
 #### Office hours:
 
-4:20pm-5:05pm MW for instructor at Packard 260
+4:20pm-5:05pm MW for instructor at Packard 260  
 1:45pm-2:45pm M for teaching assistants at Packard 264
 
 ### Communication
