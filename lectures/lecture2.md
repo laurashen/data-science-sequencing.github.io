@@ -75,8 +75,8 @@ pairs are known as _complementary pairs_. The structure of DNA is shown
 below.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure2_DNADoubleHelix.png" width="75%">
-  <div class="figcaption">The DNA double-helix.</div>
+  <img src="/assets/lecture2/Figure2_DNADoubleHelix.png" width="40%">
+  <div class="figcaption">The DNA double-helix. Borrowed from the [Genetics Home Reference](http://ghr.nlm.nih.gov/handbook/basics/dna). </div>
 </div>
 
 A DNA sequence is conventionally written in the 5’ end (head) to
@@ -91,7 +91,7 @@ and its reverse complement strand.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture2/Figure3_ReverseComplement.png" width="25%">
-  <div class="figcaption">An illustration of DNA complement.</div>
+  <div class="figcaption">An illustration of DNA complement. Borrowed from [Wikipedia](http://en.wikipedia.org/wiki/Mitosis). </div>
 </div>
 
 #### DNA replication
