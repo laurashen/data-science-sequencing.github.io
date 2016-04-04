@@ -266,9 +266,9 @@ length. This read limitation stems from the fact that as the
 length $$L$$ of a sequence increases, distinguishing between the
 mass of a length $$L$$ sequence and the mass of a length $$L+1$$
 sequence becomes increasingly harder.
-To see this, note that a tolerance of $0.1%$ in measurement
+To see this, note that a tolerance of 0.1% in measurement
 would make it impossible to distinguish a sequence of length
-$1000$ from one of length $1001$ even if all bases had the same
+1000 from one of length 1001 even if all bases had the same
 molecular weight. Such errors in measuring mass
 are also a reason for errors in Sanger sequencing, though
 the error rate is around 0.001%.
