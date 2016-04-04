@@ -33,12 +33,11 @@ of chromosomes, and each pair contains one chromosome
 inherited from the mother and one inherited from the father, yielding
 46 chromosomes total. 22 of the pairs are autosomal
 chromosomes, and the last pair are the sex chromosomes. Every cell in an organism
-contains the same exact genomic data (to a first approximation at least),
-which lives in the cell's nucleus. In humans, the
-genome is 3 billion nucleotides (nt) or _base pairs_ (bp) long.
+contains the same exact genomic data living in the cell's nucleus. In humans, the
+genome is 3 billion _base pairs_ (bp) long.
 Different species have genomes of very different sizes. Bacterial genomes are a
 few million bp; most viral genomes are 10000s of bp; and certain plants have genomes
-of length hundreds of billion bp. There are two types of cells:
+of that are hundreds of billion bp long. There are two types of cells:
 prokaryotic (no nucleus and found in organisms like bacteria) and eukaryotic
 (contains a nucleus and found in higher organisms like humans). While understanding
 the human genome is important, the techniques of this class are broadly applicable
@@ -51,8 +50,8 @@ individual genomes vary at 3-4 million base pair locations. These variations are
 [Structural Variants](http://www.ncbi.nlm.nih.gov/dbvar/content/overview/) (SVs).
 Differences in the individual genomes arise due to two reasons:
 
-1. Random mutations, which occurs during evolution because natural selection
-favors certain phenotypes. These are mainly due to "errors"
+1. Random mutations, which occur during evolution because natural selection
+favors certain phenotypes. These arise mainly due to "errors"
 during the DNA replication process during cell division.
 Most of these mutations are deleterious, leading to phenotypic
 changes that are harmful and resulting in the
@@ -65,12 +64,12 @@ child is a mixture of genetic material from the parents.
 #### DNA structure
 DNA is comprised of a sugar-phosphate
 backbone and four nucleotide bases: Adenine (A),
-Cytosine (C), Guanine (G), and Thymine (T). DNA is double-stranded, and is
-structured in a double-helix formation with pairs of nucleotides as the “rungs”
+Cytosine (C), Guanine (G), and Thymine (T). DNA is double-stranded and
+structured in a double-helix formation with pairs of nucleotides as “rungs”
 of the helix (hence the term "base pair"). Adenine always chemically binds with Thymine,
 and Cytosine always binds with Guanine. In other words, A is
 _complementary_ to T, and similarly C is complementary to G. The A-T and C-G
-bonds are known as _complementary pairs_. The structure of DNA is shown
+pairs are known as _complementary pairs_. The structure of DNA is shown
 below.
 
 <div class="fig figcenter fighighlight">
@@ -118,18 +117,14 @@ identical to the original parent cell. For us, DNA duplication is the most
 important part of this diagram; this is
 the natural process we exploit in order to do sequencing.
 
-The first step in replication of the DNA occurs by
-is  two strands being unzipped. Each
-strand now acts as a template for replication of DNA.
-Then a short RNA primer attaches itself to one of
-the sites of the DNA. The bases this has
-are complementarty to the bases in the template.
-The replication is catalysed by an enzyme called _DNA polymerase_.
+During DNA replication, the two strands of DNA are first unzipped, resulting in
+two single strands each acting as a template for replication.
+A short RNA primer is then attached to a specific site on the DNA; the bases in the primer are complementary to the bases in the site.
 An enzyme
-facilitates (or "catalyzes") a chemical reaction, and DNA
-polymerase catalyzes
+facilitates (or "catalyzes") a chemical reaction, and _DNA
+polymerase_ is the enzyme that catalyzes
 the complementary pairing of new nucleotides to the template
-DNA extending the primer bound. The nucleotides that DNA
+DNA extending the bound primer. The nucleotides that DNA
 polymerase uses to extend a strand are called _dNTPs_ (deoxynucleotide
 triphosphates). Biochemically, they are
 slightly different from the nucleotides in a way that makes them easier to work
@@ -175,28 +170,27 @@ the data we get is very short (~100 bp).
 Sequencing by synthesis takes advantage of the fact that DNA strands,
 which are normally in double-helix form, split apart for mitosis
 and each strand is copied. Sanger figured out a clever way of converting the
-biological material into a problem of measuring mass (and
-later colours emitted).
+sequencing problem into a problem of measuring mass.
 
 We mentioned above that DNA polymerase naturally uses dNTPs
 to synthesize a new strand.
 The synthesis process occurs very quickly, making it
-very hard to make any
+hard to make any
 sort of measurement during synthesis.
 Sanger overcame this problem by figuring
 out a way to terminate synthesis using a modified version of dNTPs
 called _ddNTPs_ (dideoxynucleotide triphosphates). DNA polymerase can attach a
 ddNTP to the sequence just like with dNTPs, but it cannot attach anything to the
-ddNTP. In other words, ddNTPs getting attached stop
+ddNTP. In other words, the attachment of a ddNTP halts
 the replication of the DNA molecule.
 
 We will denote ddNTPs corresponding to A, C, G,
 and T as A\*, C\*, G\*, and T\*. By introducing a small amount of one
 type of ddNTP into the experiment (e.g. T\*), when the reactions
 finish, we are left with: 1. small percentages of strands
-containing T*s at locations where there is an A in the
+containing T*s at locations corresponding to A's in the
 template, and 2. a large fraction of strands containing only normal dNTPs.
-This procedure is known as the _chain termination method_.
+This procedure is known as the _chain termination method_. We now describe Sanger's sequencing procedure:
 
 1. We first replicate the sequence using a technique
 called [polymerase chain reaction](https://en.wikipedia.org/wiki/Polymerase_chain_reaction)
@@ -232,7 +226,7 @@ Sanger sequencing.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture2/Figure4_SangerExample.png" width="75%">
-  <div class="figcaption">Sanger sequencing through an example.</div>
+  <div class="figcaption">An example of Sanger sequencing.</div>
 </div>
 
 We combine these to get the sequence
@@ -246,7 +240,7 @@ We combine these to get the sequence
 | 74.4  	|      	|      	|      	|
 
 
-Then merging these 4 sorted lists gives us the underlying
+Merging these 4 sorted lists gives us the underlying
 sequence. In the example we get
 
 30.0 - A  
@@ -276,13 +270,13 @@ the error rate is around 0.001%.
 Additionally, Sanger sequencing is slow (low-throughput) because
 the mass measuring process is time consuming. Sanger sequencing
 allowed scientists to sequence around 3000 bases per week.
-One of the main reasons this is slow is because it requires
-measuring the mass of many molecules, and that is
-a slow process. The  equipment used for Sanger sequencing
+One of the main reasons that the procedure is slow is because it requires
+measuring the mass of many molecules, a costly process. The equipment used for Sanger sequencing
 is shown below
+
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture2/Figure7_sanger_equipment.png" width="25%">
-  <div class="figcaption">A Sanger sequencer.</div>
+  <div class="figcaption">Gel electrophoresis during Sanger sequencing.</div>
 </div>
 
 ### Illumina sequencing <a id='illumina'></a>
@@ -291,7 +285,7 @@ is shown below
 Second-generation sequencing, pioneered by
 [Illumina](http://www.illumina.com/technology/next-generation-sequencing.html),
 makes a few modifications to the Sanger process shown
-above. The sequencing procedure also massively parallelizes the performs the process, dramatically increasing the throughput while decreasing the price.
+above. The sequencing procedure also massively parallelizes the process, dramatically increasing the throughput while decreasing the price.
 
 Illumina achieves parallelization by running several synthesis experiments at once. Each of many template strands is anchored on a chip, and only ddNTPs with florescent tags are available during the synthesis procedure (no dNTPs). Each type of ddNTP is tagged such that it emits a different wavelength or color. Since ddNTPs halt synthesis, the synthesis of new strands are synced. All new strands are the same length at the end of each synthesis cycle, at which point a picture of the chip is taken. These pictures are then analyzed by “base caller” software to identify (or "call") the complementary nucleotides. Base calling will be discussed in greater detail next lecture. To override the chain termination, Illumina sequencing uses _reversible termination_. The sequencing process introduces an enzyme which can turn a ddNTP into a regular dNTP after it has bound, allowing the synthesis reactions to continue instead of being permanently halted.
 
@@ -300,17 +294,17 @@ Illumina achieves parallelization by running several synthesis experiments at on
   <div class="figcaption">An illustration of Illumina sequencing.</div>
 </div>
 
-Because of reversible termination, Illumina sequencing removes the need to
-measure masses. Illumina sequencing can sequence billions of clusters simultaneously
-which greatly increases the throughput.
+In order to guarantee that enough light is emitted such that ddNTP signals are detectable, each of the template strands are cloned, resulting in clusters of the same strand being synthesized in unison. Because of reversible termination, Illumina sequencing removes the need to measure masses. In contrast to the gel electrophoresis procedure required for Sanger sequencing above, the figure below shows a glass slide used during Illumina sequencing. Illumina sequencing can sequence billions of template strands simultaneously, which greatly increases the throughput.
+
+<div class="fig figcenter fighighlight">
+  <img src="/assets/lecture2/Figure8_illuminaSlide.png" width="95%">
+  <div class="figcaption">A slide used for Illumina sequencing.</div>
+</div>
 
 Errors in Illumina sequencing
-is due to time steps where no ddNTP attaches
+arise due to time steps where no ddNTP attaches
 to some sequence and hence the same base is read
-twice. Another source of error is some ddNTPs spuriously
-being not terminated. These lead to a base not being called
-at all.  
-
+twice. Additionally, dNTPs still exist in solution, and therefore occasionally a dNTP rather than a ddNTP may be attached to a strand being synthesized. The DNA polymerase then continues synthesis until it adds a different ddNTP. For this reason, although all strands within each cluster are identical, the photograph may be noisy.
 
 ------------------
 
@@ -321,6 +315,8 @@ Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
 - [Slides on Sequencing by Synthesis ](/lectures/lecture2_slides2.pdf)
 : Borrowed from Ben Langmead's
 [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/dna_sequencing.pdf)
+
+- [Animation of DNA replication](https://www.youtube.com/watch?v=dKubyIRiN84#t=1m42s)
 
 - Ben Langmead's [animation showing Sequencing by Synthesis](https://github.com/BenLangmead/ads1-slides/blob/master/0055_dnaseq__sequencing_by_synthesis.pdf)
 
