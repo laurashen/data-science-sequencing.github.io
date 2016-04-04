@@ -297,7 +297,7 @@ Illumina achieves parallelization by running several synthesis experiments at on
 In order to guarantee that enough light is emitted such that ddNTP signals are detectable, each of the template strands are cloned, resulting in clusters of the same strand being synthesized in unison. Because of reversible termination, Illumina sequencing removes the need to measure masses. In contrast to the gel electrophoresis procedure required for Sanger sequencing above, the figure below shows a glass slide used during Illumina sequencing. Illumina sequencing can sequence billions of template strands simultaneously, which greatly increases the throughput.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure8_illuminaSlide.png" width="95%">
+  <img src="/assets/lecture2/Figure8_illuminaSlide.png" width="50%">
   <div class="figcaption">A slide used for Illumina sequencing.</div>
 </div>
 
@@ -312,8 +312,8 @@ twice. Additionally, dNTPs still exist in solution, and therefore occasionally a
 Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
 [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/biological_background.pdf)
 
-- [Slides on Sequencing by Synthesis ](/lectures/lecture2_slides2.pdf)
-: Borrowed from Ben Langmead's
+- [Slides on Sequencing by Synthesis ](/lectures/lecture2_slides2.pdf):
+Borrowed from Ben Langmead's
 [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/dna_sequencing.pdf)
 
 - [Animation of DNA replication](https://www.youtube.com/watch?v=dKubyIRiN84#t=1m42s)
