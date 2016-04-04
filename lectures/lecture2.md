@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture2/
 ---
-## Biology Background, First and Second-generation sequencing
+## Lecture 2: Biology Background, First and Second-generation sequencing
 
 Wednesday 30 March 2016
 
