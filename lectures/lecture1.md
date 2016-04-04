@@ -9,7 +9,7 @@ Monday 28 March 2016
 
 _Scribed by Anja Brandon and revised by the course staff_
 
-_These notes are still quite unpolished. We'll be updating it in the next
+_These notes are still unpolished. We will be updating them in the next
 couple of days._
 
 -----------------

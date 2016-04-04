@@ -22,7 +22,11 @@ and Illumina (second
 generation sequencing technology).
 
 1. <a href='#bioback'> Basics of DNA </a>
+  - <a href='#dnastruct'> DNA structure </a>
+  - <a href='#dnarep'> DNA replication </a>
 2. <a href='#sanger'> Sanger sequencing </a>
+  - <a href='#seqbysynth'> Sequencing by synthesis</a>
+  - <a href='#limitations'> Limitations of Sanger sequencing </a>
 3. <a href='#illumina'> Illumina sequencing </a>
 
 -----------------
@@ -63,7 +67,7 @@ these are preserved in the population.
 During recombination, the genetic material passed by the parent organisms to their
 child is a mixture of genetic material from the parents.
 
-#### DNA structure
+#### DNA structure <a id='biostruct'></a>
 DNA is comprised of a sugar-phosphate
 backbone and four nucleotide bases: Adenine (A),
 Cytosine (C), Guanine (G), and Thymine (T). DNA is double-stranded and
@@ -94,7 +98,7 @@ and its reverse complement strand.
   <div class="figcaption">An illustration of DNA complement. </div>
 </div>
 
-#### DNA replication
+#### DNA replication <a id='biorep'></a>
 
 DNA lies at the foundation of cell replication. When a cell undergoes
 cell division, also known as _mitosis_, the DNA in its nucleus is
@@ -167,7 +171,7 @@ these errors exist depend on the technology.
 of sequencing is that although the sequence of interest is very long (> 1M bp),
 the data we get is very short (~100 bp).
 
-#### Sequencing by Synthesis
+#### Sequencing by Synthesis <a id='seqbysynth'></a>
 
 Sequencing by synthesis takes advantage of the fact that DNA strands,
 which are normally in double-helix form, split apart for mitosis
@@ -255,7 +259,7 @@ sequence. In the example we get
 
 giving us the sequence to be **ACGAATC**.
 
-#### Limitations of Sanger sequencing
+#### Limitations of Sanger sequencing <a id='limitations'></a>
 
 Sanger sequencing works for sequences below roughly 700 bp in
 length. This read limitation stems from the fact that as the
