@@ -67,7 +67,7 @@ these are preserved in the population.
 During recombination, the genetic material passed by the parent organisms to their
 child is a mixture of genetic material from the parents.
 
-#### DNA structure <a id='biostruct'></a>
+#### DNA structure <a id='dnastruct'></a>
 DNA is comprised of a sugar-phosphate
 backbone and four nucleotide bases: Adenine (A),
 Cytosine (C), Guanine (G), and Thymine (T). DNA is double-stranded and
@@ -98,7 +98,7 @@ and its reverse complement strand.
   <div class="figcaption">An illustration of DNA complement. </div>
 </div>
 
-#### DNA replication <a id='biorep'></a>
+#### DNA replication <a id='dnarep'></a>
 
 DNA lies at the foundation of cell replication. When a cell undergoes
 cell division, also known as _mitosis_, the DNA in its nucleus is
