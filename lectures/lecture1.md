@@ -330,10 +330,11 @@ to get an estimate of the number of reads necessary to be able to assemble with
 reasonable accuracy. This involves using tools from information theory, which
 identify bottlenecks and give us design principles to deal with them. Then
 one has to design efficient algorithms to overcome these bottlenecks. By efficient
-here we mean $$\Omega(n^2)$$, where $$n$$ is the number of reads.
+here we mean linear in the number of reads.
 In general, the scale of data makes any super-linear algorithm unfeasible
 in most cases. However, there are cases where smart algorithm design,
-and low level  optimised software allows one to use upto $$O(n^2)$$ algorithms.
+and low level  optimised software allows one to use upto $$O(n^2)$$ algorithms,
+where $$n$$ is the number of reads.
 
 
 ### Single-cell RNA quantification and analysis<a id='scrnaseq'></a>
