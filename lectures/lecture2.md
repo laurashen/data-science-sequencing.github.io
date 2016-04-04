@@ -25,6 +25,8 @@ generation sequencing technology).
 2. <a href='#sanger'> Sanger sequencing </a>
 3. <a href='#illumina'> Illumina sequencing </a>
 
+-----------------
+
 ### Basics of DNA <a id='bioback'></a>
 
 The human _genome_ is the entire DNA sequence of a human individual.
