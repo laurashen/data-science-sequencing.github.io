@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /drafts/lecture2/
+permalink: /lectures/lecture2/
 ---
 ## Biology Background, First and Second-generation sequencing
 
