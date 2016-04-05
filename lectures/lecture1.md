@@ -13,7 +13,7 @@ _Scribed by Anja Brandon and revised by the course staff_
 
 ### Topics
 
-1. <a href='#need'> What is high-throughput sequencing? </a>  
+1. <a href='#what'> What is high-throughput sequencing? </a>  
   - <a href='#seq'> Sequencing methods
 2. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>  
   - <a href='#tools'> Tools used </a>
