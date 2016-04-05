@@ -38,7 +38,7 @@ The first major sequencing project was the
 [Human Genome Project](https://www.genome.gov/10001772).
 A big consortium began collaborative efforts in 1990 to
 sequence the entire human genome.
-They released their final draft in 2003, which cost $2.7 billion and 13 years of
+The project was nominally completed in 2003, costing $2.7 billion and 13 years of
 work by labs around the world. In 2015, the cost of sequencing a genome was approximately $1000. This is testament to how far the technology has
 evolved. As shown below,
 the cost of DNA sequencing has been falling
