@@ -25,7 +25,7 @@ _Scribed by Anja Brandon and revised by the course staff_
 
 ### What is high-throughput sequencing? <a id='what'></a>
 
-The main object of interest in this course
+A main object of interest in this course
 is the [genome](https://en.wikipedia.org/wiki/Genome) of a
 organism, which is made of
 [_deoxyribonucleic acid_](https://ghr.nlm.nih.gov/handbook/basics/dna) (DNA).
@@ -38,7 +38,7 @@ The first major sequencing project was the
 [Human Genome Project](https://www.genome.gov/10001772).
 A big consortium began collaborative efforts in 1990 to
 sequence the entire human genome.
-They released their first draft in 2003, which cost $2.7 billion and 13 years of
+They released their final draft in 2003, which cost $2.7 billion and 13 years of
 work by labs around the world. In 2015, the cost of sequencing a genome was approximately $1000. This is testament to how far the technology has
 evolved. As shown below,
 the cost of DNA sequencing has been falling
@@ -64,7 +64,7 @@ use of DNA sequencing technology for measuring properties of
 various other biological molecules (and there are even proposals on how to use DNA sequencing for
 [detecting dark matter](http://arxiv.org/abs/1206.6809)).
 
-High-throughput sequencing can be thought of as a tool (e.g. a microscope)
+High-throughput sequencing can be thought of as a microscope
 that can be used to measure a variety of quantities. The basic paradigm (shown below) is to reduce the estimation problem of
 interest to a DNA sequencing problem, which can be handled
 using high-throughput sequencing. This is similar in principle
@@ -136,7 +136,7 @@ High-throughput sequencing has been used successfully for detecting
 
 #### Sequencing methods <a id='seq'></a>
 
-Science is progressed by the
+Science progresses by the
 invention of measuring methods.
 High-throughput Sequencing is one such measurement
 tool; however,
@@ -152,7 +152,7 @@ while the human genome is of length 3 billion. Fortunately,
 these small noisy subsequences also contain information
 about the genome. While a single read contains very little
 information about the entire sequencing,  a
-typical experiment generates a few million reads
+typical experiment generates a few hundred million reads
 (and hence is called "high-throughput"). Extraction of the information contained within reads requires clever
 computational processing, and this is the flavor of problems
 we will discuss in this class. We also note that the sequencing process can be very noisy. Each of the reads can be potentially different from the original subsequence of the DNA the read came
@@ -166,7 +166,7 @@ who first came up with
 This was a relatively low-throughput technology and was the dominant technology
 until the late 1990s.
 [Second generation sequencing](http://genomesunzipped.org/2010/09/basics-second-generation-sequencing.php)
-was pioneered by [Illumina](http://www.illumina.com/technology/next-generation-sequencing.html)
+is most heavily represented by [Illumina](http://www.illumina.com/technology/next-generation-sequencing.html)
 and is currently the dominant technology. Recent developments in Illumina sequencing have
 allowed scientists perform
 [single-cell sequencing](https://en.wikipedia.org/wiki/Single_cell_sequencing) or the sequencing of individual cells.
@@ -201,7 +201,7 @@ The success of high-throughput sequencing is mainly due to
 the creative use of read data to solve various problems. For this course, data science problems can be categorized into one of three types:
 
 1. _Data processing_:
-- Assembly or _de novo_ assembly: Recovering the original genome from short noisy reads.  
+- Assembly or _de novo_ assembly: Recovering the DNA or RNA from short noisy reads.  
 - Variant calling: Individuals of the same species have very similar genomes.
 For example, any two humans share 99.8% of their genetic material. Because a reference human genome is available,
 scientists are often interested in the differences of an individual's genome
@@ -240,7 +240,7 @@ not satisfy these assumptions, some additional effort is required to get working
 - Combinatorial algorithms: Problems like genome assembly involve working on
 combinatorial objects like graphs, and combinatorial algorithms naturally follow.
 - Statistical Signal Processing: Because the data is noisy, we need signal processing techniques for dealing with the noise.  
-- Information Theory: When performing inference, this gives a sense of how much data is necessary to achieve "good" estimates.
+- Information Theory: When performing inference, this gives a sense of how much data is necessary to achieve "good" estimates, allowing us to design optimal algorithms to achieve such estimates.
 - Machine Learning
 
 ### Two Example Applications <a id='examples'></a>
@@ -250,10 +250,10 @@ covered in this course.
 
 #### DNA-assembly<a id='assembly'></a>
 
-The DNA sequencing machine outputs an analog signal (e.g. light intensities
+The DNA sequencer outputs an analog signal (e.g. light intensities
 or electric signals). We want to process this
 signal to get the sequence. In essence, one could think of the DNA as a message,
-the sequencer as a bad channel, and the base caller and assembler as the
+the sequencer as a communication channel, and the base caller and assembler as the
 decoder. This abstraction is shown below:
 
 <div class="fig figcenter fighighlight">
@@ -264,7 +264,7 @@ decoder. This abstraction is shown below:
 This abstraction gives us multiple avenues of exploring potential problems.
 The extraction of digital information (discrete bases) from analog signals is a statistical signal processing problem. This involves various stochastic models with many parameters which need to be estimated.
 Furthermore, one often has to account for
-signals from adjacent bases interfering with one another. This intersymbol
+signals from adjacent bases interfering with one another. Dealing with intersymbol
 interference is also a signal processing problem.
 
 We can also consider the problem of assembling the genome from the reads obtained
@@ -281,8 +281,7 @@ and low level optimized software allows one to use algorithms that are quadratic
 
 As discussed above, RNA is another important biological molecule.
 There exists around 10000 RNA sequences (or _transcripts_) floating in each cell,
-each of which are 1000-10000 bp long. There may be many copies of the same
-certain transcripts. Biologists are interested in the problem of _quantifying_ or estimating the number of each RNA transcript in a cell.
+each of which are 1000-10000 bp long. Biologists are interested in the problem of _quantifying_ or estimating the number of each RNA transcript in a cell.
 
 Biologists and chemists have figured out ways to convert RNA back into DNA
 (mainly using an enzyme _reverse transcriptase_), and then sequence the DNA
