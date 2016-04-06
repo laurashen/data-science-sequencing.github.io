@@ -10,9 +10,22 @@ due Wednesday 20 April 2016
 
 ### Question I: Basics of sequencing
 
-#### a) complementary pairs
+#### a) Complementary pairs
 
 #### b) Sanger sequencing
+
+1. In a Sanger sequencing experiment, a bio-chemist observes that
+the masses of molecules that are terminated by ddATP are 400, 1200, 1351. The
+masses of molecules terminated by ddCTP are 531, 1482. The masses of the molecules
+terminated by ddGTP are 671, 813, 961. The masses of the molecules terminated
+by ddTTP are 1093, 1657. The primer used here is AGC. What is the molecule
+being sequenced?
+
+2. Assuming that A, G, C, T have the same molecular weight, and the masses
+measured have a tolerance of $$\pm$$ 0.05%. Give a bound on the maximum length
+that can be sequenced without error (assuming all measurements are
+within $$\pm$$ 0.05% of the true value). How does this change when the molecular
+weights are different?
 
 ### Question II: Base calling
 
