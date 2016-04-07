@@ -8,11 +8,7 @@ permalink: /drafts/assignment1/
 posted Wednesday 6 April 2016  
 due Wednesday 20 April 2016
 
-### Question I: Basics of sequencing
-
-#### a) Complementary pairs
-
-#### b) Sanger sequencing
+### Question I: Sanger sequencing
 
 1. In a Sanger sequencing experiment, a bio-chemist observes that
 the masses of molecules that are terminated by ddATP are 400, 1200, 1351. The
