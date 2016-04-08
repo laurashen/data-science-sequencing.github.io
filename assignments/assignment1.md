@@ -73,11 +73,11 @@ is calculated and followed by an appropriate detection rule to perform base call
 
 ### Question III: fasta and fastq Files
 
-Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".
-- What is the length of the reference?
-- What is the length of each read?
-- How many reads are there?
-- What is the maximum number of times a read is repeated?
+Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".  
+- What is the length of the reference?  
+- What is the length of each read?  
+- How many reads are there?  
+- What is the maximum number of times a read is repeated?  
 - What is the sequencing depth of each base in the reference for this experiment?
 
 ### Question IV: Read alignment with Bowtie
