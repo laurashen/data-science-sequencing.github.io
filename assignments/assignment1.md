@@ -71,24 +71,30 @@ is calculated and followed by an appropriate detection rule to perform base call
     - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
     - ii) What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
-### Question III: Read alignment with Bowtie
+### Question III: fasta and fastq Files
 
-1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the expected number of times a base at a particular position will be sequenced? In other words, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
-
-2. Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".
+Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".
 - What is the length of the reference?
 - What is the length of each read?
 - How many reads are there?
 - What is the maximum number of times a read is repeated?
 - What is the sequencing depth of each base in the reference for this experiment?
 
-3. How many distinct 20-length substrings do you see across all reads? These substrings are commonly referred to as $$k$$-mers ($$k$$ = 20 in this case). Count how often each distinct 20-mer appears and generate a histogram of the counts. _Hint_: Note that initializing a length-$$4^{20}$$ array may not be a viable approach. Consider using dictionaries!
+### Question IV: Read alignment with Bowtie
 
-4. [Bowtie](http://bowtie-bio.sourceforge.net/manual.shtml) is a popular read aligner optimized for aligning large amounts of short reads to long references. Bowtie is preinstalled on Stanford's Corn cluster, but you can also install Bowtie on your local machine by downloading the [binary](https://sourceforge.net/projects/bowtie-bio/files/bowtie/).
+For this question, use the _E.coli_ genome and reads used in Question III.
+
+1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the expected number of times a base at a particular position will be sequenced? In other words, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
+
+
+
+2. How many distinct 20-length substrings do you see across all reads? These substrings are commonly referred to as $$k$$-mers ($$k$$ = 20 in this case). Count how often each distinct 20-mer appears and generate a histogram of the counts. _Hint_: Note that initializing a length-$$4^{20}$$ array may not be a viable approach. Consider using dictionaries!
+
+3. [Bowtie](http://bowtie-bio.sourceforge.net/manual.shtml) is a popular read aligner optimized for aligning large amounts of short reads to long references. Bowtie is preinstalled on Stanford's Corn cluster, but you can also install Bowtie on your local machine by downloading the [binary](https://sourceforge.net/projects/bowtie-bio/files/bowtie/).
 - Build a Bowtie index from the _E. coli_ reference genome ("bowtie-build" command). You can copy the downloaded files from your computer to Corn using the [scp](http://www.hypexr.org/linux_scp_help.php) command.
 - Using the default settings, use Bowtie to align the _E. coli_ reads to the newly built Bowtie index. Use Bowtie's "-t" option to obtain the runtime. How many reads have at least 1 reported alignment? What was the runtime?
 
-5. [BONUS] Visually prove or disprove whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
+4. [BONUS] Visually prove or disprove whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
 or [Bamview](http://bamview.sourceforge.net/).
 
 
