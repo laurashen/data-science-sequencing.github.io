@@ -1,12 +1,12 @@
 ---
 layout: page
 mathjax: true
-permalink: /drafts/assignment1/
+permalink: /assignments/assignment1/
 ---
 ## Assignment 1
 
-posted Wednesday 6 April 2016  
-due Wednesday 20 April 2016
+posted Friday 8 April 2016  
+due Sunday 17 April 2016 at midnight
 
 ### Question I: Sanger sequencing
 
@@ -25,7 +25,77 @@ weights are different?
 
 ### Question II: Base calling
 
-### Question III: Read alignment (Programming)
+Consider the following base calling model studied in the class. Let
+$$s_1,\cdots,s_L$$ be the binary sequence corresponding to a
+base (obtained, for example,
+by setting $$s_t=1$$ if the $$t$$-th base is an $$A$$ and 0 otherwise)
+and $$I_1,…,I_L$$
+be the sequence of intensities observed (for example, in the $$A$$ channel).
+Now, the intensities and the DNA sequence can be related as follows:
+
+$$
+I_t  = \sum_{j=1}^{L} Q_{jt} s_{j} + n_t, \ \ \ t=1,2,\cdots,L ,
+$$
+
+where $$Q_{jt}$$ is the probability that the after $$t$$-cycles,
+the template has synthesized $$j$$ nucleotides. Further assume that
+there is no possibility of a template leading, only lagging, _i.e._,
+in the notation of the class $$q=0$$.
+Recall that this implies
+
+$$
+Q_{jt} =  \binom{t}{j} (1-p)^j p^{t-j}.
+$$
+
+Assume $$n_t$$ is Gaussian noise with zero mean, and
+variance $$\sigma^2$$ (we are neglecting the effect that the
+observed intensity $$I_t$$ is forced to be a positive real number).  
+
+1. Simulate $$N$$ strands of DNA each of length $$L$$
+with each base in each strand chosen _i.i.d._
+to be $$\{0,1\}$$ with probability $$\{1/4, 3/4\}$$.
+Let $$N=100, L=100$$. For each of these $$L$$
+length sequences, generate $$I_1,…,I_L$$ according
+to the probability model. Do this for various values
+of $$p = 0, 0.01, 0.05, 0.1, 0.2$$.
+
+2. Write down the zero-forcing equalizer (_i.e._ the
+matrix inversion decoder)
+and the decoding rule. Using the proposed rule,
+decode the bases. Calculate the probability of
+error as a function of $$p$$.
+
+3. Write down the formula for the MMSE equalizer
+and the corresponding decoding rule. Using the
+proposed rule, decode the bases. Calculate
+the probability of error as a function of $$p$$.
+
+4. (Bounds on the optimal rule): In this section,
+we will try to calculate a lower bound on the probability of error
+for any rule. To do so, we invoke a bound called as the matched
+filter bound in communication.  
+Consider the following system. Suppose you want to decode the symbol $$s_m$$.
+If there were no interference from any other symbol but you observe
+the intensities at all possible times, then we have  
+\\[
+I_t = Q_{mt} s_m + n_t.
+\\]
+Given these observations, the optimal combining rule is called the matched filter rule,
+in which is the following,  
+\\[
+y_m = \frac{1}{A_m} \sum_t Q_{mt}  I_t = \frac{1}{A_m} \sum_t \left( Q_{mt}^2 s_m +  Q_{mt} n_t\right),
+\\]  
+where $$A_m = \sqrt{\left(\sum_t Q_{mt}^2\right)}$$. Thus the overall
+noise variance is still $$\sigma^2$$ and the overall signal power is $$A_m$$ times
+the original signal power.  
+    1. Calculate $$A_m$$ as a function of $$m$$ for $$m=1,2,\cdots,L\$$  and plot this for
+    a fixed $$p=0.1$$.  
+    2. Calculate the implied probability of error for decoding the signal under
+    this matched filter model. This is a lower bound on the probability of
+    error for any signal.
+
+
+### Question III: Read alignment
 
 Python programming is required for all of part a) and question 3 in part b). Please write your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb) and email the completed assignment to ee372-spr1516-staff@lists.stanford.edu. Save your completed notebook as "ee372_assignment1q3_FIRSTNAME_LASTNAME.ipynb".
 
@@ -56,7 +126,11 @@ Python programming is required for all of part a) and question 3 in part b). Ple
 - Build a Bowtie index from the _E. coli_ reference genome ("bowtie-build" command). You can copy the downloaded files from your computer to Corn using the [scp](http://www.hypexr.org/linux_scp_help.php) command.
 - Using the default settings, use Bowtie to align the _E. coli_ reads to the newly built Bowtie index. Use Bowtie's "-t" option to obtain the runtime. How many reads have at least 1 reported alignment? What was the runtime?
 
+5. [BONUS] Can you give a profile of the reads on the reference genome?
+_Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
+or [Bamview](http://bamview.sourceforge.net/).
+
 
 ---
 
-[This assignment as a pdf.](/assets/assignments/assignment1.pdf)
+[This assignment as a pdf.](/assets/assignment1/assignment1.pdf)
