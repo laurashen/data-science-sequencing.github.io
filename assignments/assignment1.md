@@ -25,7 +25,7 @@ that can be sequenced without error (assuming all measurements are
 within $$\pm$$ 0.05% of the true value). How does this change when the molecular
 weights are different?
 
-### Question II: Base calling
+### Question II: Base calling for Illumina sequencing
 
 Consider the following base calling model studied in the class. We will focus on the A channel. Let
 $$s(1),\dots,s(L)$$ be the binary sequence, obtained by setting $$s(t)=1$$ if the $$t$$-th base is an $$A$$ and 0 otherwise, and $$y(1),y(2),\dots,y(L)$$ be the sequence of intensities observed in the $$A$$ channel. Now, in the case of a large number $$N$$ of strands in a cluster, the intensities and the DNA sequence can be related approximately as follows
@@ -68,7 +68,7 @@ Given these observations, the optimal combining rule is called the matched filte
 y_m = \sum_t Q_{mt}\tilde{y}(t)
 \\]
 is calculated and followed by an appropriate detection rule to perform base calling. The probability of error of this rule is a lower bound to the probability of error of the optimal rule in the original problem because ignoring interference from other symbols will only improve performance.
-    - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule and plot this for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
+    - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
     - ii) What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
 ### Question III: Read alignment with Bowtie
@@ -88,8 +88,7 @@ is calculated and followed by an appropriate detection rule to perform base call
 - Build a Bowtie index from the _E. coli_ reference genome ("bowtie-build" command). You can copy the downloaded files from your computer to Corn using the [scp](http://www.hypexr.org/linux_scp_help.php) command.
 - Using the default settings, use Bowtie to align the _E. coli_ reads to the newly built Bowtie index. Use Bowtie's "-t" option to obtain the runtime. How many reads have at least 1 reported alignment? What was the runtime?
 
-5. [BONUS] Can you give a profile of the reads on the reference genome?
-_Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
+5. [BONUS] Visually confirm whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
 or [Bamview](http://bamview.sourceforge.net/).
 
 
