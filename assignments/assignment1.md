@@ -6,9 +6,9 @@ permalink: /assignments/assignment1/
 ## Assignment 1
 
 posted Friday 8 April 2016  
-due Monday 18 April 2016 at midnight
+due Friday 15 April 2016 at midnight
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5i and Question III part 3) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5i and Question IV part 2) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
 ### Question I: Sanger sequencing
 
@@ -41,7 +41,7 @@ in the notation of the class $$q=0$$. Assume $$n(t)$$ is Gaussian noise with zer
 
 1. Calculate $$Q_{jt}$$ in terms of $$j$$, $$t$$, and $$p$$. Given $$t$$ and $$p$$, at which value of $$j$$ is $$Q_{jt}$$ maximized? Is this intuitive?
 
-2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,0.01,0.05,0.1,0.2 \ \ $$ and for $$\sigma^2 = 0.1$$.
+2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1, \ $$ and $$  0.2 \ \ $$ with $$\sigma^2 = 0.1$$.
 
 3. Write down the zero-forcing equalizer (i.e.
 matrix inversion)
@@ -71,7 +71,8 @@ is calculated and followed by an appropriate detection rule to perform base call
     - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
     - ii) What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
-### Question III: fasta and fastq Files
+### Question III: Playing around with reads
+
 
 Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".  
 - What is the length of the reference?  
