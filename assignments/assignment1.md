@@ -88,7 +88,7 @@ is calculated and followed by an appropriate detection rule to perform base call
 - Build a Bowtie index from the _E. coli_ reference genome ("bowtie-build" command). You can copy the downloaded files from your computer to Corn using the [scp](http://www.hypexr.org/linux_scp_help.php) command.
 - Using the default settings, use Bowtie to align the _E. coli_ reads to the newly built Bowtie index. Use Bowtie's "-t" option to obtain the runtime. How many reads have at least 1 reported alignment? What was the runtime?
 
-5. [BONUS] Visually confirm whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
+5. [BONUS] Visually prove or disprove whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
 or [Bamview](http://bamview.sourceforge.net/).
 
 
