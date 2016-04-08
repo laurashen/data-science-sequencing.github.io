@@ -79,13 +79,14 @@ Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/m
 - What is the length of each read?  
 - How many reads are there?  
 - What is the maximum number of times a read is repeated?  
-- What is the sequencing depth of each base in the reference for this experiment?
+- What is the average number of times each base in the reference is sequenced?
+In other words what is the _sequencing depth_ of each base of the reference?
 
 ### Question IV: Read alignment with Bowtie
 
 For this question, use the _E.coli_ genome and reads used in Question III.
 
-1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the expected number of times a base at a particular position will be sequenced? In other words, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
+1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
 
 
 
