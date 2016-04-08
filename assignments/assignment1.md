@@ -6,7 +6,7 @@ permalink: /assignments/assignment1/
 ## Assignment 1
 
 posted Friday 8 April 2016  
-due Sunday 17 April 2016 at midnight
+due Monday 18 April 2016 at midnight
 
 ### Question I: Sanger sequencing
 
