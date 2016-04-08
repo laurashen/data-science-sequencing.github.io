@@ -8,7 +8,7 @@ permalink: /assignments/assignment1/
 posted Friday 8 April 2016  
 due Friday 15 April 2016 at midnight
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5i and Question III part 3) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1 and Question III part 3) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
 ### Question I: Sanger sequencing
 
@@ -68,8 +68,8 @@ Given these observations, the optimal combining rule is called the matched filte
 y_m = \sum_t Q_{mt}\tilde{y}(t)
 \\]
 is calculated and followed by an appropriate detection rule to perform base calling. The probability of error of this rule is a lower bound to the probability of error of the optimal rule in the original problem because ignoring interference from other symbols will only improve performance.
-    - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
-    - ii) What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
+    1. Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
+    2. What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
 ### Question III: Playing around with reads
 
