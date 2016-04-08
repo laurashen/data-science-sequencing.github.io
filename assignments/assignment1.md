@@ -6,17 +6,17 @@ permalink: /assignments/assignment1/
 ## Assignment 1
 
 posted Friday 8 April 2016  
-due Friday 15 April 2016 at midnight
+due Monday 18 April 2016 at midnight
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1 and Question IV part 2) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5i and Question III part 3) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
 ### Question I: Sanger sequencing
 
 1. In a Sanger sequencing experiment, a bio-chemist observes that
-the masses of molecules that are terminated by ddATP are 400, 1200, 1351. The
-masses of molecules terminated by ddCTP are 531, 1482. The masses of the molecules
-terminated by ddGTP are 671, 813, 961. The masses of the molecules terminated
-by ddTTP are 1093, 1657. The primer used here is AGC. What is the molecule
+the masses of molecules that are terminated by ddATP are 400, 1200, and 1351. The
+masses of molecules terminated by ddCTP are 531, and 1482. The masses of the molecules
+terminated by ddGTP are 671, 813, and 961. The masses of the molecules terminated
+by ddTTP are 1093, and 1657. The primer used here is AGC. What is the molecule
 being sequenced?
 
 2. Assuming that A, G, C, T have the same molecular weight, and the masses
@@ -41,7 +41,7 @@ in the notation of the class $$q=0$$. Assume $$n(t)$$ is Gaussian noise with zer
 
 1. Calculate $$Q_{jt}$$ in terms of $$j$$, $$t$$, and $$p$$. Given $$t$$ and $$p$$, at which value of $$j$$ is $$Q_{jt}$$ maximized? Is this intuitive?
 
-2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1, \ $$ and $$  0.2 \ \ $$ with $$\sigma^2 = 0.1$$.
+2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1,\ $$ and  $$\ 0.2 $$ with $$\sigma^2 = 0.1$$.
 
 3. Write down the zero-forcing equalizer (i.e.
 matrix inversion)
@@ -68,35 +68,27 @@ Given these observations, the optimal combining rule is called the matched filte
 y_m = \sum_t Q_{mt}\tilde{y}(t)
 \\]
 is calculated and followed by an appropriate detection rule to perform base calling. The probability of error of this rule is a lower bound to the probability of error of the optimal rule in the original problem because ignoring interference from other symbols will only improve performance.
-    1. Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
-    2. What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
+    - i) Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4.
+    - ii) What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
 ### Question III: Playing around with reads
 
+1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the expected number of times a base at a particular position will be sequenced? In other words, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
 
-Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".  
-- What is the length of the reference?  
-- What is the length of each read?  
-- How many reads are there?  
-- What is the maximum number of times a read is repeated?  
-- What is the average number of times each base in the reference is sequenced?
-In other words what is the _sequencing depth_ of each base of the reference?
+2. Download the reference genome for _E. coli_ [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta). Download a set of reads obtained from an _E. coli_ experiment [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/e.coli_k12_atcc_700926.fastq.gz). You can right click each link and select "Save Link As".
+- What is the length of the reference?
+- What is the length of each read?
+- How many reads are there?
+- What is the maximum number of times a read is repeated?
+- What is the sequencing depth of each base in the reference for this experiment?
 
-### Question IV: Read alignment with Bowtie
+3. How many distinct 20-length substrings do you see across all reads? These substrings are commonly referred to as $$k$$-mers ($$k$$ = 20 in this case). Count how often each distinct 20-mer appears and generate a histogram of the counts. _Hint_: Note that initializing a length-$$4^{20}$$ array may not be a viable approach. Consider using dictionaries!
 
-For this question, use the _E.coli_ genome and reads used in Question III.
-
-1. We are given $$N$$ reads of length $$L$$ and a reference genome of length $$\ell$$. Assuming reads were sampled uniformly from the entire genome, what is the _sequencing depth_ of each base in the genome? What is the probability that we see the exact same read twice? You can assume that if a length-$$L$$ sequence appears in the genome, it appears exactly once.
-
-
-
-2. How many distinct 20-length substrings do you see across all reads? These substrings are commonly referred to as $$k$$-mers ($$k$$ = 20 in this case). Count how often each distinct 20-mer appears and generate a histogram of the counts. _Hint_: Note that initializing a length-$$4^{20}$$ array may not be a viable approach. Consider using dictionaries!
-
-3. [Bowtie](http://bowtie-bio.sourceforge.net/manual.shtml) is a popular read aligner optimized for aligning large amounts of short reads to long references. Bowtie is preinstalled on Stanford's Corn cluster, but you can also install Bowtie on your local machine by downloading the [binary](https://sourceforge.net/projects/bowtie-bio/files/bowtie/).
+4. [Bowtie](http://bowtie-bio.sourceforge.net/manual.shtml) is a popular read aligner optimized for aligning large amounts of short reads to long references. Bowtie is preinstalled on Stanford's Corn cluster, but you can also install Bowtie on your local machine by downloading the [binary](https://sourceforge.net/projects/bowtie-bio/files/bowtie/).
 - Build a Bowtie index from the _E. coli_ reference genome ("bowtie-build" command). You can copy the downloaded files from your computer to Corn using the [scp](http://www.hypexr.org/linux_scp_help.php) command.
 - Using the default settings, use Bowtie to align the _E. coli_ reads to the newly built Bowtie index. Use Bowtie's "-t" option to obtain the runtime. How many reads have at least 1 reported alignment? What was the runtime?
 
-4. [BONUS] Visually prove or disprove whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
+5. [BONUS] Visually prove or disprove whether the reads are uniformly distributed across the reference. _Hint:_ Use a sam/bam visualiser like [IGV](https://www.broadinstitute.org/igv/)
 or [Bamview](http://bamview.sourceforge.net/).
 
 
