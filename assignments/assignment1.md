@@ -56,7 +56,7 @@ and the corresponding decoding rule. Simulate this rule and for different values
 
 5. (Matched filter bound): In this section,
 we will try to calculate a lower bound on the probability of error
-for any rule. To do so, we invoke a bound called as the matched
+for any rule. To do so, we invoke a bound called the matched
 filter bound in communication. Consider the following system. Suppose you want to decode $$s(m)$$ for a particular $$m$$.
 If there were no interference from any other symbol but you observe
 the intensities at all possible times, then we have  
