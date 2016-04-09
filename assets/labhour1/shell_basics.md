@@ -6,6 +6,10 @@ permalink: /assets/labhour1/
 
 ## Shell Basics
 
+_created by Jesse Zhang for EE372 Lab hour 1_
+
+---
+
 Starting with the Terminal, log into Stanford's Corn server.
 
 ```
@@ -164,7 +168,7 @@ We can also rewrite an above set of commands that counted the number of unique r
 sort reads | uniq | wc -l
 ```
 
-The piping operator works with ```awk``` and ```sed``` too, of course. If we started with the fastq file rather than the reads file, we can still count the number of unique reads using
+The pipe operator works with ```awk``` and ```sed``` too, of course. If we started with the fastq file rather than the reads file, we can still count the number of unique reads using
 
 ```
 awk '{if (NR % 4 == 2) print $0}' lab1example_fastq | sort | uniq | wc -l
