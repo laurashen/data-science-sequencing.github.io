@@ -62,7 +62,7 @@ If you want to split each line of a file based on a substring "R1", you can do
 awk -F "R1" '{print $0"\t"$1"\t"$2}' lab1example_SRR
 ```
 
-The "-F" option indicates what substring you want to split on. This will split "SRR1234" into "SR" and "234", and it will split "helloR1worldR1!!" into "hello", "world", and "!!". The portion of the command in the single quotes tells awk how to process each line of the file. ```print $0``` will print out the entire line, ```print $1``` will print out the first part of the line (after splitting), and ```print $2``` will print the second part of the line. The way we used awk here with the file lab1example_SRR will result in the entire line being printed out followed by a tab, followed by "SR", followed by the a number. We can also print out the the row index using "NR":
+The "-F" option indicates what substring you want to split on. This will split "SRR1234" into "SR" and "234", and it will split "helloR1worldR1!!" into "hello", "world", and "!!". By default, awk splits using white space. The portion of the command in the single quotes tells awk how to process each line of the file. ```print $0``` will print out the entire line, ```print $1``` will print out the first part of the line (after splitting), and ```print $2``` will print the second part of the line. The way we used awk here with the file lab1example_SRR will result in the entire line being printed out followed by a tab, followed by "SR", followed by the a number. We can also print out the the row index using "NR":
 
 ```
 awk '{print NR}' lab1example_SRR
