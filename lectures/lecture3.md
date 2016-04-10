@@ -3,6 +3,8 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture3/
 ---
+## Lecture 3: Base Calling for Second-generation sequencing
+
 Monday 4 April 2016
 
 _Scribed by Alborz Bejnood and revised by the course staff_
