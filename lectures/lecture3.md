@@ -94,19 +94,19 @@ Both leading and lagging errors are called *phasing* errors.
 
 We probabilistically model the problem as follows. Let $$L$$ be the
 length of the molecule being sequenced.
-Let the original sequence be $$\mathbf{s}=s_1s_2,\cdots,s_L.$$
+Let the original sequence be $$\mathbf{s}=s(1),s(2),\cdots,s(L).$$
 Let us define sequences $$\mathbf{s}^{(A)},\mathbf{s}^{(C)}, \mathbf{s}^{(G)}, \mathbf{s}^{(T)}$$,
 as
 
 $$
-s^{(A)}_i = \left\{ \begin{array}[cc]\\
-1 &\text{if }s_i\text{=A}\\
+s^{(A)}(i) = \left\{ \begin{array}[cc]\\
+1 &\text{if }s(i)\text{=A}\\
 0 & \text{otherwise.}  \end{array}\right.
 $$
 
 Let $$\mathbf{y}^{(A)}, \mathbf{y}^{(C)}, \mathbf{y}^{(G)}, \mathbf{y}^{(T)}$$
 be the intensities of the colours corresponding to A, C, G, and T respectively.
-We note that we make $$L$$ measurements in total, and hence each one
+We note that we make $$L$$ measurements in total (one measurement per cycle), and hence each one
 of $$\mathbf{y}^{(A)}, \mathbf{y}^{(C)}, \mathbf{y}^{(G)}, \mathbf{y}^{(T)}$$
 is an $$L$$ length vector. Further, we define
 
@@ -121,7 +121,7 @@ $$
 Further we define
 
 $$
-Q_{ij} = \text{Probability that the }j^{th}\text{ base of a molecule emits colour in the }i^{th} \text{ measurement.}
+Q_{ij} = \text{Probability that the }j^{th}\text{ base of a molecule emits colour in the }i^{th} \text{ cycle.}
 $$
 
 Now we model the relationship between $$\mathbf{y}^{(A)}$$ and
@@ -129,13 +129,13 @@ $$\mathbf{s}^{(A)}$$. Here we observe that at time $$i$$,
 the intensity is given by
 
 $$
-\mathbf{y}^{(A)}_i=  b \sum_{j=1}^{L}Q_{ij} s^{(A)}_j + n_i,
+\mathbf{y}^{(A)}(i)=  b \sum_{j=1}^{L}Q_{ij} s^{(A)}(j) + n(i),
 $$
 
 where $$n_i$$ is noise that we model as zero mean Gaussians
-$$\mathcal{N}(0,\sigma^2)$$, independent across measurements, and $$b$$ is
+$$\mathcal{N}(0,\sigma^2)$$, independent across cycles, and $$b$$ is
 the total intensity expected if all molecules had the same colour emitted. We
-note that the signal observed in cycle $$j$$ depends not only on $$s^{(A)}_j$$
+note that the signal observed in cycle $$j$$ depends not only on $$s^{(A)}(j)$$
 but upon all other values of $$\mathbf{s}^{(A)}$$. In statistical
 signal processing, this is called
 [_inter-symbol interference_](https://en.wikipedia.org/wiki/Intersymbol_interference).
