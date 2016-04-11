@@ -80,7 +80,7 @@ is calculated and followed by an appropriate detection rule to perform base call
 - What is the length of each read?
 - How many reads are there?
 - What is the maximum number of times a read is repeated?
-- What is the sequencing depth of each base in the reference for this experiment?
+- What is the sequencing depth of each base in the reference for this experiment? _Hint_: Use the formula you got from above.
 
 3. How many distinct 20-length substrings do you see across all reads? These substrings are commonly referred to as $$k$$-mers ($$k$$ = 20 in this case). Count how often each distinct 20-mer appears and generate a histogram of the counts. _Hint_: Note that initializing a length-$$4^{20}$$ array may not be a viable approach. Consider using dictionaries!
 
