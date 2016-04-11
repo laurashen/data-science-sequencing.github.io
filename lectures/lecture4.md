@@ -66,5 +66,5 @@ Base-calling is a signal processing problem but is not as difficult as the Illum
 ### <a id='datarates'></a> Data rates
 The current Genia system has 128K wells on a sequencing chip. Signal sampling occurs at 2000 measurements per second. A single Genia experiment can last from 1 to 10 hours, though it often takes less time when running standard sequencing protocols. Data is acquired, currently, at 256 MB per second. Overall, close to 1 TB of data is generated per hour. Genia currently generates about 40-60 TB of data per day (200,000 computing hours or 22 years for a single PC), and Genia expects to scale the data acquisition to 8GB per second. In the near future, Genia could be generating as much as 200 TB per day.
 
-## <a id='future'></a>History of Genia
+## <a id='future'></a>Context and the future for Genia
 Recently, Roche has been acquiring companies for sample extraction, enrichment, sequencing, data analysis, and reporting. The acquisition of Genia was part of Roche’s larger effort to create better medical diagnostics. The future of Genia lies in building more scalable instrumentation at lower costs. Genia aims to build a fast affordable and accurate sequencing solution. Some advantages include no PCR, no optics or complicated fluidics, simple sample preparation, and a relatively cheap instrument has a in terms of cost per machine and per sample.
