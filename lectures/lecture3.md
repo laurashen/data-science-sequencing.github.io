@@ -175,7 +175,7 @@ Q^{-1}\mathbf{y}^{(A)} = b \mathbf{s}^{(A)} +  Q^{-1}\mathbf{n} =  b \mathbf{s}^
 \end{align*}
 $$
 
-where $$\mathbf{n}_{ZF} \sim \mathcal{N}(0, Q^{-1}(Q^{-1})^{T})$$   .
+where $$\mathbf{n}_{ZF} \sim \mathcal{N}(0, \sigma^2 Q^{-1}(Q^{-1})^{T})$$   .
 That is, the noise across co-ordinates are not independent. This formulation is suboptimal if $$Q$$ is an [ill-conditioned matrix](https://en.wikipedia.org/wiki/Condition_number), _i.e._
 if the largest
 singular value of Q is much larger than the smallest singular
