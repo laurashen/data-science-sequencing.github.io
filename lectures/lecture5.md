@@ -32,14 +32,14 @@ where $$P_e$$ is the probability of error which is calculated in the base callin
 ## The genome assembly problem <a id='assembly'></a>
 
 The genome assembly problem simply stated is the following: Given reads coming
-form a genome can on e reconstruct the genome. There are two relevant flavours
+from a genome can one reconstruct the genome. There are two relevant flavours
 of this problem. One is the **de novo assembly** problem which involves reconstructing
 the genome from just the reads. This is relevant  when a previously unsequenced
 organism is sequenced for the first time. The other is called **reference-based
 assembly**, which involves using side information like genomes of individuals
 of other organisms of  the species, whose sequence is known.
 
-There are three major difficulties  of our problem:
+There are two major difficulties  to genome assembly:
 
   * As mentioned above, errors are ubiquitous in our input data. This can be ameliorated in low error-rate sequencing technologies like _Illumina_, for which one can restrict their attention to only the high quality reads, and thus wasting a lot of data (for 1% error rates, around one-third of 100 length reads have at least 1 error). However, for  simplicity and clarity, we first assume that reads are error free, and examine the assembly problem under that setting.  
   * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations can be similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them.
