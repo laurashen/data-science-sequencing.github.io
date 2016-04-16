@@ -157,8 +157,8 @@ figure below.
 	would have a larger overlap with \(r_j\) and thus would be merged with \(r_j\) in that iteration.  </div>
 </div>  
 
-Further the
-assumption that the genome is covered gives us that we're left with a unique sequence at time we process all length $$1$$ overlaps, proving the result.
+Because the genome is assumed to be covered, we are left with a single sequence when \ell = 1. As we have made
+no mistakes in our merging, this is our underlying sequence, proving the result.
 
 
 -----------------
