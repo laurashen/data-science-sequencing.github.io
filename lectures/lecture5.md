@@ -18,8 +18,7 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 
 1.	<a href='#input'>Reads from a sequener</a>   
 2.  <a href='#assembly'>The genome assembly problem</a>  
-  	- <a href='#complexity'>The </a>
-		- <a href='#coverage'> Coverage Problem </a>
+		- <a href='#coverage'> Coverage Problem </a>  
 		- <a href='#greedy'> Greedy Algorithm </a>
 
 ## Input of Assembler <a id='input'></a>
@@ -91,7 +90,7 @@ $$
 
 As an example, if the genome of interest is about one billion base pairs long, and the probability of failure is set to $$1\%$$, then we need at least $$25$$X coverage depth. $$(G=10^9;\epsilon=0.01\Rightarrow c=25.328)$$
 
-###/ Greedy Algorithm <a id='greedy'></a>
+### Greedy Algorithm <a id='greedy'></a>
 
 
 Consider the following greedy assembler:
