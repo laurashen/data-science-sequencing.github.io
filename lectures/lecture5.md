@@ -131,7 +131,7 @@ As another example, consider the example genome $$ATGGTATGGC$$ and its associate
 </div>  
 As you can see, we cannot always guarantee that the output of the greedy algorithm is the original DNA. The following theorem gives the necessary and sufficient conditions for the correct assembly:  
 
-**Theorem.** Let a set of reads from a genome fully cover the genome. Moreover, let that each repeat in the genome _bridged_ by at least one read, that is there exists a read
+**Theorem.** Let a set of reads from a genome fully cover the genome. Moreover, let each repeat in the genome be _bridged_ by at least one read, that is there exists a read
 that starts at least one base before every repeat, and ends at least one base after. Then the above greedy algorithm is guaranteed to reconstruct the original DNA in the absence of noise.
 
 **Proof:** We first prove that by contradiction that we never merge any two reads incorrectly.
