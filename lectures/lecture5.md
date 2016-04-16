@@ -21,9 +21,13 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 		- <a href='#coverage'> Coverage</a>  
 		- <a href='#greedy'> Greedy Algorithm </a>
 
-## Input of Assembler <a id='input'></a>
+## Reads from a sequener <a id='input'></a>
 
-We have already gone through a high-level description of the roles of the sequencer and the base caller and how these are achieved in practice. Assuming that these stages are completed successfully, their output would be hundreds of millions to billions of erroneous reads. This information is usually provided to us in the format of a `FASTQ` file in which $$Q$$ stands for the quality score associated to each base $$Q = 10\log_{10} P_e,$$ where $$P_e$$ is the probability of error which is calculated in the base calling stage and is available alongside the corresponding reads. The next phase in the pipeline  is  to reconstruct the original genome from this data.
+We have already gone through a high-level description of the roles of the sequencer and the base caller and how these are achieved in practice. Assuming that these stages are completed successfully, their output would be hundreds of millions to billions of erroneous reads. This information is usually provided to us in the format of a `FASTQ` file in which $$Q$$ stands for the quality score associated to each base
+
+$$Q = -10\log_{10} P_e,$$
+
+where $$P_e$$ is the probability of error which is calculated in the base calling stage and is available alongside the corresponding reads. The next phase in the pipeline  is  to reconstruct the original genome from this data.
 
 ## The genome assembly problem <a id='assembly'></a>
 
