@@ -17,36 +17,42 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 
 
 1.	<a href='#input'>Reads from a sequener</a>   
- 		- <a href='#challenge'>Main Challenges</a>  
-		- <a href='#complexity'>Sample Complexity</a>
-2.	<a href='#coverage'> Coverage Problem </a>
-3.	<a href='#greedy'> Greedy Algorithm </a>
+2.  <a href='#assembly'>The genome assembly problem</a>  
+  	- <a href='#complexity'>The </a>
+		- <a href='#coverage'> Coverage Problem </a>
+		- <a href='#greedy'> Greedy Algorithm </a>
 
 ## Input of Assembler <a id='input'></a>
 
 We have already gone through a high-level description of the roles of the sequencer and the base caller and how these are achieved in practice. Assuming that these stages are completed successfully, their output would be hundreds of millions to billions of erroneous reads. This information is usually provided to us in the format of a `FASTQ` file in which $$Q$$ stands for the quality score associated to each base $$Q = 10\log_{10} P_e,$$ where $$P_e$$ is the probability of error which is calculated in the base calling stage and is available alongside the corresponding reads. The next phase in the pipeline  is  to reconstruct the original genome from this data.
 
-### Main Challenges <a id='challenge'></a>
+## The genome assembly problem <a id='assembly'></a>
 
-There are three major difficulties regarding the input of our problem:
+The genome assembly problem simply stated is the following: Given reads coming
+form a genome can on e reconstruct the genome. There are two relevant flavours
+of this problem. One is the **de novo assembly** problem which involves reconstructing
+the genome from just the reads. This is relevant  when a previously unsequenced
+organism is sequenced for the first time. The other is called **reference-based
+assembly**, which involves using side information like genomes of individuals
+of other organisms of  the species, whose sequence is known.
 
-  * As mentioned above, errors are ubiquitous in our input data. This can be ameliorated in low error-rate like _Illumina_, for which one can restrict their attention to only the high quality reads, and thus wasting a lot of data (for 1% error rates, around one-third of 100 length reads have at least 1 error). However, for  simplicity and clarity, we first assume that reads are error free, and examine the assembly problem under that setting.  
-  * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations can be similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them. By analogy, it is like attempting to solve a jigsaw puzzle with a  underlying picture having a lot of  identical sections.
-  * Continuing in this puzzle analogy, **de novo assembly** which means to assemble the genome of a different species for the first time without any existing instances from previous works, is like solving a puzzle where the cover of the box is lost and you have no idea of what the final picture would be like. This is a much harder instance in contrast to **reference-based assembly** where we use an already sequenced DNA from the same spicies as a guide and map the reads into this template just like what we do in a real world puzzle game.
+There are three major difficulties  of our problem:
 
-### Sample Complexity <a id='complexity'></a>
+  * As mentioned above, errors are ubiquitous in our input data. This can be ameliorated in low error-rate sequencing technologies like _Illumina_, for which one can restrict their attention to only the high quality reads, and thus wasting a lot of data (for 1% error rates, around one-third of 100 length reads have at least 1 error). However, for  simplicity and clarity, we first assume that reads are error free, and examine the assembly problem under that setting.  
+  * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations can be similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them.
 
-For much of the sequel, we focus on answering the following two questions.
+In the sequel we will focus mainly on de novo assembly. We will attempt to
+answer the following questions:
 
-- _How many reads should be do we need to assemble?_  
+- _How many reads  do we need to assemble?_  
     We need at least one read that sequences each base of the genome. In other words, we need reads to at least *cover* the genome
 		Because of the randomness involved in the locations we are sampling from, higher probability of coverage we need, more the samples
 		we need.
-- _How long should the reads do we need to assemble the underlying genome unambiguously?_  
+- _How long  reads do we need to assemble the underlying genome unambiguously?_  
     For example, one can not assemble from reads of length 1. So in general we want to get an estimate of the read lengths needed to assemble unambiguously.
 
 
-## Coverage Problem <a id='coverage'></a>
+### Coverage Problem <a id='coverage'></a>
 
 Let  
 
@@ -65,7 +71,7 @@ $$
 c = \frac{NL}{G}>1.
 $$
 
-Note that $$c$$ is  the expected number of reads covering a specific position on DNA  and called the *coverage*. Furthermore, suppose that reads are sampled uniformly at random and also independent of each other. Under these assumptions, the probability of there existing a location on the genome that no read covers can be computed as follows:  
+Note that $$c$$ is  the expected number of reads covering a specific position on DNA  and called the *coverage depth*. Furthermore, suppose that reads are sampled uniformly at random and also independent of each other. Under these assumptions, the probability of there existing a location on the genome that no read covers can be computed as follows:  
 
 $$\Pr(\text{there exist a location covered by no read})=\left(1-\frac{L}{G}\right)^N=\left(1-\frac{L}{G}\right)^{\frac{G}{L}\cdot\frac{LN}{G}}\approx e^{-\frac{LN}{G}}=e^{-c}$$
 
@@ -77,7 +83,7 @@ E[X]=Ge^{-c} \\
 \Rightarrow \Pr(X=0)\geq 1-Ge^{-c}
 \end{align*}$$  
 
-, where the second step holds because of Markov inequality. Therefore, if one wants to guarantee the coverage with a probability of failure at most $$\epsilon$$, it is enough to consider the following $$N$$:  
+ where the second step holds because of Markov inequality. Therefore, if one wants to guarantee the coverage with a probability of failure at most $$\epsilon$$, it is enough to consider the following $$N$$:  
 
 $$
 \epsilon=Ge^{-c}\Rightarrow c=\ln\frac{G}{\epsilon}\Rightarrow N=\frac{G}{L}\ln\frac{G}{\epsilon}
@@ -85,7 +91,7 @@ $$
 
 As an example, if the genome of interest is about one billion base pairs long, and the probability of failure is set to $$1\%$$, then we need at least $$25$$X coverage depth. $$(G=10^9;\epsilon=0.01\Rightarrow c=25.328)$$
 
-## Greedy Algorithm <a id='greedy'></a>
+###/ Greedy Algorithm <a id='greedy'></a>
 
 
 Consider the following greedy assembler:
@@ -113,11 +119,33 @@ As another example, consider the example genome $$ATGGTATGGC$$ and its associate
 As you can see, we cannot always guarantee that the output of the greedy algorithm is the original DNA. The following theorem gives the necessary and sufficient conditions for the correct assembly:  
 
 **Theorem.** Let a set of reads from a genome fully cover the genome. Moreover, let that each repeat in the genome _bridged_ by at least one read, that is there exists a read
-that starts at least one base before every repeat, and ends at least one base after. Then the above greedy algorithm is guaranteed to reconstruct the original DNA.
+that starts at least one base before every repeat, and ends at least one base after. Then the above greedy algorithm is guaranteed to reconstruct the original DNA in the absence of noise.
 
-**Proof** The proof is by induction on the length of the overlap considered  in step $i$. We prove by induction that there is no mistake made in the step where the overlap used for merging is of length $$\ell$$.
+**Proof:** We first prove that by contradiction that we never merge any two reads incorrectly.
 
- Let this be represented by $$\theta_i$$. If $$\theta_i=L-1$$, then as each $$L-1$$ length repeat is bridged (this implies that there are no repeats of lenght $$L-1$$, why?), and hence any overlap of length $$L-1$$ is a true overlap and hence the merging is not erroneous. Similarly, this holds for $$\theta_i=L-2, L-3, \cdots, 1$$. Further the
- assumption that the genome is covered gives us that we're left with a unique sequence at time we process all length $$1$$ overlaps, proving the result.
+Let $$\ell$$ be the first step where we we incorrectly merge two reads. Let $$r_i$$ and $$r_j$$ be the two
+reads incorrectly merged. Let $$\theta_{i,j}$$ be the overlap between reads $$r_i$$ and $$r_j$$.
+We further note that the greedy nature of the algorithm means that all overlaps of length
+greater than that of $$\theta_{i,j}$$ are already merged.
+We note
+that his means that the sequence $$\theta_{i,j}$$
+appears twice in the genome. Further we note that if either appearance of
+$$\theta_{i,j}$$ was bridged, then one of $$r_i$$ or $$r_j$$ would have had a overlap
+longer than the length of $$\theta_{i,j}$$, which we would have merged first. This gives
+us that $$\theta_{i,j}$$ is not bridged, which is contradiction. This gives us that
+there is never an incorrect merge in the algorithm. This argument is illustrated in the
+figure below.
+
+<div class="fig figcenter fighighlight">
+  <img src="/assets/lecture5/greedy_proof.png" width="90%">
+	<div class="figcaption"> Here reads \(r_i\) and \(r_j\) coming from different parts of the genome have an
+	overlap \(\theta_{i,j}\). Clearly, the sequence \(\theta_{i,j}\) is repeated twice. We note that if there
+	was a read like \(r_{\text{hypothetical}}\) which bridged the copy of \(\theta_{i,j}\), corresponding to \(r_j\) then it
+	would have a larger overlap with \(r_j\) and thus would be merged with \(r_j\) in that iteration.  </div>
+</div>  
+
+Further the
+assumption that the genome is covered gives us that we're left with a unique sequence at time we process all length $$1$$ overlaps, proving the result.
+
 
 -----------------
