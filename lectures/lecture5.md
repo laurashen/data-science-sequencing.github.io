@@ -141,7 +141,7 @@ reads incorrectly merged. Let $$\theta_{i,j}$$ be the overlap between reads $$r_
 We further note that the greedy nature of the algorithm means that all overlaps of length
 greater than that of $$\theta_{i,j}$$ are already merged.
 We note
-that his means that the sequence $$\theta_{i,j}$$
+that this means that the sequence $$\theta_{i,j}$$
 appears twice in the genome. Further we note that if either appearance of
 $$\theta_{i,j}$$ was bridged, then one of $$r_i$$ or $$r_j$$ would have had a overlap
 longer than the length of $$\theta_{i,j}$$, which we would have merged first. This gives
