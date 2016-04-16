@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture5/
 ---
-Lecture 5: Assembly
+Lecture 5: Assembly - An Introduction
 =======
 Monday 11 April 2016
 
