@@ -112,8 +112,10 @@ Consider the following greedy assembler:
 ```
 while (# reads > 1)
 {
-    search among all pairs of reads and find the two with the largest overlap
-    merge these two so that the number of reads is reduced by one
+    Search among all pairs of reads and find the two with the largest overlap
+    merge these two so that the number of reads is reduced by one.
+
+		Exit if no overlap found.
 }
 ```
 
@@ -157,7 +159,7 @@ figure below.
 	would have a larger overlap with \(r_j\) and thus would be merged with \(r_j\) in that iteration.  </div>
 </div>  
 
-Because the genome is assumed to be covered, we are left with a single sequence when \ell = 1. As we have made
+Because the genome is assumed to be covered, we are left with a single sequence when the algorithm terminates. As we have made
 no mistakes in our merging, this is our underlying sequence, proving the result.
 
 
