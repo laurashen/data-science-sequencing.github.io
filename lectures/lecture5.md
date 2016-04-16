@@ -42,7 +42,7 @@ of other organisms of  the species, whose sequence is known.
 There are two major difficulties  to genome assembly:
 
   * As mentioned above, errors are ubiquitous in our input data. This can be ameliorated in low error-rate sequencing technologies like _Illumina_, for which one can restrict their attention to only the high quality reads, and thus wasting a lot of data (for 1% error rates, around one-third of 100 length reads have at least 1 error). However, for  simplicity and clarity, we first assume that reads are error free, and examine the assembly problem under that setting.  
-  * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations can be similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them.
+  * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them.
 
 In the sequel we will focus mainly on de novo assembly. We will attempt to
 answer the following questions:
