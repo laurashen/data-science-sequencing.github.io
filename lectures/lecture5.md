@@ -18,7 +18,7 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 
 1.	<a href='#input'>Reads from a sequener</a>   
 2.  <a href='#assembly'>The genome assembly problem</a>  
-		- <a href='#coverage'> Coverage Problem </a>  
+		- <a href='#coverage'> Coverage</a>  
 		- <a href='#greedy'> Greedy Algorithm </a>
 
 ## Input of Assembler <a id='input'></a>
@@ -51,7 +51,7 @@ answer the following questions:
     For example, one can not assemble from reads of length 1. So in general we want to get an estimate of the read lengths needed to assemble unambiguously.
 
 
-### Coverage Problem <a id='coverage'></a>
+### Coverage <a id='coverage'></a>
 
 Let  
 
