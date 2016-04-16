@@ -70,7 +70,11 @@ $$
 c = \frac{NL}{G}>1.
 $$
 
-Note that $$c$$ is  the expected number of reads covering a specific position on DNA  and called the *coverage depth*. Furthermore, suppose that reads are sampled uniformly at random and also independent of each other. Under these assumptions, the probability of there existing a location on the genome that no read covers can be computed as follows:  
+Note that $$c$$ is  the expected number of reads covering a specific position on DNA  and called the *coverage depth*. Furthermore, suppose that reads are sampled uniformly at random and also independent of each other. Under these assumptions, the probability that no read covers location $$i$$ can be computed as follows:  
+
+$$\Pr(\text{No read covers location }i) = 1-\frac{L}{G}$$
+
+Applying this, using the independence of read sampling,  
 
 $$\Pr(\text{there exist a location covered by no read})=\left(1-\frac{L}{G}\right)^N=\left(1-\frac{L}{G}\right)^{\frac{G}{L}\cdot\frac{LN}{G}}\approx e^{-\frac{LN}{G}}=e^{-c}$$
 
@@ -90,8 +94,14 @@ $$
 
 As an example, if the genome of interest is about one billion base pairs long, and the probability of failure is set to $$1\%$$, then we need at least $$25$$X coverage depth. $$(G=10^9;\epsilon=0.01\Rightarrow c=25.328)$$
 
+
 ### Greedy Algorithm <a id='greedy'></a>
 
+We note that the above coverage itself does not say if a genome can be assembled. For example, we
+could get length read $$1$$ and cover the genome but not be able to assemble the genome.
+Thus it is clear that, the read length is related to if we can assemble a genome or not.
+To get a handle on this relationship, we start with a simple algorithm to assemble, and understand
+its limitations. These limitations will give us some insights, into barriers for assembly.
 
 Consider the following greedy assembler:
 
