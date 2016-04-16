@@ -113,9 +113,8 @@ Consider the following greedy assembler:
 while (# reads > 1)
 {
     Search among all pairs of reads and find the two with the largest overlap
-    merge these two so that the number of reads is reduced by one.
-
-		Exit if no overlap found.
+    merge these two so that the number of reads is reduced by one.  
+    Exit if no overlap found.
 }
 ```
 
