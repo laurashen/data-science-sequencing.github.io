@@ -215,7 +215,7 @@ $$
 \hat{\mathbf{s}}^{(A)}=\min_{\mathbf{s} \in \{0,1\}^{L}} ||\mathbf{y}^{(A)}-Q\mathbf{s}||_2^2.
 $$
 
-The time complexity of the Giterbi algorithm is exponential in the recursion
+The time complexity of the Viterbi algorithm is exponential in the recursion
 depth (which in here is the maximum |i-j| if there is non-zero probability of
 seeing light from base j at time i). In this setting, this is $$O(2^{L})$$. A
 work-around this is to approximate each column of $$Q$$ so that it is non-zero only
