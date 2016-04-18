@@ -21,7 +21,7 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 		- <a href='#coverage'> Coverage</a>  
 		- <a href='#greedy'> Greedy Algorithm </a>
 
-## Reads from a sequener <a id='input'></a>
+## Reads from a sequencer <a id='input'></a>
 
 We have already gone through a high-level description of the roles of the sequencer and the base caller and how these are achieved in practice. Assuming that these stages are completed successfully, their output would be hundreds of millions to billions of erroneous reads. This information is usually provided to us in the format of a `FASTQ` file in which $$Q$$ stands for the quality score associated to each base
 
@@ -43,6 +43,7 @@ There are two major difficulties  to genome assembly:
 
   * As mentioned above, errors are ubiquitous in our input data. This can be ameliorated in low error-rate sequencing technologies like _Illumina_, for which one can restrict their attention to only the high quality reads, and thus wasting a lot of data (for 1% error rates, around one-third of 100 length reads have at least 1 error). However, for  simplicity and clarity, we first assume that reads are error free, and examine the assembly problem under that setting.  
   * By the nature of evolution, there are always a lot of repeats in the genome which make the distinct reads from different far away locations similar. This inherent property of genome makes  reads from different places in the genome indistinguishable, which in turn makes it very hard to assemble them.
+  * Reads are randomly located, which means that there may be some positions in the genome which are thinly covered or not even covered.
 
 In the sequel we will focus mainly on de novo assembly. We will attempt to
 answer the following questions:
@@ -53,6 +54,8 @@ answer the following questions:
 		we need.
 - _How long  reads do we need to assemble the underlying genome unambiguously?_  
     For example, one can not assemble from reads of length 1. So in general we want to get an estimate of the read lengths needed to assemble unambiguously.
+
+- _How to design efficient assembly algorithms that can operate with minimum number of reads and read length?_
 
 
 ### Coverage <a id='coverage'></a>
