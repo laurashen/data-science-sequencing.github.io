@@ -16,7 +16,7 @@ _Scribed by Mojtaba Tefagh and revised by the course staff_
 ## Topics
 
 
-1.	<a href='#input'>Reads from a sequener</a>   
+1.	<a href='#input'>Reads from a sequencer</a>   
 2.  <a href='#assembly'>The genome assembly problem</a>  
 		- <a href='#coverage'> Coverage</a>  
 		- <a href='#greedy'> Greedy Algorithm </a>
