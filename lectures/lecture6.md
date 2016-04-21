@@ -21,7 +21,7 @@ _Scribed by the course staff_
 
 A brief overview of the PacBio's single molecule real time (SMRT) sequencing technology can be found [here](https://www.youtube.com/watch?v=v8p4ph2MAvI).
 
-During his PhD at Cornell, Stephen Turner and his collaborators used near-field scanning optical microscopy (NSOM) to observe what was happening within a microscopic well. The method involved taking a waveguide, heating it up and pulling it to a find point, and drilling a subwavelength aperture. Turner and colleagues were able to see volumes as small as $$20*10^{-21}$$ liters, resulting in the invention of the _zero mode waveguide_ (ZMW).
+During his PhD at Cornell, Stephen Turner and his collaborators used near-field scanning optical microscopy (NSOM) to observe what was happening within a microscopic well. The method involved taking a waveguide, heating it up and pulling it to a fine point, and drilling a subwavelength aperture. Turner and colleagues were able to see volumes as small as $$20*10^{-21}$$ liters, resulting in the invention of the _zero mode waveguide_ (ZMW).
 
 By attaching a polymerase to the bottom of the well and carefully tagging the dNTPs, one can observe a sequence of colored bursts of light from the nucleotides as they get incorporated. The polymerase is located at the bottom of the well where the electric field is expanding and the illumination was greatest.
 
