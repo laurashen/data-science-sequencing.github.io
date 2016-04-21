@@ -37,7 +37,7 @@ While the nucleotides are floating in the ZMW, they generate very short baseline
 
 As a sequencing machine, DNA polymerase has impressive performance parameters. Not only can it sequence almost error free at a rate of 750 bp/s, but the read length can be on the order of millions. A polymerase can sequence an entire genome with 12 picograms of material. PacBio's technology can sequence at about 3 bp/s, and their machine has 150000 ZMWs sequencing in parallel. The read length is currently over 10000 and has been doubling with every polymerase release.
 
-A unique feature of the PacBio technology is how it uses of genomic DNA. Like other technologies, PacBio uses universal adapters, but unlike other technologies, the adapters are hairpin adapters. The polymerase loops around during synthesis, displacing strands they encounter.
+A unique feature of the PacBio technology is how it uses genomic DNA. Like other technologies, PacBio uses universal adapters, but unlike other technologies, the adapters are hairpin adapters. The polymerase loops around during synthesis, displacing strands they encounter.
 
 <div class="fig figcenter fighighlight">
   <img src="https://gasstationwithoutpumps.files.wordpress.com/2011/12/pacbio_circular_consensus.jpg" width="60%">
