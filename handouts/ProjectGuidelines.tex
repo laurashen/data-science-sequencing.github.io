@@ -83,13 +83,19 @@
 %}
 
 \title{EE 372: Data Science for High-Throughput Sequencing}
-\author{Project Guidelines Spring 2016}
+\author{Project Guidelines and Ideas Spring 2016}
 \date{\vspace{-5ex}}
 
 \begin{document}
 \maketitle
 
-Projects for the course should be broadly related to the overarching theme of the class: sequencing. Projects should have a creative (or innovative component) and can be expository. Up to two students can collaborate on a project. Some datasets may be larger and therefore take longer to process, so start early! Please keep the following dates in mind:
+Projects for the course should be broadly related to the overarching theme of the class: sequencing.
+Projects can have a creative (or innovative component) or be expository. We expect
+expository projects also to have some component involving real data.
+Up to two students can collaborate on a project. Some datasets may be larger
+and therefore take longer to process, so start early! Please keep the following dates in mind:
+
+Students may also find GEO useful in obtaining datasets.
 
 \begin{enumerate}
 	\item Discuss project with TAs (Wednesday, 27 April 2016)
@@ -116,7 +122,7 @@ The project proposal should be about a page in length (not including figures and
 The purpose of the milestone is to ensure that you have made at least some progress on your project well before the deadline.  The milestone report should be about 2 pages in length (not including figures and references) and hit the following points:
 \begin{enumerate}
 	\item Introduction: Brief summary of your proposal. What has changed? 
-	\item Initial results: What have you tried? What has not worked? Here would be an appropriate place to report some relevant figures, for example. 
+	\item Initial results: What have you tried? What has not worked? What relevant figures or equations have you produced? What do they mean?
 	\item Next steps: How will you overcome initial obstacles? What else do you want to accomplish for this project?
 \end{enumerate}
 
@@ -134,21 +140,22 @@ The write-up should be about 4 pages in length (not including figures and refere
 \end{enumerate}
 
 \section{Project ideas}
-A project broadly related to any of the following topics will be  appropriate for the course.
+A project broadly related to any of the following topics will be  appropriate for the course. Students can pick projects outside the ones listed below 
+but should check suitability with the course staff.
 
 \begin{enumerate}
-	\item \textbf{Variant calling}: Diploid organisms such as humans have two copies of a chromosome, one from each parent. This problem involves determining which parts of the chromosomes are different. 
 	\item \textbf{Peak calling for epigenetics}: While cells have roughly identical genomes, they express different parts of the genome due to epigenetic factors. Assays such as ChIP-seq and ATAC-seq help scientists study which parts of the genome are accessible for transcription. This problem involves determining which parts of the genome are accessible based on obtained reads. Two popular peak calling tools are MACS and ZINBA.
 	\item \textbf{Short Tandem Repeat (STR) calling}: STRs are short strings of DNA which appear one behind the other. These are known to be important for biological function, but calling them is challenging. A tool for performing STR calling is LoBSTR.
 	\item \textbf{Alignment of 2 random strings}: What is the edit distance between two random strings of A,G,C,T? Recent work shows via simulation that this is 0.518n. How does this change with the change in weights given for inserts and deletions?
 	\item \textbf{Short read error correction}: Short reads have about 1\% error rates. How do the types of errors tie in with the base calling used? How does one model and correct these errors? The state of the art software used for this is QUAKE.
-	\item \textbf{Dealing with batch effects}: While scientists are careful when executing experimental protocols, there will always be differences between repeated experiments. Batch effects are observed when the experiment ID (e.g. day the experiment was done) overcomes observation of the biological variable of interest. I.e. Variations in technical noise can overshadow the biological signal. Tools like ComBat have been designed to mitigate batch effects.
-	\item \textbf{Meta-genomics}: When one has the genomes of multiple organisms (or many genomes from the same type of organism), a natural question to ask is: how do these organisms relate to each other on a phylogenetic level? One can build a tree illustrating which organisms are more similar. This can provide insight on which genes are important for distinguishing two different organisms.
+	\item \textbf{Dealing with batch effects}: While scientists are careful when executing experimental protocols, there will always be differences between repeated experiments. Batch effects are observed when the experiment ID (e.g. day the experiment was done) overcomes signal from the biological variable of interest. Tools like ComBat have been designed to mitigate batch effects.
+	\item \textbf{Meta-genomics}: When one has the genomes of multiple organisms (or many genomes from the same type of organism), a natural question to ask is: how do these organisms relate to each other on a phylogenetic level? One can build a tree illustrating which organisms are more similar. This can provide insight on which genes are important for distinguishing two different organisms. Some interesting work done here include MetaGene and MetaBat.
 	\item \textbf{Multi-omics}: With RNA-Seq, ChIP-Seq, Hi-C-Seq, etc., we are often inundated with many different categories of data for the same type of biological sample. Could we possibly combine the information from these different types of data to discover something more? 
 	\item \textbf{Hi-C-Seq}: Hi-C-Seq is an assay used to study the 2D and 3D structure of the chromatin, giving insights on how the genome folds and how distant regions of the genome can interact with each other.
-	\item \textbf{Long range information}: Genes are regulated by both local elements and distant elements. What long range information can we obtain about a gene using various assay techniques?
+	\item \textbf{Long range information}: In class we have covered short reads and long reads. There are other read types including read clouds (10x Genomics) and reads with long range information (BioNano Genomics). Genes are regulated by both local elements and distant elements. From a theoretical perspective, what is possible and what is not with such reads?
 	\item \textbf{Single cell assays}: Recent technologies have allowed researchers to extract cell signatures at the resolution of individual cells (e.g. single-cell RNA-seq). What can we learn about cell populations from these datasets?
 	\item \textbf{Single-cell cancer genomics}: One advantage of the resolution granted by single-cell assays is that we can observe how a cellular population differentiates. Looking at single-cell datasets for cancer cells may provide insight on how cancer evolves and which genes are important for this evolution.
+	\item \textbf{Base-calling for fourth-generation sequencing}: This is an active area of research with interesting recent papers involving methods such as deep learning. 
 	\item \textbf{Reanalysis of published data}: Several datasets related to the above topics already exist. What can you discover by reanalyzing one of these datasets using a novel method? 
 \end{enumerate}
 
