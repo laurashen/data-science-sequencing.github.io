@@ -208,11 +208,13 @@ vertices that have an overlap of $$\ell-1$$. In the following, we consider assem
 using a slightly modified version of the standard de Bruijn graph from the L-spectrum
 of a genome.
 
-Given the L-spectrum of a genome, we construct a de Bruijn graph by taking all (L-1)-mers
-as vertices, and add edges between vertices with overlap L-2. We note that each L length
-read in the L-spectrum can be thought of as two vertices with an edge connecting them. The
-number of edges between two (L-1)-mers is the the number of occurrences of the L-mer in the
-genome.
+Given the L-spectrum of a genome, we construct a de Bruijn graph as follows:
+
+1. Add a node for each [(L-1)-mer](https://en.wikipedia.org/wiki/K-mer) in the L-spectrum.
+
+2. Add k-edges between two (L-1)-mers if their overlap has length $L-2$ and
+the corresponding $L$ -mer appears k times in the L-spectrum.
+
 
 An example de Bruijn graph construction is shown below.
 <div class="fig figcenter fighighlight">
