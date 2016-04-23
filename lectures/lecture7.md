@@ -102,7 +102,8 @@ P[\text{At least one repeat is unbridged}] &\le \sum_{i=1}^{m} P[\text{Repeat } 
 &= \exp\left( -2c + \frac{2N}{G}\right)\left( \sum_{i=1}^{m} \exp\left( \frac{2\ell_{i}}{G} \right)\right),
 \end{align*}$$
 
-where $$c=\frac{NL}{G}$$ is the _coverage depth_. To change the perspective a bit we define,
+where $$c=\frac{NL}{G}$$ is the _coverage depth_, and the first inequality follows from a
+union bound. To change the perspective a bit we define,
 
 $$ a_{i} = \text{Number of repeats in } \mathcal{G} \text{ of length i, }1 \le i \le L-2.$$
 
