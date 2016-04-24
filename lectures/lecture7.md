@@ -31,11 +31,10 @@ _Scribed by Vivek Kumar Bagaria and revised by the course staff_
 At the end of last lecture, we had proved the following theorem
 
 **Theorem.** Let a set of reads from a genome fully cover the genome. Moreover,
-let each repeat in the genome be _bridged_ by at least one read, that is there
+suppose each repeat in the genome be _bridged_ by at least one read, that is there
 exists a read
-that starts at least one base before every repeat, and ends at least one base after.
-Then the greedy algorithm is guaranteed to reconstruct the original DNA in the
-absence of noise.
+that starts at least one base before a copy of every repeat, and ends at least one base after.
+Then the greedy algorithm is guaranteed to reconstruct the original DNA.
 
 We note that the condition for this algorithm to succeed depends upon a property
 of the genome that is being inferred (_i.e._ if its repeats are bridged). Thus
