@@ -5,7 +5,7 @@ permalink: /lectures/lecture8/
 ---
 
 
-## Lecture 8: De Bruijn Algorithm
+## Lecture 8: Assembly Part 3
 
 Wednesday 20 April 2016
 
