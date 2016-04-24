@@ -124,7 +124,7 @@ assembly using the Lander-Waterman calculation. We then went through the greedy 
 and derived the number of reads necessary for assembly for the greedy algorithm (for a given
 probability of successful assembly).
 
-This is shown below for an example genome. We note that while the Lander-Waterman
+This is shown below for an example genome, Chromosome 19. We note that while the Lander-Waterman
 calculation gives us a lower-bound independent of the repeats repeat statistics
 of the genome, the greedy algorithm gives us an achievable scheme that depends
 upon repeat statistics of the genome. In particular, we note the greedy algorithm fails
