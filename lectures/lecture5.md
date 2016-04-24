@@ -166,3 +166,5 @@ no mistakes in our merging, this is our underlying sequence, proving the result.
 
 
 -----------------
+
+- The two illustrations of the greedy algorithm are due to Mojtaba Tefagh.

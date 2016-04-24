@@ -154,7 +154,8 @@ of $$r_2$$.
 An interleaved repeat is said to be bridged if at least one copy of one of the repeats
 is bridged.
 
-**Theorem** [[Ukkonen 1992](http://www.sciencedirect.com/science/article/pii/0304397592901434)]:
+**Theorem** [[Ukkonen 1992](http://www.sciencedirect.com/science/article/pii/0304397592901434);
+[Bresler, Bresler, and Tse 2013](http://arxiv.org/abs/1301.0068)]:
 Assembly of a genome is impossible if any interleaved repeat is not bridged.
 
 **Proof by picture**
@@ -186,6 +187,12 @@ case of an interleaved repeat. This is illustrated below
 </div>
 
 ### Dense Read Model and the L-spectrum<a id='dense'></a>
+
+To attempt to come up with an algorithm that performs a better than the greedy
+algorithm, we take a detour. We consider the consider an idealised setting
+called the dense read model. Trying to solve the assembly problem in this
+setting gives us an algorithm, which modify to then work in the shotgun
+sequencing case. 
 
 A **dense read model** assumes that we have a read starting at every position in
 the genome. The multi-set of reads thus obtained are called the **L-spectrum**.
@@ -236,8 +243,6 @@ genome has a unique Eulerian path which is the original genome.
 This gives us that Ukkonen's lower bound for assembling successfully can be achieved as the number of reads
 become arbitrarily large.
 
-
-
-
-
 -----------------
+
+- The dense read model illustration was taken from this [paper](http://arxiv.org/abs/1501.06194).
