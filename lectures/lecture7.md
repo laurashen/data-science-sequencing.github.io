@@ -252,4 +252,6 @@ become arbitrarily large.
 
 -----------------
 
+- The proof by picture for the necessary conditions for assembly was taken from this [paper](http://arxiv.org/abs/1301.0068)
+
 - The dense read model illustration was taken from this [paper](http://arxiv.org/abs/1501.06194).
