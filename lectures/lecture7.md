@@ -210,10 +210,10 @@ of a genome.
 
 Given the L-spectrum of a genome, we construct a de Bruijn graph as follows:
 
-1. Add a node for each [(L-1)-mer](https://en.wikipedia.org/wiki/K-mer) in the L-spectrum.
+1. Add a vertex for each [(L-1)-mer](https://en.wikipedia.org/wiki/K-mer) in the L-spectrum.
 
-2. Add k-edges between two (L-1)-mers if their overlap has length $L-2$ and
-the corresponding $L$ -mer appears k times in the L-spectrum.
+2. Add k-edges between two (L-1)-mers if their overlap has length L-2 and
+the corresponding L-mer appears k times in the L-spectrum.
 
 
 An example de Bruijn graph construction is shown below.
