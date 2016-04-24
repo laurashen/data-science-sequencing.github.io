@@ -21,8 +21,9 @@ _Scribed by Vivek Kumar Bagaria and revised by the course staff_
 1. <a href='#greedy'>The greedy algorithm (cont.)</a>  
 2. <a href='#interleaved'>Interleaved Repeats</a>  
 	- <a href='#triple'>Triple Repeats</a>  
-3. <a href='#dense'>Dense Read Model and the L-spectrum</a>  
-4. <a href='#debruijn'>de Bruijn Graphs</a>  
+4. <a href='#necessary'>Necessary conditions for genome assembly</a>
+5. <a href='#dense'>Dense Read Model and the L-spectrum</a>  
+6. <a href='#debruijn'>de Bruijn Graphs</a>  
 
 
 
@@ -154,9 +155,23 @@ of $$r_2$$.
 An interleaved repeat is said to be bridged if at least one copy of one of the repeats
 is bridged.
 
+#### Triple Repeats <a id='triple'></a>
+
+A triple repeat is a repeat that appears thrice in the genome. This is a special
+case of an interleaved repeat. This is illustrated below
+<div class="fig figcenter fighighlight">
+  <img src="/assets/lecture7/Figure6.png" width="90%">
+	<div class="figcaption"> A triple repeat</div>
+</div>
+
+### Necessary conditions for genome assembly <a id='necessary'></a>
+
 **Theorem** [[Ukkonen 1992](http://www.sciencedirect.com/science/article/pii/0304397592901434);
 [Bresler, Bresler, and Tse 2013](http://arxiv.org/abs/1301.0068)]:
 Assembly of a genome is impossible if any interleaved repeat is not bridged.
+
+As a corollary, we note that this theorem means that the  at least one copy of
+a triple repeat needs to be bridged for assembly of a genome to be feasible.
 
 **Proof by picture**
 <div class="fig figcenter fighighlight">
@@ -177,22 +192,13 @@ assembly to be possible in a given genome. This is shown for an example genome b
 	lower bound from Ukkonen to assemble (with probability \(1-\epsilon\)). </div>
 </div>  
 
-#### Triple Repeats <a id='triple'></a>
-
-A triple repeat is a repeat that appears thrice in the genome. This is a special
-case of an interleaved repeat. This is illustrated below
-<div class="fig figcenter fighighlight">
-  <img src="/assets/lecture7/Figure6.png" width="90%">
-	<div class="figcaption"> A triple repeat</div>
-</div>
-
 ### Dense Read Model and the L-spectrum<a id='dense'></a>
 
-To attempt to come up with an algorithm that performs a better than the greedy
-algorithm, we take a detour. We consider the consider an idealised setting
+To attempt to come up with an algorithm that perform a better than the greedy
+algorithm, we take a detour. We consider an idealised setting
 called the dense read model. Trying to solve the assembly problem in this
 setting gives us an algorithm, which modify to then work in the shotgun
-sequencing case. 
+sequencing case.
 
 A **dense read model** assumes that we have a read starting at every position in
 the genome. The multi-set of reads thus obtained are called the **L-spectrum**.
@@ -239,6 +245,7 @@ a unique Eulerian path, then a genome can be assembled from its L-spectrum.
 **Theorem** [[Pevzner 1995](http://link.springer.com/article/10.1007%2FBF01188582#page-1)]:
 If L - 1 > maximum interleaved repeat length of a genome, then the de Bruin graph corresponding to the L-spectrum of the
 genome has a unique Eulerian path which is the original genome.
+
 
 This gives us that Ukkonen's lower bound for assembling successfully can be achieved as the number of reads
 become arbitrarily large.
