@@ -24,7 +24,7 @@ _Scribed by Vivek Kumar Bagaria and revised by the course staff_
 
 ###  The greedy algorithm (cont.) <a id='greedy'></a>
 
-At the end of last lecture, we had proved the following theorem.
+At the end of last lecture, we had proved the following theorem. Recall that a repeat is a subsequence of the genome that appears in multiple places. A repeat is also maximal in the sense that it cannot be extended and still be a repeat.
 
 **Theorem.** Let a set of reads from a genome fully cover the genome. Moreover,
 suppose each repeat in the genome is _bridged_ by at least one read. In other words, there
@@ -57,9 +57,9 @@ the probability that a repeat of length $$\ell_{\text{repeat}}$$ is bridged by
 a read of length $$L$$. We note that this happens if the read starts at a position
 in the $$L-\ell_{\text{repeat}}-1$$ window before either repeat (Note that the
 bridging condition requires the read to extend at least one base after the
-repeat, and hence the $$-1$$). Thus,
+repeat, and hence the $$-1$$). We also assume that there exists at least 1 base between the two repeats. Thus,
 
-$$P(\text{a given read of length L bridges a repeat of length } \ell_{\text{repeat}}) = \begin{cases}
+$$P(\text{A given read of length L bridges a repeat of length } \ell_{\text{repeat}}) = \begin{cases}
 0 & \text{if L } < \ell_{\text{repeat}}+2\\
 \frac{2(L-\ell_{\text{repeat}}-1)}{G} & \text{otherwise}.
 \end{cases}$$
@@ -81,16 +81,16 @@ P(\text{A repeat of length } \ell_{\text{repeat}} \text{ not bridged by } N \tex
 \end{cases}\\
 &\approx \begin{cases}
 1 & \text{if L } < \ell_{\text{repeat}}+2\\
-\exp\left( -\frac{2N(L-\ell_{\text{repeat}}-1)}{G} \right) & \text{otherwise},
+\exp\left( -\frac{2N(L-\ell_{\text{repeat}}-1)}{G} \right) & \text{otherwise}.
 \end{cases}
 \end{align*}$$
 
-Let the genome G have m repeats of lengths $$\ell_1, \ell_2, \cdots, \ell_m$$.
+Let the genome $$G$$ have $$m$$ repeats of lengths $$\ell_1, \ell_2, \cdots, \ell_m$$. If a repeat appears 5 times, then it is counted 5 times towards $$m$$.
 Further, let us assume that $$\ell_i < L-1$$ for $$1 \le i \le m$$.
-After getting N reads of length L from the genome,
+After getting $$N$$ reads of length $$L$$ from the genome,
 
 $$\begin{align*}
-P[\text{At least one repeat is unbridged}] &\le \sum_{i=1}^{m} P[\text{Repeat } i \text{ is unbridged}],\\
+P(\text{At least one repeat is unbridged}) &\le \sum_{i=1}^{m} P(\text{Repeat } i \text{ is unbridged}),\\
 &\approx \sum_{i=1}^{m} \exp\left( -\frac{2N(L-\ell_{i}-1)}{G} \right),\\
 &= \exp\left( -\frac{2N(L-1)}{G}\right) \left(\sum_{i=1}^{m} \exp\left( \frac{2\ell_{i}}{G} \right) \right),\\
 &= \exp\left( -2c + \frac{2N}{G}\right)\left( \sum_{i=1}^{m} \exp\left( \frac{2\ell_{i}}{G} \right)\right),
@@ -104,7 +104,7 @@ $$ a_{i} = \text{Number of repeats in } \mathcal{G} \text{ of length i, }1 \le i
 This gives us that,
 
 $$\begin{align*}
-P[\text{At least one repeat is unbridged}] &\le \exp\left( -2c + \frac{2N}{G}\right)\left(\sum_{i=1}^{L-2} a_i \exp\left( \frac{2i}{G} \right)\right).
+P(\text{At least one repeat is unbridged}) &\le \exp\left( -2c + \frac{2N}{G}\right)\left(\sum_{i=1}^{L-2} a_i \exp\left( \frac{2i}{G} \right)\right).
 \end{align*}$$
 
 We note that to compute this upper bound on probability of failure of greedy algorithm,
