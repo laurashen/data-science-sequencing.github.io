@@ -114,22 +114,22 @@ fails with probability $$1$$).
 
 ### Interleaved Repeats <a id='interleaved'></a>
 
-In the last two sections we have given a lower bound on the number of reads necessary for
+In the last two sections we gave a lower bound on the number of reads necessary for
 assembly using the Lander-Waterman calculation. We then went through the greedy algorithm
-and derived the number of reads necessary for assembly for the greedy algorithm (for a given
-probability of successful assembly).
+and derived the number of reads necessary to achieve a given
+probability of successful assembly.
 
-This is shown below for an example genome, Chromosome 19. We note that while the Lander-Waterman
-calculation gives us a lower-bound independent of the repeats repeat statistics
+This number is shown below for an example genome, Chromosome 19. We note that while the Lander-Waterman
+calculation gives us a lower-bound independent of the repeat statistics
 of the genome, the greedy algorithm gives us an achievable scheme that depends
 upon repeat statistics of the genome. In particular, we note the greedy algorithm fails
 if the read length is smaller than the length of the longest repeat in the genome.
-In this section, we derive a genome dependent lower-bound on the read length required
+In this section, we derive a genome-dependent lower-bound on both the read length
 and number of reads required for successful assembly.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture7/Figure2.png" width="60%">
-	<div class="figcaption"> Lower bound from Lander-Waterman calculation, and the read
+	<div class="figcaption"> Lower bound from Lander-Waterman calculation and the read
 	complexity necessary for the greedy algorithm to succeed (with probability \(1-\epsilon\)). </div>
 </div>  
 
@@ -152,7 +152,7 @@ is bridged.
 #### Triple Repeats <a id='triple'></a>
 
 A triple repeat is a repeat that appears thrice in the genome. This is a special
-case of an interleaved repeat. This is illustrated below
+case of an interleaved repeat. This is illustrated below.
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture7/Figure6.png" width="90%">
 	<div class="figcaption"> A triple repeat</div>
@@ -176,8 +176,8 @@ a triple repeat needs to be bridged for assembly of a genome to be feasible.
 </div>  
 
 Using calculations almost identical to those used in quantifying the performance of
-the greedy algorithm, we can derive curve showing the number of reads necessary for
-assembly to be possible in a given genome. This is shown for an example genome below
+the greedy algorithm, we can derive a curve showing the number of reads necessary for
+successful assembly in a given genome. This is shown for an example genome below
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture7/Figure5.png" width="60%">
@@ -188,14 +188,14 @@ assembly to be possible in a given genome. This is shown for an example genome b
 
 ### Dense Read Model and the L-spectrum<a id='dense'></a>
 
-To attempt to come up with an algorithm that perform a better than the greedy
-algorithm, we take a detour. We consider an idealised setting
+To come up with an algorithm that performs better than the greedy
+algorithm, we first take a detour. We consider an idealized setting
 called the dense read model. Trying to solve the assembly problem in this
-setting gives us an algorithm, which modify to then work in the shotgun
+setting gives us an algorithm which we can then modify for the shotgun
 sequencing case.
 
 A **dense read model** assumes that we have a read starting at every position in
-the genome. The multi-set of reads thus obtained are called the **L-spectrum**.
+the genome. The multi-set of reads thus obtained is called the **L-spectrum**.
 
 This is illustrated below.
 <div class="fig figcenter fighighlight">
@@ -203,13 +203,13 @@ This is illustrated below.
 	<div class="figcaption"> Dense read model</div>
 </div>
 
-The L-spectrum can be thought of as the set of all reads we obtain when we
-have infinitely many reads from the genome $$\mathcal{G}$$.
+The L-spectrum can be thought of as the set of all unique length-L reads we obtain when we
+have infinitely many reads from the genome $$\mathcal{G}$$ (unique in terms of position).
 
 ### de Bruijn graphs<a id='debruijn'></a>
 
-In graph theory, the standard de Bruijn graph is the graph obtained by taking all strings
-over any finite alphabet of length $$\ell$$ as vertices, and adding edges between
+In graph theory, the standard **de Bruijn graph** is the graph obtained by taking all strings
+over any finite alphabet of length $$\ell$$ as vertices,= and adding edges between
 vertices that have an overlap of $$\ell-1$$. In the following, we consider assembly
 using a slightly modified version of the standard de Bruijn graph from the L-spectrum
 of a genome.
@@ -237,11 +237,11 @@ to the L-spectrum of a genome has
 a unique Eulerian path, then a genome can be assembled from its L-spectrum.
 
 **Theorem** [[Pevzner 1995](http://link.springer.com/article/10.1007%2FBF01188582#page-1)]:
-If L - 1 > maximum interleaved repeat length of a genome, then the de Bruin graph corresponding to the L-spectrum of the
-genome has a unique Eulerian path which is the original genome.
+If L - 1 is strictly greater than the maximum interleaved repeat length of a genome, then the de Bruin graph corresponding to the L-spectrum of the
+genome has a unique Eulerian path corresponding to the original genome.
 
 
-This gives us that Ukkonen's lower bound for assembling successfully can be achieved as the number of reads
+This gives us that Ukkonen's lower bound; successful assembly can be achieved as the number of reads
 become arbitrarily large.
 
 -----------------
