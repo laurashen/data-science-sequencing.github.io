@@ -5,12 +5,7 @@ permalink: /lectures/lecture7/
 ---
 ## Lecture 7: Assembly Part 2
 
-
----------
-
 Monday 18 April 2016
-
--------
 
 _Scribed by Vivek Kumar Bagaria and revised by the course staff_
 
@@ -29,41 +24,40 @@ _Scribed by Vivek Kumar Bagaria and revised by the course staff_
 
 ###  The greedy algorithm (cont.) <a id='greedy'></a>
 
-At the end of last lecture, we had proved the following theorem
+At the end of last lecture, we had proved the following theorem.
 
 **Theorem.** Let a set of reads from a genome fully cover the genome. Moreover,
-suppose each repeat in the genome be _bridged_ by at least one read, that is there
+suppose each repeat in the genome is _bridged_ by at least one read. In other words, there
 exists a read
-that starts at least one base before a copy of every repeat, and ends at least one base after.
+that starts at least one base before a copy of every repeat and ends at least one base after.
 Then the greedy algorithm is guaranteed to reconstruct the original DNA.
 
 We note that the condition for this algorithm to succeed depends upon a property
 of the genome that is being inferred (_i.e._ if its repeats are bridged). Thus
-apriori given a set of reads, it is not clear if the greedy algorithm will succeed.
-However, we note that this theorem can be applied in two ways:
+a priori given a set of reads, it is not clear if the greedy algorithm will succeed.
+Despite this, we note that this theorem can be applied in two ways:
 
 1. One could run the greedy algorithm on a set of reads.
 If this returns a sequence, then one can find the set of all repeats in the
 assembled sequence and check if each one of them is bridged. If that is
 the case then we have a _certificate_ of the greedy algorithm succeeding in
-assembling the underlying. If there are any unbridged repeats, then it is
-unclear if the greedy algorithm has returned the right genome.
+assembling the underlying genome. If there are any unbridged repeats, then whether the greedy algorithm has returned the right genome is unclear.
 2. We can use the theorem to compute the read lengths and coverage necessary
 for the greedy algorithm to succeed in known genomes. This can be used as a
 benchmark  on its performance.
 
-Given a known genome $$\mathcal{G}$$ of length G, the
+Given a known genome $$\mathcal{G}$$ of length $$G$$, the
 probability that the greedy algorithm will succeed
-assembling from N reads of length L
+assembling from $$N$$ reads of length $$L$$
 is the probability that
 every repeat in $$\mathcal{G}$$ is bridged by a read.
 
 To compute this we begin by computing
 the probability that a repeat of length $$\ell_{\text{repeat}}$$ is bridged by
-a read of length L. We note that this happens if the read starts at a position
+a read of length $$L$$. We note that this happens if the read starts at a position
 in the $$L-\ell_{\text{repeat}}-1$$ window before either repeat (Note that the
 bridging condition requires the read to extend at least one base after the
-repeat, and hence the -1). Thus,
+repeat, and hence the $$-1$$). Thus,
 
 $$P(\text{a given read of length L bridges a repeat of length } \ell_{\text{repeat}}) = \begin{cases}
 0 & \text{if L } < \ell_{\text{repeat}}+2\\
