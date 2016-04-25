@@ -241,7 +241,7 @@ If L - 1 is strictly greater than the maximum interleaved repeat length of a gen
 genome has a unique Eulerian path corresponding to the original genome.
 
 
-This gives us that Ukkonen's lower bound; successful assembly can be achieved as the number of reads
+This gives us Ukkonen's lower bound; successful assembly can be achieved as the number of reads
 become arbitrarily large.
 
 -----------------
