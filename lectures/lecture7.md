@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture7/
 ---
-## Lecture 7: Assembly Part 2
+## Lecture 7: Assembly - Necessary Conditions for Successful Assembly
 
 Monday 18 April 2016
 
