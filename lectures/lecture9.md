@@ -179,8 +179,8 @@ This algorithm is called the "Not-so-greedy" algorithm that keeps exactly two be
 
 ### <a id='weakness'></a>Weakness of this framework of algorithm design
 
-We note that the design of algorithms like Not-so-greedy which are theoretic
-optimal are designed assuming that the genome can be assembled completely. These are
+We note that the design of algorithms like Not-so-greedy (which are
+optimal theoretically) are designed assuming that the genome can be assembled completely. These are
 useful when we have where one does not bridge repeats, but bridges all interleaved
 repeats. In practice, there are few such data-sets. Here, one usually is in regimes where either all repeats are bridged
 (for example the [Pacbio _E. coli_ data-set](https://github.com/PacificBiosciences/DevNet/wiki/E.-coli-Bacterial-Assembly)),
