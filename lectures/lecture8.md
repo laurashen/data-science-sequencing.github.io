@@ -31,7 +31,7 @@ the following steps:
 the corresponding L-mer that contains both appears k times in the L-spectrum.  
 
 An Eulerian Path of a graph is the path that traverses each edge of the graph exactly once.
-Note that the algorithms can find Eulerian Paths in linear time, which is quite computationally cheap. Recall that the greedy algorithm would need to compute overlaps between reads. If done
+Note that the Eulerian algorithm can find an Eulerian path in linear time. Recall that the greedy algorithm would need to compute overlaps between reads. If done
 naively this scales quadratically in the number of reads. We will discuss this in the coming
 lectures.
 
@@ -43,10 +43,9 @@ the L-spectrum of the genome. From this, we build a de Bruijn graph as described
 above. As discussed in the last lecture, every Eulerian path in the de Bruijn
 graph corresponds to a genome consistent with the data.
 
-In this lecture we will discuss the uniqueness of the Eulerian path algorithm. We
+In this lecture we will discuss the conditions for the uniqueness of the Eulerian path and hence of the reconstruction of the genome. We
 will next see a modification of the de Bruijn graph algorithm so that it works on
-error-free
-reads rather than the L-spectrum of the genome. We will evaluate its performance and
+arbitrary reads rather than the L-spectrum of the genome. We will evaluate its performance and
 look at some refinements.
 
 
