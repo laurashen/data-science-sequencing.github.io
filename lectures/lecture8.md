@@ -216,16 +216,16 @@ of reads necessary for an algorithm to succeed.
   <img src="/assets/lecture8/Figure9.png" width="75%">
 	<div class="figcaption">Lower bound from Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm and the
-  de Bruijn graph algorithm to succeed (with probability \(1-\epsilon\)), and Ukkonen's
+  de Bruijn algorithm to succeed (with probability \(1-\epsilon\)), and Bresler-Bresler-Tse's
 	lower bound for successful assembly (with probability \(1-\epsilon\)).</div>
 </div>
 
-We note that though the de Bruijn graph algorithm achieves the vertical asymptote,
+The curve for the de Bruijn algorithm is computed by setting $$k = \ell_{interleaved} + 1$$, thus it is the most optimistic performance achievable, since in reality the algorithm does not know $$\ell_{interleaved}$$ and has to be more conservative. We note that though the de Bruijn graph algorithm achieves the vertical asymptote,
 it does need a  fairly large number of reads to do so.
 Although greedy has a worse vertical asymptote, it is better for larger values of
 L since it requires less reads.
 
-The reason the de Bruijn curve does not match the Ukkonen's lower bounds is
+The reason the de Bruijn curve does not match the Bresler-Bresler-Tse's lower bounds is
 because it requires every $$\ell_{\text{interleaved}}$$-mer on the genome to be bridged  (Note
 that k-coverage means every k-2 mer in the genome must be bridged. Why?) rather
 than just having the interleaved repeat bridged. In the next lecture, we will see
