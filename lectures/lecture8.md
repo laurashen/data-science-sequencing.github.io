@@ -28,7 +28,7 @@ the following steps:
 1. Add a vertex for each [(L-1)-mer](https://en.wikipedia.org/wiki/K-mer) in the L-spectrum.
 
 2. Add k edges between two (L-1)-mers if their overlap has length L-2 and
-the corresponding L-mer appears k times in the L-spectrum.  
+the corresponding L-mer that contains both appears k times in the L-spectrum.  
 
 An Eulerian Path of a graph is the path that traverses each edge of the graph exactly once.
 Note that the algorithms can find Eulerian Paths in linear time, which is quite computationally cheap. Recall that the greedy algorithm would need to compute overlaps between reads. If done
