@@ -78,7 +78,7 @@ Information from bridging reads simplify the graph.
 
 At this point, our conditions for a successful assembly is as follows:  
 	1. All interleaved repeats (except triple repeats) are singly bridged.  
-	2. k > $$\ell_{\text{triple}}$$ (length of the longest triple repeat).
+	2. k-1 > $$\ell_{\text{triple}}$$ (length of the longest triple repeat).
 
 The performance of this algorithm is shown in the figure below. Note that even though this reduces the number of reads we need, it is still not as close to the lower bound as we hope. Can we do better?
 
@@ -92,11 +92,11 @@ The performance of this algorithm is shown in the figure below. Note that even t
 
 ### <a id='simple'></a>Multibridging
 
-The algorithm we outlined above had k > $$\ell_{\text{triple}}$$ as a condition, which allowed us to ignore this case. Triple repeats are special in that, even when it is singly bridged, there is still ambiguity to the Eulerian path.
+The algorithm we outlined above had k - 1 > $$\ell_{\text{triple}}$$ as a condition, which allowed us to guarantee the bridging of all copies of all triple repeats. Triple repeats are special type of interleaved repeats in that, even when it is singly bridged, there is still ambiguity to the Eulerian path.
 
 We can modify the algorithm further to get around the ambiguity. If the triple repeats are triple-bridged (meaning that every copy of the repeat has a bridging read), then we can separate the repeat node into three different distinct nodes that each connect to distinct adjacent nodes.
 
-In the figure below, if we have three reads that each bridge a copy of the grey triple repeat, then we can resolve the conflicts.
+In the figure below, if we have three reads that each bridge a copy of the grey triple repeat, then we can resolve the confusion.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure3.png" width="90%">
