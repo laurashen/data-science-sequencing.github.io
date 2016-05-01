@@ -122,9 +122,9 @@ with the de Bruijn graph: $$\mathtt{a-x-b-x-c-x-d} \text{ and } \mathtt{a-x-c-x-
 
 
 In both these examples we have that $$L-1= \ell_{\text{interleaved}}$$ , and thus
-genome can not be assembled from the L-spectrum as stated in the theorem. Next
+genome can not be assembled from the L-spectrum as stated in the necessary condition of the theorem. Next
 let us look at examples where the L-spectrum can be used to assemble the genome
-by the de Bruijn graph algorithm.
+by the de Bruijn graph algorithm, giving some intuition why the condition is also sufficient.
 
 **Example 3, Simple repeat of length L-1:**  Let $$x$$ be simple
 repeats of length L-1 on the genome. Let us assume that the genome has no other
@@ -148,7 +148,7 @@ The de Bruijn graph from L-spectrum of this genome is given by
 </div>
 
 It is easy to see that the only Eulerian path on this de Bruijn graph is the
-one corresponding to $$\mathtt{a-x-b-x-c}.$$
+one corresponding to $$\mathtt{a-x-b-x-c}.$$ Note that the greedy algorithm may have chosen the path $$\mathtt{a-x--c}.$$
 
 **Example 4, Non-interleaved pair of repeats of length L-1:** Let $$x$$ and $$y$$ be two non-interleaved
 repeats of length L-1 on the genome. Let us assume that the genome has no other
