@@ -39,6 +39,6 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 1. Write a function that computes the edit distance between two strings. You can use standard libraries such as  [editdistance](https://pypi.python.org/pypi/editdistance) to check the correctness of your function. The input should be two strings each of at least length 2. The output should be a float representing the edit distance between the two input strings.
 
-2. How can you use the above function and the function you wrote in Question II part 4 to perform alignment? What is the runtime of this approach? What issues do you see with this approach?
+2. How can you use the above function to perform alignment between two reads? If you have $$N$$ total reads each of length $$L$$, what is the runtime of this approach in terms of $$N$$ and $$L$$?
 
 3. For $$L=10$$, generate two reads of length $$L$$ and compute their edit distance. Average your result over 100 runs to obtain an estimate of the average edit distance $$\hat{d}_L$$ of two randomly generated reads of length $$L$$. Repeat for $$L = 1, 100, 1000, 10000$$. Plot $$\hat{d}_L$$ as a function of $$L$$ with error bars. Do you observed any trends? What can you say about how well random strings align? (2-3 sentences).
