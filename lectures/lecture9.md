@@ -24,7 +24,7 @@ that has better performance. We then discuss the notion of read-overlap graphs.
 3. <a href='#readoverlap'>Assembly problem revisited: read-overlap graphs</a>
     - <a href='#read1'>Read-overlap graph</a>
     - <a href='#info'>Information limit and solving instances of an NP-hard problem</a>  
-    - <a href='#weakness'>Weakness of this framework of algorithm design</a>  
+  
 
 ## <a id='review'></a>Review of de Bruijin algorithm
 
