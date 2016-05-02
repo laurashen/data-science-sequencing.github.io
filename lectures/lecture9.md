@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture9/
 ---
-## Lecture 3: Assembly - Multibridging and Read-Overlap Graphs
+## Lecture 9: Assembly - Multibridging and Read-Overlap Graphs
 
 Monday 25 April 2016
 
@@ -13,7 +13,7 @@ _Scribed by Min Cheol Kim and revised by the course staff_
 
 ## Topics
 
-In the last lecture, we discussed about a practical algorithm based on the de Bruijin graph strucutre.
+In the last lecture, we discussed a practical algorithm based on the de Bruijin graph structure.
 In this lecture, we examine a tweak of the de Bruijin structure (k-mers)
 that has better performance. We then discuss the notion of read-overlap graphs.
 
@@ -23,80 +23,83 @@ that has better performance. We then discuss the notion of read-overlap graphs.
     - <a href='#triple'>Multibridging</a>
 3. <a href='#readoverlap'>Assembly problem revisited: read-overlap graphs</a>
     - <a href='#read1'>Read-overlap graph</a>
-    - <a href='#info'>Information limit and solving instances of a NP-hard problem</a>  
+    - <a href='#info'>Information limit and solving instances of an NP-hard problem</a>  
     - <a href='#weakness'>Weakness of this framework of algorithm design</a>  
 
 ## <a id='review'></a>Review of de Bruijin algorithm
 
 de Bruijin Graph Algorithm:  
-	1. Chop L-mers (reads) into k-mers. These become basic units of the algorithm.  
-	2. Build the de Bruijin graph from the k-mers.  
-	3. Find the Eulerian Path.
+
+1. Chop L-mers (reads) into k-mers, the basic units of the algorithm.  
+2. Build the de Bruijin graph from the k-mers.  
+3. Find the Eulerian Path.
 
 Conditions for de Bruijin to succeed:  
-	1. k - 1 > $$\ell_{\text{interleaved}}$$ (length of the longest interleaved repeat)  
-	2. DNA is k-covered (A read and the read in the next position have k-overlap)
+
+1. k - 1 > $$\ell_{\text{interleaved}}$$ (length of the longest interleaved repeat)  
+2. DNA is k-covered (the reads cover all bases in the DNA, and each read has k-overlap with at least one other read)
 
 Observe that the de Bruijin graph algorithm can achieve perfect assembly at shorter
-read lengths that Greedy, but coverage depth must be very high (even worse than
-Greedy in some cases!). This comes from the fact that the condition on bridging
-(k - 1 > $$\ell_{\text{interleaved}}$$). The k-mers must bridge
-**every** intereaved repeat.
+read lengths than Greedy, but the coverage depth must be very high (even worse than
+Greedy in some cases!). This comes from the condition on bridging
+(k - 1 > $$\ell_{\text{interleaved}}$$), which requires that the k-mers must bridge
+**every** interleaved repeat.
 
 For the lower bound, the necessary condition for reconstruction is that the interleaved repeats are bridged by the reads (not k-mers). There are only a few long interleaved repeats, and it is overkill to bridge all those with k-mers. We have the information to cover these interleaved repeats with the L-mer (reads) themselves, but we are not using this information by chopping them all into k-mers.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture8/Figure9.png" width="75%">
-	<div class="figcaption">Lower bound from Lander-Waterman calculation, the read
+	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm and the
-  de Bruijn graph algorithm to succeed (with probability \(1-\epsilon\)), and Ukkonen's
+  de Bruijn graph algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
 	lower bound for successful assembly (w. p. \(1-\epsilon\)).</div>
 </div>
 
 
 ## <a id='multi'></a>Making k smaller
 
-By taking advantage of the fact that we do not need to bridge **all** interleaved repeats with k-mers, we come up with modified versions of the de Bruijin algorithm. We set k  $$<< \ \ell_{\text{interleaved}}$$, and we do something special for the long interleaved repeats, which are few in numbers.
+By taking advantage of the fact that we do not need to bridge **all** interleaved repeats with k-mers, we can come up with modified versions of the de Bruijin algorithm. We set k  $$<< \ \ell_{\text{interleaved}}$$, and we do something special for the long interleaved repeats, which are few in numbers.
 
 ### <a id='simple'></a>Simple Bridging
 
-The problem we had when k <= $$\ell_{\text{interleaved}}$$+ 1 was that, we have confusion when finding the Eulerian path when traversing through all the edges, as covered in the previous lecture (Refer to examples of de Bruijin graphs in Lecture 8). When multiple Eulerian paths exist, we cannot guarantee a correct reconstruction.
+The problem we had when k $$\leq \ell_{\text{interleaved}}$$+ 1 was that we have confusion when finding the Eulerian path when traversing through all the edges, as covered in the previous lecture (Refer to examples of de Bruijin graphs in Lecture 8). When multiple Eulerian paths exist, we cannot guarantee a correct reconstruction.
 
-We can circumvent this problem by using the reads (L-mers) themselves to resolve the conflicts. In the figure below, with k < $$\ell_{\text{interleaved}}$$, there were two potential Eulerian paths, where one traverses the green segment first or the pink segment first.
+We can circumvent this problem by using the reads (L-mers) themselves to resolve the conflicts. In the figure below, with k < $$\ell_{\text{interleaved}}$$, there were two potential Eulerian paths: one traverses the green segment first and the other traverses the pink segment first.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure1.png" width="90%">
-	<div class="figcaption">Bridging read resolves one repeat and the unique Eulerian
-path resolves the other.</div>
+	<div class="figcaption">After resolving a node using a bridging read, we can find a unique Eulerian
+path through the graph.</div>
 </div>
 
-However, by incorporating the information in the bridging read, the we can reduce the number of Eulerian paths to one:  
-	1. Find the bridging read on the graph, in this case on the top right.  
-	2. Since we know that orange segment must follow the green segment, replicate the black node and create a separate path from green - black - orange.
+By incorporating the information in the bridging read, however, we can reduce the number of Eulerian paths to one. In other words, we can resolve the ambiguity in the graph as follows:  
+
+1. Find the bridging read on the graph, in this case on the top right.  
+2. Since we know that the orange segment must follow the green segment, replicate the black node and create a separate green - black - orange path.
 
 Information from bridging reads simplify the graph.
 
-At this point, our conditions for a successful assembly is as follows:  
-	1. All interleaved repeats (except triple repeats) are singly bridged.  
-	2. k-1 > $$\ell_{\text{triple}}$$ (length of the longest triple repeat).
+At this point, our conditions for a successful assembly is as follows:
+
+
+1. All interleaved repeats (except triple repeats) are singly bridged.  
+2. k-1 > $$\ell_{\text{triple}}$$ (length of the longest triple repeat).
 
 The performance of this algorithm is shown in the figure below. Note that even though this reduces the number of reads we need, it is still not as close to the lower bound as we hope. Can we do better?
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure2.png" width="75%">
-	<div class="figcaption">Lower bound from Lander-Waterman calculation, the read
+	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm, the
-  de Bruijn graph algorithm, and the SimpleBridging algorithm to succeed (with probability \(1-\epsilon\)), and Ukkonen's
+  de Bruijn graph algorithm, and the SimpleBridging algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
 	lower bound for successful assembly (w. p. \(1-\epsilon\)).</div>
 </div>
 
 ### <a id='simple'></a>Multibridging
 
-The algorithm we outlined above had k - 1 > $$\ell_{\text{triple}}$$ as a condition, which allowed us to guarantee the bridging of all copies of all triple repeats. Triple repeats are special type of interleaved repeats in that, even when it is singly bridged, there is still ambiguity to the Eulerian path.
+The algorithm we outlined above had k - 1 > $$\ell_{\text{triple}}$$ as a condition, which allowed us to guarantee the bridging of all copies of all triple repeats. A triple repeat is a special type of interleaved repeat in that there may still be ambiguity to the Eulerian path even if the repeat is bridged.
 
-We can modify the algorithm further to get around the ambiguity. If the triple repeats are triple-bridged (meaning that every copy of the repeat has a bridging read), then we can separate the repeat node into three different distinct nodes that each connect to distinct adjacent nodes.
-
-In the figure below, if we have three reads that each bridge a copy of the grey triple repeat, then we can resolve the confusion.
+We can modify the algorithm further to get around the ambiguity. If the triple repeats are triple-bridged (meaning that every copy of the repeat is bridged by a read), then we can separate the repeat node into three different distinct nodes that each connect to distinct adjacent nodes. This is shown in the figure below.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure3.png" width="90%">
@@ -104,68 +107,67 @@ In the figure below, if we have three reads that each bridge a copy of the grey 
   one can resolve them locally.</div>
 </div>
 
-With this in mind, our conditions for success then becomes [Bresler, Bresler, Tse, 2013](http://arxiv.org/abs/1301.0068):
+With this in mind, our conditions for success then becomes ([Bresler, Bresler, Tse, 2013](http://arxiv.org/abs/1301.0068)):
 
-1. Triple repeats are ALL bridged.
+1. All copies of all triple repeats are bridged.
 2. Interleaved repeats are singly bridged
-3. Coverage
+3. Coverage (each base in the genome is covered by at least one read)
 
 
 We also see that the performance of the multibridging algorithm is close to that of the lower bound.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure4.png" width="75%">
-	<div class="figcaption">Lower bound from Lander-Waterman calculation, the read
+	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm, the
-  de Bruijn graph algorithm, the SimpleBridging algorithm, and the MultiBridging algorithm to succeed (with probability \(1-\epsilon\)), and Ukkonen's
+  de Bruijn graph algorithm, the SimpleBridging algorithm, and the MultiBridging algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
 	lower bound for successful assembly (w. p. \(1-\epsilon\)).</div>
 </div>
 
 ## <a id='readoverlap'></a>Assembly problem revisited: read-overlap graphs
 
-So far we have looked at versions of the algorithm called the de Bruijin algorithm. This algorithm essentially takes these long reads and chops them up into shorter, k-mers. Then we realize that the k-mers do not contain enough information, and we bring back some of the important repeats to resolve conflicts.
+So far we have looked at algorithms based on de Bruijin graphs. These algorithms essentially chop reads into shorter k-mers. Then we realized that the k-mers do not contain enough information, and we brought back some of the important reads to resolve conflicts.
 
-This seems like a strage paradigm, since the reads are the ones that contain all the information to begin with. A more natural class of algorithm is called the read-overlap algorithm, which is actually the original approach to assembly.
+This seems like a strange paradigm since the reads are the ones that contain all the information to begin with (why chop them up only to bring them back?). A more natural class of algorithms are based on read-overlap graphs, which is actually the original approach to assembly.
 
 ### <a id='read1'></a>Read-overlap graphs
 
-Instead of thinking about k-mers, we should think about reads themselves. Using this idea, we reconstruct a graph where all the nodes of the graph are reads, without any k-mer transformation. Then, we connect them by edge. Each edge measures the amount of overlap that each read has with each other. The number on each edge is the amount of extension that one would get by putting the reads together.
+Instead of thinking about k-mers, we should think about reads themselves. Using this idea, we reconstruct a graph where all the nodes of the graph are reads (without any k-mer transformation). Then, we connect every pair of nodes with an edge, building a complete graph. Each edge is associated with a number that indicates the amount of overlap between the two nodes (reads). Alternatively, we can also associate each edge with a number that indicates how much length we gain by joining the two reads.
 
-For example, if you have two reads ACGCA and CGCAT, you would get an extension of 1 (overlap of 4) when the reads are put together to form ACGCAT. An example of such a read-length graph is shown below.
+An example of a read-length graph is shown below. If you have two reads ACGCA and CGCAT, you would get an extension of 1 (overlap of 4) when the reads are put together to form ACGCAT.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure5.png" width="75%">
 	<div class="figcaption">A read overlap graph contains the  original sequence
-  as a hamiltonian path.</div>
+  as a Hamiltonian path.</div>
 </div>
 
-This in some sense, this is the most natural representation of an assembly problem. The assembly problem then becomes taking a path that goes through every single node in the graph, while also minimizing the sum of the weights (maximize the overlap).
+In some sense, this is the most natural representation of the assembly problem. To solve the problem we would take a path that goes through every single node in the graph while also minimizing the sum of the extensions (or maximizing the sum of the overlaps).
 
-This path is called the Generalized Hamiltonian Path, a path that visits every node at least once, while maintaining the minimum sum of weights. We may need to visit a node multiple times due to repeats.
+This path is called the Generalized Hamiltonian Path, a path that visits every node at least once while maintaining the minimum sum of weights (note the difference between this and the Eulerian path). We may need to visit a node multiple times due to repeats.
 
-It turns out that this problem is NP-hard. This is one of the main motivation for solving the de Bruijin graph.
+It turns out that this problem is NP-hard. This is one of the main motivations for working with the de Bruijn graph instead.
 
-### <a id='info'></a>Information limit and solving instances of a NP-hard problem
+### <a id='info'></a>Information limit and solving instances of an NP-hard problem
 
-With some of the insights gathered on the problem, we can try to get enough structure to "solve" this instances of this problem, that is in general NP-hard problem.
+Under some assumptions, we can solve this problem, which is NP-hard in general.
 
-Let us see what the most basic algorithm does in terms of the read-overlap graph - the Greedy algorithm. The greedy algorithm essentially picks the largest overlap, and never worry about the other overlaps, and maintains only that one edge. This vastly simplifies the graph, with only one outgoing edge from each node.
+Let us see what the most basic algorithm does in terms of the read-overlap graph - the Greedy algorithm. For each node, the Greedy algorithm picks the edge with the largest overlap going out, ignoring all other edges for that node. This vastly simplifies the graph with only one outgoing edge from each node.
 
-Greedy's pitfall is that when the true path visits a node twice, it will fail. This is an oversimplification of the generalized Hamiltonian path problem.
+Greedy's pitfall is that when the true path visits a node twice, the algorithm will fail. The approach is an oversimplification of the generalized Hamiltonian path problem.
 
-Going back to our performance figure, we see that the Greedy algorithm lives in the red region, where the read length is long enough to cover **all** repeats. That leaves the blue region, where reconstruction is still possible but we may need to visit the nodes more than once.
+Going back to our performance figure, we see that the Greedy algorithm lives in the red region where the read length is long enough to cover **all** repeats. That leaves the blue region where reconstruction is still possible but we may need to visit the nodes more than once.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure6.png" width="75%">
 	<div class="figcaption">Information limits in the read-overlap graph framework.</div>
 </div>
 
-Then we ask ourselves, do we need to visit a node more than 2 times? This refers to an unbridged triple repeat situation, in which reconstruction is not possible anyway. In the figure below, we notice that either the blue or red path is possible.
+Note that we only need to visit a node more than 2 times if and only if there exists an unbridged triple repeat, but reconstruction in this situation is not possible anyway. In the figure below, we notice that we cannot determine whether we should traverse the blue or red path first.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture9/Figure7.png" width="75%">
-	<div class="figcaption">This shows that we can not visit a read more than two reads unless
-  a triple repeat is not bridged.</div>
+	<div class="figcaption"> Since a triple repeat is not bridged, we cannot determine whether we should traverse the blue or red path first.</div>
 </div>
 
 The information analysis shows us that the Greedy is an oversimplification, but we do not need to visit a node more than twice; this stands on the left of the lower bound (figure below). We need an algorithm that visits each node no more than twice.
@@ -175,19 +177,15 @@ The information analysis shows us that the Greedy is an oversimplification, but 
 	<div class="figcaption"> The use of "Not-so-greedy" to achieve theoretic limits.</div>
 </div>
 
-This algorithm is called the "Not-so-greedy" algorithm that keeps exactly two best extensions for each node, and throws away all else. The complexity is linear with the number of reads. In the green region, we can overcome the NP-hardness of the Hamiltonian problem.
+This algorithm is called the "Not-so-greedy" algorithm, and it keeps exactly the two best extensions for each node. The complexity is linear with the number of reads. Therefore in the green region, we can overcome the NP-hardness of the Hamiltonian problem.
 
 ### <a id='weakness'></a>Weakness of this framework of algorithm design
 
-We note that the design of algorithms like Not-so-greedy (which are
-optimal theoretically) are designed assuming that the genome can be assembled completely. These are
-useful when we have where one does not bridge repeats, but bridges all interleaved
-repeats. In practice, there are few such data-sets. Here, one usually is in regimes where either all repeats are bridged
-(for example the [Pacbio _E. coli_ data-set](https://github.com/PacificBiosciences/DevNet/wiki/E.-coli-Bacterial-Assembly)),
+We note that algorithms like Not-so-greedy (which are
+optimal theoretically) are designed assuming that the genome can be assembled completely. These algorithms are useful when we have datasets where not all repeats are bridged, but all interleaved repeats are bridged. In practice, datasets are in regimes where either all repeats are bridged
+(for example the [Pacbio _E. coli_ data-set](https://github.com/PacificBiosciences/DevNet/wiki/E.-coli-Bacterial-Assembly))
 or even interleaved repeats are not bridged (for example the
 [Pacbio human chromosome 1 data-set](https://github.com/PacificBiosciences/DevNet/wiki/H_sapiens_54x_release)).
-This makes algorithms like Not-so-greedy to be of limited appeal in practice.  
-
-Thus practically in the Read-Overlap graph framework, the greedy algorithm, and
+Algorithms like Not-so-greedy are therefore of limited appeal in practice. For this reason, the Greedy algorithm and
 algorithms like [string graph](http://bioinformatics.oxfordjournals.org/content/21/suppl_2/ii79.abstract)
-still rule the roost currently.
+still remain popular when working in the read-overlap graph framework.
