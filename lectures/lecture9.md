@@ -179,13 +179,3 @@ The information analysis shows us that the Greedy is an oversimplification, but 
 
 This algorithm is called the "Not-so-greedy" algorithm, and it keeps exactly the two best extensions for each node. The complexity is linear with the number of reads. Therefore in the green region, we can overcome the NP-hardness of the Hamiltonian problem.
 
-### <a id='weakness'></a>Weakness of this framework of algorithm design
-
-We note that algorithms like Not-so-greedy (which are
-optimal theoretically) are designed assuming that the genome can be assembled completely. These algorithms are useful when we have datasets where not all repeats are bridged, but all interleaved repeats are bridged. In practice, datasets are in regimes where either all repeats are bridged
-(for example the [Pacbio _E. coli_ data-set](https://github.com/PacificBiosciences/DevNet/wiki/E.-coli-Bacterial-Assembly))
-or even interleaved repeats are not bridged (for example the
-[Pacbio human chromosome 1 data-set](https://github.com/PacificBiosciences/DevNet/wiki/H_sapiens_54x_release)).
-Algorithms like Not-so-greedy are therefore of limited appeal in practice. For this reason, the Greedy algorithm and
-algorithms like [string graph](http://bioinformatics.oxfordjournals.org/content/21/suppl_2/ii79.abstract)
-still remain popular when working in the read-overlap graph framework.
