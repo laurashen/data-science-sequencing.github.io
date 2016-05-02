@@ -12,7 +12,7 @@ due Monday 9 April 2016 at midnight
 
 ### Question I: Validity of Lander-Waterman Statistics
 
-In Question III in the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie, obtaining 617036 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/assets/assignment2/E.coli.alignments.EE372.bam) (the alignments are saved as a *.bam file). You can view the first 15 lines of the file using the command ```samtools view E.coli.alignments.EE372.bam | head -15```. Samtools is installed on Stanford's Corn server.
+In Question III of the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie, obtaining 617036 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/assets/assignment2/E.coli.alignments.EE372.bam) (the alignments are saved as a *.bam file). You can view the first 15 lines of the file using the command ```samtools view E.coli.alignments.EE372.bam | head -15```. Samtools is installed on Stanford's Corn server.
 
 1. Refer to the documentation for the *.sam file format [here](https://samtools.github.io/hts-specs/SAMv1.pdf). Convert the *.bam file to a *.sam file using the ```samtools view``` command. What position does the first read align to?
 2. The length of the _E. coli_ genome is 4639675. Write a function to compute the proportion of the genome by covered by the reads in a given *.sam file. What proportion of the genome is covered by the reads in E.coli.alignments.EE372.bam?
