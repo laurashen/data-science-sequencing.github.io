@@ -30,11 +30,11 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 3. Study the implementation of de Bruijn graph assembler by Ben Langmead [here](http://nbviewer.jupyter.org/github/BenLangmead/comp-genomics-class/blob/master/notebooks/CG_deBruijn.ipynb). Tweak it
 so that the input is a set of L length reads, rather than a genome.
 
-4. Write a function to generates random reads. The input should be the number of reads generated $$N$$ and the length $$L$$ of each read generated. The output should be $$N$$ random length-$$L$$ sequences of nucleotides. Generate a random length-100 genome.
+4. Write a function to generate random reads. The input should be the number of reads generated $$N$$ and the length $$L$$ of each read generated. The output should be $$N$$ random length-$$L$$ sequences of nucleotides. Generate a random length-100 genome.
 
-5. Write a function to sample reads from a genome. The input should be the genome, the number of reads generated $$N$$, and the length $$L$$ of each read generated. Assuming that $$L = 10$$, how many reads do you need to achieve a coverage depth of 30? Generate this number of reads and give the assembly.
+5. Write a function to sample reads from a genome. The input should be the genome, the number of reads generated $$N$$, and the length $$L$$ of each read generated. Assuming that $$L = 10$$, how many reads do you need to achieve a coverage depth of 30? Generate this number of reads and give the assembly using your solution for part 3. What is Hamming distance between your assembly and the genome?
 
-6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly. What do you observe?
+6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly using your solution for part 3. What is Hamming distance between your assembly and the genome? What do you observe?
 
 ### Question III: Alignment of random strings
 
