@@ -27,7 +27,8 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 2. The support of a $$k$$-mer spectrum is the $$k$$-mer spectrum with the value of all non-zero $$k$$-mers set to 1. Give the assembly of TAAAAACCCCAAAAAG from the support of its 5-mer spectrum. How many different assemblies are consistent with the support of this 5-mer spectrum?
 
-3. (Question about interpreting Langmead's implementation of De Bruijn graphs. Question to help them gain familiarity with using it)
+3. Study the implementation of de Bruijn graph assembler by Ben Langmead [here](http://nbviewer.jupyter.org/github/BenLangmead/comp-genomics-class/blob/master/notebooks/CG_deBruijn.ipynb). Tweak it
+so that the input is a set of L length reads, rather than a genome.
 
 4. Write a function to generates random reads. The input should be the number of reads generated $$N$$ and the length $$L$$ of each read generated. The output should be $$N$$ random length-$$L$$ sequences of nucleotides. Generate a random length-100 genome.
 
