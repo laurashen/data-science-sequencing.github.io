@@ -5,8 +5,8 @@ permalink: /assignments/assignment2/
 ---
 ## Assignment 2
 
-posted Monday 2 April 2016  
-due Monday 9 April 2016 at midnight
+posted Monday 2 May 2016  
+due Monday 9 May 2016 at midnight
 
 **Submission policy**: Report all plots and your code in [this iPython notebook](/assets/assignment2/ee372_assignment2.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
