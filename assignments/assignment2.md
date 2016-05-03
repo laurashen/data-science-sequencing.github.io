@@ -27,14 +27,14 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 2. The support of a $$k$$-mer spectrum is the $$k$$-mer spectrum with the value of all non-zero $$k$$-mers set to 1. Give the assembly of TAAAAACCCCAAAAAG from the support of its 5-mer spectrum. How many different assemblies are consistent with the support of this 5-mer spectrum?
 
-3. Study the implementation of de Bruijn graph assembler by Ben Langmead [here](http://nbviewer.jupyter.org/github/BenLangmead/comp-genomics-class/blob/master/notebooks/CG_deBruijn.ipynb). Tweak it
-so that the input is a set of L length reads, rather than a genome.
+3. Study the implementation of the de Bruijn graph assembler by Ben Langmead [here](http://nbviewer.jupyter.org/github/BenLangmead/comp-genomics-class/blob/master/notebooks/CG_deBruijn.ipynb). You should copy and paste the code from the top cell into your notebook as you will use this to class to perform assembly. Note that you will need to pass a list of reads (strings) as the ```strIter``` argument when initializing an instance of the class (see ```__iter___```). You will use the ```eulerianWalkOrCycle``` method to obtain a list of $$k-1$$-mers corresponding to an Eulerian walk through the graph. Write a function that obtains the assembly from this list of $$k-1$$-mers (i.e. if the list is ['ABCD','BCDE'] with $$k=5$$, then your function should return 'ABCDE').
 
 4. Write a function to generate random reads. The input should be the number of reads generated $$N$$ and the length $$L$$ of each read generated. The output should be $$N$$ random length-$$L$$ sequences of nucleotides. Generate a random length-100 genome.
 
-5. Write a function to sample reads from a genome. The input should be the genome, the number of reads generated $$N$$, and the length $$L$$ of each read generated. Assuming that $$L = 10$$, how many reads do you need to achieve a coverage depth of 30? Generate this number of reads and give the assembly using your solution for part 3. What is Hamming distance between your assembly and the genome?
+5. Write a function to sample reads from a genome. The input should be the genome, the number of reads generated $$N$$, and the length $$L$$ of each read generated. Assuming that $$L = 10$$, how many reads do you need to achieve a coverage depth of 30? Generate this number of reads and give the assembly using your code from part 3.
 
-6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly using your solution for part 3. What is Hamming distance between your assembly and the genome? What do you observe?
+6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly using your code for part 3. What do you observe? You may want to rerun your code for 4-6 to make sure your observations are consistent.
+
 
 ### Question III: Alignment of random strings
 
