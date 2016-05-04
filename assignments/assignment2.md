@@ -38,7 +38,7 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 ### Question III: Alignment of random strings
 
-1. Write a function that computes the edit distance between two strings. You can use standard libraries such as  [editdistance](https://pypi.python.org/pypi/editdistance) to check the correctness of your function. The input should be two strings each of at least length 2. The output should be a float representing the edit distance between the two input strings.
+1. Write a function that computes the edit distance between two strings using dynamic programming. You can use standard libraries such as  [editdistance](https://pypi.python.org/pypi/editdistance) to check the correctness of your function. The input should be two strings each of at least length 2. The output should be a float representing the edit distance between the two input strings. _Hint_: You may want to use recursion.
 
 2. How can you use the above function to perform alignment between two reads? If you have $$N$$ total reads each of length $$L$$, what is the runtime of this approach in terms of $$N$$ and $$L$$?
 
