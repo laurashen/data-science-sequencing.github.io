@@ -18,8 +18,8 @@ In the previous lecture, we learned about the multibridging algorithm, which was
 1.	<a href='#pratical'>Assembly algorithms in practice</a>
 2.	<a href='#error'>Errors</a>
     - <a href='#type'>Types of errors</a>
-    - <a href='#greedy'>Impact of error on greedy algorithm</a>
-    - <a href='#kmer'>Impact of error on k-mer algorithm</a>
+    - <a href='#greedy'>Impact of errors on greedy algorithm</a>
+    - <a href='#kmer'>Impact of errors on k-mer algorithms</a>
 3. <a href='#alignment'> Alignment</a>
 	- <a href='#subproblem'>Edit distance & Dynamic Programming</a>
 
@@ -74,7 +74,7 @@ Second generation technologies like Illumina have mainly substitution errors at 
 Third and fourth generation technologies like PacBio and Nanopore have no PCR, and hence the error rate is $$\approx$$ 10-15%
 with mainly insertion and deletion errors.
 
-### <a id='greedy'></a>Impact of Error on Greedy Algorithm
+### <a id='greedy'></a>Impact of errors on greedy algorithm
 
 Lets first consider the greedy algorithm and how errors will impact its performance. Recall that this algorithm merges the two reads with the longest overlap.
 
@@ -82,7 +82,7 @@ If there are errors present, we won't be able to find a perfect overlap and the 
 
 To account for the errors, not only do we account for perfect overlap, but we must also consider approximate overlap. For example, an approximate overlap of 99% would mean that 99% of the overlapped nucleotides match while the other 1% do not. This percentage depends on the error rate. The approximate percentage should intuitively be = (1 -  2 x error rate). For example, a 1% error rate may cause 1% error on each side of the overlapped reads, thus there would be a possibility of a 2% error. The approximate percentage overlap would then be 98%.  
 
-### <a id='kmer'></a>Impact of Errors on k-mer Algorithm
+### <a id='kmer'></a>Impact of errors on k-mer algorithms
 
 Now lets consider the class of k-mer algorithms. We will use an example to show how an error may affect our k-mer graph.
 
