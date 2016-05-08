@@ -28,7 +28,7 @@ In the last lecture, we introduced the alignment problem where we want to comput
 
 When working with reads, we are generally interested in two types of alignment problems.
 
-1. Reference-based SNP/variant calling, where reads are aligned to a reference. We are often interested in computing the alignment for a billion reads to a long reference genome.
+1. [Reference-based SNP/variant calling](https://en.wikipedia.org/wiki/SNV_calling_from_NGS_data), where reads are aligned to a reference. We are often interested in computing the alignment for a billion reads to a long reference genome.
 2. De novo assembly, where reads are aligned to each other
 
 To compute the optimal alignment between to genomic sequences (or more generally strings), we can find the minimal edit distance between the two sequences. We note that for both of the above problems, a lot of computation is repeated using the same data. As a recap, the figure below finds the minimal edit distance alignment between two strings X = 'GCGTATGTG' and Y = 'GCTATGCG'. Recall that for the standard edit distance problem, we assign a substitution, deletion, or insertion equal penalties.
@@ -50,7 +50,15 @@ Let $$D(i,j)$$ equal the edit distance between $$X^i$$ and $$Y^j$$. Suppose we a
 2. $$(i,j-1)$$, where we advance $$Y$$ by one character and put an empty symbol in $$X$$
 3. $$(i-1,j-1)$$, where we advance both $$X$$ and $$Y$$ by 1 character.
 
-Since we are interested in the _minimal_ edit distance, $$D(i,j) = \min\{D(i-1,j)+1, D(i-1,j-1) + 1, D(i-1,j-1)+ \delta(X^i,Y^j)\}$$ where $$\delta(X^i,Y^j)$$ represents an indicator function for whether the $$i$$th character of $$X$$ is different from the $$j$$th character of $$Y$$ ($$\delta = 1$$ if they're different, 0 otherwise).
+Since we are interested in the _minimal_ edit distance,
+
+$$D(i,j) = \min\{D(i-1,j)+1, D(i-1,j-1) + 1, D(i-1,j-1)+ \delta(X[i],Y[j])\}$$
+
+where $$\delta$$ represents an indicator function
+
+$$\delta(a,b) = \begin{cases}1 & \text{if } a=b,\\ 0 & \text{otherwise.}\end{cases}$$
+
+Thus $$ \delta(X[i],Y[j])$$ is 1 $$i$$th character of $$X$$ is is the same as  the $$j$$th character of $$Y$$, and 0 otherwise.
 
 We can think of solving this problem as filling in the entries of a table where the columns correspond to the empty string $$\emptyset$$ plus the characters in $$X$$, and the rows corerspond to the empty string plus the characters in $$Y$$. Please see the figure below for the filled out table corresponding to the first example in this lecture.
 
@@ -63,7 +71,7 @@ Note that the $$(m,n)$$th entry (bottom-right corner) indeed has the minimal edi
 
 Each computation requires looking up at most 3 entries of the table. Therefore the complexity of this algorithm is $$O(MN)$$. For read-overlap graph assembly, we have $$N$$ reads each of length $$L$$. Using this edit distance approach, we will need $$O(N^2L^2)$$ operations to perform assembly. With $$N$$ possibly the order of $$10^8$$ or $$10^9$$ for a sequencing experiment, this operation is quite expensive.
 
-For variant calling, we want to align $$N$$ reads to a reference genome of length $$G$$. Computing the edit distance between a read and the genome is $$O(LG)$$. The runtime is $$O(NLG) = O(CG^2)$$ where $$C$$ is the coverage depth. $$G$$ can be large ($$3*10^9 for the human genome)  and therefore this operation is also quite expensive.
+For variant calling, we want to align $$N$$ reads to a reference genome of length $$G$$. Computing the edit distance between a read and the genome is $$O(LG)$$. The runtime is $$O(NLG) = O(CG^2)$$ where $$C$$ is the coverage depth. $$G$$ can be large ($$3\times 10^9$$ for the human genome)  and therefore this operation is also quite expensive.
 
 ## <a id='index'></a>Genome indexing
 
@@ -87,10 +95,20 @@ If the error rate is high, we can use the same approach as the low-error case by
 
 Instead, we can perform [_minhashing_](https://en.wikipedia.org/wiki/MinHash) in this regime to efficiently find length-$$k$$ regions of the genome similar to a given $$k$$-mer.
 
-### <a id='higherr'></a> Indexing in practice
+### <a id='practice'></a> Indexing in practice
 
-In the low-error case, tools used in practice use shorter subsequences as potentially error-free fingerprints for locking down potential alignment locations. Some methods such as [pseudoalignment](http://tinyheero.github.io/2015/09/02/pseudoalignments-kallisto.html) can also take the intersection of a few location sets corresponding to $$k$$-mers within a read.
+The *seed-and-extend* concept is based on this fingerprinting approach. We starting by finding seed locations using k-mers, and use these to identify potential matching regions in the genome. Then one aligns using the dynamic program in these regions. Almost all practical tools use this approach.
 
-The *seed-and-extend* concept is based on this fingerprinting approach. We starting by finding seed locations using $$20$$-mers, for example, and then we extend the bases on both sides of this seed.
+In the low-error case, tools used in practice use short subsequences (of length 20-30) as potentially error-free fingerprints
+for looking down potential alignment locations. Given a read they find hash matches for each 20-mer in the read, tools like
+[Bowtie](http://bowtie-bio.sourceforge.net/index.shtml) compute a set of potential locations a read could match. They then compute
+alignments by dynamic programming in those locations. Some tools like [Kallisto](http://arxiv.org/abs/1505.02710) take an intersection
+of the set of potential matches returned by the k-mers in a read (shifted appropriately) to obtain locations in the reference
+the reads could have come from. (The actual algorithm is a little more subtle where the intersection
+is taken only between k-mers that have an entry in the hash table. The underlying assumption is that k-mers with
+1-2 errors will not appear anywhere else in the reference.)
 
-Read overlap graph approaches typically require $$O(N^2)$$ operations where $$N = 10^8$$ or $$10^9$$. We can use the fingerprinting idea to alleviate some of the cost. We can build a table where the keys are $$k$$-mers and values are the reads containing a particular $$k$$-mer. We build this table by scannign through all the reads and applying a hash function. Now, for each read, we want to find a bunch of other reads that may align to the query read. Using this hash strategy gives us far less "candidate" reads per read, saving significant computation. The actual savings will depend on the number of repeats, but the cost reduces from $$O(N^2)$$ to $$O(cN)$$ for some constant $$c \ll N$$.
+
+
+Read overlap graph approaches typically require $$O(N^2)$$ operations where $$N = 10^8$$ or $$10^9$$. We can use the fingerprinting idea to alleviate some of the cost. We can build a table where the keys are $$k$$-mers and values are the reads containing a particular $$k$$-mer. We build this table by scanning through all the reads and applying a hash function. Now, for each read, we want to find a bunch of other reads that may align to the query read. Using this hash strategy gives us far less "candidate" reads per read, saving significant computation. The actual savings will depend on the number of repeats, but the cost reduces from $$O(N^2)$$ to $$O(cN)$$ for some constant $$c \ll N$$. This is done in practice by assemblers like [DAligner](http://link.springer.com/chapter/10.1007%2F978-3-662-44753-6_5),
+[Minimap](http://arxiv.org/abs/1512.01801) and [MHAP](http://www.nature.com/nbt/journal/v33/n6/full/nbt.3238.html).
