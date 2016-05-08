@@ -46,7 +46,7 @@ assembler (and its successor [FALCON](https://github.com/PacificBiosciences/FALC
 In practice assembling the whole DNA genome is impossible, so how well do the algorithms we have mentioned perform? What if we do not have enough reads/data?  
 
   - In the case of the de Bruijin graph algorithm, if there are repeats that cannot be resolved because of the lack of data, the algorithm does not break down and data on these repeats can be kept. Basically, the algorithm can take note that these particular repeats have not been resolved. If in the future more data is obtained and a read that is able to resolve the repeats is found, the algorithm can easily use stored data to improve past results. This holds true for the multibridging algorithm to a large
-  extent as well. The only scenario under which the algorithm can break down is the case where there is a triple repeat with at least one copy bridged by a read and at least one copy not bridged
+  extent as well. The most common scenario under which the algorithm can break down is the case where there is a triple repeat with at least one copy bridged by a read and at least one copy not bridged
   by reads (and some nested repeat setups).
   - In contrast, the greedy and not-so-greedy algorithms do not keep information about unresolved repeats. This is because they are aggressive algorithms that rely on pruning the graph. Data are thrown out as much as possible to simplify the problem. The practical string graph based algorithms use some interesting heuristics to keep track of long repeats, reducing the amount of mis-assemblies.
 
