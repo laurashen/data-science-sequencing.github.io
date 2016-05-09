@@ -35,6 +35,8 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly using your code for part 3. What do you observe? You may want to rerun your code for 4-6 to make sure your observations are consistent.
 
+7. *Optional*. Plot how often assembly is successful as a function of error rate.
+
 
 ### Question III: Alignment of random strings
 
