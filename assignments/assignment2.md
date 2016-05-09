@@ -35,9 +35,6 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 6. Write a modified version of the previous function for sampling reads from a genome with error. Generate random length-10 reads with 5% error rate and a coverage of 30. Give the assembly using your code for part 3. What do you observe? You may want to rerun your code for 4-6 to make sure your observations are consistent.
 
-7. *Optional*. Plot how often assembly is successful as a function of error rate.
-
-
 ### Question III: Alignment of random strings
 
 1. Write a function that computes the edit distance between two strings using dynamic programming. You can use standard libraries such as  [editdistance](https://pypi.python.org/pypi/editdistance) to check the correctness of your function. The input should be two strings each of at least length 2. The output should be a float representing the edit distance between the two input strings.
