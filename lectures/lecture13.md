@@ -181,9 +181,9 @@ The solution obtained for $$\mathbf{\hat{x}}$$ using the spectral method will be
 
 ### <a id ='sim'><a/>Simplifying the haploid phasing problem
 
-When dealing with real heterozygous SNPs, the linking information will be constrained to ranges of ~100 kbp (e.g. 10x technologies) while the chromosomes they reside on are each ~100 Mbp. Since the links are localized, unlike a random graph, we can section the chromosome into segments of length $$r$$ and analyze each segment as shown in the image below. For small values of $$r$$ we can use Viterbi decoding, but for large values we can used the spectral method.
+When dealing with real heterozygous SNPs, the linking information will be constrained to ranges of ~100 kbp (e.g. 10x technologies) while the chromosomes they reside on are each ~100 Mbp. Since the links are localized, unlike a random graph, we can section the chromosome into segments of length $$r$$ and analyze each segment as shown in the figure below. For small values of $$r$$ we can use Viterbi decoding, but for large values we can use the spectral method.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture13/Figure3.png" width="70%">
-	<div class="figcaption">An edit distance example.</div>
+	<div class="figcaption">For real chromosomes, we obtained localized information about SNPs.</div>
 </div>
