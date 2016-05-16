@@ -144,7 +144,7 @@ While the number of edges is fixed, the number of cross edges depends on the clu
 
 ### <a id ='SMSDP'><a/>Spectral method
 
-In order to solve this NP hard combinatorial optimization problem, we can use the spectral method to arrive at approximate solution. We relax the problem by allowing each $$x_i$$ to be real. We will also constrain $$\|\mathbf{x}\|_2 = n$$.  We can bound the optimization problem as follows:
+In order to solve this NP hard combinatorial optimization problem, we can use the spectral method to arrive at an approximate solution. We relax the problem by allowing each $$x_i$$ to be real. We will also constrain $$\|\mathbf{x}\|_2 = n$$.  We can bound the optimization problem as follows:
 
 $$
 \begin{align}
