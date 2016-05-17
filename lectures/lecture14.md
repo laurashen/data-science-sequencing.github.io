@@ -40,7 +40,7 @@ $$
 \max_{x_i \in \{+1,-1\}} \mathbf{x}^T \mathbf{Y} \mathbf{x}
 $$
 
-While this problem appears simple, we argued last lecture that it's actually NP-hard in general. Our strategy was to relax the problem somehow to something more tractable. Last time, we relaxed the domain of $$x_i$$ to all read numbers while constraining $$\|x\| = n$$. If the measurements (reads) are **randomly and uniformly spread** throughout the genome, then one would expect this relaxation to get good results. We verified this last time by looking at how $$E[Y]$$ is a rank-1 matrix with the principal eigenvector equal to the true underlying $$\mathbf{x}$$. Therefore this spectral method is good in practice if $$Y$$ is close to its mean. Under the appropriate permutation of the rows and columns,
+While this problem appears simple, we argued last lecture that it's actually NP-hard in general. Our strategy was to relax the problem somehow to something more tractable. Last time, we relaxed the domain of $$x_i$$ to all real numbers while constraining $$\|x\|_2 = n$$. If the measurements (reads) are **randomly and uniformly spread** throughout the genome, then one would expect this relaxation to get good results. We verified this last time by looking at how $$E[Y]$$ is a rank-1 matrix with the principal eigenvector equal to the true underlying $$\mathbf{x}$$. Therefore the spectral method is good in practice if $$Y$$ is close to its mean. Under the appropriate permutation of the rows and columns,
 
 $$
 E[Y] \propto \mathbf{x}\mathbf{x}^T
@@ -62,19 +62,19 @@ $$
 \max_{\mathbf{X}} \text{tr}(\mathbf{Y}\mathbf{X}) \text{ such that } \mathbf{X} \text{ is symmetric, } \text{rank}(\mathbf{X}) = 0, \mathbf{X}_{ii} = 1 \ \forall \ i
 $$
 
-This problem is still NP-hard due to the rank constraint. Because $$X$$ is rank 1 and symmetric, its eigenvalues are $$n$$ and 0, we can relax the rank constraint:
+This problem is still NP-hard due to the rank constraint. Because $$X$$ is rank 1 and symmetric and its eigenvalues are $$n$$ and 0, we can relax the rank constraint:
 
 $$
 \max_{\mathbf{X}} \text{tr}(\mathbf{Y}\mathbf{X}) \text{ such that } \mathbf{X} \succeq 0, \mathbf{X}_{ii} = 1 \ \forall \ i
 $$
 
-where the $$\mathbf{X} \succeq 0$$ indicates that $$X$$ must be positive semidefinite (i.e. $$\mathbf{v}^T \mathbf{X} \mathbf{v} \geq 0 \ \forall \ \mathbf{v}$$). A positive semidefinite matrix must have non-negative eigenvalues. The problem is now convex, since $$\text{tr}(\mathbf{Y}\mathbf{X})$$ and $$\mathbf{X}_{ii} = 1$$ are linear constraints and the set of $$\mathbf{X}$$ that satisfies $$\mathbf{X} \succeq 0$$ is a convex set. It turns out that under the uniformly spread out model, we can show that if there is enough information, then the SDP relaxation gives us a reasonable solution.
+where $$\mathbf{X} \succeq 0$$ indicates that $$\mathbf{X}$$ must be positive semidefinite (i.e. $$\mathbf{v}^T \mathbf{X} \mathbf{v} \geq 0 \ \forall \ \mathbf{v}$$). A positive semidefinite matrix must have non-negative eigenvalues. The problem is now convex, since $$\text{tr}(\mathbf{Y}\mathbf{X})$$ and $$\mathbf{X}_{ii} = 1$$ are linear constraints and the set of $$\mathbf{X}$$ that satisfies $$\mathbf{X} \succeq 0$$ is a convex set. It turns out that under the uniformly spread out model, we can show that if there is enough information, then the SDP relaxation gives us a reasonable solution.
 
 #### <a id='compare'></a>Comparing the spectral and SDP methods
 
 We will now compare the two methods we've introduced for efficiently solving the community recovery problem.
 
-In terms of **efficiency**, the spectral method wins. Computing the principal eigenvector of a matrix can e done using the power method where we multiply a random vector with the same matrix over and over again. We can solve a problem with $$n = 100000$$ in less than a minute on a laptop. SDP is much slower and on the order of $$O(n^3)$$. There have been recent advancements for speeding up SDP, however, and this approach may be more feasible in the near future.
+In terms of **efficiency**, the spectral method wins. Computing the principal eigenvector of a matrix can be done using the power method where we multiply a random vector with the same matrix over and over again. We can solve a problem with $$n = 100000$$ in less than a minute on a laptop. SDP is much slower and on the order of $$O(n^3)$$. There have been recent advancements for speeding up SDP, however, and this approach may be more feasible in the near future.
 
 In terms of **robustness**, the spectral method is lacking for the reasons discussed above. SDP does not suffer from this problem; if the SDP method got a reasonable solution to start with, adding helping information can only improve the result.
 
@@ -87,7 +87,7 @@ So far, all the material covered in this course has revolved around working with
 	<div class="figcaption">The central dogma of molecular biology.</div>
 </div>
 
-The purpose of DNA is to create protein, and *ribonucleic acid (RNA)* is produced as an intermediate. While every cell in the body has roughly the same DNA, cells in different tissues clearly have varying functions by expressing different RNA. Therefore if one is interested in the dynamics of different cell types, RNA is good to look at. While DNA is static, RNA expression can be different depending on time, tissue, and environmental factors.
+The purpose of DNA is to create protein, and *ribonucleic acid (RNA)* is produced as an intermediate. While every cell in the body has roughly the same DNA, cells in different tissues clearly have varying functions. This is because different cells express different RNA. Therefore if one is interested in the dynamics of different cell types, one should somehow measure RNA. While DNA is static, RNA expression can be different depending on time, tissue, and environmental factors.
 
 DNA consists of two parts: coding and noncoding. The coding part includes objects called *genes*. There are roughly 20000 genes in humans, occupying about 1% of the entire genome. A lot of biology revolves around these genes; for example, RNA is transcribed from these genes. Each gene also consists of multiple parts: exons and introns. In the transcription problem, we take a subset of these exons to form an RNA transcript. We could obtain multiple transcripts from the same gene. In the figure below, we obtain 2 distinct transcripts from gene 1, a transcript consisting of exons A and B, and another transcript consisting of exons B and C.
 
@@ -100,7 +100,7 @@ There are known genes for which there are 1000s of different types of transcript
 
 For a given cell, some genes may be expressed and others may not be expressed. The genes that get expressed may have 1 or more isoforms, and each isoform may be expressed in different abundances. Within a cell, we may see 10000s of transcripts from the union of all the genes, and a biologist would be interested in identifying these transcripts. Estimating *gene expression* is the problem of figuring out which transcripts are expressed and how much they are expressed.
 
-As we said at the beginning of the course, high-throughput sequencing (HTS) is very useful because the HTS technology can be applied to measure other molecules. RNA is a prime example. In *RNA-seq*, we sample a tissue and, after some chemistry, obtain a soup of RNA transcripts. Biologists have been able to convert the RNA to a special type of DNA (called cDNA) using an enzyme called *reverse transcriptase*, and we can feed the DNA into our high-throughput sequencer. The pipeline is summarized in the figure below.
+As we said at the beginning of the course, high-throughput sequencing (HTS) is very useful because HTS technologies can be applied to measure other molecules. RNA is a prime example. In *RNA-seq*, we sample a tissue and, after some chemistry, obtain a soup of RNA transcripts. Biologists have been able to convert the RNA to a special type of DNA (called cDNA) using an enzyme called *reverse transcriptase*, and we can feed the DNA into our high-throughput sequencer. The pipeline is summarized in the figure below.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture14/Figure3.png" width="80%">
@@ -119,9 +119,9 @@ Let's say we have two transcripts that appear in different abundances. We get re
 
 We may encounter the first case if we are working with a popular organism such as a human or mouse. In this case, there exists a curated set of transcripts called the *transcriptome*. While identifying transcripts will be easy, obtaining their abundances is nontrivial. Additionally, different tissues will have different abundances, and this information is the subject of *differential analysis*. We may encounter the second or third case if we are looking at a poorly studied organism or cancerous tissue.
 
-We will start with the first formulation. The computational problem here is a counting problem: we want to count how many reads came from each transcript. Mapping reads to transcripts can be done using various alignment algorithms, which we've discussed in previous lectures. Notice that there is an intrinsic ambiguity here which makes the problem nontrivial. In some cases, I do not know where a read comes from. For example, consider transcripts 1 and 2 in the figure above. If we obtain a read that aligns to exon B, then we cannot tell which transcript it came from. This is an inference problem. Most ambiguities result from different transcripts sharing exons. For simplicity, we currently will not worry about the different lengths of transcripts (this is easy to account for later). In summary, we have two types of reads: uniquely mapped and multiply mapped.
+We will start with the first formulation. The computational problem here is a counting problem: we want to count how many reads came from each transcript. Mapping reads to transcripts can be done using various alignment algorithms, which we've discussed in previous lectures. Notice that there is an intrinsic ambiguity here: in some cases, I do not know where a read comes from. For example, consider transcripts 1 and 2 in the figure above. If we obtain a read that aligns to exon B, then we cannot tell which transcript it came from. This is an inference problem. Most ambiguities result from different transcripts sharing exons. For simplicity, we currently will not worry about the different lengths of transcripts (this is easy to account for later). In summary, we have two types of reads: uniquely mapped and multiply mapped.
 
-Let $$t_i, \dots, t_k$$ be $$k$$ transcripts and $$\rho_1, \dots, \rho_k$$ be the abundances of the transcripts. We obtain $$N$$ reads $$R_1, \dots, R_N$$, and we want to estimate the $\rho$'s. Let $$N_k$$ be the number of reads that map uniquely to transcript $$k$$ and $$N = \sum_k N_k$$, the total number of unique reads. We can let
+Let $$t_i, \dots, t_k$$ be $$k$$ transcripts and $$\rho_1, \dots, \rho_k$$ be the abundances of the transcripts. We obtain $$N$$ reads $$R_1, \dots, R_N$$, and we want to estimate the $$\rho$$'s. Let $$N_k$$ be the number of reads that map uniquely to transcript $$k$$ and $$N = \sum_k N_k$$ be the total number of unique reads. We can let
 
 $$
 \hat{\rho}_k = \frac {N_k}{N}
