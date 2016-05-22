@@ -6,7 +6,7 @@ permalink: /lectures/lecture14/
 
 ## Lecture 14: Wrapping up Haplotype Assembly and Introduction to RNA-seq
 
-Wednesday 11 May 2016
+Monday 16 May 2016
 
 _Scribed by the course staff_
 
