@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture15/
 ---
-## Lecture 15: RNA-seq: Quantification problem and the EM algorithm
+## Lecture 15: RNA-seq - Quantification and the EM algorithm
 
 Wednesday, May 18, 2016
 
