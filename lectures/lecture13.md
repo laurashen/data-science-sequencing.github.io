@@ -48,11 +48,11 @@ $$
 
 Nodes $$a, c, $$ and $$d$$ belong to community $$A$$, and node $$b$$ belongs to community $$B$$. In practice, we may have 100,000 nodes with half in each cluster. Notice that recovering the communities is equivalent to solving the haplotype phasing problem. The partition will give us all the information except for 1 bit: which SNPs correspond to the maternal chromosome.
 
-We will let $$x_i$$ denote the class of node $$i$$ and $$x_i \in \{-1,+1\}$$. Let $$Y_{ij}$$ represent the edge data between nodes $$i$$ and $$j$$ where $$Y_{ij} = 1$$ if $$x_i == x_j$$ and -1 otherwise. If there is no noise, then $$Y = 1$$ corresponds to an edge where the two nodes are in the same community and vice versa. $$Y = -1$$ would indicate the two nodes being in different communities. The figure below illustrates the notation introduced so far.
+We will let $$x_i$$ denote the class of node $$i$$ and $$x_i \in \{-1,+1\}$$. Let $$Y_{ij}$$ represent the edge data between nodes $$i$$ and $$j$$ where $$Y_{ij} = 1$$ if $$x_i == x_j$$ and -1 otherwise. We will set $$Y_{ij} = 0$$ if there is no linking reads between node i and node j. If there is no noise, then $$Y = 1$$ corresponds to an edge where the two nodes are in the same community and vice versa. $$Y = -1$$ would indicate the two nodes being in different communities. The figure below illustrates the notation introduced so far.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture13/Figure2.png" width="50%">
-	<div class="figcaption">An edit distance example.</div>
+	<div class="figcaption"> The community detection setup for the haplotype phasing problem..</div>
 </div>
 
 When working with real read data, we can think of each measurement (mate-pair read) as a noisy edge on the graph telling us if two nodes are linked. We introduce a random variable $$Z_{ij}$$ to represent the noise in each edge. We assume that all $$Z_{ij}$$ are i.i.d. In summary,
@@ -144,7 +144,7 @@ While the number of edges is fixed, the number of cross edges depends on the clu
 
 ### <a id ='SMSDP'><a/>Spectral method
 
-In order to solve this NP hard combinatorial optimization problem, we can use the spectral method and semidefinite programming (SDP) to arrive at approximate solution. We relax the problem by allowing each $$x_i$$ to be real. We will also constrain $$\|\mathbf{x}\|_2 = n$$.  We can bound the optimization problem as follows:
+In order to solve this NP hard combinatorial optimization problem, we can use the spectral method to arrive at an approximate solution. We relax the problem by allowing each $$x_i$$ to be real. We will also constrain $$\|\mathbf{x}\|_2 = n$$.  We can bound the optimization problem as follows:
 
 $$
 \begin{align}
