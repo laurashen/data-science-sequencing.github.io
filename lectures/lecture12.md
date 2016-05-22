@@ -171,7 +171,7 @@ $$Y_B = L_1 \oplus Z_B$$
 $$Y_C = L_2 \oplus L_3 \oplus Z_C,$$  
 
 
-where $$Z_A, Z_B, Z_C \sim \text{Bernoulli}(\epsilon(1-\epsilon))$$
+where $$Z_A, Z_B, Z_C \sim \text{Bernoulli}(\epsilon(1-\epsilon))   $$
 model the noise in the observed parities.
 
 Our goal is to find out what the sequence of $$L_i$$ is to identify
