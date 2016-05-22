@@ -13,7 +13,7 @@ _Scribed by Paraskevas Deligiannis and revised by the course staff_
 
 ## Topics
 
-In the [previous lecture](http://data-science-sequencing.github.io/lectures/lecture14/), we introduced [RNA-seq](https://en.wikipedia.org/wiki/RNA-Seq) and the quantification problem. In this lecture, we  delve deeper into this problem -- in the case when we know the RNA transcripts beforehand -- and examine how to solve it optimally under some simplicity assumptions.
+In the [previous lecture](http://data-science-sequencing.github.io/lectures/lecture14/), we introduced [RNA-seq](https://en.wikipedia.org/wiki/RNA-Seq) and the quantification problem. In this lecture, we dive deeper into this problem -- in the case when we know the RNA transcripts beforehand -- and examine how we can solve it optimally under some simplicity assumptions.
 
 1.	<a href='#intro'>The RNA quantification problem & our assumptions</a>
 2.	<a href='#naive'>Naive split reads</a>
@@ -36,26 +36,27 @@ In the [previous lecture](http://data-science-sequencing.github.io/lectures/lect
 
 As discussed in the last lecture, the RNA-seq data consist of multiple reads sampled from the various
 RNA transcripts in a given tissue (after the reverse transcription of RNA to cDNA).
-We assume that these reads are short in comparison to the RNA transcripts and have equal length L.
+We assume that these reads are short in comparison to the RNA transcripts and have equal length $$L$$.
 
-We, also, assume that we know the list of all possible RNA transcripts $$t_1,t_2,...,t_K$$
-beforehand. Every read $$R_i,i=1,2,...,N \ \ $$ is mapped (using alignment)
+We, also, assume that we know the list of all possible RNA transcripts $$t_1,t_2, \dots,t_K$$
+beforehand. Every read $$R_i,i=1,2,\dots,N \ \ $$ is mapped (using alignment)
 to  (possibly multiple) transcripts. Our goal is to estimate
-abundance of each transcript $$\rho_1, \rho_2,...,\rho_K, \ $$ where
+the abundance of each transcript $$\rho_1, \rho_2,...,\rho_K, \ $$ where
 $$\rho_k \in [0,1], \ k \in \{1,2, \cdots, K \} \ \ $$ denotes the fraction of
 $$t_k$$ among all transcripts.
 
 Additionally, we make the following assumptions for the sake of simplicity:  
+
 - _All transcripts have equal length $$\ell$$._ It is fairly straightforward to extend our analysis to transcripts of unequal length.  
 - _The reads come from uniformly sampling all the transcripts._
-A relatively mild assumption we have made before to ease our analysis, even though it is not entirely accurate.  
+This is a relatively mild assumption we have made before to ease our analysis, even though it is not entirely accurate.  
  - _Each read can come from at most one location on each transcript._ This is a reasonable assumption, since different exons rarely contain common subsequences.
 
 ## <a id='naive'></a>Naive split reads
 
 As discussed in the previous lecture, the difficulty of the above counting problem lies in the existence of multiply-mapped reads. This occurs due to the fact that different transcripts can contain the same exons.
 
-One approach to deal with these reads would be to split them, i.e. assign a fractional count to each transcript they map to. The simplest way to do this is by splitting the read equally among all transcripts it is mapped to. For instance, if a read maps to 5 transcripts, then each of them gets a count of $$\frac{1}{5}$$.
+One approach to deal with these reads would be to split them, i.e. assign a fractional count to each transcript a read maps to. The simplest way to do this is by splitting the read equally among all transcripts it is mapped to. For instance, if a read maps to 5 transcripts, then each of them gets a count of $$\frac{1}{5}$$.
 
 Finally, our estimate of the abundance of $$t_k$$ with total count $$N_k$$ is
 
@@ -64,7 +65,7 @@ $$
 $$
 
 ### <a id='shortcomings'></a>Shortcomings of naive splitting
-This sounds reasonable, but it can fail spectacularly, as illustrated by the following example.
+While naive read splitting sounds reasonable, it can fail spectacularly as illustrated by the following example.
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture15/transcripts_ABBC.png" width="50%">
@@ -136,12 +137,13 @@ $$
 ### <a id='questions'></a>Questions
 
 The natural questions that arise now are
+
 1. whether this algorithm converges in general and
 2. even if it does, does it converge to the Maximum Likelihood (ML) estimate $$\mathbf{\hat{\rho}^{ML}}$$?
 
 The former is crucial, since a non-converging process is, basically, useless. The latter examines the performance of the algorithm in terms of estimation accuracy. Given that we have a finite amount of data, we cannot guarantee that the ground truth is recovered. Our best hope is to find $$\mathbf{\hat{\rho}^{ML}}$$.
 
-This leads us to our next topics. What is $$\mathbf{\hat{\rho}^{ML}}$$ and how can we compute it efficiently?
+This leads us to our next few topics. What is $$\mathbf{\hat{\rho}^{ML}}$$ and how can we compute it efficiently?
 
 ## <a id='ml'></a>Maximum Likelihood estimation
 
@@ -202,8 +204,8 @@ $$
 \end{equation}
 $$
 
-Maximizing the likelihood function is equivalent to maximizing the log-likelihood
-and since, $$-N\log{(l-L+1)}$$ is a constant, the ML estimation for $$k=1,...,K$$ is
+Maximizing the likelihood function is equivalent to maximizing the log-likelihood,
+and since $$-N\log{(l-L+1)}$$ is a constant, the ML estimation for $$k=1,...,K$$ is
 
 $$
 \DeclareMathOperator*{\argmax}{arg\!\max}
@@ -216,13 +218,13 @@ $$
 \mathbf{\hat{\rho}^{ML}}=\argmax_{\mathbf{\rho} \succeq 0\ :\ \|\mathbf{\rho}\|_1=1} {\sum_{i=1}^N{\log{(Y\mathbf{\rho})}}}.
 $$
 
-Along each row i of matrix Y the positions with value 1 represent the transcripts to which $$R_i$$ maps. Along each column k of Y, the positions with value 1 represent the reads that map to $$t_k$$.
+Along each row $$i$$ of matrix $$Y$$ the positions with value 1 represent the transcripts to which $$R_i$$ maps. Along each column $$k$$ of $$Y$$, the positions with value 1 represent the reads that map to $$t_k$$.
 
-As we can see, the effect of the data (reads) on the ML estimate can be summarized by matrix Y, or equivalently, its entries $$y_{ik}$$. Therefore, Y is a [_sufficient statistic_](https://en.wikipedia.org/wiki/Sufficient_statistic) for this ML inference problem.
+As we can see, the effect of the data (reads) on the ML estimate can be summarized by matrix $$Y$$, or equivalently, its entries $$y_{ik}$$. Therefore, $$Y$$ is a [_sufficient statistic_](https://en.wikipedia.org/wiki/Sufficient_statistic) for this ML inference problem.
 
 ### <a id='convex'></a>Convexity
 
-The above maximization problem is a convex optimization problem, which is desired, since convex problems are well studied and there are tools to solve them efficiently.
+The above maximization problem is a convex optimization problem, which is desired, since convex problems are well studied and there exist tools to solve them efficiently.
 
 The convexity arises from the combination of the following factors:  
 
@@ -240,7 +242,7 @@ The convexity arises from the combination of the following factors:
 
 ### <a id='unique'></a>Special case: Uniquely-mapped reads
 
-Let's consider the special case when there are no multiply-mapped reads, i.e. every read maps to at  most one transcript, or equivalently, each row of matrix Y has at most one element with value 1. If we denote by $$N_k$$ the number of reads that map to transcript $$t_k$$, then the above maximization problem becomes
+Let's consider the special case when there are no multiply-mapped reads, i.e. every read maps to at  most one transcript, or equivalently, each row of matrix $$Y$$ has at most one element with value 1. If we denote by $$N_k$$ the number of reads that map to transcript $$t_k$$, then the above maximization problem becomes
 
 $$
 \hat{\rho}_{k}^{ML\ unique}=\argmax_{\rho_k \ge 0\ :\ \sum_{k=1}^K{\rho_k}=1}{(\sum_{k=1}^K{N_k\log{\rho_k}})}.
@@ -264,7 +266,7 @@ $$
 
 ### <a id='key'></a>Key idea
 
-The basic observation is that in many cases of statistical inference, the problem would become significantly easier, or even trivial, if we knew some unobserved _hidden_ variable(s) $Z$. For instance, in our case, if we somehow knew for every read which transcript it came from, then our problem would reduce to the simple problem with uniquely mapped reads. This information can be represented by a matrix $$Z$$ such that
+The basic observation is that in many cases of statistical inference, the problem would become significantly easier, or even trivial, if we knew some unobserved _hidden_ variable(s) $$Z$$. For instance, in our case, if we somehow knew for every read which transcript it came from, then our problem would reduce to the simple problem with uniquely mapped reads. This information can be represented by a matrix $$Z$$ such that
 
 $$
 Z_{ik}=\left\{ \begin{array}[cc]\\
@@ -273,7 +275,7 @@ Z_{ik}=\left\{ \begin{array}[cc]\\
 $$
 
 The idea behind EM is to iteratively try to use $$\mathbf{x}$$ and the current estimate $$\mathbf{\hat{\theta}}$$ to
-compute the posterior distribution : $$p(Z \mid \mathbf{x} ,\mathbf{\hat{\theta}}) $$.
+compute the posterior distribution: $$p(Z \mid \mathbf{x} ,\mathbf{\hat{\theta}}) $$.
 Then we  update our estimate $$\mathbf{\hat{\theta}}$$ to maximize the expected
 value of the likelihood $$p(\mathbf{x},Z \mid \mathbf{\theta})$$ w.r.t. $$p(Z\mid\mathbf{x};\mathbf{\hat{\theta}})$$ and so on:
 
@@ -290,11 +292,11 @@ However, we saw from our ML analysis in a previous section that the ML optimizat
 
 ### <a id='steps'></a>Iterative steps
 
-Let's formally describe the EM algorithm. It, basically, consists of two successive steps, the expectation step (E step) and the maximization step (M step), after which it is named. These steps are repeated until the algorithm converges.
+Let's formally describe the EM algorithm. The algorithm consists of two successive steps, the expectation step (E step) and the maximization step (M step), after which it is named. These steps are repeated until the algorithm converges.
 
 For iteration $$m = 0,1,2,...$$  
 
-1. __E step:__ Compute the expected value of the log-likelihood function , w.r.t the conditional distribution of $$Z|\mathbf{x}$$ using the current estimate of the unknown parameters $$\mathbf{\hat{\theta}^{(m)}}$$:  
+1. __E step:__ Compute the expected value of the log-likelihood function w.r.t the conditional distribution of $$Z|\mathbf{x}$$ using the current estimate of the unknown parameters $$\mathbf{\hat{\theta}^{(m)}}$$:  
 $$
 J(\mathbf{\theta};\mathbf{\hat{\theta}^{(m)}}) = \mathbb{E}_{Z|\mathbf{x};\mathbf{\hat{\theta}^{(m)}}}[\log{p(\mathbf{x},Z|\mathbf{\theta})}]
 $$  
@@ -322,7 +324,7 @@ p(\mathbf{x},Z|\mathbf{\rho}) &= \sum_{i=1}^N{\log{(\sum_{k=1}^K{Z_{ik}\rho_k}})
 \end{split}
 $$  
 
-where in the first step, we note that, since $$Z$$ represents the ground truth, similarly to the case with uniquely mapped reads, there is at most one non-zero term in the sum $$\sum_{k=1}^K{Z_{ik}\rho_k}$$.
+where in the first step, we note that since $$Z$$ represents the ground truth, there is at most one non-zero term in the sum $$\sum_{k=1}^K{Z_{ik}\rho_k}$$ (similar to the case with uniquely mapped reads).
 
 Consequently,  
 
@@ -339,7 +341,7 @@ $$
 
 where we have omitted the linear constraints on $$\mathbf{\rho}$$ for simplicity. One can verify that if we define $$\hat{N}_k = \sum_{i=1}^N{f_{ik}^{(m)}}$$, the above results follow readily from our analysis for the case of uniquely mapped reads. This is, after all, the reason why we use the _hidden_ variable $$Z$$.
 
-### <a id='hard'></a>_Hard_ EM
+### <a id='hard'></a>"Hard" EM
 
 The EM algorithm described above is a type of _soft_ EM in the sense that at each iteration,
 it calculates and uses only an estimate of the _distribution_ of
@@ -350,9 +352,8 @@ In contrast, a _hard_ EM algorithm would compute an estimate
 $$\hat{Z}$$ of the _values_ of $$Z$$ and then use it to
 assign each read $$R_i \to S_i$$ to the transcript $$t_k \in S_i$$
 that is most abundant according to the current estimate $$\mathbf{\hat{\rho}_k}$$.
-The _hard_ algorithm, which is, also, described in the
-[Wikipedia article](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm#Description),
-commits a lot more to its estimates than the "soft" alternative, but seems simpler to implement.
+The [_hard_ algorithm](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm#Description)
+commits a lot more to its estimates than the "soft" alternative but seems simpler to implement.
 
 Given its possible benefits over the _soft_ version, the questions that arise are:  
 
