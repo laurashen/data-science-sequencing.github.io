@@ -4,22 +4,25 @@ mathjax: true
 permalink: /lectures/lecture12/
 ---
 
-## Lecture 12 : Haplotype Phasing
+## Lecture 12 : Haplotype Assembly
 
 Monday 25 April 2016
 
 _Scribed by Chayakorn Pongsiri  and revised by the course staff_
 
-- Haplotype Phasing
-- Convolutional Code
+1. 	<a href='#SNP'>Single Nucleotide Polymorphisms</a>  
+    - <a href='#calling'>SNP Calling</a>  
+2. 	<a href='#phasing'>Haplotype Assembly</a>  
+    - <a href='#comp'>The computational problem</a>  
+    - <a href='#conv'>Convolutional codes and the Viterbi algorithm</a>  
 
-### Single Nucleotide Polymorphism (SNP)
+###  <a id='SNP'></a>Single Nucleotide Polymorphisms (SNP)
 Single Nucleotide Polymorphisms (SNPs) are mutations that occur over evolution.
 A simplistic view of these would be to think of them as around 100,000 positions
 where variation occurs in the human genome.
 
 
-### SNP Calling
+#### <a id='calling'></a> SNP Calling
 
 
 
@@ -43,7 +46,7 @@ to see if a reads disagreeing with the reference are due to errors or due
 to the individual's genome being different is a simple statistical test.
 
 
-### SNP calling in diploid organisms
+##### SNP calling in diploid organisms
 
 If an organism had only one copy of every chromosome, the SNP calling problem
 would reduce to just taking the majority of the base of reads aligned to
@@ -85,7 +88,7 @@ the SNPs present on the same chromosome rather than those on different
 chromosomes.
 
 
-### Haplotype phasing
+### <a id='phasing'></a> Haplotype Assembly
 
 **Haplotype phasing** is the problem of inferring information about the variations
 in each of the two chromosomes (haplotypes).
@@ -138,7 +141,7 @@ of the results [NA12878](https://catalog.coriell.org/0/Sections/Search/Sample_De
 a human genome used as a reference in a lot of computational experiments.
 
 
-#### Computational Problem
+#### <a id='comp'></a> The Computational Problem
 
 Here we consider a simplified problem of haplotype assembly. We assume
 we have the locations of the heterozygous positions in the genome, and only
@@ -158,7 +161,7 @@ For example, from the picture, $$L_1 = 1, L_2 = 1, \text{ and }L_3 = 0.$$
 The parities obtained between the two SNPs covered by the reads are given by
 $$Y_A = 1, Y_B = 1, \text{ and } Y_C = 1.$$
 
-However the onservations are noisy. One can model this as each SNP observation
+However the observations are noisy. One can model this as each SNP observation
 being flipped with some probability $$\epsilon $$ independent of all other
 observations.
 This leads to the following  model:
@@ -178,7 +181,7 @@ which are on the paternal chromosome).
 
 
 
-#### Convolutional Code and Viterbi Algorithm
+#### <a id='conv'></a> Convolutional Code and Viterbi Algorithm
 
 <div class="fig figcenter fighighlight">
   <img src="/assets/lecture12/Figure2.png" width="40%">
@@ -189,7 +192,7 @@ The transfromation from $$L's$$ to $$Y's$$ can be viewed as a
 and the maximum-likelihood decoder is called the
 [**Viterbi algorithm**](https://en.wikipedia.org/wiki/Viterbi_algorithm).
 
-#### Complexity of the Viterbi Algorithm
+##### Complexity of the Viterbi Algorithm
 The runtime of the Viterbi algorithm is linear in the number of SNPs
 in the genome (around 100,000 in human genome) and proportional to $$2^{\text{mate-pair separation range}}$$.
 The fact that the runtime is exponentially increasing with the mate-pair
