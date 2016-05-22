@@ -4,7 +4,7 @@ mathjax: true
 permalink: /lectures/lecture12/
 ---
 
-## Lecture 12 : Haplotype Assembly
+## Lecture 12 : Haplotype Assembly - Introduction and Convolutional Codes
 
 Monday 25 April 2016
 
