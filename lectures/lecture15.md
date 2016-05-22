@@ -361,5 +361,5 @@ Given its possible benefits over the _soft_ version, the questions that arise ar
 2. Will it work in general?
 
 ----
-
-- The figure here is due to Paraskevas Deligiannis.
+<!--
+- The figure here is due to Paraskevas Deligiannis. -->
