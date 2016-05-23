@@ -64,8 +64,3 @@ In class we discussed the basic EM algorithm for RNA-seq quantification in the s
 - Generalize the log likelihood model in Part 1 to this case.
 - Derive the EM iterative algorithm for this model, again specializing from the general EM algorithm.
 - Suppose the alignment tool at your disposal can compute all exact alignments and all approximate alignments up to one base different. If the error rate $$\delta$$ is small such that the chance of a read having two or more errors is negligible, explain how you would use your alignment tool in implementing the EM algorithm derived in the previous part.
-
-
----
-
-[This assignment as a pdf.](/assets/assignment3/assignment3.pdf)
