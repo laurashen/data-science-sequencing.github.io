@@ -54,11 +54,13 @@ In this problem we examine a simplified version of the haplotype assembly proble
 
 In class we discussed the basic EM algorithm for RNA-seq quantification in the simple case when the transcript lengths are all the same and there are no errors in the read. In this question, we will consider extensions to unequal transcript lengths and read errors. We start with the same RNA-seq model as discussed in class.
 
-1. Instead of equal transcript length $$\ell$$, let us now consider the case when the transcript lengths are $$\ell_1, \ell_2, \dots, \ell_K$$. The reads are still error-free.
+1. Implement the EM algorithm for the error-free case where all transcripts have the same length. Fill in the code in the last cell of the [ipython notebook](/assets/assignment3/ee372_assignment3.ipynb).
+
+2. Instead of equal transcript length $$\ell$$, let us now consider the case when the transcript lengths are $$\ell_1, \ell_2, \dots, \ell_K$$. The reads are still error-free.
 - Develop the log likelihood model
 - Derive the EM iterative algorithm for this model, specializing from the general EM discussed in the lecture.
 
-2. Now suppose the reads have errors: each base is read correctly with probability $$1-\delta$$ and incorrectly with probability $$\delta$$, and if incorrect the base can be read equally likely as any of the other three possibilities.
+3. Now suppose the reads have errors: each base is read correctly with probability $$1-\delta$$ and incorrectly with probability $$\delta$$, and if incorrect the base can be read equally likely as any of the other three possibilities.
 - Generalize the log likelihood model in Part 1 to this case.
 - Derive the EM iterative algorithm for this model, again specializing from the general EM algorithm.
 - Suppose the alignment tool at your disposal can compute all exact alignments and all approximate alignments up to one base different. If the error rate $$\delta$$ is small such that the chance of a read having two or more errors is negligible, explain how you would use your alignment tool in implementing the EM algorithm derived in the previous part.
