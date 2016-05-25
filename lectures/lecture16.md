@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /lectures/lecture16/
 ---
-## Lecture 16: RNA-seq - Quantification and the EM algorithm
+## Lecture 16: RNA-seq - Hard EM and De Novo Transcriptome Assembly
 
 Monday, May 23, 2016
 
