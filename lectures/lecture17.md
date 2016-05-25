@@ -14,6 +14,7 @@ _Scribed by the course staff_
 1. <a href='#denovo'>De novo transcriptome assembly</a>
 -  <a href='#shannon'>A linear-time algorithm for an NP-hard problem</a>
 2. <a href='#scrna'>Single-cell RNA-seq</a>
+-  <a href='#dropseq'>Drop-seq</a>
 
 ## <a id='denovo'></a>De novo transcriptome assembly
 
@@ -71,4 +72,12 @@ In practice, we have to use the read counts to estimate the abundances. Even if 
 
 When sequencing are performed on a piece of tissue (e.g. embryonic stem cells), RNA-seq is performed on many cells at once (**bulk sequencing**). Therefore the data we obtain are effectively averaged over all these cells. Biologists, however, are also interested in what's happening on the cell level. Perhaps cells in different stages of development can provide some information for certain phenotypes, for example. How can we invent new methods to do sequencing on a cell-to-cell level?
 
-**Single-cell RNA-seq** started around 5-7 years ago. Over the years, technologies that could sequence 100s and 1000s of cells emerged. More recently, a technology called [Drop-seq](https://www.youtube.com/watch?v=vL7ptq2Dcf0) was introduced; the technology can sequence 10000s of cells. 
+**Single-cell RNA-seq** started around 5-7 years ago. Over the years, technologies that could sequence 100s and 1000s of cells emerged.
+
+### <a id='dropseq'></a>Drop-seq
+
+More recently, a technology called [Drop-seq](https://www.youtube.com/watch?v=vL7ptq2Dcf0) was introduced; the technology can sequence 10000s of cells. There are few key components to the technology: **microfluidics**, which separates cells via droplets, and a **barcoding** scheme, which allows the scientist to obtain more information about each read. Recall that barcoding has also been used in 10X sequencing for detecting which reads come from the same fragment (thus giving us long-range information for applications like phasing).
+
+Drop-seq generates random sequences via "splitting and pooling" for barcodes. Notice we do not need a particular barcode for a particular cell; we just need different barcodes in different cells. By attaching barcode sequences to **beads** such that different beads get different barcodes, all transcripts attached to the same bead will have the same barcode. After sequencing, we can easily identify which reads come from which cell. A challenge is in ensuring that most droplets have at most one bead.
+
+Drop-seq enables parallel processing of many single-cells at the same time. The first computational problem that one has to solve is in separating reads based on their cell of origin. From each cell, we obtain a vector $$\boldsymbol{\rho}_i \in \mathbb{R}^{20000}$$ of abundances of all transcripts within that cell. We will discuss some computational techniques for clustering these high-dimensional vectors next time.
