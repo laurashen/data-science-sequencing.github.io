@@ -38,7 +38,7 @@ In this problem we examine a simplified version of the haplotype assembly proble
 
 3. If each position of each mate-pair read has an error rate of $$\delta \in [0,1]$$, argue that the number of erroneous pairwise measurements $$\sim \text{Poisson}(2\delta (1-\delta)N/n)$$.
 
-4. Given that there are $$m$$ reads covering a pair of consecutive positions, argue that the probability that a majority of the reads being wrong is approximately $$\exp(-mD(\frac{1}{2} \| 2\delta (1- \delta)))$$ where $$D(\frac{1}{2} \| 2 \delta (1-\delta))$$ represents the KL divergence between a $$\text{Bernoulli}(\frac{1}{2})$$ distribution and a $$\text{Bernoulli}(2 \delta(1 -\delta))$$ distribution. _Hint_: The probability of $$\text{Binomial}(m,q) > \frac{1}{2} = \exp(-m D (\frac{1}{2} \|q))$$.
+4. Given that there are $$m$$ reads covering a pair of consecutive positions, argue that the probability that a majority of the reads being wrong is approximately $$\exp(-mD(\frac{1}{2} \| 2\delta (1- \delta)))$$ where $$D(\frac{1}{2} \| 2 \delta (1-\delta))$$ represents the KL divergence between a $$\text{Bernoulli}(\frac{1}{2})$$ distribution and a $$\text{Bernoulli}(2 \delta(1 -\delta))$$ distribution. _Hint_: The probability of $$\text{Binomial}(m,q) > \frac{m}{2} \approx \exp(-m D (\frac{1}{2} \|q))$$.
 
 5. Using earlier parts or otherwise, compute an upper bound on the average probability of error in estimating the parity between SNR $$i$$ and $$i+1$$, in terms of $$N$$, $$n$$, and $$\delta$$.
 
