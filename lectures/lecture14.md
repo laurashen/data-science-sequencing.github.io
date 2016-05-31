@@ -105,11 +105,11 @@ random vector with the same matrix over and over again. We can solve a problem
 with n = 100000 in less than a minute on a laptop. SDP is much slower and on
 the order of $$O(n^3)$$.
 
-In terms of **robustness**, the spectral method is lacking for the reasons
-discussed above. The SDP relaxation can be shown to be close to information
-theoretically optimal for some settings of "benevolent-adversaries"
+In terms of **robustness**,  the SDP relaxation can be shown to have good performance
+ for some settings of "benevolent-adversaries"
 (see [Moitra,Perry, and Wein 2015](http://arxiv.org/abs/1511.01473)
-for details.)
+for details. A surprising result proved there is that "benevolent-adversaries"
+make the learning task strictly harder.)
 
 ### <a id='rnaseq'></a>RNA-seq
 
