@@ -334,7 +334,7 @@ $$
 &= \argmax_{\mathbf{\rho}}{J(\mathbf{\rho};\mathbf{\hat{\rho}^{(m)}})}, \\
 &= \argmax_{\mathbf{\rho}}{\mathbb{E}_{Z|\mathbf{R};\mathbf{\hat{\rho}^{(m)}}}[\log{p(\mathbf{R},Z|\mathbf{\rho})}]},\\
 &= \argmax_{\mathbf{\rho}}{\sum_{k=1}^K{(\sum_{i=1}^N{f_{ik}^{(m)})\log{\rho_k}}}} \\
-\implies \mathbf{\hat{\rho}^{(m+1)}}_k &= \frac{1}{N}\sum_{i=1}^N{f_{ik}^{(m)}},
+\implies \mathbf{\hat{\rho}^{(m+1)}_k} &= \frac{1}{N}\sum_{i=1}^N{f_{ik}^{(m)}},
 \end{align}
 $$  
 
