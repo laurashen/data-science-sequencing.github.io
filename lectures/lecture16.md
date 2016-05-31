@@ -17,13 +17,23 @@ _Scribed by the course staff_
 
 ## <a id='hardEM'></a>Analysis of Hard EM
 
-Last time, we talked the EM algorithm and its particular application to the problem of RNA-seq quantification. We discussed two versions of EM: hard EM and soft EM. In the context of quantification, if a read is multiply mapped to several different transcripts, then we split the read so that each transcript gets a fraction of a count. We showed that the iterative EM algorithm always converges to the maximum likelihood solution. EM always converges to a local optimum because every iteration always increases the likelihood function. In particular, the likelihood function for the RNA-seq quantification problem is concave, and therefore EM will converge to the global optimum.
+Last time, we talked the EM algorithm and its particular application to the
+problem of RNA-seq quantification. We discussed two versions of EM: the hard EM
+and the soft EM. In the context of quantification, if a read is multiply mapped
+to several different transcripts, then we split the read so that each transcript
+gets a fraction of a count. We showed that the iterative EM algorithm always
+converges to the maximum likelihood solution. EM always converges to a local
+optimum because every iteration always increases the likelihood function.
+In particular, the likelihood function for the RNA-seq quantification problem
+is concave, and therefore EM will converge to the global optimum.
 
 For **hard EM**, the count of the read is mapped to only transcript $$i$$ where
 
 $$ i^* = \text{argmax}_{i} \rho_i $$
 
-Is the hard EM guaranteed to converge to the maximum likelihood solution? Consider the example from last lecture. We have $$t_1$$ consisting of exons A and B and $$t_2$$ consisting of exons B and C. The ground truth is $$\rho_1 = 1.0$$ and $$\rho_2 = 0.0$$. We have 20 reads that come from $$t_1$$, 10 that maps to exon A and 10 that maps to exon B. We will need to break ties randomly; i.e. each read that maps to exon B is assigned to $$t_1$$ and $$t_2$$ with equal probability. Notice that in this case if we break ties randomly, at some point more reads will be assigned to $$t_1$$.
+Consider the example from last lecture. We have $$t_1$$ consisting of exons A and B
+and $$t_2$$ consisting of exons B and C. The ground truth is $$\rho_1 = 1.0$$ and $$\rho_2 = 0.0$$.
+We have 20 reads that come from $$t_1$$, 10 that maps to exon A and 10 that maps to exon B. We will need to break ties randomly; i.e. each read that maps to exon B is assigned to $$t_1$$ and $$t_2$$ with equal probability. Notice that in this case if we break ties randomly, at some point more reads will be assigned to $$t_1$$.
 
 Now let's consider the case where we have $$\rho_1 = 0.9$$ and $$\rho_2 = 0.1$$. We obtain the read mapping shown in the figure below (the figure enforces our assumption that the transcripts, and in this case exons, are equal).
 
