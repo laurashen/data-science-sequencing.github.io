@@ -318,13 +318,13 @@ We have that
 
 $$
 \begin{split}
-p(\mathbf{R},Z|\mathbf{\rho}) &= \prod_{k=1}^K \prod_{i=1}^N \left( \rho_k^{Z_{ik}} \right) \\
+p(\mathbf{R},Z|\mathbf{\rho}) &= \prod_{k=1}^K \prod_{i=1}^N \left( \rho_k^{Z_{ik}} \right) \mathbb{I} (\mathbf{R} \text{ is consistant with } Z) \\
 \implies  \log p(\mathbf{R},Z|\mathbf{\rho}) &= \sum_{k=1}^K \left( \sum_{i=1}^NZ_{ik} \right)\log \rho_k \\
   &= \sum_{k=1}^K{N_k\log{\rho_k}},
 \end{split}
 $$  
 
-where in the first step, we note that since $$Z$$ represents the ground truth, there is at most one non-zero term in the sum $$\sum_{k=1}^K{Z_{ik}}$$ (similar to the case with uniquely mapped reads).
+where in the first step, we note that since $$Z$$ represents the ground truth, there is at most one non-zero term in the sum $$\sum_{k=1}^K{Z_{ik}}$$ (similar to the case with uniquely mapped reads). We drop the indicator function in the second step assuming that $$\mathbf{R}$$ and Z are consistant.
 
 Consequently,  
 
