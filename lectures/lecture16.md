@@ -64,7 +64,7 @@ The algorithm breaks (i.e. we are not guaranteed to converge to the correct solu
 
 In practice, most transcripts have different lengths. In the [homework](http://data-science-sequencing.github.io/assignments/assignment3/), you will consider what happens when transcripts have different lengths and when minor errors exist.
 
-##<a id='denovo'></a> De Novo Transcriptome Assembly
+## <a id='denovo'></a> De Novo Transcriptome Assembly
 
 We now look at more complicated problem: the situation where we do not know the transcripts. While for humans there exists a well-curated set of transcripts, this may not be true for other (in fact, most) organisms. Additionally, even in human cancer the set of transcripts may be very different from the known set of human transcripts.
 
@@ -72,7 +72,7 @@ In this problem, we are again given the reads. We want to reconstruct the set of
 
 The actual transcriptome, however, is much smaller and on the order of 10,000s of transcripts. By running vanilla EM on all $$4^{1000}$$ candidates does not exploit this fact is, among other reasons, is computationally inefficient.
 
-###<a id='assembly'></a> Assembly approach
+### <a id='assembly'></a> Assembly approach
 
 There are two ways to view this problem: one from the assembly end and one from the quantification end. We can leverage some of our knowledge from assembly to facilitate recovery of an unknown transcriptome.
 
