@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture12/
+permalink: /Spr2016/lectures/lecture12/
 ---
 
 ## Lecture 12 : Haplotype Assembly - Introduction and Convolutional Codes
@@ -29,7 +29,7 @@ no variation with respect to the reference.
 
 At a high level, the pipeline can be seen as follows:
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture12/Figure1.png" width="99%">
+  <img src="assets/lecture12/Figure1.png" width="99%">
 	<div class="figcaption">The haplotype phasing pipeline.</div>
 </div>
 
@@ -128,7 +128,7 @@ we have the locations of the heterozygous positions in the genome, and we only
 consider reads linking these positions.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture12/chr.png" width="99%">
+  <img src="assets/lecture12/chr.png" width="99%">
 	<div class="figcaption">The haplotype phasing example.</div>
 </div>
 
@@ -158,7 +158,7 @@ which are on the paternal chromosome.
 #### <a id='conv'></a> Convolutional Code and Viterbi Algorithm
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture12/Figure2.png" width="40%">
+  <img src="assets/lecture12/Figure2.png" width="40%">
 	<div class="figcaption">Convolutional codes used with haplotype assembly.</div>
 </div>
 The transfromation from $$L$$'s to $$Y$$'s can be viewed as a

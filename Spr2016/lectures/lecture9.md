@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture9/
+permalink: /Spr2016/lectures/lecture9/
 ---
 ## Lecture 9: Assembly - Multibridging and Read-Overlap Graphs
 
@@ -24,7 +24,7 @@ that has better performance. We then discuss the notion of read-overlap graphs.
 3. <a href='#readoverlap'>Assembly problem revisited: read-overlap graphs</a>
     - <a href='#read1'>Read-overlap graph</a>
     - <a href='#info'>Information limit and solving instances of an NP-hard problem</a>  
-  
+
 
 ## <a id='review'></a>Review of de Bruijin algorithm
 
@@ -48,7 +48,7 @@ Greedy in some cases!). This comes from the condition on bridging
 For the lower bound, the necessary condition for reconstruction is that the interleaved repeats are bridged by the reads (not k-mers). There are only a few long interleaved repeats, and it is overkill to bridge all those with k-mers. We have the information to cover these interleaved repeats with the L-mer (reads) themselves, but we are not using this information by chopping them all into k-mers.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture8/Figure9.png" width="75%">
+  <img src="assets/lecture8/Figure9.png" width="75%">
 	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm and the
   de Bruijn graph algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
@@ -67,7 +67,7 @@ The problem we had when k $$\leq \ell_{\text{interleaved}}$$+ 1 was that we have
 We can circumvent this problem by using the reads (L-mers) themselves to resolve the conflicts. In the figure below, with k < $$\ell_{\text{interleaved}}$$, there were two potential Eulerian paths: one traverses the green segment first and the other traverses the pink segment first.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure1.png" width="90%">
+  <img src="assets/lecture9/Figure1.png" width="90%">
 	<div class="figcaption">After resolving a node using a bridging read, we can find a unique Eulerian
 path through the graph.</div>
 </div>
@@ -88,7 +88,7 @@ At this point, our conditions for a successful assembly is as follows:
 The performance of this algorithm is shown in the figure below. Note that even though this reduces the number of reads we need, it is still not as close to the lower bound as we hope. Can we do better?
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure2.png" width="75%">
+  <img src="assets/lecture9/Figure2.png" width="75%">
 	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm, the
   de Bruijn graph algorithm, and the SimpleBridging algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
@@ -102,7 +102,7 @@ The algorithm we outlined above had k - 1 > $$\ell_{\text{triple}}$$ as a condit
 We can modify the algorithm further to get around the ambiguity. If the triple repeats are triple-bridged (meaning that every copy of the repeat is bridged by a read), then we can separate the repeat node into three different distinct nodes that each connect to distinct adjacent nodes. This is shown in the figure below.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure3.png" width="90%">
+  <img src="assets/lecture9/Figure3.png" width="90%">
 	<div class="figcaption">If all three copies of a triple repeat are bridged,
   one can resolve them locally.</div>
 </div>
@@ -117,7 +117,7 @@ With this in mind, our conditions for success then becomes ([Bresler, Bresler, T
 We also see that the performance of the multibridging algorithm is close to that of the lower bound.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure4.png" width="75%">
+  <img src="assets/lecture9/Figure4.png" width="75%">
 	<div class="figcaption">Lower bound from the Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm, the
   de Bruijn graph algorithm, the SimpleBridging algorithm, and the MultiBridging algorithm to succeed (w. p. \(1-\epsilon\)), and Ukkonen's
@@ -137,7 +137,7 @@ Instead of thinking about k-mers, we should think about reads themselves. Using 
 An example of a read-length graph is shown below. If you have two reads ACGCA and CGCAT, you would get an extension of 1 (overlap of 4) when the reads are put together to form ACGCAT.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure5.png" width="75%">
+  <img src="assets/lecture9/Figure5.png" width="75%">
 	<div class="figcaption">A read overlap graph contains the  original sequence
   as a Hamiltonian path.</div>
 </div>
@@ -159,23 +159,22 @@ Greedy's pitfall is that when the true path visits a node twice, the algorithm w
 Going back to our performance figure, we see that the Greedy algorithm lives in the red region where the read length is long enough to cover **all** repeats. That leaves the blue region where reconstruction is still possible but we may need to visit the nodes more than once.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure6.png" width="75%">
+  <img src="assets/lecture9/Figure6.png" width="75%">
 	<div class="figcaption">Information limits in the read-overlap graph framework.</div>
 </div>
 
 Note that we only need to visit a node more than 2 times if and only if there exists an unbridged triple repeat, but reconstruction in this situation is not possible anyway. In the figure below, we notice that we cannot determine whether we should traverse the blue or red path first.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure7.png" width="75%">
+  <img src="assets/lecture9/Figure7.png" width="75%">
 	<div class="figcaption"> Since a triple repeat is not bridged, we cannot determine whether we should traverse the blue or red path first.</div>
 </div>
 
 The information analysis shows us that the Greedy is an oversimplification, but we do not need to visit a node more than twice; this stands on the left of the lower bound (figure below). We need an algorithm that visits each node no more than twice.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture9/Figure8.png" width="75%">
+  <img src="assets/lecture9/Figure8.png" width="75%">
 	<div class="figcaption"> The use of "Not-so-greedy" to achieve theoretic limits.</div>
 </div>
 
 This algorithm is called the "Not-so-greedy" algorithm, and it keeps exactly the two best extensions for each node. The complexity is linear with the number of reads. Therefore in the green region, we can overcome the NP-hardness of the Hamiltonian problem.
-

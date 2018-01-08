@@ -1,14 +1,14 @@
 ---
 layout: page
 mathjax: true
-permalink: /assignments/assignment3/
+permalink: /Spr2016/assignments/assignment3/
 ---
 ## Assignment 3
 
 posted Saturday 21 May 2016  
 due Wednesday 1 June 2016 at midnight
 
-**Submission policy**: Report all plots and your code in [this iPython notebook](/assets/assignment3/ee372_assignment3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots and your code in [this iPython notebook](assets/assignment3/ee372_assignment3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
 ### Question I: Minhashing
 
@@ -54,7 +54,7 @@ In this problem we examine a simplified version of the haplotype assembly proble
 
 In class we discussed the basic EM algorithm for RNA-seq quantification in the simple case when the transcript lengths are all the same and there are no errors in the read. In this question, we will consider extensions to unequal transcript lengths and read errors. We start with the same RNA-seq model as discussed in class.
 
-1. Implement the EM algorithm for the error-free case where all transcripts have the same length. Fill in the code in the last cell of the [ipython notebook](/assets/assignment3/ee372_assignment3.ipynb).
+1. Implement the EM algorithm for the error-free case where all transcripts have the same length. Fill in the code in the last cell of the [ipython notebook](assets/assignment3/ee372_assignment3.ipynb).
 
 2. Instead of equal transcript length $$\ell$$, let us now consider the case when the transcript lengths are $$\ell_1, \ell_2, \dots, \ell_K$$. The reads are still error-free.
 - Develop the log likelihood model

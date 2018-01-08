@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /assignments/project_guidelines/
+permalink: /Spr2016/assignments/project_guidelines/
 ---
 
 ## EE 372 : Project Guidelines and Ideas
@@ -78,4 +78,4 @@ but should check suitability with the course staff.
 
 -----------------------------
 
-[Project guidelines and ideas as a pdf.](/handouts/ProjectGuidelines.pdf)
+[Project guidelines and ideas as a pdf.](handouts/ProjectGuidelines.pdf)

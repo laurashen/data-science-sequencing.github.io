@@ -13,12 +13,12 @@ _Scribed by Anja Brandon and revised by the course staff_
 
 ### Topics
 
-1. <a href='#what'> What is high-throughput sequencing? </a>  
+1. <a href='#what'> What is high-throughput sequencing? </a>
   - <a href='#seq'> Sequencing methods
-2. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>  
+2. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>
   - <a href='#tools'> Tools used </a>
-3. <a href='#examples'> Two example problems </a>  
-  - <a href='#assembly'> _de novo_ DNA assembly </a>  
+3. <a href='#examples'> Two example problems </a>
+  - <a href='#assembly'> _de novo_ DNA assembly </a>
   - <a href='#scrnaseq'> Single-cell RNA-seq analysis </a>
 
 ----------------
@@ -46,7 +46,7 @@ at a rate faster than Moore's law over the last
 15 years.
 
 
-<!-- ![Cost of DNA sequencing over the years](/assets/lecture1/HTS_cost.png){: width="99%"} -->
+<!-- ![Cost of DNA sequencing over the years](assets/lecture1/HTS_cost.png){: width="99%"} -->
 
 
 <div class="fig figcenter fighighlight">
@@ -184,7 +184,7 @@ main properties of reads that are important from a computational perspective:
 Ideally, a read is simply the entire genome. Unfortunately, a read of such length is not achievable by chemistry today or in the foreseeable future.
 Illumina reads are around 100bp-200bp long, and
 PacBio reads are over 10000 bp long. While PacBio reads are longer than Illumina
-reads, they are still much shorter than genome lengths.  
+reads, they are still much shorter than genome lengths.
 2. _Error rates and types of errors_: Illumina has relatively low error rates of 1-2%, and errors here are mostly substitution errors (_i.e._ a base being
 replaced by some other base). PacBio reads have higher error rates
 of 10-15%, and errors here are insertions and deletions.
@@ -201,14 +201,14 @@ The success of high-throughput sequencing is mainly due to
 the creative use of read data to solve various problems. For this course, data science problems can be categorized into one of three types:
 
 1. _Data processing_:
-- Assembly or _de novo_ assembly: Recovering the DNA or RNA from short noisy reads.  
+- Assembly or _de novo_ assembly: Recovering the DNA or RNA from short noisy reads.
 - Variant calling: Individuals of the same species have very similar genomes.
 For example, any two humans share 99.8% of their genetic material. Because a reference human genome is available,
 scientists are often interested in the differences of an individual's genome
-from this reference genome. Variant calling is the problem of inferring these differences.  
+from this reference genome. Variant calling is the problem of inferring these differences.
 - Phasing: The chromosomes in humans (and other higher animals) come in pairs but
 are crushed and sequenced together. Often scientists want to separate the sequence
-on the two chromosomes. This is called the phasing problem.  
+on the two chromosomes. This is called the phasing problem.
 - Quantification: RNA is an important biological molecule in cells, as discussed
 above. There are potentially 10000s types of RNA molecules observed in an individual cell. Quantification is a counting problem; scientists are interested
 in estimating how many copies of each type of RNA are in a cell or population of cells.
@@ -217,11 +217,11 @@ in estimating how many copies of each type of RNA are in a cell or population of
 - Privacy
 - Compression
 
-3. _Data utilization_: Here we use the data to make useful inferences. These problems include  
+3. _Data utilization_: Here we use the data to make useful inferences. These problems include
 - Single-cell analysis: Properties like diversity in cell populations are inferred from single-cell datasets.
 - [Genome Wide Association Studies](https://en.wikipedia.org/wiki/Genome-wide_association_study)
 (GWAS): This problem looks at the association between genomes and
-various characteristics of individuals.  
+various characteristics of individuals.
 - Multi-omics data analysis: Methods for combining DNA, RNA, and
 protein measurements to make predictions.
 
@@ -239,7 +239,7 @@ not satisfy these assumptions, some additional effort is required to get working
 
 - Combinatorial algorithms: Problems like genome assembly involve working on
 combinatorial objects like graphs, and combinatorial algorithms naturally follow.
-- Statistical Signal Processing: Because the data is noisy, we need signal processing techniques for dealing with the noise.  
+- Statistical Signal Processing: Because the data is noisy, we need signal processing techniques for dealing with the noise.
 - Information Theory: When performing inference, this gives a sense of how much data is necessary to achieve "good" estimates, allowing us to design optimal algorithms to achieve such estimates.
 - Machine Learning
 
@@ -298,8 +298,8 @@ are therefore an estimate of the sum over all cells. Recent technologies have al
 
 -----------------
 
-[Slides](/lectures/lecture1_slides.pdf)
+[Slides](lectures/lecture1_slides.pdf)
 
 -----------------
 
-[This lecture as a pdf.](/assets/lecture1/lecture1.pdf)
+[This lecture as a pdf.](assets/lecture1/lecture1.pdf)

@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture11/
+permalink: /Spr2016/lectures/lecture11/
 ---
 ## Lecture 11: Alignment - Dynamic Programming and Indexing
 
@@ -34,7 +34,7 @@ When working with reads, we are generally interested in two types of alignment p
 To compute the optimal alignment between to genomic sequences (or more generally strings), we can find the minimal edit distance between the two sequences. We note that for both of the above problems, a lot of computation is repeated using the same data. As a recap, the figure below finds the minimal edit distance alignment between two strings X = 'GCGTATGTG' and Y = 'GCTATGCG'. Recall that for the standard edit distance problem, we assign a substitution, deletion, or insertion equal penalties.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture11/Figure1.png" width="40%">
+  <img src="assets/lecture11/Figure1.png" width="40%">
 	<div class="figcaption">An edit distance example.</div>
 </div>
 
@@ -63,7 +63,7 @@ Thus $$ \delta(X[i],Y[j])$$ is 1 $$i$$th character of $$X$$ is is the same as  t
 We can think of solving this problem as filling in the entries of a table where the columns correspond to the empty string $$\emptyset$$ plus the characters in $$X$$, and the rows corerspond to the empty string plus the characters in $$Y$$. Please see the figure below for the filled out table corresponding to the first example in this lecture.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture11/Figure2.png" width="80%">
+  <img src="assets/lecture11/Figure2.png" width="80%">
 	<div class="figcaption">Computation of the minimal edit distance between two strings using dynamic programming.</div>
 </div>
 

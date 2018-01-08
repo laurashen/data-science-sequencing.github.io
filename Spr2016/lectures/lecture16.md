@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture16/
+permalink: /Spr2016/lectures/lecture16/
 ---
 ## Lecture 16: RNA-seq - Hard EM and De Novo Transcriptome Assembly
 
@@ -38,7 +38,7 @@ We have 20 reads that come from $$t_1$$, 10 that maps to exon A and 10 that maps
 Now let's consider the case where we have $$\rho_1 = 0.9$$ and $$\rho_2 = 0.1$$. We obtain the read mapping shown in the figure below (the figure enforces our assumption that the transcripts, and in this case exons, are equal).
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture16/Figure1.png" width="80%">
+  <img src="assets/lecture16/Figure1.png" width="80%">
   <div class="figcaption">An example set of obtained reads with underlying truth.</div>
 </div>
 
@@ -79,7 +79,7 @@ There are two ways to view this problem: one from the assembly end and one from 
 Recall that the de novo assembly problem involves reconstructing an unknown sequence from a given set of reads. The de novo transcriptome assembly problem is similar, only we have potentially 10,000s of sequences rather than 1, and the set of reads we obtain are from all of the sequences. For the single-sequence case, we drew the plot shown in the figure below in lecture 5, describing the critical number of reads needed for assembly.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture7/Figure5.png" width="50%">
+  <img src="assets/lecture7/Figure5.png" width="50%">
   <div class="figcaption">Coverage requirements for perfect assembly.</div>
 </div>
 
@@ -94,7 +94,7 @@ For the transcriptome recovery case, the count (the number of occurrences) of a 
 Consider the example transcriptome in the figure below. Does this transcriptome have a unique $$L$$-spectrum? i.e. Does there exist another transcriptome with the same $$L$$-spectrum?
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture16/Figure2.png" width="80%">
+  <img src="assets/lecture16/Figure2.png" width="80%">
   <div class="figcaption">Example transcriptome with a non-unique L-spectrum.</div>
 </div>
 
@@ -103,7 +103,7 @@ Notice that if we have another two-transcript transcriptome where exons A$$_1$$ 
 If we make the assumption that reads are sampled uniformly from a transcript, then would expect reads to be uniformly spread across each transcript. Therefore we can leverage the counts of reads to rule one transcriptome more likely than another, as shown in the figure below.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture16/Figure3.png" width="40%">
+  <img src="assets/lecture16/Figure3.png" width="40%">
   <div class="figcaption">Using read counts to select the more probable underlying transcriptome.</div>
 </div>
 

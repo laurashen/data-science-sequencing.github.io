@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture5/
+permalink: /Spr2016/lectures/lecture5/
 ---
 Lecture 5: Assembly - An Introduction
 =======
@@ -123,14 +123,14 @@ while (# reads > 1)
 
 As an example of how this works, consider the example genome $$AGATTATGGC$$ and its associated reads $$AGAT,GATT,TTAT,TGGC.$$ Then the above algorithm assembles them as follows:  
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture5/Figure1.png" width="90%">
+  <img src="assets/lecture5/Figure1.png" width="90%">
   <div class="figcaption"> The greedy algorithm assembles the reads on the LHS into the DNA on the RHS correctly. </div>
 </div>  
 
 
 As another example, consider the example genome $$ATGGTATGGC$$ and its associated reads $$ATGG,TGGT,TATG,TGGC.$$ Then the greedy algorithm assembles them in the following wrong way:  
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture5/Figure2.png" width="90%">
+  <img src="assets/lecture5/Figure2.png" width="90%">
   <div class="figcaption"> This time, the final result on the RHS is different from the original DNA. </div>
 </div>  
 As you can see, we cannot always guarantee that the output of the greedy algorithm is the original DNA. The following theorem gives the necessary and sufficient conditions for the correct assembly:  
@@ -154,7 +154,7 @@ there is never an incorrect merge in the algorithm. This argument is illustrated
 figure below.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture5/greedy_proof.png" width="90%">
+  <img src="assets/lecture5/greedy_proof.png" width="90%">
 	<div class="figcaption"> Here reads \(r_i\) and \(r_j\) coming from different parts of the genome have an
 	overlap \(\theta_{i,j}\). Clearly, the sequence \(\theta_{i,j}\) is repeated twice. We note that if there
 	was a read like \(r_{\text{hypothetical}}\) which bridged the copy of \(\theta_{i,j}\), corresponding to \(r_j\) then it

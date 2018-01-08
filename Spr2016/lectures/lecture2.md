@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture2/
+permalink: /Spr2016/lectures/lecture2/
 ---
 ## Lecture 2: Biology Background, First and Second-generation sequencing
 
@@ -79,7 +79,7 @@ pairs are known as _complementary pairs_. The structure of DNA is shown
 below.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure2_DNADoubleHelix.png" width="40%">
+  <img src="assets/lecture2/Figure2_DNADoubleHelix.png" width="40%">
   <div class="figcaption">The DNA double-helix. Borrowed from the Genetics Home Reference (http://ghr.nlm.nih.gov/handbook/basics/dna). </div>
 </div>
 
@@ -94,7 +94,7 @@ and C with G). The figure below shows an example of a DNA fragment
 and its reverse complement strand.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure3_ReverseComplement.png" width="25%">
+  <img src="assets/lecture2/Figure3_ReverseComplement.png" width="25%">
   <div class="figcaption">An illustration of DNA complement. </div>
 </div>
 
@@ -106,7 +106,7 @@ replicated and through a series of steps shown in the figure
 below, one parent cell yields two identical daughter cells.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure1_Mitosis.png" width="99%">
+  <img src="assets/lecture2/Figure1_Mitosis.png" width="99%">
   <div class="figcaption">A figure illustrating mitosis. Borrowed from Wikipedia (http://en.wikipedia.org/wiki/Mitosis).</div>
 </div>
 
@@ -139,7 +139,7 @@ with during DNA replication. The dNTPs corresponding to A, C, G, and T are dATP,
  illustrated below.
 
  <div class="fig figcenter fighighlight">
-   <img src="/assets/lecture2/Figure6_DNA_replication.jpg" width="75%">
+   <img src="assets/lecture2/Figure6_DNA_replication.jpg" width="75%">
    <div class="figcaption">An illustration of DNA replication.</div>
  </div>
 
@@ -231,7 +231,7 @@ The figure below illustrates a simple example showing the process of
 Sanger sequencing.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure4_SangerExample.png" width="75%">
+  <img src="assets/lecture2/Figure4_SangerExample.png" width="75%">
   <div class="figcaption">An example of Sanger sequencing.</div>
 </div>
 
@@ -281,7 +281,7 @@ measuring the mass of many molecules, a costly process. The equipment used for S
 is shown below
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure7_sanger_equipment.png" width="25%">
+  <img src="assets/lecture2/Figure7_sanger_equipment.png" width="25%">
   <div class="figcaption">Gel electrophoresis during Sanger sequencing.</div>
 </div>
 
@@ -296,14 +296,14 @@ above. The sequencing procedure also massively parallelizes the process, dramati
 Illumina achieves parallelization by running several synthesis experiments at once. Each of many template strands is anchored on a chip, and only ddNTPs with florescent tags are available during the synthesis procedure (no dNTPs). Each type of ddNTP is tagged such that it emits a different wavelength or color. Since ddNTPs halt synthesis, the synthesis of new strands are synced. All new strands are the same length at the end of each synthesis cycle, at which point a picture of the chip is taken. These pictures are then analyzed by “base caller” software to identify (or "call") the complementary nucleotides. Base calling will be discussed in greater detail next lecture. To override the chain termination, Illumina sequencing uses _reversible termination_. The sequencing process introduces an enzyme which can turn a ddNTP into a regular dNTP after it has bound, allowing the synthesis reactions to continue instead of being permanently halted.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure5_IlluminaInfoCollection.png" width="95%">
+  <img src="assets/lecture2/Figure5_IlluminaInfoCollection.png" width="95%">
   <div class="figcaption">An illustration of Illumina sequencing.</div>
 </div>
 
 In order to guarantee that enough light is emitted such that ddNTP signals are detectable, each of the template strands are cloned, resulting in clusters of the same strand being synthesized in unison. Because of reversible termination, Illumina sequencing removes the need to measure masses. In contrast to the gel electrophoresis procedure required for Sanger sequencing above, the figure below shows a glass slide used during Illumina sequencing. Illumina sequencing can sequence billions of template strands simultaneously, which greatly increases the throughput.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture2/Figure8_illuminaSlide.png" width="50%">
+  <img src="assets/lecture2/Figure8_illuminaSlide.png" width="50%">
   <div class="figcaption">A slide used for Illumina sequencing.</div>
 </div>
 
@@ -314,11 +314,11 @@ twice. Additionally, dNTPs still exist in solution, and therefore occasionally a
 
 ------------------
 
-- [Slides on Biological Background](/lectures/lecture2_slides1.pdf) :
+- [Slides on Biological Background](lectures/lecture2_slides1.pdf) :
 Borrowed from [Ben Langmead](http://www.langmead-lab.org/)'s
 [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/biological_background.pdf)
 
-- [Slides on Sequencing by Synthesis ](/lectures/lecture2_slides2.pdf):
+- [Slides on Sequencing by Synthesis ](lectures/lecture2_slides2.pdf):
 Borrowed from Ben Langmead's
 [slides](http://www.cs.jhu.edu/~langmea/resources/lecture_notes/dna_sequencing.pdf)
 
@@ -333,4 +333,4 @@ The rest are taken from Ben Langmead's notes.
 
 -------------------------
 
-[This lecture as a pdf.](/assets/lecture2/lecture2.pdf)
+[This lecture as a pdf.](assets/lecture2/lecture2.pdf)

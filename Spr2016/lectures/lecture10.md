@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture10/
+permalink: /Spr2016/lectures/lecture10/
 ---
 ## Lecture 10: Alignment - Introduction and Errors
 

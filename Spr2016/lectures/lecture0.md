@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture0/
+permalink: /Spr2016/lectures/lecture0/
 ---
 
 ## Course Outline
@@ -95,4 +95,4 @@ Guest lecture by [Stephen Turner](http://www.pacb.com/people/stephen-turner-phd/
 
 -----------------
 
-[This lecture as a pdf.](/lectures/lecture0.pdf)
+[This lecture as a pdf.](lectures/lecture0.pdf)

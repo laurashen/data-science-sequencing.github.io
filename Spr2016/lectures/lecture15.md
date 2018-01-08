@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture15/
+permalink: /Spr2016/lectures/lecture15/
 ---
 ## Lecture 15: RNA-seq - Quantification and the EM algorithm
 
@@ -68,7 +68,7 @@ $$
 While naive read splitting sounds reasonable, it can fail spectacularly as illustrated by the following example.
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/lecture15/transcripts_ABBC.png" width="50%">
+  <img src="assets/lecture15/transcripts_ABBC.png" width="50%">
   <div class="figcaption">Transcripts sharing a common exon </div>
 </div>
 

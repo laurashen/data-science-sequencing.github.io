@@ -1,14 +1,14 @@
 ---
 layout: page
 mathjax: true
-permalink: /assignments/assignment1/
+permalink: /Spr2016/assignments/assignment1/
 ---
 ## Assignment 1
 
 posted Friday 8 April 2016  
 due Friday 15 April 2016 at midnight
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1 and Question III part 3) and your code in [this iPython notebook](/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1 and Question III part 3) and your code in [this iPython notebook]assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
 
 ### Question I: Sanger sequencing
 
@@ -94,4 +94,4 @@ or [Bamview](http://bamview.sourceforge.net/).
 
 ---
 
-[This assignment as a pdf.](/assets/assignment1/assignment1.pdf)
+[This assignment as a pdf.](assets/assignment1/assignment1.pdf)

@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /labhours/labhour1/
+permalink: /Spr2016/labhours/labhour1/
 ---
 ## Lab Hour 1: Tutorial on Terminal and iPython
 
@@ -13,9 +13,9 @@ Install [Anaconda](https://www.continuum.io/downloads), which will provide you w
 
 Some example files to play around with can be found [here](data-science-sequencing.github.io/assets/labhour1/lab1examples.zip). These files are from a real dataset, which is publicly available [here](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE65360).
 
-A tutorial on working in the Terminal can be found [here](/assets/labhour1/).
+A tutorial on working in the Terminal can be found [here](assets/labhour1/).
 
-A tutorial on working in iPython can be downloaded [here](/assets/labhour1/ipython_basics.ipynb). You can start the notebook by going to Terminal, navigating to the directory containing the newly downloaded $$\texttt{ipython_basics.ipynb}$$, and executing the command
+A tutorial on working in iPython can be downloaded [here](assets/labhour1/ipython_basics.ipynb). You can start the notebook by going to Terminal, navigating to the directory containing the newly downloaded $$\texttt{ipython_basics.ipynb}$$, and executing the command
 ```
 ipython notebook
 ```

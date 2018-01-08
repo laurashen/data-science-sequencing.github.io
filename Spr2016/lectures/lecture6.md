@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /lectures/lecture6/
+permalink: /Spr2016/lectures/lecture6/
 ---
 ## Lecture 6: Pacific Biosciences Sequencing Technology
 
