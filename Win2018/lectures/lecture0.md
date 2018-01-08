@@ -4,8 +4,6 @@ mathjax: true
 permalink: /Win2018/lectures/lecture0/
 ---
 
-## Course Outline
-
   1.  Introduction
   2.  Biochemistry background and sequencing by Synthesis
   3.  Base calling for second-generation sequencing
