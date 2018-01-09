@@ -7,7 +7,7 @@ permalink: /Win2018/lectures/lecture0/
 ## Course Outline
 
   1.  Introduction
-  2.  Biochemistry background and sequencing by Synthesis
+  2.  Biochemistry background and sequencing by synthesis
   3.  Base calling for second-generation sequencing
   4.  Third-generation technologies: Nanopore and Pacific Biosciences
   5.  Genome assembly I: Formulation
@@ -18,8 +18,8 @@ permalink: /Win2018/lectures/lecture0/
   10. Alignment II
   11. RNA-Seq I: Introduction
   12. RNA-Seq II: Quantification vs the EM algorithm
-  13. RNA-SEq III: differential expression
-  14. Single-cell RNA-Seq I: technology and challenges
+  13. RNA-Seq III: Differential expression
+  14. Single-cell RNA-Seq I: Technology and challenges
   15. Single-cell RNA-Seq II:  Dimensionality reduction, clustering and computing representatives
   16. Single-cell RNA-Seq III: Dimensionality reduction, clustering and computing representatives
   17. Single-cell RNA-Seq IV: Differential expression
