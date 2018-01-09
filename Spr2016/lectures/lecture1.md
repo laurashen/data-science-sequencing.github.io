@@ -46,11 +46,8 @@ at a rate faster than Moore's law over the last
 15 years.
 
 
-<!-- ![Cost of DNA sequencing over the years](assets/lecture1/HTS_cost.png){: width="99%"} -->
-
-
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture1/HTS_cost.png" width="80%">
+  <img src="/Spr2016/assets/lecture1/HTS_cost.png" width="80%">
   <div class="figcaption">Cost of DNA sequencing over the years.</div>
 </div>
 
@@ -72,7 +69,7 @@ to the reduction used to solve many mathematical problems
 or to show NP-hardness of various problems.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture1/star_seq_paradigm.png" width="99%">
+  <img src="/Spr2016/assets/lecture1/star_seq_paradigm.png" width="99%">
   <div class="figcaption">The *-seq paradigm: Convert the problem of interest to a DNA sequencing problem.</div>
 </div>
 
@@ -191,7 +188,7 @@ of 10-15%, and errors here are insertions and deletions.
 
 The figure below shows some characteristics of different sequencing technologies.
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture1/Figure5_different_sequencing_technologies.png" width="99%">
+  <img src="/Spr2016/assets/lecture1/Figure5_different_sequencing_technologies.png" width="99%">
   <div class="figcaption">Characteristics of different sequencing technologies.</div>
 </div>
 
@@ -227,7 +224,7 @@ protein measurements to make predictions.
 
 These different problems are illustrated below:
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture1/Figure4_problem_collage.png" width="70%">
+  <img src="/Spr2016/assets/lecture1/Figure4_problem_collage.png" width="70%">
   <div class="figcaption">Data science of High-throughput sequencing.</div>
 </div>
 
@@ -257,7 +254,7 @@ the sequencer as a communication channel, and the base caller and assembler as t
 decoder. This abstraction is shown below:
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture1/Figure6_DNA_decoding.png" width="70%">
+  <img src="/Spr2016/assets/lecture1/Figure6_DNA_decoding.png" width="70%">
   <div class="figcaption">DNA assembly as a message decoding problem.</div>
 </div>
 
@@ -298,8 +295,8 @@ are therefore an estimate of the sum over all cells. Recent technologies have al
 
 -----------------
 
-[Slides](lectures/lecture1_slides.pdf)
+[Slides](/Spr2016/lectures/lecture1_slides.pdf)
 
 -----------------
 
-[This lecture as a pdf.](assets/lecture1/lecture1.pdf)
+[This lecture as a pdf.](/Spr2016/assets/lecture1/lecture1.pdf)

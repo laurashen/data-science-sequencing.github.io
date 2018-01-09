@@ -78,4 +78,4 @@ but should check suitability with the course staff.
 
 -----------------------------
 
-[Project guidelines and ideas as a pdf.](handouts/ProjectGuidelines.pdf)
+[Project guidelines and ideas as a pdf.](/Spr2016/handouts/ProjectGuidelines.pdf)

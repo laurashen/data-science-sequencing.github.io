@@ -35,7 +35,7 @@ In the _community recovery_ problem, we are given a graph with a bunch of nodes,
 When sequencing a haploid organism, we obtain a set of heterozygous SNPs such as the one shown in the figure below. '0' and '1' represent the different SNPs.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture13/Figure1.png" width="80%">
+  <img src="/Spr2016/assets/lecture13/Figure1.png" width="80%">
 	<div class="figcaption">Example heterozygous SNPs for the two chromosomes in an individual.</div>
 </div>
 
@@ -51,7 +51,7 @@ Nodes $$a, c, $$ and $$d$$ belong to community $$A$$, and node $$b$$ belongs to 
 We will let $$x_i$$ denote the class of node $$i$$ and $$x_i \in \{-1,+1\}$$. Let $$Y_{ij}$$ represent the edge data between nodes $$i$$ and $$j$$ where $$Y_{ij} = 1$$ if $$x_i == x_j$$ and -1 otherwise. We will set $$Y_{ij} = 0$$ if there is no linking reads between node i and node j. If there is no noise, then $$Y = 1$$ corresponds to an edge where the two nodes are in the same community and vice versa. $$Y = -1$$ would indicate the two nodes being in different communities. The figure below illustrates the notation introduced so far.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture13/Figure2.png" width="50%">
+  <img src="/Spr2016/assets/lecture13/Figure2.png" width="50%">
 	<div class="figcaption"> The community detection setup for the haplotype phasing problem..</div>
 </div>
 
@@ -184,6 +184,6 @@ The solution obtained for $$\mathbf{\hat{x}}$$ using the spectral method will be
 When dealing with real heterozygous SNPs, the linking information will be constrained to ranges of ~100 kbp (e.g. 10x technologies) while the chromosomes they reside on are each ~100 Mbp. Since the links are localized, unlike a random graph, we can section the chromosome into segments of length $$r$$ and analyze each segment as shown in the figure below. For small values of $$r$$ we can use Viterbi decoding, but for large values we can use the spectral method.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture13/Figure3.png" width="70%">
+  <img src="/Spr2016/assets/lecture13/Figure3.png" width="70%">
 	<div class="figcaption">For real chromosomes, we obtained localized information about SNPs.</div>
 </div>

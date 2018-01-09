@@ -69,7 +69,7 @@ We show the genome using the shorthand: $$\mathtt{a-x-b-y-c-x-d-y-e}$$.
 This is illustrated below.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure1.png" width="90%">
+  <img src="/Spr2016/assets/lecture8/Figure1.png" width="90%">
 	<div class="figcaption">\(x\) and \(y\) are interleaved repeats of length \(L-1\). We assume that
   the rest of the genome has no repeat of length L-2 or more.</div>
 </div>
@@ -78,7 +78,7 @@ This is illustrated below.
 The de Bruijn graph from the L-spectrum of this genome is given by
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure2.png" width="75%">
+  <img src="/Spr2016/assets/lecture8/Figure2.png" width="75%">
 	<div class="figcaption">The de Bruijn graph corresponding to the L-spectrum of this
   genome is shown above. The two Eulerian paths that are on the graph is
   \(\mathtt{a-x-b-y-c-x-d-y-e}\) and \(\mathtt{a-x-d-y-c-x-b-y-e}\)</div>
@@ -99,7 +99,7 @@ shorthand: $$\mathtt{a-x-b-x-c-x-d}$$
 This is illustrated below.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure3.png" width="90%">
+  <img src="/Spr2016/assets/lecture8/Figure3.png" width="90%">
 	<div class="figcaption">\(x\) is a triple repeat of length \(L-1\). We assume that
   the rest of the genome has no repeat of length L-2 or more.</div>
 </div>
@@ -107,7 +107,7 @@ This is illustrated below.
 The de Bruijn graph from L-spectrum of this genome is given by
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure4.png" width="50%">
+  <img src="/Spr2016/assets/lecture8/Figure4.png" width="50%">
 	<div class="figcaption">The de Bruijn graph corresponding to the L-spectrum of this
   genome is shown above. The two Eulerian paths that are on the graph is
   \(\mathtt{a-x-b-x-c-x-d}\) and \(\mathtt{a-x-c-y-b-x-d}\)</div>
@@ -133,7 +133,7 @@ shorthand: $$\mathtt{a-x-b-x-c}.$$
 
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure5.png" width="90%">
+  <img src="/Spr2016/assets/lecture8/Figure5.png" width="90%">
 	<div class="figcaption">\(x\) is a simple repeat of length \(L-1\). We assume that
   the rest of the genome has no repeat of length L-2 or more.</div>
 </div>
@@ -141,7 +141,7 @@ shorthand: $$\mathtt{a-x-b-x-c}.$$
 The de Bruijn graph from L-spectrum of this genome is given by
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure6.png" width="40%">
+  <img src="/Spr2016/assets/lecture8/Figure6.png" width="40%">
 	<div class="figcaption">The de Bruijn graph corresponding to the L-spectrum of this
   genome is shown above. The only Eulerian path  on the graph is
   \(\mathtt{a-x-b-x-c}\)</div>
@@ -156,7 +156,7 @@ repeat of length L-2 or more.
 We show the genome using the shorthand: $$\mathtt{a-x-b-y-c-y-d-x-e}$$.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure7.png" width="90%">
+  <img src="/Spr2016/assets/lecture8/Figure7.png" width="90%">
  <div class="figcaption">\(x\) is a simple repeat of length \(L-1\). We assume that
   the rest of the genome has no repeat of length L-2 or more.</div>
 </div>
@@ -164,7 +164,7 @@ We show the genome using the shorthand: $$\mathtt{a-x-b-y-c-y-d-x-e}$$.
 The de Bruijn graph from L-spectrum of this genome is given by
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure8.png" width="75%">
+  <img src="/Spr2016/assets/lecture8/Figure8.png" width="75%">
 	<div class="figcaption">The de Bruijn graph corresponding to the L-spectrum of this
   genome is shown above. The only Eulerian path  on the graph is
   \(\mathtt{a-x-b-y-c-y-d-x-e}\)</div>
@@ -213,7 +213,7 @@ Using similar calculations to those used in the last lecture, we get the followi
 of reads necessary for an algorithm to succeed.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture8/Figure9.png" width="75%">
+  <img src="/Spr2016/assets/lecture8/Figure9.png" width="75%">
 	<div class="figcaption">Lower bound from Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm and the
   de Bruijn algorithm to succeed (with probability \(1-\epsilon\)), and Bresler-Bresler-Tse's

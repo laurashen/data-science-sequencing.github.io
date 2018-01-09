@@ -119,7 +119,7 @@ data from DNA. From high school biology, you might recall something called the
 diagram of how genetic information flows within an organism.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture14/Figure1.png" width="80%">
+  <img src="/Spr2016/assets/lecture14/Figure1.png" width="80%">
 	<div class="figcaption">The central dogma of molecular biology.</div>
 </div>
 
@@ -141,7 +141,7 @@ In the figure below, we obtain 2 distinct transcripts from gene 1, a transcript
 consisting of exons A and B, and another transcript consisting of exons B and C.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture14/Figure2.png" width="100%">
+  <img src="/Spr2016/assets/lecture14/Figure2.png" width="100%">
 	<div class="figcaption">Transcription of genes into RNA transcripts.</div>
 </div>
 
@@ -166,7 +166,7 @@ DNA (called cDNA) using an enzyme called *reverse transcriptase*, and we can
 feed the DNA into our high-throughput sequencer. The pipeline is summarized in the figure below.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture14/Figure3.png" width="80%">
+  <img src="/Spr2016/assets/lecture14/Figure3.png" width="80%">
 	<div class="figcaption">The RNA-seq pipeline.</div>
 </div>
 

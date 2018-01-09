@@ -21,7 +21,7 @@ _Scribed by the course staff_
 Last time, we ended with the kinds of splicing structures cannot be resolving for the de novo transcriptome assembly problem. We looked at the case where we had two transcripts: $$t_1$$ with exons A$$_1$$, B, and C$$_1$$ and $$t_2$$ with exons A$$_2$$, B, and C$$_2$$ with $$\rho_1 = x$$ and $$\rho_2 = y$$ with $$x \neq y$$. We presented the idea of a **splice graph**, shown below.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture17/Figure1.png" width="80%">
+  <img src="/Spr2016/assets/lecture17/Figure1.png" width="80%">
   <div class="figcaption">An example transcriptome.</div>
 </div>
 
@@ -38,7 +38,7 @@ We make the assumption that two transcripts cannot have the same abundance. It's
 Does there exist a ground truth that results in a splice graph that cannot be resolved unambigiously? Consider the case where we have the 3 transcripts shown in the figure below. In practice, these transcripts can represent 3 isoforms from a particular gene.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture17/Figure3.png" width="80%">
+  <img src="/Spr2016/assets/lecture17/Figure3.png" width="80%">
   <div class="figcaption">An example transcriptome with an ambigious splice graph.</div>
 </div>
 

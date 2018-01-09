@@ -82,7 +82,7 @@ an inconsistency in the corresponding output signal (compared to
 a molecule where this has not occured). These strands are said to be *lagging*.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture3/Figure1_errors_in_sbs.png" width="90%">
+  <img src="/Spr2016/assets/lecture3/Figure1_errors_in_sbs.png" width="90%">
   <div class="figcaption">An illustration showing errors in illumina sequencing,
   showing different molecules in a dot. </div>
 </div>

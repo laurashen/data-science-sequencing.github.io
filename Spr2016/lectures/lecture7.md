@@ -65,7 +65,7 @@ $$P(\text{A given read of length L bridges a repeat of length } \ell_{\text{repe
 \end{cases}$$
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure1.png" width="90%">
+  <img src="/Spr2016/assets/lecture7/Figure1.png" width="90%">
 	<div class="figcaption"> An illustration to show that any read of length L bridging a
 	repeat of length \(\ell_{\text{repeat}}\) has to start in the L-\(\ell_{\text{repeat}}\)-1
 	window right before either copy of the repeat (the shaded region in the illustration). </div>
@@ -128,7 +128,7 @@ In this section, we derive a genome-dependent lower-bound on both the read lengt
 and number of reads required for successful assembly.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure2.png" width="60%">
+  <img src="/Spr2016/assets/lecture7/Figure2.png" width="60%">
 	<div class="figcaption"> Lower bound from Lander-Waterman calculation and the read
 	complexity necessary for the greedy algorithm to succeed (with probability \(1-\epsilon\)). </div>
 </div>  
@@ -140,7 +140,7 @@ $$r_2$$ are interleaved repeats, and the length of the interleaved repeat is the
 of $$r_2$$.
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure3.png" width="90%">
+  <img src="/Spr2016/assets/lecture7/Figure3.png" width="90%">
 	<div class="figcaption"> \(r_1\) and
 	\(r_2\) are interleaved repeats, and the length of the interleaved repeat is the length
 	of \(r_2\) </div>
@@ -154,7 +154,7 @@ is bridged.
 A triple repeat is a repeat that appears thrice in the genome. This is a special
 case of an interleaved repeat. This is illustrated below.
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure6.png" width="90%">
+  <img src="/Spr2016/assets/lecture7/Figure6.png" width="90%">
 	<div class="figcaption"> A triple repeat</div>
 </div>
 
@@ -169,7 +169,7 @@ a triple repeat needs to be bridged for assembly of a genome to be feasible.
 
 **Proof by picture**
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure4.png" width="60%">
+  <img src="/Spr2016/assets/lecture7/Figure4.png" width="60%">
 	<div class="figcaption"> The main intuition is that the sequences between
 	interleaved repeats can be interchanged without being inconsistent with any read if the
 	interleaved repeats are unbridged. </div>
@@ -180,7 +180,7 @@ the greedy algorithm, we can derive a curve showing the number of reads necessar
 successful assembly in a given genome. This is shown for an example genome below
 
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure5.png" width="60%">
+  <img src="/Spr2016/assets/lecture7/Figure5.png" width="60%">
 	<div class="figcaption"> Lower bound from Lander-Waterman calculation, the read
 	complexity necessary for the greedy algorithm to succeed (with probability \(1-\epsilon\)), and the
 	lower bound from Ukkonen to assemble (with probability \(1-\epsilon\)). </div>
@@ -199,7 +199,7 @@ the genome. The multi-set of reads thus obtained is called the **L-spectrum**.
 
 This is illustrated below.
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure7.png" width="75%">
+  <img src="/Spr2016/assets/lecture7/Figure7.png" width="75%">
 	<div class="figcaption"> Dense read model</div>
 </div>
 
@@ -224,7 +224,7 @@ the corresponding L-mer appears k times in the L-spectrum.
 
 An example de Bruijn graph construction is shown below.
 <div class="fig figcenter fighighlight">
-  <img src="assets/lecture7/Figure8.png" width="75%">
+  <img src="/Spr2016/assets/lecture7/Figure8.png" width="75%">
 	<div class="figcaption">de Bruijn graph for the sequence A<font color='red'>TAGAC</font>CC<font color='red'>TAGAC</font>GAT
 	from the 5-spectrum. The sequence TAGAC appears twice in the string and hence has two edges placed
 	between TAGA and AGAC.</div>
