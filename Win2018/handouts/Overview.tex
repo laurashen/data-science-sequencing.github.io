@@ -1,0 +1,164 @@
+\documentclass[11pt,onecolumn]{article}
+
+\usepackage[lmargin=0.75in,rmargin=0.75in,tmargin=.75in,bmargin=0.7in]{geometry}
+
+
+\usepackage[tbtags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{epsfig}
+%\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{bm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+% \usepackage{cite}
+
+\usepackage{caption}
+
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{constr}[thm]{Construction}
+\newtheorem{note}{Remark}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\bcor}{\begin{cor}}
+\newcommand{\ecor}{\end{cor}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqn}{\begin{equation*}}
+\newcommand{\eeqn}{\end{equation*}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+\newcommand{\eean}{\end{eqnarray*}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\bdefn}{\begin{defn}}
+\newcommand{\edefn}{\end{defn}}
+\newcommand{\bnote}{\begin{note}}
+\newcommand{\enote}{\end{note}}
+\newcommand{\bprop}{\begin{prop}}
+\newcommand{\eprop}{\end{prop}}
+\newcommand{\blem}{\begin{lem}}
+\newcommand{\elem}{\end{lem}}
+\newcommand{\bthm}{\begin{thm}}
+\newcommand{\ethm}{\end{thm}}
+\newcommand{\bconj}{\begin{conj}}
+\newcommand{\econj}{\end{conj}}
+\newcommand{\bconstr}{\begin{constr}}
+\newcommand{\econstr}{\end{constr}}
+\newcommand{\bpf}{\begin{proof}}
+\newcommand{\epf}{\end{proof}}
+\newcommand{\bprf}{{\em Proof: }}
+\newcommand{\bproof}{{\em Proof of }}
+\newcommand{\eproof}{\hfill $\Box$}
+\newcommand{\argmin}{\operatornamewithlimits{arg \ min}}
+\newcommand{\argmax}{\operatornamewithlimits{arg \ max}}
+
+\setlength\parindent{0pt} %noindent for all paragraphs
+\algnewcommand{\And}{\textbf{and}\xspace} 
+\def\today{\number\day\space\ifcase\month\or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi\space\number\year} %the 'right' date format
+
+
+%\pdfinfo{%
+%  /Title    (HADOOP : NetApp's Perspective - Our Understanding)
+%  /Author   (GK)
+%  /Creator  ()
+%  /Producer ()
+%  /Subject  (Documentation)
+%  /Keywords (Coding for Hadoop)
+%}
+
+\title{EE 372: Data Science for High-Throughput Sequencing}
+\author{Winter 2018}
+\date{\vspace{-5ex}}
+
+\begin{document}
+\maketitle
+
+\section*{Course Description}
+Extraordinary advances in sequencing technology in the past decade have revolutionized biology and medicine. Many high-throughput sequencing based assays have been designed to make various biological measurements of interest. This course explores the various computational and statistical problems that arises from processing high throughput sequencing data. Specific problems we will study include genome assembly, haplotype phasing, RNA-Seq quantification, single cell RNA-seq analysis, etc.  Specific techniques we will learn to solve these problems include spectral algorithms, dynamic programming, the EM algorithm PCA, FDR, etc. Through this course, the student will also get familiar with various software tools developed for the analysis of real sequencing data.
+
+\subsection*{Communication}
+Course news and assignments will be posted at \texttt{ee372.stanford.edu}, which redirects to the course's GitHub website. Each assignment and set of lecture notes will have its own page, and students are encouraged to ask and answer questions by leaving or replying to comments on these pages.
+
+\subsection*{Prerequisites}
+\begin{itemize}
+	\itemsep0em 
+	\item Undergraduate level probability
+	\item Some programming experience. We will be using Python.
+	\item Some undergraduate background in algorithms would be beneficial
+	\item No prior background in biology will be assumed
+\end{itemize}
+
+\subsection*{Lecture Times}
+Tuesday, Thursday 1:30 PM - 2:50 PM at 540-108 \\
+
+\subsection*{Course Staff}
+Instructor: David Tse (\texttt{dntse@stanford.edu}) \\
+Teaching assistants: Govinda Kamath (\texttt{gkamath@stanford.edu}), Jesse Zhang (\texttt{jessez@stanford.edu}) \\
+
+Office hours: Mon 3:00-4:00pm and Thurs 3:15pm-4:15pm at Packard 264 for instructor
+\pagebreak
+
+\section*{Course Grading}
+The grading for the course will be broken down as follows:
+\begin{itemize}
+	\itemsep0em 
+	\item Attendance 10\%
+	\item Scribing 10\%
+	\item Problem Sets 30\%
+	\item Project 50\%
+\end{itemize}
+
+\subsection*{Attendance}
+Students are encouraged to participate in class either during lecture or by leaving comments on material posted at the course website.
+
+\subsection*{Scribing}
+Each student will be responsible for scribing a lecture. To ensure that the notes will be available for students currently in the course, \textbf{scribed notes are due within 72 hours after lecture} (no late submissions accepted). A Google Doc will be used for reserving lectures for scribing.
+
+\subsection*{Assignments}
+There will be 3-4 assignments. The assignments will involve a theory component and a programming component. The programming component is aimed at exposing students to the messiness involved in real data and various tools used in practice. All programming assignments will require only laptop-level computing. The main language used to code will be Python. UNIX/LINUX/OS X may be needed for some of the software packages.
+
+\subsection*{Projects}
+Projects can be theoretic or practical in nature (ideally a mix of the two). Additional details and a list of possible projects will be put up shortly. Students can also come up with project topics that they are interested in (in consultation with the teaching staff). \\
+
+\pagebreak
+
+\subsection*{Lectures}
+\begin{enumerate}
+	\item Introduction
+	\item Biochemistry background and sequencing by Synthesis
+	\item Base calling for second-generation sequencing
+	\item Third-generation technologies: Nanopore and Pacific Biosciences
+	\item Genome assembly I: Formulation
+	\item Genome assembly II: Read overlap and De Bruijn graphs
+	\item Long-read assembly: a case study
+	\item Haplotype phasing
+	\item Alignment I
+	\item Alignment II
+	\item RNA-Seq I: Introduction
+	\item RNA-Seq II: Quantification vs the EM algorithm
+	\item RNA-SEq III: differential expression
+	\item Single-cell RNA-Seq I: technology and challenges
+	\item Single-cell RNA-Seq II: Dimensionality reduction, clustering and computing representatives
+	\item Single-cell RNA-Seq III: Dimensionality reduction, clustering and computing representatives
+	\item Single-cell RNA-Seq IV: Differential expression
+	\item Cancer genomics
+	\item Project presentation
+\end{enumerate}
+
+\end{document}
