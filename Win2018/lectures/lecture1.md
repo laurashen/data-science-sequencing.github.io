@@ -16,7 +16,8 @@ _Scribed by the course staff_
 1. <a href='#what'> What is high-throughput sequencing? </a>  
   - <a href='#seq'> Sequencing methods
 2. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>  
-  <!-- - <a href='#tools'> Tools used </a> -->
+  - <a href='#tools'> Tools </a>  
+  - <a href='#obj'> Objectives </a>
 3. <a href='#examples'> Example problems </a>
   - <a href='#assembly'> _de novo_ DNA assembly </a>  
   - <a href='#align'> DNA Alignment</a>
@@ -77,7 +78,7 @@ It turns out in that in the last few years, HTS technology has evolved to the po
 
 **The goal of this course is to discuss fast, scalable, and statistically accurate inference algorithms.** --->
 
-### What is high-throughput sequencing? <a id='what'></a>
+### <a id='what'></a>What is high-throughput sequencing?
 
 The main object of interest in this course
 is the [genome](https://en.wikipedia.org/wiki/Genome) of a
@@ -142,6 +143,11 @@ this was the first assay in which HTS was used to measure a molecule other than
 DNA. The assay was developed in 2008 by
 [Mortazavi _et al_](http://www.nature.com/nmeth/journal/v5/n7/abs/nmeth.1226.html).
 
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture1/rnaseq.png" width="70%">
+  <div class="figcaption">RNA-Seq overview.</div>
+</div>  
+
 - ChIP-Seq: Different cells express different RNA because of _epigenetic_ factors or molecules that influence how the genome is packed in the cell. DNA in cells
 are bound to proteins called histones, and for different cells, different parts of the genome are bound to histones. DNA wrapped around histones are harder to access and are not converted to RNA. ChIP-Seq is
 an assay which was developed measure the
@@ -151,10 +157,20 @@ Another recent assay called
 [ATAC-seq](http://www.nature.com/nmeth/journal/v10/n12/full/nmeth.2688.html)
 measures regions of the genome that are _not_ bound to histones.
 
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture1/chipseq.png" width="70%">
+  <div class="figcaption">ChIP-Seq overview.</div>
+</div>  
+
 - Hi-C-Seq: This assay measures the 3D
 structure of molecules and was developed by
 [Belton _et al_.](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3874846/)
 in 2012.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture1/hicseq.png" width="70%">
+  <div class="figcaption">Hi-C-Seq overview.</div>
+</div>  
 
 One of the most interesting and important problems in genomics is
 predicting _phenotype_ (physical characteristics
@@ -185,7 +201,7 @@ infer fetal genetic birth defects from the sequence.
 HTS has been used successfully for detecting
 [Down syndrome](http://www.mayoclinic.org/diseases-conditions/down-syndrome/basics/tests-diagnosis/con-20020948).
 
-#### Sequencing methods <a id='seq'></a>
+#### <a id='seq'></a>Sequencing methods
 
 Science progresses by the
 invention of measuring methods.
@@ -245,7 +261,7 @@ The figure below shows some characteristics of different sequencing technologies
   <div class="figcaption">Characteristics of different sequencing technologies.</div>
 </div>
 
-### Data science of high-throughput sequencing <a id='ds-or-hts'></a>
+### <a id='ds-or-hts'></a>Data science of high-throughput sequencing
 
 The success of HTS is mainly due to
 the creative use of read data to solve various problems. For this course, data science problems can be categorized into one of three types:
@@ -281,8 +297,7 @@ These different problems are illustrated below:
   <div class="figcaption">Data science of High-throughput sequencing.</div>
 </div>
 
-<!--
-#### Tools used <a id='tools'></a>
+#### <a id='tools'></a>Tools
 
 When working with HTS data, we first attempt to model the data. This usually involves many assumptions which are
 not true in practice. While inaccurate, these models are used to come up with initial interesting algorithms. As real data often does
@@ -293,14 +308,21 @@ combinatorial objects like graphs, and combinatorial algorithms naturally follow
 - Statistical Signal Processing: Because the data is noisy, we need signal processing techniques for dealing with the noise.  
 - Information Theory: When performing inference, this gives a sense of how much data is necessary to achieve "good" estimates, allowing us to design optimal algorithms to achieve such estimates.
 - Machine Learning
--->
 
-### Example Applications <a id='examples'></a>
+#### <a id='obj'></a>Objectives
+
+In this course, we will work towards two key objectives:
+
+1. Introduce an important and exciting application domain for data science.
+2. Introduce interesting algorithms and statistical concepts in a concrete well-motivated setting.
+
+
+### <a id='examples'></a>Example Problems
 
 In this section, we discuss representative problems that will be
 covered in this course.
 
-#### DNA-assembly (_de novo_)<a id='assembly'></a>
+#### <a id='assembly'></a>DNA-assembly (_de novo_)
 
 The DNA sequencer outputs an analog signal (e.g. light intensities
 or electric signals). We want to process this
@@ -331,7 +353,7 @@ and low level optimized software allows one to use algorithms that are quadratic
 
 _de novo_ here means "from new," which is relevant when we assemble a genome for the first item, for example in a new strain of bacteria or in cancer.
 
-#### DNA Alignment<a id='align'></a>
+#### <a id='align'></a>DNA Alignment
 
 The alignment problem is as follows: given a reference genome and a new read, we are interested in finding where the new read aligns to the reference genome. This is useful for finding the genomic regions that distinguish two individuals, which may indicate risk for disease and likelihood of possessing certain phenotypes. This problem is nontrivial for three reasons:
 
@@ -339,7 +361,7 @@ The alignment problem is as follows: given a reference genome and a new read, we
 2. The genome is quite repetitive, and therefore a read may have several places it can align to. In fact, there are regions of the genome (e.g. [Alu repeats](https://en.wikipedia.org/wiki/Alu_element)) that are repeated millions of times.
 3. Recall above that we need to align $$ N = $$ 900,000,000  reads to a length 3B genome. Therefore the naive process of scanning the entire genome for each read's match is too slow.
 
-#### RNA quantification and analysis<a id='rnaseq'></a>
+#### <a id='rnaseq'></a>RNA quantification and analysis
 
 As discussed above, RNA is another important biological molecule.
 There exists around 20000-100000 RNA sequences (or _transcripts_) floating in each cell,
@@ -353,7 +375,7 @@ One often uses the reference of known transcripts observed in an organism: the  
 a read originates from. A good algorithm for solving this problem is
 [expectation-maximization](https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm) (EM).
 
-#### Downstream analysis<a id='downstream'></a>
+#### <a id='downstream'></a>Downstream analysis
 
 Suppose we measure gene expression levels of two types of mice, for example a stressed mouse v. a relaxed mouse. Based on the expression levels of all 20000 genes, we can ask: which genes distinguish the two mouse states? This problem is known as _differential expression_.
 
@@ -365,4 +387,4 @@ are therefore an estimate of the sum over all cells. Recent technologies have al
 
 -----------------
 
-[Slides](/Win2018/lectures/lecture1_slides.pdf)
+[Slides](/Win2018/assets/lecture1/lecture1_slides_18.pptx)
