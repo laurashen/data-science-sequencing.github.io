@@ -15,7 +15,7 @@ _Scribed by the course staff_
 
 1. <a href='#what'> What is high-throughput sequencing? </a>  
   - <a href='#seq'> Sequencing methods
-2. <a href='#ds-or-hts'> Data science of high-throughput sequencing </a>  
+2. <a href='#ds-or-hts'> EE 372: Data science for HTS </a>  
   - <a href='#tools'> Tools </a>  
   - <a href='#obj'> Objectives </a>
 3. <a href='#examples'> Example problems </a>
@@ -261,7 +261,7 @@ The figure below shows some characteristics of different sequencing technologies
   <div class="figcaption">Characteristics of different sequencing technologies.</div>
 </div>
 
-### <a id='ds-or-hts'></a>Data science of high-throughput sequencing
+### <a id='ds-or-hts'></a>EE 372: Data science for HTS
 
 The success of HTS is mainly due to
 the creative use of read data to solve various problems. For this course, data science problems can be categorized into one of three types:
