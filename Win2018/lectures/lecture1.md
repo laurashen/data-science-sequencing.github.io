@@ -7,8 +7,6 @@ permalink: /Win2018/lectures/lecture1/
 
 Tuesday 9 January 2018
 
-_Scribed by the course staff_
-
 -----------------
 
 ### Topics
