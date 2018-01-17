@@ -6,9 +6,10 @@ permalink: /Win2018/assignments/assignment1/
 ## Assignment 1
 
 posted Tuesday 16 January 2018  
-due Tuesday 30 January 2018 at midnight
+due Friday 26 January 2018 at 11.59pm
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1 and Question III part 3) and your code in [this iPython notebook](/Win2018/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1, 6 and Question III part 3) and your code in [this iPython notebook](/Win2018/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through gradescope. All enrolled students have been added to the gradescope. Let us know if you do not have access to gradescope
+for the class by dropping an email to ee372-win1718-staff@Stanford.edu.
 
 ### Question I: Sanger sequencing
 
@@ -23,17 +24,23 @@ weights are different?
 
 ### Question II: Base calling for Illumina sequencing
 
-Consider the following base calling model studied in the class. We will focus on the A channel. Let $$s(1),\dots,s(L)$$ be the binary sequence, obtained by setting $$s(j)=1$$ if the $$j$$-th base is an $$A$$ and 0 otherwise, and $$y(1),y(2),\dots,y(L)$$ be the sequence of intensities observed in the $$A$$ channel. Now, in the case of a large number $$N$$ of strands in a cluster, the intensities and the DNA sequence can be related approximately as follows
+Consider the following base calling model studied in the class. We will focus on the A channel. Let $$\mathbf{s} = [s(1),\dots,s(L)]^T \ \ $$ be the binary sequence, obtained by setting $$s(j)=1$$ if the $$j$$-th base is an $$A$$ and 0 otherwise, and $$\mathbf{y} = [y(1),y(2),\dots,y(L)]^T \ \ $$ be the sequence of intensities observed in the $$A$$ channel. Now, in the case of a large number $$N$$ of strands in a cluster, the intensities and the DNA sequence can be related approximately as follows
 
 $$
-y(t)  = \sum_{i} Q_{ij} s(i) + n(j), \ \ \ j=1,2,\dots,L ,
+\mathbf{y}  = Q \mathbf{s} + \mathbf{n}, \ \ \ j=1,2,\dots,L ,
 $$
 
-where $$Q_{ij}$$ is the probability that the $$j$$th base emits color in the $$i$$th cycle. Further assume that
+where $$Q = [Q_{ij}]_{1\le i, j \le L} \ \ $$
+is an $$(L \times L) \ \ $$ matrix with the $$(i,j)\ $$-th entry $$Q_{i,j}$$
+being the probability that the $$j$$th base emits color in the $$i$$th cycle. $$\mathbf{n} = [n(1),n(2),\dots,n(L)]^T \ \  $$
+is the noise vector.
+
+Further assume that
 there is no possibility of a template leading, only lagging, _i.e._,
 in the notation of the class $$q=0$$. Assume $$n(j)$$ is Gaussian noise with zero mean and variance $$\sigma^2$$ (we are neglecting the effect that $$y(j)$$ is forced to be a positive real number, and we are also ignoring the amplitude $$a$$ as that factor can be absorbed into $$\sigma^2$$ with a rescaling).  
 
-1. Express $$Q_{ij}$$ in terms of $$i$$, $$j$$, and $$p$$. Given $$j$$ and $$p$$, what kind of distribution does $$Q_{ij}$$ have? At which value of $$i$$ is $$Q_{ij}$$ maximized?
+1. Express $$Q_{ij}$$ in terms of $$i$$, $$j$$, and $$p$$. Given $$j$$ and $$p$$, At which value of $$i$$ is $$Q_{ij}$$ maximized? **Bonus:** Can you connect
+the rows of $$Q$$ to the pmf of some well known distribution?
 
 2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1,\ $$ and  $$\ 0.2 $$ with $$\sigma^2 = 0.1$$.
 
@@ -48,17 +55,17 @@ where $$p_e$$ is the probability of error of detecting the base. Do the Phred sc
 5. (Matched filter bound): In this section, we will try to calculate a lower bound on the probability of error for any rule. To do so, we invoke a bound called the matched filter bound in signal processing. Consider the following system. Suppose you want to decode $$s(m)$$ for a particular $$m$$. If there was no interference from any other symbol but you observe
 the intensities at all possible times, then we have  
 \\[
-\tilde{y}(t) = Q_{tm} s(m) + n(t),  \ \ \ t=1,2,\dots,L.
+\tilde{y}(t) = Q_{im} s(m) + n(i),  \ \ \ i=1,2,\dots,L.
 \\]
 Given these observations, the optimal combining rule is called the matched filter rule in which a weighted average of the intensities  
 \\[
-y_m = \sum_t Q_{tm}\tilde{y}(t)
+y_m = \sum_i Q_{im}\tilde{y}(i)
 \\]
 is calculated and followed by an appropriate detection rule to perform base calling. The probability of error of this rule is a lower bound to the probability of error of the optimal rule in the original problem because ignoring interference from other symbols will only improve performance.
     1. Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4. _Hint:_ Look at the likelihood ratio 0 and 1.
     2. What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
-  6. **BONUS:** Assume $$p, q \in (0, 1)$$. Write $$Q_{ij}$$ in terms of $$\{Q_{\ell,k} \}_{\ell \leq i-1, k \leq j}$$. Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2$$.
+  6. Consider now the general case when $$q \ne 0 \ \ $$.  $$p, q \in (0, 1)$$. Write $$Q_{ij}$$ in terms of $$\{Q_{\ell,k} \}_{\ell \leq i-1, k \leq j}$$. Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2$$. _Hint:_ Dynamic programming.
 
 ### Question III: Playing around with reads
 
@@ -83,4 +90,4 @@ or [Bamview](http://bamview.sourceforge.net/).
 
 ---
 
-[This assignment as a pdf.](/Spr2016/assets/assignment1/assignment1.pdf)
+[This assignment as a pdf.](/Win2018/assets/assignment1/assignment1.pdf)
