@@ -36,23 +36,12 @@ Ideally one would want all copies of fragments in a cluster to be synchronized g
 ## <a id='error'></a>Error sources for Illumina sequencing
 
 The main source of errors is the asynchronicity of the various molecules in
-a dot.
+a dot stemming from the randomness intrinsic to chemical processes.
 
-In a cycle there are molecules where two ddNTPs are attached (due to
-the first one being attached being a dNTP rather than a ddNTP). This
-is shown in  pane 3 in cycle 1 in the figure below. Here the molecule
-bound to a dGTP rather than a ddGTP. Thus the synthesis was not terminated,
-and the molecule bound to a ddATP as well. This led to it emitting light
-corresponding to A rather than G, leading to an inconsistency with
-a molecule where this defect may not have occurred. This results to the strand *leading*.
+During the washing away of the dNTPs step, a small fraction of dNTPs will inevitably remain. Therefore for some DNA molecules, DNA polymerase will attach a dNTP rather than just a ddNTP. The synthesis will not be terminated,
+and the polymerase will ultimately attach both a dNTP and a ddNTP. This results in some strands being one or more bases longer than normal. These strands are said to be *leading*.
 
-Another error would occur if termination is not
-reversed in the washing cycle. In the figure below, this is
-shown in pane 2 in cycle 3. Here the termination of G is not
-reversed. Thus this molecule emits light corresponding to G
-rather  than light corresponding to A. This  leads to
-an inconsistency in the corresponding output signal (compared to
-a molecule where this has not occured). These strands are said to be *lagging*.
+Because enzymes are not perfectly efficient, another error would occur if termination is not reversed in the washing cycle. Therefore some strands will miss a cycle and be one base shorter than normal. These strands are said to be *lagging*.
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture3/errors_in_sbs.png" width="60%">
