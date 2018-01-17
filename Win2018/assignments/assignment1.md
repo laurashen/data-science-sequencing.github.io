@@ -8,7 +8,7 @@ permalink: /Win2018/assignments/assignment1/
 posted Tuesday 16 January 2018  
 due Friday 26 January 2018 at 11.59pm
 
-**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1, 6 and Question III part 3) and your code in [this iPython notebook](/Win2018/assets/assignment1/ee372_assignment1q3.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through gradescope. All enrolled students have been added to the gradescope. Let us know if you do not have access to gradescope
+**Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1, 6 and Question III part 3) and your code in [this iPython notebook](/Win2018/assets/assignment1/ee372_assignment1.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through gradescope. All enrolled students have been added to the gradescope. Let us know if you do not have access to gradescope
 for the class by dropping an email to ee372-win1718-staff@Stanford.edu.
 
 ### Question I: Sanger sequencing
