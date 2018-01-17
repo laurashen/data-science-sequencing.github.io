@@ -9,7 +9,7 @@ Tuesday 16 January 18
 
 ## Topics
 
-In the previous lecture, we learned about the evolution of first and second generation sequencing efforts. In this lecture, we  examine the base calling step in the process of sequencing DNA: the inference of individual bases from a series of light intensity signals.
+In the previous lecture, we learned about the evolution of first and second generation sequencing efforts. In this lecture, we  examine the _base calling_ step: the inference of individual bases from a series of light intensity signals.
 
 1.	<a href='#intro'>Introduction</a>
 2.	<a href='#error'>Error sources</a>
