@@ -19,7 +19,7 @@ In the previous lecture, we learned about the evolution of first and second gene
         - <a href='#ZF'>Zero-forcing</a>
         - <a href='#MMSE'>Minimum mean square error based estimation</a>
         - <a href='#ML'>Maximum likelihood estimation</a>
-        - <a href='#epi'>Epilogue to the estimation story</a>
+        <!-- - <a href='#epi'>Epilogue to the estimation story</a> -->
 
 ## <a id='intro'></a>Introduction
 
@@ -53,7 +53,7 @@ an inconsistency in the corresponding output signal (compared to
 a molecule where this has not occured). These strands are said to be *lagging*.
 
 <div class="fig figcenter fighighlight">
-  <img src="/Win2018/assets/lecture3/Figure1_errors_in_sbs.png" width="90%">
+  <img src="/Win2018/assets/lecture3/errors_in_sbs.png" width="60%">
   <div class="figcaption">An illustration showing errors in illumina sequencing,
   showing different molecules in a dot. </div>
 </div>
@@ -91,7 +91,10 @@ signal processing, this is called
 
 Since we have a lot of copies per clonal cluster, we can assume that the _channel_, which models how the signal becomes distorted, is deterministic and can be described by some average distortion on the input signal ([law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers)). We will assume that the technical noise is additive, resulting in the following model diagram:
 
-[IMAGE: s_A --> [channel] --> (add n^A here) --> y^A]
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture3/model.png" width="60%">
+  <div class="figcaption">Modeling the base calling process. </div>
+</div>
 
 We define
 
