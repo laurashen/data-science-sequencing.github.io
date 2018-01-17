@@ -65,7 +65,7 @@ is calculated and followed by an appropriate detection rule to perform base call
     1. Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4. _Hint:_ Look at the likelihood ratio 0 and 1.
     2. What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
-  6. Consider now the general case when $$q \ne 0 \ \ $$.  $$p, q \in (0, 1)$$. Write $$Q_{ij}$$ in terms of $$\{Q_{\ell,k} \}_{\ell \leq i-1, k \leq j}$$. Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2$$. _Hint:_ Dynamic programming.
+  6. Consider now the general case when $$q \ne 0 \  $$. Write $$Q_{ij}$$ in terms of $$\{Q_{\ell,k} \}_{\ell \leq i-1, k \leq j} \ $$. Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2 \ $$. _Hint:_ Dynamic programming.
 
 ### Question III: Playing around with reads
 
