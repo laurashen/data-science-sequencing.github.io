@@ -37,10 +37,10 @@ is the noise vector.
 
 Further assume that
 there is no possibility of a template leading, only lagging, _i.e._,
-in the notation of the class $$q=0$$. Assume $$n(j)$$ is Gaussian noise with zero mean and variance $$\sigma^2$$ (we are neglecting the effect that $$y(j)$$ is forced to be a positive real number, and we are also ignoring the amplitude $$a$$ as that factor can be absorbed into $$\sigma^2$$ with a rescaling).  
+in the notation of the class $$q=0$$. Assume $$n(j) \sim \mathcal{N}(0,\sigma^2) \ $$ (we are neglecting the effect that $$y(j)$$ is forced to be a positive real number, and we are also ignoring the amplitude $$a$$ as that factor can be absorbed into $$\sigma^2$$ with a rescaling).  
 
 1. Express $$Q_{ij}$$ in terms of $$i$$, $$j$$, and $$p$$. Given $$j$$ and $$p$$, At which value of $$i$$ is $$Q_{ij}$$ maximized? **Bonus:** Can you connect
-the rows of $$Q$$ to the pmf of some well known distribution?
+the $$i\ $$-th row of $$Q$$ to the pmf of some well known distribution?
 
 2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(t)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1,\ $$ and  $$\ 0.2 $$ with $$\sigma^2 = 0.1$$.
 
@@ -55,7 +55,7 @@ where $$p_e$$ is the probability of error of detecting the base. Do the Phred sc
 5. (Matched filter bound): In this section, we will try to calculate a lower bound on the probability of error for any rule. To do so, we invoke a bound called the matched filter bound in signal processing. Consider the following system. Suppose you want to decode $$s(m)$$ for a particular $$m$$. If there was no interference from any other symbol but you observe
 the intensities at all possible times, then we have  
 \\[
-\tilde{y}(t) = Q_{im} s(m) + n(i),  \ \ \ i=1,2,\dots,L.
+\tilde{y}(i) = Q_{im} s(m) + n(i),  \ \ \ i=1,2,\dots,L.
 \\]
 Given these observations, the optimal combining rule is called the matched filter rule in which a weighted average of the intensities  
 \\[
@@ -90,4 +90,4 @@ or [Bamview](http://bamview.sourceforge.net/).
 
 ---
 
-[This assignment as a pdf.](/Win2018/assets/assignment1/assignment1.pdf)
+<!-- [This assignment as a pdf.](/Win2018/assets/assignment1/assignment1.pdf) -->
