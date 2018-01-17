@@ -13,7 +13,6 @@ In the previous lecture, we learned about the evolution of first and second gene
 
 1.	<a href='#intro'>Introduction</a>
 2.	<a href='#error'>Error sources</a>
-3.	<a href='#model'>Modeling the error source</a>
     - <a href='#model1'>The error model</a>
     - <a href='#infer'>Inference on the model</a>
         - <a href='#ZF'>Zero-forcing</a>
@@ -23,13 +22,16 @@ In the previous lecture, we learned about the evolution of first and second gene
 
 ## <a id='intro'></a>Introduction
 
-We begin with a review of the sequencing by synthesis approach to sequencing. We start with DNA and fragment it into many shorter sequences (resulting in a number of fragments on the order of 100 million to 1 billion). Then on glass plates, there are a number of dots onto which these DNA fragments will stick (a process called _hybridization_), with the material on the plate complementary to the basis on those dots. Not every dot will have a such a fragment, but a good fraction of them will, allowing us to move towards sequencing. We recall that the solution contains two entities: ddNTP (free-flowing) and DNA polymerase (binds the ddNTP). In addition, there is the enzyme that reverses termination in the washing cycles.
+We begin with a review of the sequencing by synthesis approach to sequencing. We start with DNA and fragment it into many shorter sequences (resulting in a number of fragments on the order of 100 million to 1 billion). We then _hybridize_ (or "stick") the fragments onto a glass slide called a _flow cell_. We recall that sequencing by synthesis begins with ddNTP (free-flowing) and DNA polymerase, which binds both dNTP and ddNTP. In addition, we introduce an enzyme that reverses termination in each washing cycle. We also introduce some chemistry to capture florescence signals each time a ddNTP binds, and we record these signals by taking pictures (one picture per nucleotide per cycle, for example).
 
-[IMAGE: DNA -> [sequencing chemistry] -> pictures -> [base calling] -> reads]
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture3/basecall.png" width="70%">
+  <div class="figcaption">The process of obtaining reads from DNA. </div>
+</div>
 
 We note that the above is a simplified version of base calling. In reality, the fluorescent signal from a single template is too weak to be detected. Hence, first the template is converted into many clones using a technique called [polymerase chain reaction (PCR)](https://en.wikipedia.org/wiki/Polymerase_chain_reaction) (which also won its discoverer [Kary Mullis](https://en.wikipedia.org/wiki/Kary_Mullis) a Nobel prize). Before synthesis, each strand is cloned using PCR and each dot becomes a _clonal cluster_ corresponding to 1000 clones per strand.
 
-Ideally one would want all copies of fragments in a cluster to be synchronized going forward. Because of chemical and mechanical imperfections, some strands are lagging behind and others are leading forward in the same dot leading to a lot of "noise" in a cluster.
+Ideally one would want all copies of fragments in a cluster to be synchronized going forward. Because of chemical and mechanical imperfections, some strands are lagging behind and others are leading forward in the same cluster resulting in _noise_.
 
 ## <a id='error'></a>Error sources for Illumina sequencing
 
@@ -59,8 +61,6 @@ a molecule where this has not occured). These strands are said to be *lagging*.
 </div>
 
 Both leading and lagging errors are called *phasing* errors.
-
-## <a id='model'></a>Modeling the error sources and doing inference
 
 ### <a id='model1'></a>The error model
 
@@ -92,7 +92,7 @@ signal processing, this is called
 Since we have a lot of copies per clonal cluster, we can assume that the _channel_, which models how the signal becomes distorted, is deterministic and can be described by some average distortion on the input signal ([law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers)). We will assume that the technical noise is additive, resulting in the following model diagram:
 
 <div class="fig figcenter fighighlight">
-  <img src="/Win2018/assets/lecture3/model.png" width="60%">
+  <img src="/Win2018/assets/lecture3/model.png" width="40%">
   <div class="figcaption">Modeling the base calling process. </div>
 </div>
 
