@@ -45,8 +45,7 @@ Because enzymes are not perfectly efficient, another error would occur if termin
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture3/errors_in_sbs.png" width="60%">
-  <div class="figcaption">An illustration showing errors in illumina sequencing,
-  showing different molecules in a dot. </div>
+  <div class="figcaption">A visual comparison of normal, leading, and lagging events in second-generation sequencing. </div>
 </div>
 
 Both leading and lagging errors are called *phasing* errors.
