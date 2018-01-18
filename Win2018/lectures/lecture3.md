@@ -29,9 +29,12 @@ We begin with a review of the sequencing by synthesis approach to sequencing. We
   <div class="figcaption">The process of obtaining reads from DNA. </div>
 </div>
 
-We note that the above is a simplified version of base calling. In reality, the fluorescent signal from a single template is too weak to be detected. Hence, first the template is converted into many clones using a technique called [polymerase chain reaction (PCR)](https://en.wikipedia.org/wiki/Polymerase_chain_reaction) (which also won its discoverer [Kary Mullis](https://en.wikipedia.org/wiki/Kary_Mullis) a Nobel prize). Before synthesis, each strand is cloned using PCR and each dot becomes a _clonal cluster_ corresponding to 1000 clones per strand.
+We note that the above is a simplified version of base calling. In reality, the fluorescent signal from a single template is too weak to be detected. Hence, first the template is converted into many clones using a technique called [polymerase chain reaction (PCR)](https://en.wikipedia.org/wiki/Polymerase_chain_reaction) (which also won its discoverer [Kary Mullis](https://en.wikipedia.org/wiki/Kary_Mullis) a Nobel prize). Before synthesis, each strand is cloned using PCR and each dot becomes a _clonal cluster_ corresponding to 1000s of clones per strand.
 
-Ideally one would want all copies of fragments in a cluster to be synchronized going forward. Because of chemical and mechanical imperfections, some strands are lagging behind and others are leading forward in the same cluster resulting in _noise_.
+Ideally one would want all copies of fragments in a cluster to be synchronized in their synthesis process going forward.
+Because of chemical and mechanical imperfections, some strands are lagging behind and others are
+leading forward in the same cluster. This puts up challenges for doing inference
+which are handled with some clever signal processing.
 
 ## <a id='error'></a>Error sources for Illumina sequencing
 
@@ -41,7 +44,7 @@ a dot stemming from the randomness intrinsic to chemical processes.
 During the washing away of the dNTPs step, a small fraction of dNTPs will inevitably remain. Therefore for some DNA molecules, DNA polymerase will attach a dNTP rather than just a ddNTP. The synthesis will not be terminated,
 and the polymerase will ultimately attach both a dNTP and a ddNTP. This results in some strands being one or more bases longer than normal. These strands are said to be *leading*.
 
-Because enzymes are not perfectly efficient, another error would occur if termination is not reversed in the washing cycle. Therefore some strands will miss a cycle and be one base shorter than normal. These strands are said to be *lagging*.
+Because enzymes are not perfect, another error would occur if termination is not reversed in the washing cycle. Therefore some strands will miss a cycle and be one base shorter than normal. These strands are said to be *lagging*.
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture3/errors_in_sbs.png" width="60%">
