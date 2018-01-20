@@ -1,5 +1,5 @@
 ---
-layout: test
+layout: page
 mathjax: true
 permalink: /Win2018/assignments/assignment1/
 ---
