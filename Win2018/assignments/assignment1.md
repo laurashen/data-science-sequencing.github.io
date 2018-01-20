@@ -39,12 +39,12 @@ Further assume that
 there is no possibility of a template leading, only lagging, _i.e._,
 in the notation of the class $$q=0$$. Assume $$n(j) \sim \mathcal{N}(0,\sigma^2) \ $$ (we are neglecting the effect that $$y(j)$$ is forced to be a positive real number, and we are also ignoring the amplitude $$a$$ as that factor can be absorbed into $$\sigma^2$$ with a rescaling).  
 
-1. Express $$Q_{ij}$$ in terms of $$i$$, $$j$$, and $$p$$. Given $$j$$ and $$p$$, At which value of $$i$$ is $$Q_{ij}$$ maximized? **Bonus:** Can you connect
-the $$i\ $$-th row of $$Q$$ to the pmf of some well known distribution?
+1. Express $$Q_{ij}$$ in terms of $$i$$, $$j$$, and $$p$$. Given $$j$$ and $$p$$, At which value of $$j$$ is $$Q_{ij}$$ maximized? **Bonus:** Can you connect
+the $$j\ $$-th column of $$Q$$ to the pmf of some well known distribution?
 
 2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(j)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1,\ $$ and  $$\ 0.2 $$ with $$\sigma^2 = 0.1$$.
 
-3. Write down the zero-forcing equalizer (i.e. matrix inversion) and the decoding rule. Simulate this rule and for different values of $$p$$ plot its Phred score as a function of position along the DNA sequence. Here the _Phred score_ of a base is defined to be:
+3. Write down the zero-forcing equalizer (i.e. matrix inversion) and the decoding rule. Simulate this rule and for different values of $$p$$ plot its quality score as a function of position along the DNA sequence. Here the _Phred score_ of a base is defined to be:
 \\[
 \text{Phred} = -10 \log_{10} p_e
 \\]
