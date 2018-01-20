@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: test
 mathjax: true
 permalink: /Win2018/assignments/assignment1/
 ---
@@ -9,7 +9,7 @@ posted Wednesday 17 January 2018
 due Friday 26 January 2018 at 11:59pm
 
 **Submission policy**: Report all plots (Question II parts 2, 3, 4, 5.1, 6 and Question III part 3) and your code in [this Jupyter notebook](/Win2018/assets/assignment1/ee372_assignment1.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through [Gradescope](https://gradescope.com/) (all enrolled students have been added). Let us know if you do not have access to Gradescope
-for the class by dropping an email to ee372-win1718-staff@stanford.edu.
+for the class by dropping an email to ee372-win1718-staff@lists.stanford.edu.
 
 ### Question I: Sanger sequencing
 
@@ -65,7 +65,14 @@ is calculated and followed by an appropriate detection rule to perform base call
     1. Find the appropriate detection rule and give an expression for the probability of error and the quality score of the optimal combining rule. Plot the quality score for a fixed $$p=0.05$$ as a function of the position $$m$$. Compare this to the performance of the base calling rules in parts 3. and 4. _Hint:_ Look at the likelihood ratio 0 and 1.
     2. What happens to this probability of error as a function of position in this case? What does this say about why the read length in Illumina sequencing is limited?
 
-  6. Consider now the general case when $$q \ne 0 \  $$. Write $$Q_{ij}$$ in terms of $$\{Q_{\ell,k} \}_{\ell \leq i-1, k \leq j} \ $$. Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2 \ $$. _Hint:_ Dynamic programming.
+  6. Consider now the general case when $$q \ne 0 \  $$.
+  Let $$T_{ij}$$ be the probability that the $$j\ $$-th base is the last base to have
+  been bound in a strand in cycle $$i\ $$.
+  Write $$T_{ij}$$ in terms of $$\{T_{\ell,k} \}_{\ell \leq i-1, k \leq j} \ $$.
+  Write the matrix $$Q = [Q_{ij}]\ $$ in terms of entries of the matrix $$T = [T_{ij}]\ $$.
+  Give entries for the the $$10 \times 10$$ matrix $$Q$$ for $$p = 0.1, q = 0.2 \ $$. _Hint:_ Dynamic programming
+  to get $$T$$. The only difference between the $$T$$ and the $$Q$$ matrix is to account
+  for the fact that if a strand lags in cycle $$i,$$ it does not emit flourescence.
 
 ### Question III: Playing around with reads
 
