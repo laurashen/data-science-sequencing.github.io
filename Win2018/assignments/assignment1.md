@@ -44,7 +44,7 @@ the $$i\ $$-th row of $$Q$$ to the pmf of some well known distribution?
 
 2. Simulate and plot $$y(1),\dots,y(L)$$ according to the probability model (for $$s(j)$$ being i.i.d. equally probable to be 0 or 1). Do this for various values of $$p=0,\ 0.01,\ 0.05,\ 0.1,\ $$ and  $$\ 0.2 $$ with $$\sigma^2 = 0.1$$.
 
-3. Write down the zero-forcing equalizer (i.e. matrix inversion) and the decoding rule. Simulate this rule and for different values of $$p$$ plot its quality score as a function of position along the DNA sequence. Here the _Phred score_ of a base is defined to be:
+3. Write down the zero-forcing equalizer (i.e. matrix inversion) and the decoding rule. Simulate this rule and for different values of $$p$$ plot its Phred score as a function of position along the DNA sequence. Here the _Phred score_ of a base is defined to be:
 \\[
 \text{Phred} = -10 \log_{10} p_e
 \\]
