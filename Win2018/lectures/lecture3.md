@@ -166,13 +166,13 @@ can be modeled as Bernoulli$$\left(\frac{1}{4}\right) \ $$, and the Gaussian
 approximation is by matching the first and second moments of the Bernoulli.
 
 Then we find the $$\hat{\mathbf{s}^{(A)}}$$ such that
-$$\mathbb{E}[(\hat{\mathbf{s}^{(A)}}-\mathbf{s}^{(A)})^2]$$ is minimized. In the standard setting when the support of $$\mathbf{s}^{(A)}$$ is not restricted to be $$\{0,1\}$$, this leads to $$\hat{\mathbf{s}^{(A)}}= bQ^T\left( \frac{3}{16} b^2  QQ^T+\sigma^2 I\right)^{-1}\left(\mathbf{y}^{(A)} - \frac{1}{4}b Q \mathbf{1}\right) + \frac{1}{4}\mathbf{1}\ \ $$.
+$$\mathbb{E}[(\hat{\mathbf{s}^{(A)}}-\mathbf{s}^{(A)})^2]$$ is minimized. In the standard setting when the support of $$\mathbf{s}^{(A)}$$ is not restricted to be $$\{0,1\}$$, this leads to $$\hat{\mathbf{s}^{(A)}}= \frac{3}{16} bQ^T\left( \frac{3}{16} b^2  QQ^T+\sigma^2 I\right)^{-1}\left(\mathbf{y}^{(A)} - \frac{1}{4}b Q \mathbf{1}\right) + \frac{1}{4}\mathbf{1}\ \ $$.
 
 
 Hence the MMSE-based estimator used in this setting is
 
 $$
-\hat{\mathbf{s}}^{(A)} = \mathbb{I}\left( bQ^T\left( \frac{3}{16} b^2  QQ^T+\sigma^2 I\right)^{-1}\left(\mathbf{y}^{(A)} - \frac{1}{4}b Q \mathbf{1}\right) + \frac{1}{4}\mathbf{1} > \frac{1}{2}\right).
+\hat{\mathbf{s}}^{(A)} = \mathbb{I}\left( \frac{3}{16} bQ^T\left( \frac{3}{16} b^2  QQ^T+\sigma^2 I\right)^{-1}\left(\mathbf{y}^{(A)} - \frac{1}{4}b Q \mathbf{1}\right) + \frac{1}{4}\mathbf{1} > \frac{1}{2}\right).
 $$
 
 One drawback of this method is that it does not use the fact that $$\mathbf{s} \in \{0,1\}^{L}$$
