@@ -7,6 +7,8 @@ permalink: /Win2018/lectures/lecture4/
 
 Thursday 18 January 18
 
+_scribed by Mark Nishimura_
+
 ## Topics
 
 We last talked about Illumina reads, which are short (~100-200 bp long). For long read technologies, reads can reach the length of 10s of thousands of bp long. Today we will discuss the base calling problems associated with long-read technology.
