@@ -116,13 +116,18 @@ The error rate of Oxford Nanopore is relatively bad and on the order of 15-20% d
 
 2. The DNA sequence does not move at a constant rate through the nanopore. Therefore when we segment the signal, we may skip bases or even backtrack. This leads to deletion and insertion errors, the major source of error for this technology.
 
-A state-of-the-art approach for performing base calling starts by sliding a length-4 window across our DNA sequence, resulting in length-4 sequences called _contexts_. Occasionally we may skip or backtrack. The _dwell time_ is the time each window spends in the nanopore, or the time we read a particular current for. Level-finding is the process of of smoothening the noisy signal into discrete steps. Finally, we discretize the signal.
+A state-of-the-art approach ([Mao et al. 2017](https://arxiv.org/pdf/1705.11154.pdf)) for performing base calling starts by sliding a length-4 window across our DNA sequence, resulting in length-4 sequences called _contexts_. Occasionally we may skip or backtrack. The _dwell time_ is the time each window spends in the nanopore, or the time we read a particular current for. Level-finding is the process of of smoothening the noisy signal into discrete steps. Finally, we discretize the signal.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture4/nanopore_basecalling_mao.png" width="60%">
+  <div class="figcaption"> Mao et al.'s approach for nanopore basecalling. </div>
+</div>
 
 Leveraging our previous notation, we can summarize the process using the following block diagram:
 
 <div class="fig figcenter fighighlight">
-  <img src="/Win2018/assets/lecture4/lecture4-figure3.png" width="90%">
-  <div class="figcaption"> Base calling diagram for Oxford Nanopore. </div>
+  <img src="/Win2018/assets/lecture4/nanopore_basecalling.png" width="90%">
+  <div class="figcaption"> A block diagram view of nanopore basecalling. </div>
 </div>
 
 Note that $$s_i \in \{A, G, C, T\}$$ while $$z_i \in \{A, G, C, T\}^4$$. Now we have a base calling problem. Similarly to our approach for second-generation sequencing, we can again draw a state transition diagram. With 4-mers, we have $$2^8$$ states. Given that we are in a certain state, how many states can we move to? Assuming that the probability of insertion or deletion is 0, then we can move to only one of 4 states.

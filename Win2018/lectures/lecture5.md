@@ -20,8 +20,8 @@ Tuesday 23 January 2018
 We ended last lecture with a discussion on base calling for Oxford Nanopore's technology, summarized by the following figure:
 
 <div class="fig figcenter fighighlight">
-  <img src="/Win2018/assets/lecture4/lecture4-figure3.png" width="90%">
-  <div class="figcaption"> Base calling diagram for Oxford Nanopore. </div>
+  <img src="/Win2018/assets/lecture4/nanopore_basecalling.png" width="90%">
+  <div class="figcaption"> A block diagram view of nanopore basecalling. </div>
 </div>
 
 We have three sources of noise:
@@ -30,7 +30,7 @@ We have three sources of noise:
 2. _indels (insertions and deletions)_: the strand does not pass through the pore at a constant speed
 3. _technical_: measurement noise which we model as additive Gaussian zero-mean noise
 
-Last time, we also discussed how we can decode a series of length-4 contexts (sliding 4-mer windows) using a trellis and the Viterbi algorithm. A point of confusion stemmed from how the algorithm would perform in the event of an indel. We will discuss the deletion event in more detail. Without a deletion, the context AAAA can transition to one of four states: AAAA, AAAC, AAAG, AAAT. Since we have $$4^4$$ initial states, and each can transition to one of 4 states, each intermediate trellis stage contains $$4^5 = 2^{10}$$ stages. To account for the event of a deletion, we can add stages AATA, AATC, etc. (16 total including the original 4 states) to account for other 4-mer contexts that AAAA can transition to. Running Viterbi now will result in a sequence that's 1 longer than the true signal.
+Last time, we also discussed how we can decode a series of length-4 contexts (sliding 4-mer windows) using a trellis and the Viterbi algorithm. A point of confusion stemmed from how the algorithm would perform in the event of an indel. We will discuss the deletion event in more detail. Without a deletion, each initial context can transition to one of four states (e.g. AAAA, AAAC, AAAG, AAAT for the initial context AAAA). Each intermediate trellis stage contains $$4^4 = 2^8$$ stages, and each node at stage $i$ will have 4 outgoing edges connecting the node to stage $i+1$. For a deletion event, we can add stages AATA, AATC, etc. to account for other 4-mer contexts that AAAA can transition to. In other words, we simply need to add more edges to the trellis. Running Viterbi now will result in a sequence that's 1 longer than the true signal.
 
 Perhaps counterintuitively, the ISI due to the context can be useful (see Question II part 5 on [assignment 1](/Win2018/assignments/assignment1/)). If we miss a base, we have 3 contexts that contain information about the base.
 
@@ -100,4 +100,4 @@ $$
 
 As an example, if the genome of interest is about one billion base pairs long, then we need at least $$25$$x coverage depth since $$G=10^9;\epsilon=0.01\Rightarrow c=25.328\ \ $$. The number of reads covering a position is exactly binomial with parameters $$\left(N, \frac{L}{G}\right)$$. Note that $$\frac{L}{G}$$ is quite small, and therefore the number of reads can be approximated with a Poisson distribution with mean $$c= \frac{NL}{G} \ $$.
 
-As a parting thought, we observe that this condition holds for every $$L$$. Suppose $$L = 1$$ (each read is only 1 base long). The condition in its current form states that we can assemble if we have a large enough $$N$$, but intuitively this is wrong. We will address this  in the next lecture.
+As a parting thought, we observe that this condition holds for every $$L$$. Suppose $$L = 1$$ (each read is only 1 base long). The condition in its current form states that we can assemble if we have a large enough $$N$$, but intuitively this is wrong. We will address this next lecture.
