@@ -37,7 +37,7 @@ Perhaps counterintuitively, the ISI due to the context can be useful (see Questi
 ## <a id='review'></a>Review
 
 So far in the course, we have discussed three different technologies in detail: second-generation sequencing (Illumina), Oxford Nanopore, and PacBio.
-
+| -- | --: | --: | --: |
 | | Second gen. (Illumina) | Oxford Nanopore (MinIon) | PacBio |
 | -- | --: | --: | --: |
 | read length (bases) | 100-500 | 10K-100K | 10K-20K |
@@ -98,6 +98,6 @@ $$
 c = \frac{NL}{G} \geq \ln \frac{G}{\epsilon}.
 $$
 
-As an example, if the genome of interest is about one billion base pairs long, then we need at least $$25$$x coverage depth since $$G=10^9;\epsilon=0.01\Rightarrow c=25.328$$. The number of reads covering a position is exactly binomial with parameters $$(N, L/G)$$. Note that $$L/G$$ is quite small, and therefore the number of reads can be approximated with a Poisson distribution with mean $$c$$.
+As an example, if the genome of interest is about one billion base pairs long, then we need at least $$25$$x coverage depth since $$G=10^9;\epsilon=0.01\Rightarrow c=25.328\ \ $$. The number of reads covering a position is exactly binomial with parameters $$\left(N, \frac{L}{G}\right)$$. Note that $$\frac{L}{G}$$ is quite small, and therefore the number of reads can be approximated with a Poisson distribution with mean $$c= \frac{NL}{G} \ $$.
 
 As a parting thought, we observe that this condition holds for every $$L$$. Suppose $$L = 1$$ (each read is only 1 base long). The condition in its current form states that we can assemble if we have a large enough $$N$$, but intuitively this is wrong. We will address this lecture.
