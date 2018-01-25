@@ -7,7 +7,7 @@ permalink: /Win2018/lectures/lecture4/
 
 Thursday 18 January 18
 
-_scribed by Mark Nishimura_
+_scribed by Mark Nishimura and edited by the course staff_
 
 ## Topics
 
@@ -34,16 +34,16 @@ We considered models of the form:
    <img src="/Win2018/assets/lecture4/lecture4-figure0.png" width="50%">
  </div>
 
-The step function here refers to symbol-by-symbol thresholding. The best $$H$$ we came up last lecture with was from the MMSE formulation, but this strategy is not necessarily optimal because it does not use the fact that y \in \{0, 1\}.
+The step function here refers to symbol-by-symbol thresholding. The best $$H$$ we came up last lecture with was from the MMSE formulation, but this strategy is not necessarily optimal because it does not use the fact that $$y \in \{0, 1\}.$$
 
 ## <a id='ml'></a>Maximum Likelihood
 
 We will now attempt to formulate the problem as a maximum likelihood (ML) problem (we will omit the $$A$$ superscript to simplify the notation).
 
-$$ \max_{\mathbf{s} \in \{0, 1\}^L} P(\mathbf{y} | \mathbf{s}) = \max_{\mathbf{s} \in \{0, 1\}^L} \frac{1}{(2\pi)^{n/2} \sigma} \exp \left( \frac{-1}{2\sigma^2} \| \mathbf{y} - Q\mathbf{s} \|^2 \right) = \min_{\mathbf{s} \in \{0, 1\}^L} \| \mathbf{y} - Q\mathbf{s} \|^2$$
+$$\text{argmax}_{\mathbf{s} \in \{0, 1\}^L} P(\mathbf{y} | \mathbf{s}) = \text{argmax}_{\mathbf{s} \in \{0, 1\}^L} \frac{1}{(2\pi)^{n/2} \sigma} \exp \left( \frac{-1}{2\sigma^2} \| \mathbf{y} - Q\mathbf{s} \|^2 \right) = \text{argmax}_{\mathbf{s} \in \{0, 1\}^L} \| \mathbf{y} - Q\mathbf{s} \|^2$$
 
 A brute-force approach would involve testing all $$2^L$$ possible solutions, but this is intractable for even small $$L$$. If we assume $$Q$$ can take on any form, there is no easy way to solve this problem. Recall that for $$Q$$, as we move away from the diagonal entries, the terms get smaller quickly. This is essentially because for a value of 1 at $$\mathbf{s}(i)$$ to influence
-the reading of $$\mathbf{y}(j)$$, there would need to be $$\left| i-j \right|$$ independent failures in the sequencing process, each with its own
+the reading of $$\mathbf{y}(j),$$ there would need to be $$\left| i-j \right|$$ independent failures in the sequencing process, each with its own
 (small) probability. Therefore we can approximate $$Q$$ with a _band-diagonal_ matrix. For now, we consider the case when only the main diagonal and the first lower diagonal $$Q$$ (i.e. $$Q_{i,i-1}$$, for $$i = 2...,L$$) are nonzero, with the rest assumed to be zero.
 
 Given this band-diagonal assumption, the original equation $$\mathbf{y} = Q\mathbf{s} + \mathbf{n}$$ becomes
@@ -103,7 +103,12 @@ Recall that a major issue with short reads is the difficulty of resolving _repea
 
 ### <a id='nano'></a>Nanopore
 
-For nanopore technologies (see [here](https://www.youtube.com/watch?v=GUb1TZvMWsw) for a video), each double-stranded DNA fragment is bound to a special enzyme. The enzyme binds to a nanopore, which is affixed to a substrate. The enzyme then unzips and advances the DNA through the nanopore one base at a time. A voltage across the nanopore produces a small electrical current, and the difference in resistances of different bases allows the DNA sequence to be determined based on this varying current signal (on the order of picoamperes or pA). Our length is no longer limited by the phasing or misalignment issue, but instead is limited by when our enzyme breaks down.
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=GUb1TZvMWsw"><img src="https://img.youtube.com/vi/GUb1TZvMWsw/0.jpg" ></a>
+  <div class="figcaption"> A video illustrating operation of Nanopore sequencing by Oxford Nanopore </div>
+</div>
+
+For nanopore technologies, each double-stranded DNA fragment is bound to a special enzyme. The enzyme binds to a nanopore, which is affixed to a substrate. The enzyme then unzips and advances the DNA through the nanopore one base at a time. A voltage across the nanopore produces a small electrical current, and the difference in resistances of different bases allows the DNA sequence to be determined based on this varying current signal (on the order of picoamperes or pA). Our length is no longer limited by the phasing or misalignment issue, but instead is limited by when our enzyme breaks down.
 
 The error rate of Oxford Nanopore is relatively bad and on the order of 15-20% due to two major issues associated with this technology.
 
@@ -126,4 +131,9 @@ In general, however, we can use our Viterbi approach from before. Each column in
 
 ### <a id='pb'></a>Pacific Biosciences
 
-While Nanopore technology measures electrical current, PacBio technology (see [here](https://www.youtube.com/watch?v=NHCJ8PtYCFc) for a video) measures colors emitted in microscopic wells called _zero-mode waveguides_ ($$10^{-21}$$ liters) during DNA synthesis. With 10s of thousands of wells per so-called SMRT chip, each ZMW essentially allows us to read out color intensities at thousands of times stronger than the background signal. The error rate of PacBio reads is about 10-15%. The speed of the process of the single DNA molecule going through an enzyme causes randomness, resulting in the same insertion and deletion issues also associated with Nanopore technology.
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=NHCJ8PtYCFc"><img src="https://img.youtube.com/vi/NHCJ8PtYCFc/0.jpg" ></a>
+  <div class="figcaption"> A video illustrating operation of third-generation sequencing sequencing by Pacific Biosciences </div>
+</div>
+
+While Nanopore technology measures electrical current, PacBio technology  measures colors emitted in microscopic wells called _zero-mode waveguides_ ($$10^{-21}$$ liters) during DNA synthesis. With tens of thousands of wells per so-called SMRT chip, each ZMW essentially allows us to read out color intensities at thousands of times stronger than the background signal. The error rate of PacBio reads is about 10-15%. The speed of the process of the single DNA molecule going through an enzyme causes randomness, resulting in the same insertion and deletion issues also associated with Nanopore technology.
