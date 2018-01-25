@@ -5,7 +5,9 @@ permalink: /Win2018/lectures/lecture3/
 ---
 ## Lecture 3: Base Calling for Second-Generation Sequencing
 
-Tuesday 16 January 18
+Tuesday 16 January 2018
+
+-----------------
 
 ## Topics
 

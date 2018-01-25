@@ -5,9 +5,11 @@ permalink: /Win2018/lectures/lecture4/
 ---
 ## Lecture 4: Base Calling for Next-Generation Sequencing
 
-Thursday 18 January 18
+Thursday 18 January 2018
 
 _scribed by Mark Nishimura and edited by the course staff_
+
+-----------------
 
 ## Topics
 

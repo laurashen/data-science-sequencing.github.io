@@ -7,6 +7,8 @@ permalink: /Win2018/lectures/lecture5/
 
 Tuesday 23 January 2018
 
+-----------------
+
 ## Topics
 
 1. <a href='#isi'>ISI and deletion</a>
