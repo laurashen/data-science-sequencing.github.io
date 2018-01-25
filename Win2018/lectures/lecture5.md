@@ -100,4 +100,4 @@ $$
 
 As an example, if the genome of interest is about one billion base pairs long, then we need at least $$25$$x coverage depth since $$G=10^9;\epsilon=0.01\Rightarrow c=25.328\ \ $$. The number of reads covering a position is exactly binomial with parameters $$\left(N, \frac{L}{G}\right)$$. Note that $$\frac{L}{G}$$ is quite small, and therefore the number of reads can be approximated with a Poisson distribution with mean $$c= \frac{NL}{G} \ $$.
 
-As a parting thought, we observe that this condition holds for every $$L$$. Suppose $$L = 1$$ (each read is only 1 base long). The condition in its current form states that we can assemble if we have a large enough $$N$$, but intuitively this is wrong. We will address this lecture.
+As a parting thought, we observe that this condition holds for every $$L$$. Suppose $$L = 1$$ (each read is only 1 base long). The condition in its current form states that we can assemble if we have a large enough $$N$$, but intuitively this is wrong. We will address this  in the next lecture.
