@@ -112,7 +112,7 @@ Recall that a major issue with short reads is the difficulty of resolving _repea
 
 For nanopore technologies, each double-stranded DNA fragment is bound to a special enzyme. The enzyme binds to a nanopore, which is affixed to a substrate. The enzyme then unzips and advances the DNA through the nanopore one base at a time. A voltage across the nanopore produces a small electrical current, and the difference in resistances of different bases allows the DNA sequence to be determined based on this varying current signal (on the order of picoamperes or pA). Our length is no longer limited by the phasing or misalignment issue, but instead is limited by when our enzyme breaks down.
 
-The error rate of Oxford Nanopore is relatively bad and on the order of 15-20% due to two major issues associated with this technology.
+The error rate of Oxford Nanopore is relatively bad and on the order of 10-15% due to two major issues associated with this technology.
 
 1. The size of a nanopore is bigger than a nucleotide, and therefore each electrical signal we measure is the signal aggregated from a few adjacent nucleotides (typically 3-6).
 
@@ -143,4 +143,4 @@ In general, however, we can use our Viterbi approach from before. Each column in
   <div class="figcaption"> A video illustrating operation of third-generation sequencing sequencing by Pacific Biosciences </div>
 </div>
 
-While Nanopore technology measures electrical current, PacBio technology  measures colors emitted in microscopic wells called _zero-mode waveguides_ ($$10^{-21}$$ liters) during DNA synthesis. With tens of thousands of wells per so-called SMRT chip, each ZMW essentially allows us to read out color intensities at thousands of times stronger than the background signal. The error rate of PacBio reads is about 10-15%. The speed of the process of the single DNA molecule going through an enzyme causes randomness, resulting in the same insertion and deletion issues also associated with Nanopore technology.
+While Nanopore technology measures electrical current, PacBio technology  measures colors emitted in microscopic wells called _zero-mode waveguides_ ($$10^{-21}$$ liters) during DNA synthesis. With tens of thousands of wells per so-called SMRT chip, each ZMW essentially allows us to read out color intensities at thousands of times stronger than the background signal. Like nanopore, the error rate of PacBio reads is also about 10-15%. The speed of the process of the single DNA molecule going through an enzyme causes randomness, resulting in the same insertion and deletion issues also associated with Nanopore technology.
