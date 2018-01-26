@@ -59,6 +59,43 @@ The write-up should be about 4 pages in length (not including figures and refere
 
 A project broadly related to any of the following topics will be appropriate for the course. Students can pick projects outside the ones listed below but should check suitability with the course staff.
 
+1. **Cancer genomics:** Cancer has been labeled "a disease of the genome,"
+and several unusual genomic events have been tied to cancer. These events include
+ [chimeric reads](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3107329/) and
+ [copy number aberrations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2703871/).
+ [The Cancer Genome Atlas](https://cancergenome.nih.gov/) offers a plethora of
+data for exploring cancer genomics.
+1. **Single cell clusteroids:** With single-cell data scaling up quickly, almost linear-time algorithms
+for clustering the datasets become more valuable. Finding clusteroids
+(see [this](http://infolab.stanford.edu/~ullman/mmds/ch7.pdf) write up or
+[this](https://www.youtube.com/watch?v=YdqTScQFKQs) and
+[this](https://www.youtube.com/watch?v=U3sdWVqMWEc) video for an overview),
+or representatives of clusters, is one widely used approach for handling these large datasets.
+Doing so if we have want to cluster cells as points in large dimensions can be done in
+almost linear time as shown
+ [here](https://arxiv.org/pdf/1711.00817.pdf) recently.
+However if one wants reduce the dimension of the problem by say computing
+a k-nearest neighbour graph and then find the clusteroid almost-linear
+algorithms are not known. The best algorithm known is a $$O(n^{\frac{3}{2}})$$ algorithm
+called [Trimed](https://arxiv.org/abs/1605.06950). Can one do better
+in this case?
+1. **Single cell cancer genomics:** One advantage of the resolution
+ granted by single-cell assays is that we can observe how a cellular population
+ differentiates. Looking at single-cell datasets for cancer cells may provide
+ insight on how cancer evolves and which genes are important for this evolution.
+ [This work](https://www.nature.com/articles/ncomms15081), for example, attempts
+ to profile breast cancer using single-cell sequencing.
+1. **Single cell assays:** Recent technologies have allowed researchers
+ to extract cell signatures at the resolution of individual cells (e.g. single-cell RNA-seq).
+  What can we learn about cell populations from these datasets? Prominent works in this area
+  include [DropSeq](http://www.cell.com/abstract/S0092-8674(15)00549-8) and
+  [10x](https://www.nature.com/articles/ncomms14049).
+1. **Long read diploid assembly on read overlap graphs:** While long reads are a powerful
+alternative to short-read sequencing, assembling genomes from these reads
+come with their own challenges.
+See [HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918)
+for an approach to long-read assembly to output a graph for the haploid case.
+Can one improve it for the diploid case using the graph information.
 1. **Variant calling:** Diploid organisms such as humans have two chromosomes. Variant calling is the problem of figuring out the differences between the two chromosomes. A great tool for comparing variants is [PLINK](http://zzz.bwh.harvard.edu/plink/).
 1. **Peak calling for epigenetics:**  While cells have roughly identical genomes, they express different parts of the genome due to epigenetic factors. Assays such as ChIP-seq and ATAC-seq help scientists study which parts of the genome are accessible for transcription. This problem involves determining which parts of the genome are accessible based on obtained reads. Two popular peak calling tools are [MACS](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3120977/) and [ZINBA](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-7-r67).  
 1. **Short Tandem Repeat (STR) calling:**  STRs are short strings of DNA which appear one behind the other. These are known to be important for biological function, but calling them is challenging. A tool for performing STR calling is [LoBSTR](http://www.ncbi.nlm.nih.gov/pubmed/22522390).
@@ -67,11 +104,6 @@ A project broadly related to any of the following topics will be appropriate for
 1. **Multi-omics:** With RNA-Seq, ChIP-Seq, Hi-C-Seq, etc., we are often inundated with many different categories of data for the same type of biological sample. Could we combine the information from these different types of data to discover something more? Check out [this review paper](https://www.nature.com/articles/nrg3868) to get started.
 1. **Hi-C-Seq:** Hi-C-Seq is an assay used to study the 2D and 3D structure of the chromatin, giving insights on how the genome folds and how distant regions of the genome can interact with each other. This technology has been used for [assembling the genomes of polyploid organisms](https://www.nature.com/articles/nature22043), for example.
 1. **Long range information:** In class we have covered short reads and long reads. There are other read types including read clouds ([10x Genomics](http://www.10xgenomics.com/)) and reads with long range information ([BioNano Genomics](http://www.bionanogenomics.com/)). From a theoretical perspective, what is possible and what is not with such reads?
-1. **Single cell assays:** Recent technologies have allowed researchers to extract cell signatures at the resolution of individual cells (e.g. single-cell RNA-seq). What can we learn about cell populations from these datasets? Prominent works in this area include [DropSeq](http://www.cell.com/abstract/S0092-8674(15)00549-8) and [10x](https://www.nature.com/articles/ncomms14049).
-1. **Single cell cancer genomics:** One advantage of the resolution granted by single-cell assays is that we can observe how a cellular population differentiates. Looking at single-cell datasets for cancer cells may provide insight on how cancer evolves and which genes are important for this evolution. [This work](https://www.nature.com/articles/ncomms15081), for example, attempts to profile breast cancer using single-cell sequencing.
-1. **Single cell clusteroids:** With single-cell data scaling up quickly, linear-time algorithms for clustering the datasets become more valuable. Finding clusteroids, or representatives of clusters, has been one approach for handling these large datasets. See [here](https://arxiv.org/pdf/1711.00817.pdf) for more information.
 1. **Pseudotime:** Single-cell sequencing can shed light on how cells evolve. The problem of rearranging individual cells into some sort of evolutionary trajectory (sometimes involving branching) has been tackled by tools such as [Monocle](http://cole-trapnell-lab.github.io/monocle-release/papers/) and [Wanderlust](https://www.c2b2.columbia.edu/danapeerlab/html/wanderlust.html).
-1. **Cancer genomics:** Cancer has been labeled "a disease of the genome," and several unusual genomic events have been tied to cancer. These events include [chimeric reads](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3107329/) and [copy number aberrations](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2703871/). [The Cancer Genome Atlas](https://cancergenome.nih.gov/) offers a plethora of data for exploring cancer genomics.
-1. **Long read assembly:** While long reads are a powerful alternative to short-read sequencing, assembling genomes from these reads come with their own challenges. See [HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918) for an approach to long-read assembly.
 1. **Base-calling for fourth generation sequencing technologies:** This is an area of active research with interesting recent papers involving methods such as [deep learning](http://arxiv.org/pdf/1603.09195.pdf).
 1. **Reanalysis of published data:** Several datasets related to the above topics already exist. What can you discover by reanalyzing one of these datasets using a novel method?
