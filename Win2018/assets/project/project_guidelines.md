@@ -90,12 +90,17 @@ in this case?
   What can we learn about cell populations from these datasets? Prominent works in this area
   include [DropSeq](http://www.cell.com/abstract/S0092-8674(15)00549-8) and
   [10x](https://www.nature.com/articles/ncomms14049).
+1. **Single-cell simulator:** A single-cell data simulator with known ground truth would be useful for evaluating single-cell methods (and understanding the mechanism underlying data generation). [Splatter](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1305-0) is a tool that simulates single-cell gene count data using a parametric model. Extending this to read count data or other modeling techniques could be useful.
+1. **Doublet/multiplet detection:** Single-cell technology relies on isolating individual cells in droplets, but occasionally more than one cell will end up in a droplet. Can we detect these multiplet events, and can we further identify the types of cells in the multiplet? See [DropSeq](http://www.cell.com/abstract/S0092-8674(15)00549-8) and
+[10x](https://www.nature.com/articles/ncomms14049) papers. When evaluating a new technology, gauging the doublet rate is important.
+1. **Barcode indel correction:** In single-cell RNA-Seq experiments, cells are tagged with unique barcodes. Grouping reads based on their barcodes is an important computational step but is hindered by insertion and deletion events. [Here](https://www.biorxiv.org/content/biorxiv/early/2017/05/09/136242.full.pdf) is an example strategy for handling these barcode errors.
 1. **Long read diploid assembly on read overlap graphs:** While long reads are a powerful
 alternative to short-read sequencing, assembling genomes from these reads
 come with their own challenges.
 See [HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918)
 for an approach to long-read assembly to output a graph for the haploid case.
 Can one improve it for the diploid case using the graph information.
+1. **Gene networks:** Genes often act in conjunction with several other genes. With the advent of single-cell technology, we have enough data to estimate the pairwise interactions of different genes. A recent work in [Nature](https://www.nature.com/articles/s41598-017-15525-z) explores this. Additionally, comparing these networks for different datasets could yield insight into the underlying biology.
 1. **Variant calling:** Diploid organisms such as humans have two chromosomes. Variant calling is the problem of figuring out the differences between the two chromosomes. A great tool for comparing variants is [PLINK](http://zzz.bwh.harvard.edu/plink/).
 1. **Peak calling for epigenetics:**  While cells have roughly identical genomes, they express different parts of the genome due to epigenetic factors. Assays such as ChIP-seq and ATAC-seq help scientists study which parts of the genome are accessible for transcription. This problem involves determining which parts of the genome are accessible based on obtained reads. Two popular peak calling tools are [MACS](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3120977/) and [ZINBA](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-7-r67).  
 1. **Short Tandem Repeat (STR) calling:**  STRs are short strings of DNA which appear one behind the other. These are known to be important for biological function, but calling them is challenging. A tool for performing STR calling is [LoBSTR](http://www.ncbi.nlm.nih.gov/pubmed/22522390).
