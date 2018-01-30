@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /Win2018/lectures/lecture6/
 ---
-## Lecture 6: Assembly - Greedy algorithm and de Bruijn graphs
+## Lecture 6: Assembly - Greedy Algorithm
 
 Thursday 25 January 2018
 
@@ -107,7 +107,11 @@ Pr(\text{repeat is not bridged}) = \left(1 - 2\frac{L-\ell-1}{G}\right)^N
 \end{align*}.
 $$
 
-It turns out that this probability only depends on the distribution of the length of the repeats in the genome. We don't care what the actual location of the repeat is. We show an example below where we have several short repeats. The red curve represents the repeat length distribution for a randomly shuffled genome. This figure shows that the human genome is far from a random sequence, and additionally it has quite a few high-length repeats (on the order of 1000s).
+We define $$Z$$ to be the number of repeats not bridged. We then bound the probability that there exists one repeat not bridged using Markov's inequality, just like in the coverage analysis:
+
+$$ P(Z \ge 1) \le E[Z] = \sum_i \left(1 - 2\frac{L-\ell_i-1}{G}\right)^N $$
+
+where $$\ell_i$$ is the length of the $$i$$th repeat and the summation is over all repeats. It can be seen that this bound depends only on the repeat distribution on the genome. We don't care what the actual location of the repeat is. We show an example below where we have several short repeats. The red curve represents the repeat length distribution for a randomly shuffled genome. This figure shows that the human genome is far from a random sequence, and additionally it has quite a few high-length repeats (on the order of 1000s).
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture6/repeat_dist.png" width="70%">
