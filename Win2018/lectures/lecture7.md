@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /Win2018/lectures/lecture7/
 ---
-## Lecture 7: Assembly - De Bruijn graph
+## Lecture 7: Assembly - De Bruijn Graph
 
 Tuesday 30 January 2018
 
