@@ -1,7 +1,7 @@
 ---
 layout: page
 mathjax: true
-permalink: /Spr2016/assignments/assignment2/
+permalink: /Win2018/assignments/assignment2/
 ---
 ## Assignment 2
 
