@@ -12,17 +12,17 @@ due Monday 19 February 2018 at 11:59pm
 
 ### Question I: Lander-Waterman and repeat statistics
 
-In Question III of the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie2, obtaining 627862 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/Win2018/assets/assignment2/ecoli_aligned_reads.bam) (the alignments are saved as a \*.bam file). You can view the first 15 lines of the file using the command ```samtools view E.coli.alignments.EE372.bam | head -15```. You can install SAMtools on the Stanford rice cluster using the following commands:
+In Question III of the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie2, obtaining 627862 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/Win2018/assets/assignment2/ecoli_aligned_reads.bam) (the alignments are saved as a \*.bam file). You will be using SAMtools for this problem. You can install SAMtools on the Stanford Rice cluster using the following commands:
 
 ```
 wget http://data-science-sequencing.github.io/Win2018/assets/assignment2/install_samtools.sh
 bash install_samtools.sh <SUNETID>
 ```
 
-1. Refer to the documentation for the \*.sam file format [here](https://samtools.github.io/hts-specs/SAMv1.pdf). Convert the \*.bam file to a \*.sam file using the ```samtools view``` command. What position does the first read align to?
-2. The length of the _E. coli_ genome is 4639675. Write a function to compute the proportion of the genome by covered by the reads in a given \*.sam file. What proportion of the genome is covered by the reads in E.coli.alignments.EE372.bam?
+1. You can view the first 15 lines of the file using the command ```samtools view ecoli_aligned_reads.bam | head -15```. Refer to the documentation for the \*.sam file format [here](https://samtools.github.io/hts-specs/SAMv1.pdf). Convert the \*.bam file to a \*.sam file using the ```samtools view``` command. What position does the first read align to?
+2. The length of the _E. coli_ genome is 4639675. Write a function to compute the proportion of the genome by covered by the reads in a given \*.sam file. What proportion of the genome is covered by the reads in ecoli_aligned_reads.bam?
 3. Subsample the \*.sam file using the ```samtools view -s``` command. You should generate a new \*.sam file for each subsampling. Using the function you wrote above, plot the proportion of the genome covered as a function of $$p$$, the proportion of reads kept. Interpret what you see (1-2 sentences).
-4. Compute the triple repeat and interleaved statistics of the _E. coli_ genome (available [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta)). Report the number of triple and interleaved repeats of length more than 200. Consider only the forward strand of the reference. _Hint_: Use the software [MUMmer](http://mummer.sourceforge.net/manual/). The ```repeat-match``` command might be helpful. You can install MUMmer using the following commands:
+4. Compute the triple repeat and interleaved statistics of the _E. coli_ genome (available [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta)). Report the number of triple and interleaved repeats of length more than 200. Consider only the forward strand of the reference. _Hint_: Use the software [MUMmer](http://mummer.sourceforge.net/manual/). The ```repeat-match``` command might be helpful. You can install MUMmer on the Stanford Rice cluster using the following commands:
 
 ```
 wget http://data-science-sequencing.github.io/Win2018/assets/assignment2/install_mummer.sh
@@ -58,9 +58,13 @@ You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for thi
 
 Consider the following state diagram for a simplified Nanopore sequencer only sequencing two bases 0 and 1.
 
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture4/lecture4-figure1.png" width="40%">
+</div>
+
 1. The state space here is  $$\{00, 01, 10, 11\} \$$. What can you say about the
-inter-symbol interference.
+inter-symbol interference? In other words, how many nucleotides are in the pore at each sampling?
 
 2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, .11 $$. Compute the sequence
 obtained by Viterbi decoding using the state diagram in class and $$Q_{ii} = 1 \ $$
-and $$Q_{i, i-1} =  0.25 \ $$.
+and $$Q_{i, i-1} =  0.25 \ $$. Assume that the added noise is Gaussian with zero mean.

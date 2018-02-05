@@ -82,7 +82,7 @@ in the second sequence, not all state transitions are allowed. They are summariz
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture4/lecture4-figure1.png" width="40%">
-  <div class="figcaption"> State-transition diagram for a band-diagonal _Q_. </div>
+  <div class="figcaption"> State-transition diagram for a band-diagonal Q. </div>
 </div>
 
 We can now view the optimization problem as a shortest path problem.
