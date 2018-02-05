@@ -5,19 +5,30 @@ permalink: /Win2018/assignments/assignment2/
 ---
 ## Assignment 2
 
-posted Monday 2 May 2016  
-due Monday 9 May 2016 at midnight
+posted Monday 5 February 2018
+due Monday 19 February 2018 at 11:59pm
 
-**Submission policy**: Report all plots and your code in [this iPython notebook](/Spr2016/assets/assignment2/ee372_assignment2.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment on the 2nd floor of Packard in the EE372 bin next to the kitchen area.
+**Submission policy**: Report all plots and your code in [this Jupyter notebook](/Win2018/assets/assignment2/ee372_assignment2.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through [Gradescope](https://gradescope.com/).
 
 ### Question I: Lander-Waterman and repeat statistics
 
-In Question III of the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie, obtaining 617036 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/Spr2016/assets/assignment2/E.coli.alignments.EE372.bam) (the alignments are saved as a *.bam file). You can view the first 15 lines of the file using the command ```samtools view E.coli.alignments.EE372.bam | head -15```. Samtools is installed on Stanford's Corn server.
+In Question III of the last problem set, you aligned reads from an _E. coli_ sequencing experiment to the _E. coli_ genome using Bowtie2, obtaining 627862 aligned reads (out of 644022 total reads). Download the set of aligned reads [here](/Win2018/assets/assignment2/ecoli_aligned_reads.bam) (the alignments are saved as a \*.bam file). You can view the first 15 lines of the file using the command ```samtools view E.coli.alignments.EE372.bam | head -15```. You can install SAMtools on the Stanford rice cluster using the following commands:
 
-1. Refer to the documentation for the *.sam file format [here](https://samtools.github.io/hts-specs/SAMv1.pdf). Convert the *.bam file to a *.sam file using the ```samtools view``` command. What position does the first read align to?
-2. The length of the _E. coli_ genome is 4639675. Write a function to compute the proportion of the genome by covered by the reads in a given *.sam file. What proportion of the genome is covered by the reads in E.coli.alignments.EE372.bam?
-3. Subsample the *.sam file using the ```samtools view -s``` command. You should generate a new *.sam file for each subsampling. Using the function you wrote above, plot the proportion of the genome covered as a function of $$p$$, the proportion of reads kept. Interpret what you see (1-2 sentences).
-4. Compute the triple repeat and interleaved statistics of the _E. coli_ genome (available [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta)). Report the number of triple and interleaved repeats of length more than 200. Consider only the forward strand of the reference. _Hint_: Use the software MUMmer, which is also installed on Corn. The ```repeat-match``` command might be helpful.
+```
+wget http://data-science-sequencing.github.io/Win2018/assets/assignment2/install_samtools.sh
+bash install_samtools.sh <SUNETID>
+```
+
+1. Refer to the documentation for the \*.sam file format [here](https://samtools.github.io/hts-specs/SAMv1.pdf). Convert the \*.bam file to a \*.sam file using the ```samtools view``` command. What position does the first read align to?
+2. The length of the _E. coli_ genome is 4639675. Write a function to compute the proportion of the genome by covered by the reads in a given \*.sam file. What proportion of the genome is covered by the reads in E.coli.alignments.EE372.bam?
+3. Subsample the \*.sam file using the ```samtools view -s``` command. You should generate a new \*.sam file for each subsampling. Using the function you wrote above, plot the proportion of the genome covered as a function of $$p$$, the proportion of reads kept. Interpret what you see (1-2 sentences).
+4. Compute the triple repeat and interleaved statistics of the _E. coli_ genome (available [here](http://portal.nersc.gov/dna/microbial/assembly/uploads/dtse/Mock-Community/E.coli_K12_ATCC_700926.fasta)). Report the number of triple and interleaved repeats of length more than 200. Consider only the forward strand of the reference. _Hint_: Use the software [MUMmer](http://mummer.sourceforge.net/manual/). The ```repeat-match``` command might be helpful. You can install MUMmer using the following commands:
+
+```
+wget http://data-science-sequencing.github.io/Win2018/assets/assignment2/install_mummer.sh
+bash install_mummer.sh
+```
+
 
 You may also use [pysam](http://pysam.readthedocs.io/en/latest/api.html) for this problem.
 
