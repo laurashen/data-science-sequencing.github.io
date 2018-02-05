@@ -50,6 +50,6 @@ Consider the following state diagram for a simplified Nanopore sequencer only se
 1. The state space here is  $$\{00, 01, 10, 11\} \$$. What can you say about the
 inter-symbol interference.
 
-2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, .11 $$. Compute the
+2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, .11 $$. Compute the sequence
 obtained by Viterbi decoding using the state diagram in class and $$Q_{ii} = 1 \ $$
-and $$Q_{i, i-1} =  0.25 \ $$. 
+and $$Q_{i, i-1} =  0.25 \ $$.
