@@ -6,7 +6,7 @@ permalink: /Win2018/assignments/assignment2/
 ## Assignment 2
 
 posted Tuesday 6 February 2018  
-due Monday 19 February 2018 at 11:59pm
+due Tuesday 20 February 2018 at 11:59pm
 
 **Submission policy**: Report all plots and your code in [this Jupyter notebook](/Win2018/assets/assignment2/ee372_assignment2.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through [Gradescope](https://gradescope.com/).
 
