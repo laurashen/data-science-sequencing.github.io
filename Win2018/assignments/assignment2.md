@@ -5,7 +5,7 @@ permalink: /Win2018/assignments/assignment2/
 ---
 ## Assignment 2
 
-posted Monday 5 February 2018
+posted Tuesday 6 February 2018  
 due Monday 19 February 2018 at 11:59pm
 
 **Submission policy**: Report all plots and your code in [this Jupyter notebook](/Win2018/assets/assignment2/ee372_assignment2.ipynb). Print your notebook as a PDF and attach it to the rest of your assignment. Turn in your assignment through [Gradescope](https://gradescope.com/).
@@ -65,6 +65,8 @@ Consider the following state diagram for a simplified Nanopore sequencer only se
 1. The state space here is  $$\{00, 01, 10, 11\} \$$. What can you say about the
 inter-symbol interference? In other words, how many nucleotides are in the pore at each sampling?
 
-2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, .11 $$. Compute the sequence
-obtained by Viterbi decoding using the state diagram in class and $$Q_{ii} = 1 \ $$
-and $$Q_{i, i-1} =  0.25 \ $$. Assume that the added noise is Gaussian with zero mean.
+2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, 0.11 $$. Using the above state diagram, compute the sequence obtained by Viterbi decoding. Assume that each observed $$y_i$$ is a weighted linear combination of the symbols in the context plus some noise: $$y_i = 0.9 s_i + 0.25 s_{i-1} + n_i$$. Assume that the added noise is Gaussian with zero mean.
+
+3. Simulate several length-20 $$s$$. Use these to simulate $$y$$ where $$n$$ is sampled from a $$\mathcal{N}(0, \sigma^2)$$ distribution. Decode $$y$$ using the your Viterbi algorithm. Report the average edit distance between your recovered $$s$$ and the actual $$s$$ as a function of $$\sigma$$. Test for $$\sigma = $$ 1e-3, 1e-2, 1e-1, 1e0, 1e1.
+
+4. Repeat 3 except randomly delete a base in $$s$$ before generating your $$y$$. What do you observe? From a high level, what might you need to change to fix this?
