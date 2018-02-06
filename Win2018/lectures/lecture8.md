@@ -37,37 +37,34 @@ To account for the errors, not only do we account for perfect overlap, but we mu
 
 Now lets consider the class of k-mer algorithms. We will use an example to show how an error may affect our k-mer graph.
 
-Consider a sequence of letters (we will use the English alphabet instead of A,G,C,T in this case) and the two reads of length 5:
+Consider a sequence of letters (we will use the English alphabet instead of A,G,C,T in this case) and the three reads of length 5:
 
 $$
-\mathrm{\overbrace{HELLO}^\text{first read}WORLD} \\
+\mathrm{\overbrace{HELLO}^\text{first read}\overbrace{WORLD}^\text{third read}} \\
 \mathrm{HE\underbrace{LLOWO}_\text{second read}RLD}
 $$
 
-Here, L = 5 and k = 3. The k-mers from the 2 reads are:
+Here, L = 5 and k = 3. The k-mers from the 3 reads are:
 
 $$
-\mathrm{reads \rightarrow kmer : \\ HELLO \rightarrow HELL, ELL, LLO \\}
-\mathrm{     LLOWO \rightarrow LLO, LOW, OWO}
+\mathrm{reads \rightarrow kmer : \\ HELLO \rightarrow HEL, ELL, LLO }\\
+\mathrm{     LLOWO \rightarrow LLO, LOW, OWO}\\
+\mathrm{     WORLD \rightarrow WOR, ORL, RLD}
 $$
 
-We can therefore create a k-mer graph from this 2 reads as follow:
+We can therefore create a k-mer graph from this 3 reads as follow:
 
 $$
-\mathrm{HEL \rightarrow ELL \rightarrow LLO \rightarrow LOW \rightarrow OWO}
+\mathrm{HEL \rightarrow ELL \rightarrow LLO \rightarrow LOW \rightarrow OWO \rightarrow ORL \rightarrow  RLD}
 $$
 
 Now suppose we have a third read, OWORL. But this read is corrupted and has an error, so we read OWXRL instead. The k-mers for this read are OWX, WXR, XRL. Therefore, combining this third read we have:
 
-$$
-\mathrm{HEL \rightarrow ELL \rightarrow LLO \rightarrow LOW \rightarrow OWO \rightarrow OWX \rightarrow WXR \rightarrow XRL}
-$$
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture8/errors.png" width="70%">
+	<div class="figcaption"> The error read creates a new path in the k-mer graph that branches out and may then be connected back to the main path. This branched out path is called a bubble. </div>
+</div>
 
-instead of:
-
-$$
-\mathrm{HEL \rightarrow ELL \rightarrow LLO \rightarrow LOW \rightarrow OWO \rightarrow OWO \rightarrow WOR \rightarrow ORL}
-$$
 
 The error read creates a new path in the k-mer graph that branches out and may then be connected back to the main path. This branched out path is called a **bubble**. In practice, our dataset is large and we have a large number of reads. We may have both OWORL and OWXRL reads in our dataset. With bubbles, we will have two possible paths. This would create ambiguity in finding the Eulerian path from the k-mer graph.  
 
