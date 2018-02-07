@@ -40,7 +40,7 @@ To go from X to Y, we need at least one deletion and one substitution. Therefore
 
 ## <a id='dp'></a>Dynamic programming
 
-Dynamic programming is the strategy of reducing a bigger problem into multiple smaller problem such that solving the smaller problems will result in solving the bigger problem. First, we need to define the "size" of a problem. For edit distance, we let $$(i,j)$$ represent the problem of computing the edit distance between $$X^i$$ and $$Y^j$$. $$X^i$$ is the length-$$i$$ prefix of the string $$X$$, and $$Y^j$$ is the length $$j$$ prefix of string $$Y$$. If we let $$m$$ represent the length of $$X$$ and $$n$$ represent the length of $$Y$$, then the edit distance between $$X$$ and $$Y$$ is the solution to problem $$(m,n)$$. The claim is: if we can solve all the $$(i,j)$$ problems for $$0 \leq i \leq m$$ and $$0 \leq j \leq n$$, then we will efficiently obtain a solution for problem $$(m,n)$$.
+Dynamic programming is the strategy of reducing a bigger problem into multiple smaller problem such that solving the smaller problems will result in solving the bigger problem. First, we need to define the "size" of a problem. For edit distance, we let $$(i,j)$$ represent the problem of computing the edit distance between $$X^i$$ and $$Y^j$$. $$X^i$$ is the length-$$i$$ prefix of the string $$X$$, and $$Y^j$$ is the length $$j$$ prefix of string $$Y$$. If we let $$m$$ represent the length of $$X$$ and $$n$$ represent the length of $$Y$$, then the edit distance between $$X$$ and $$Y$$ is the solution to problem $$(m,n)$$. The claim is: if we can solve all the $$(i,j)$$ problems for $$0 \leq i \leq m$$ and $$0 \leq j \leq n$$ except $$i=m$$ and $$j=n$$, then we will efficiently obtain a solution for problem $$(m,n)$$.
 
 Let $$D(i,j)$$ equal the edit distance between $$X^i$$ and $$Y^j$$. Suppose we are looking at $$X^3$$ = 'GCG' and $$Y^2$$ = 'GC'. The edit distance between these two is 1. To express this as even smaller problems, we need a key insight: problem $$(i,j)$$ can be solved directly using the solutions from 3 subproblems:
 
@@ -67,9 +67,9 @@ We can think of solving this problem as filling in the entries of a table where 
 
 Note that the $$(m,n)$$th entry (bottom-right corner) indeed has the minimal edit distance between the two strings. After filling out the dynamic programming table, we can trace a path back from the bottom-right entry to the top-left entry along the smallest values to obtain our alignment shown in the first figure in this lecture.
 
-Each computation requires looking up at most 3 entries of the table. Therefore the complexity of this algorithm is $$O(MN)$$. For read-overlap graph assembly, we have $$N$$ reads each of length $$L$$. Using this edit distance approach, we will need $$O(N^2L^2)$$ operations to perform assembly. With $$N$$ possibly the order of $$10^8$$ or $$10^9$$ for a sequencing experiment, this operation is quite expensive.
+Each computation requires looking up at most 3 entries of the table. Therefore the complexity of this algorithm is $$O(mn)$$. For read-overlap graph assembly, we have $$N$$ reads each of length $$L$$. Using this edit distance approach, we will need $$O(N^2L^2)$$ operations to perform assembly. With $$N$$ possibly the order of $$10^8$$ or $$10^9$$ for a sequencing experiment, this operation is quite expensive.
 
-For variant calling, we want to align $$N$$ reads to a reference genome of length $$G$$. Computing the edit distance between a read and the genome is $$O(LG)$$. The runtime is $$O(NLG) = O(CG^2)$$ where $$C$$ is the coverage depth. $$G$$ can be large ($$3\times 10^9$$ for the human genome)  and therefore this operation is also quite expensive.
+For variant calling, we want to align $$N$$ reads to a reference genome of length $$G$$. Computing the edit distance between a read and the genome is $$O(LG)$$. The runtime is $$O(NLG) = O(cG^2)$$ where $$c$$ is the coverage depth. $$G$$ can be large ($$3\times 10^9$$ for the human genome)  and therefore this operation is also quite expensive.
 
 ## <a id='index'></a>Genome indexing
 
@@ -102,7 +102,7 @@ the reads could have come from. (The actual algorithm is a little more subtle wh
 is taken only between k-mers that have an entry in the hash table. The underlying assumption is that k-mers with
 1-2 errors will not appear anywhere else in the reference.)
 
-Read overlap graph approaches typically require $$O(N^2)$$ operations where $$N = 10^8$$ or $$10^9$$. We can use the fingerprinting idea to alleviate some of the cost. We can build a table where the keys are $$k$$-mers and values are the reads containing a particular $$k$$-mer. We build this table by scanning through all the reads and applying a hash function. Now, for each read, we want to find a bunch of other reads that may align to the query read. Using this hash strategy gives us far less "candidate" reads per read, saving significant computation. The actual savings will depend on the number of repeats, but the cost reduces from $$O(N^2)$$ to $$O(cN)$$ for some constant $$c \ll N$$. This is done in practice by assemblers like [DAligner](http://link.springer.com/chapter/10.1007%2F978-3-662-44753-6_5),
+Read overlap graph approaches typically require $$O(N^2)$$ operations where $$N = 10^8$$ or $$10^9$$. We can use the fingerprinting idea to alleviate some of the cost. We can build a table where the keys are $$k$$-mers and values are the reads containing a particular $$k$$-mer. We build this table by scanning through all the reads and applying a hash function. Now, for each read, we want to find a bunch of other reads that may align to the query read. Using this hash strategy gives us far less "candidate" reads per read, saving significant computation. The actual savings will depend on the number of repeats, but the cost reduces from $$O(N^2)$$ to $$O(aN)$$ for some constant $$a \ll N$$. This is done in practice by assemblers like [DAligner](http://link.springer.com/chapter/10.1007%2F978-3-662-44753-6_5),
 [Minimap](http://arxiv.org/abs/1512.01801) and [MHAP](http://www.nature.com/nbt/journal/v33/n6/full/nbt.3238.html).
 
 
@@ -110,16 +110,18 @@ Read overlap graph approaches typically require $$O(N^2)$$ operations where $$N 
 
 If the error rate is high, we can use the same approach as the low-error case by reducing the size of the $$k$$ corresponding to the $$k$$-mer used for indexing. If the error is high enough (15% in the case of PacBio reads), $$k$$ will need to be small to ensure a high probability of errors mapping to no location on the genome. With a smaller $$k$$, we also expect more collisions in our table, since the set of unique $$k$$-mers is smaller. More collisions results in a more expensive alignment procedure.
 
-Instead, we can perform [_minhashing_](https://en.wikipedia.org/wiki/MinHash) in this regime to efficiently find length-$$k$$ regions of the genome similar to a given $$k$$-mer. This is the approach used by MHAP. To discuss minhashing, we first consider two sets $$A, B$$. We define the _Jaccard distance_ between the two sets as
+When building the read overlap graph in the regime of high read errors, we can leverage _minhashing_ to efficiently filter read pairs that need to be aligned. This is the approach used by MHAP. We first consider two sets $$A, B$$. We define the [_Jaccard similarity_](https://en.wikipedia.org/wiki/Jaccard_index) between the two sets as
 
 $$ J(A, B) = \frac{| A \cap B |}{|A \cup B |} $$
 
-or the size of the intersection of the two sets divided by size of the the union of the two sets. When comparing two genomic reads, we can cut the two sequences up into overlapping k-mers, just like before. Each genomic read can be represented by a set of k-mers. If two reads are similar, then the Jaccard distance of their k-mer set representations should be relatively small. To compute the Jaccard distance exactly, this boils back down to the alignment issue. Minhash allows us to approximate the Jaccard distance with small computation. We define a hash function $$h$$ that maps elements in $$A \cup B$$ to some integer. This hash function also has some pseudo-random property, meaning that it assigns random values to different inputs (but assigns the same value for the same input). We can apply the has function to all the objects in $$A$$ (corresponding to our first read) and $$B$$, resulting in
+or the size of the intersection of the two sets divided by size of the the union of the two sets. When comparing two genomic reads, we can cut the two sequences up into overlapping k-mers, just like before. Each genomic read can be represented by a set of k-mers. If two reads are similar, then the Jaccard similarity of their k-mer set representations should be relatively close to 1. To compute the Jaccard similarity exactly, this boils back down to the alignment issue. Minhash allows us to approximate the Jaccard similarity with small computation. We define a hash function $$h$$ that maps each element in $$A \cup B$$ to some integer. This hash function also has some pseudo-random property, meaning that it assigns random values to different inputs (but assigns the same value for the same input). We can apply the hash function to all the objects in $$A$$ (corresponding to our first read) and $$B$$, resulting in
 
 $$ h_\text{min} (A) = \min_{x \in A} h(x).$$
 
-We are interested in
+Note that
 
 $$ Pr[h_\text{min}(A) = h_\text{min}(B)] = \frac{|A \cap B|}{|A \cup B|}. $$
 
-The event can only occur if the $$x$$ that achieves the minimum hash value falls into the set $$A \cap B$$, which is exactly the Jaccard distance. We apply a small set of these hash functions and observe the frequency with which $$h_\text{min}(A) = h_\text{min}(B)$$.
+To see this, note that $$h_\text{min}(A) = h_\text{min}(B)$$ occurs if and only if the $$x$$ that achieves the minimum hash value is in $$A \cap B$$. The probability that this occurs is exactly the Jaccard similarity between $$A$$ and $$B$$. We apply a small set of different hash functions $$h_1, \dots, h_K$$ and observe the frequency with which $$h_\text{min}(A) = h_\text{min}(B)$$. This gives us an unbiased estimate of the Jaccard similarity. The larger the value of $$K$$, the more accurate the estimate is, but the more expensive the computation.
+
+Minhashing is a more general technique that can be applied whenever finding the distance between two sets is relevant (e.g. mining datasets). Some applications are listed [here](https://en.wikipedia.org/wiki/MinHash#Applications).
