@@ -151,11 +151,31 @@ Especially for complex genomes, it's difficult to perfectly reconstruct the geno
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture8/partialAssembly.png" width="70%">
 	<div class="figcaption"> An assembly graph corresponding to a genome that's impossible to perfectly assemble.
-   There are multiple (2) Eulerian paths, and each corresponds to a legitimate assembly. This can be viewed as
-   one bit of information. </div>
+   There are multiple (2) Eulerian paths, and each corresponds to a legitimate assembly. This can
+   be viewed as assembling upto log (2) = 1 bit of uncertainty. </div>
 </div>
 
-Older long read assemblers include [HGAP](https://github.com/PacificBiosciences/Bioinformatics-Training/wiki/HGAP), PacBio's long-read assembler, and [Miniasm](https://academic.oup.com/bioinformatics/article/32/14/2103/1742895) and have trouble assembling genomes with these repeat-based ambiguities. A novel long-read assembler called [HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918) fixes this problem by generating assembly graphs.
+Older long read assemblers include [HGAP](https://github.com/PacificBiosciences/Bioinformatics-Training/wiki/HGAP),
+PacBio's long-read assembler, and [Miniasm](https://academic.oup.com/bioinformatics/article/32/14/2103/1742895) and
+have trouble assembling genomes with these repeat-based ambiguities. A novel long-read assembler called
+[HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918) attempts to fix
+this problem by generating assembly graphs and then resolving resolvable repeats
+on them. This seems to be a viable algorithm and seemed to improve assembly on
+the unfinished data sets of the
+[Public Health England bacterial reference collections](http://www.sanger.ac.uk/resources/downloads/bacteria/nctc/)
+assembling many of them to completion and giving a graph solution to
+many others.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture8/Hinge_performance.png" width="70%">
+	<div class="figcaption"> HINGE finishing a good fraction of unfinished assemblies
+  of the
+  Public Health England bacterial reference collections
+  dataset. Finished by HINGE
+with multiple solutions means that an assembly graph with multiple
+Eulerian cycles is obtained.
+</div>
+</div>
 
 ### <a id='subproblem'></a> Introduction to Alignment
 
