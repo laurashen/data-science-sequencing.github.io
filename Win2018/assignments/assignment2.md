@@ -67,6 +67,6 @@ inter-symbol interference? In other words, how many nucleotides are in the pore 
 
 2. Consider the output sequence $$1.34, 0.23, 1.45, 0.5, 0.11 $$. Using the above state diagram, compute the sequence obtained by Viterbi decoding. Assume that each observed $$y_i$$ is a weighted linear combination of the symbols in the context plus some noise: $$y_i = 0.9 s_i + 0.25 s_{i-1} + n_i$$. Assume that the added noise is Gaussian with zero mean.
 
-3. Simulate several length-20 $$s$$. Use these to simulate $$y$$ where $$n$$ is sampled from a $$\mathcal{N}(0, \sigma^2)$$ distribution. Decode $$y$$ using the your Viterbi algorithm. Report the average edit distance between your recovered $$s$$ and the actual $$s$$ as a function of $$\sigma$$. Test for $$\sigma = $$ 1e-3, 1e-2, 1e-1, 1e0, 1e1.
+3. Simulate several length-20 $$s$$. Use these to simulate $$y$$ where $$n$$ is sampled from a $$\mathcal{N}(0, \sigma^2)$$ distribution. Decode $$y$$ using the your Viterbi algorithm. Report the average edit distance between your recovered $$s$$ and the actual $$s$$ as a function of $$\sigma$$. Test for $$\sigma = $$ 1e-3, 1e-2, 1e-1, 1e0, 1e1. You can use the [editdistance](https://github.com/aflc/editdistance) Python package to compute edit distance.
 
 4. Repeat 3 except randomly delete a base in $$s$$ before generating your $$y$$. What do you observe? From a high level, what might you need to change to fix this?
