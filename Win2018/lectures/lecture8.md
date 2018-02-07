@@ -143,11 +143,16 @@ In some sense, this is the most natural representation of the assembly problem. 
 
 ### <a id='partial'></a>Partial Reconstruction
 
-As previously discussed, there are regions of the genome that people cannot assemble because the repeats are so long. Especially for complex genomes, it's difficult to perfectly reconstruct the genome. Instead, we introduce the concept of a _partial reconstruction_, or some way to convey the areas of ambiguity in the genome along with the areas we can reconstruct with high confidence. We can convey all the information we have using an _assembly graph_.
+As previously discussed, there are regions of the genome that people cannot assemble because the repeats are so long.
+Especially for complex genomes, it's difficult to perfectly reconstruct the genome. Instead, we introduce the concept of a
+ _partial reconstruction_, or some way to convey the areas of ambiguity in the genome along with the areas we can reconstruct
+ with high confidence. We can convey all the information we have using an _assembly graph_.
 
 <div class="fig figcenter fighighlight">
-  <img src="/Win2018/assets/lecture8/assemblygraph.png" width="70%">
-	<div class="figcaption"> An assembly graph corresponding to a genome that's impossible to perfectly assemble. There are multiple (2) Eulerian paths, and each corresponds to a legitimate assembly. </div>
+  <img src="/Win2018/assets/lecture8/partialAssembly.png" width="70%">
+	<div class="figcaption"> An assembly graph corresponding to a genome that's impossible to perfectly assemble.
+   There are multiple (2) Eulerian paths, and each corresponds to a legitimate assembly. This can be viewed as
+   one bit of information. </div>
 </div>
 
 Older long read assemblers include [HGAP](https://github.com/PacificBiosciences/Bioinformatics-Training/wiki/HGAP), PacBio's long-read assembler, and [Miniasm](https://academic.oup.com/bioinformatics/article/32/14/2103/1742895) and have trouble assembling genomes with these repeat-based ambiguities. A novel long-read assembler called [HINGE](https://www.ncbi.nlm.nih.gov/pubmed/28320918) fixes this problem by generating assembly graphs.
