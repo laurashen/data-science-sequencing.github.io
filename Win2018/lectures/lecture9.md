@@ -54,7 +54,7 @@ $$D(i,j) = \min\{D(i-1,j)+1, D(i-1,j-1) + 1, D(i-1,j-1)+ \delta(X[i],Y[j])\}$$
 
 where $$\delta$$ represents an indicator function
 
-$$\delta(a,b) = \begin{cases}1 & \text{if } a=b,\\ 0 & \text{otherwise.}\end{cases}$$
+$$\delta(a,b) = \begin{cases}1 & \text{if } a\neq b,\\ 0 & \text{otherwise.}\end{cases}$$
 
 Thus $$ \delta(X[i],Y[j])$$ is 1 $$i$$th character of $$X$$ is is the same as  the $$j$$th character of $$Y$$, and 0 otherwise.
 
