@@ -3,7 +3,7 @@ layout: page
 mathjax: true
 permalink: /Win2018/lectures/lecture10/
 ---
-## Lecture 10: Haplotype Phasing
+## Lecture 10: Haplotype Phasing - Community Recovery
 
 Thursday 8 February 2018
 
@@ -13,7 +13,7 @@ Thursday 8 February 2018
 
 1. 	<a href='#SNP'>SNP Calling</a>  
     - <a href='#diploid'>SNP Calling in diploid organisms</a>  
-1. 	<a href='#phasing'>Haplotype Assembly</a>  
+1. 	<a href='#phasing'>Haplotype Phasing</a>  
 	  - <a href='#community'>Community recovery problem</a>
 
 ###  <a id='SNP'></a>SNP calling
@@ -41,8 +41,7 @@ every position. Humans, however, are **diploid**. They have two copies of every 
 and the other paternal.
 
 During sequencing, we fragment the DNA material, so the sequencer cannot
-distinguish between the paternal and maternal DNA. When we map these reads to the
-locations, we do not have as clean a picture. We represent variation in each position as a 1 and no variation as a 0.  In each position, we have 4 possibilities:
+distinguish between the paternal and maternal DNA. When we map each read to the reference sequence, we know its location on the genome but we don't know whether it comes from the maternal or the paternal chromosome. We represent variation in each position as a 1 and no variation as a 0.  In each position, we have 4 possibilities:
 
 1. 00 (no variation)
 2. 11 (both copies are different from the reference)  
@@ -60,12 +59,11 @@ of a few individuals). An individual's **haplotype** is the set of variations in
 After mapping the reads, we gain information about the likelihood of four above possibilities. For SNP calling, we can measure (estimate) the number of variations at each position: 0, 1, or 2. Note that we cannot tell between the two heterozygous cases (01 vs 10). Distinguishing these two is important because many diseases are **multiallelic**. That is, multiple positions determine a disease. Also the diseases depend upon the proteins produced in an individual. This depends upon the SNPs being present on the same chromosome rather than being present on different chromosomes.
 
 
-### <a id='phasing'></a> Haplotype Assembly
+### <a id='phasing'></a> Haplotype Phasing
 
 **Haplotype phasing** is the problem of inferring information about an individual's haplotype. To solve this problem, there are many  methods.
 
-First, we focus on a class of methods focused on getting better data (rather than better statistical methods). Let’s say we have two variants, SNP1 and SNP2.
-The distance between the two are on the order of $$\approx$$ 1000 bp (i.e. they’re pretty far apart). To do haplotype phasing, one needs some information that allows us to connect the two SNPs so that one can infer which variants lie on the same chromosome. If you do not have a single read that spans the two positions, then you don’t have any information about the connection between the two SNPs.
+First, we discuss what kind of data is needed to perform phasing. Let’s say we have two variants, SNP1 and SNP2. The distance between the two are on the order of $$\approx$$ 1000 bp (i.e. they’re pretty far apart). To do haplotype phasing, one needs some information that allows us to connect the two SNPs so that one can infer which variants lie on the same chromosome. If you do not have a single read that spans the two positions, then you don’t have any information about the connection between the two SNPs.
 
 Illumina reads are typically 100-200bp long and are therefore too short; however, there does exist multiple technologies that provide this long-range
 information:  
@@ -90,15 +88,15 @@ Each read cloud consists of a few hundred reads that are from a length 50k-100k 
 For both of these technologies, the separation between linked reads
 is a random variable, but one can compute it by aligning the reads to a reference.
 
-In practice, the main software used for haplotype assembly
+In practice, the main software used for haplotype phasing
 are [HapCompass](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3375639/)
 and [HapCut](http://bioinformatics.oxfordjournals.org/content/24/16/i153.short).
-HapCut poses haplotype assembly as a max-cut problem and solves it using heuristics. HapCompass on the other hand constructs a graph where each node is a SNP and each edge indicates that two SNP values are seen in the same read. HapCompass then solves the haplotype assembly problem by finding max-weight spanning trees on the graph. For read clouds, a 10x Genomics's  [loupe](http://loupe.10xgenomics.com/loupe/) software
+HapCut poses haplotype phasing as a max-cut problem and solves it using heuristics. HapCompass on the other hand constructs a graph where each node is a SNP and each edge indicates that two SNP values are seen in the same read. HapCompass then solves the haplotype phasing problem by finding max-weight spanning trees on the graph. For read clouds, a 10x Genomics's  [loupe](http://loupe.10xgenomics.com/loupe/) software
 [visualizes](http://loupe.10xgenomics.com/loupe/view/TkExMjg3OF9XR1MubG91cGU=/summary) read clouds from [NA12878](https://catalog.coriell.org/0/Sections/Search/Sample_Detail.aspx?Ref=GM12878), a human cell line with a genome frequently used as a reference in computational experiments.
 
 #### <a id='comp'></a> The Computational Problem
 
-Here we consider a simplified version of the haplotype assembly problem. We assume we have the locations of the heterozygous positions in the genome, and we only consider reads linking these positions.
+Here we consider a simplified version of the haplotype phasing problem. We assume we have the locations of the heterozygous positions in the genome, and we only consider reads linking these positions.
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture10/chr.png" width="70%">
@@ -127,11 +125,11 @@ $$
 
 SNPs 1 and 2 belong to community $$A$$, and SNPs 3 and 4 belong to community $$B$$. In practice, we may have 100,000 nodes with half in each community.A mate-pair read linking two nodes results in an edge between those two nodes, and the weight of the edge depends on the parity of the read. We will show that recovering the communities is equivalent to solving the haplotype phasing problem. The partition will give us all the information except for 1 bit: which SNPs correspond to the maternal chromosome.
 
-A necessary condition for successful haplotype assembly is _connectedness_; each node has a path to each other node. If there are no errors on the reads, we can recover the communities using a greedy algorithm. We can start at an arbitrary node, assign it to community $$A$$, then follow an edge leaving the node. If the edge has weight 1 (indicating that the two nodes are identical), then we assign the next node to community $$A$$ as well. Otherwise, we assign it to community $$B$$. Note that we can only resolve the nodes into two communities. Without additional information, we cannot know which community corresponds to which chromosome.
+A necessary condition for successful haplotype phasing is _connectedness_; each node has a path to each other node. If there are no errors on the reads, we can recover the communities using a greedy algorithm. We can start at an arbitrary node, assign it to community $$A$$, then follow an edge leaving the node. If the edge has weight 1 (indicating that the two nodes are identical), then we assign the next node to community $$A$$ as well. Otherwise, we assign it to community $$B$$. Note that we can only resolve the nodes into two communities. Without additional information, we cannot know which community corresponds to which chromosome.
 
-In the presence of noise, we would need more reads in order to guarantee connectedness. If we have $$n$$ reads, we would need $$n \log n$$ reads. One approach for finding the communities would be to enumerate all possible pairs of communities. We would then simply choose the solution that results in the maximum likelihood given the data. This approach has close ties to the [_MAXCUT_](https://en.wikipedia.org/wiki/Maximum_cut) problem, which is NP-hard.
+However, the above approach is not robust to errors in the reads: once there is a single error in a read, the algorithm will make mistakes on the communities of the subsequent nodes that the algorithm visits. An alternative global approach for finding the communities would be to enumerate all possible pairs of communities. We would then simply choose the solution that results in the maximum likelihood given the data. This algorithm can be reduced to the [_MAXCUT_](https://en.wikipedia.org/wiki/Maximum_cut) problem, which is NP-hard.
 
-Alternatively, we will first assume a uniform linking model; reads are equally likely to be between any pair of SNPs. For our haplotype example, we can construct the adjacency matrix
+To seek an alternative algorithm that is more efficient and yet robust, we will first assume a uniform linking model; reads are equally likely to be between any pair of SNPs. For our haplotype example, we can construct the adjacency matrix
 
 $$
 A =
@@ -143,4 +141,4 @@ A =
 \end{bmatrix}
 $$
 
-where position $$A_{ij} = 1$$ if the SNPs at indices $$i, j$$ are equal. Otherwise, $$A_{ij} = -1 $$. We claim that this matrix captures all the information in the graph, and we can operate with solely this matrix. We will explore this further next lecture.
+where position $$A_{ij} = 1$$ if the SNPs at indices $$i, j$$ are equal. Otherwise, $$A_{ij} = -1 $$. This matrix captures all the information in the graph. We claim that the communities can be extracted efficiently from this matrix under the uniform linking model. We will explore this further next lecture.
