@@ -11,147 +11,268 @@ Tuesday 13 February 2018
 
 ## Topics
 
-1. 	<a href='#SNP'>SNP Calling</a>  
-    - <a href='#diploid'>SNP Calling in diploid organisms</a>  
-1. 	<a href='#phasing'>Haplotype Assembly</a>  
-	  - <a href='#community'>Community recovery problem</a>
+1. 	<a href='#SMSDP'>Spectral algorithm</a>
+  - <a href='#SSA'>Spectral-Stitching Algorithm</a>
+1. 	<a href='#rna'>RNA-Seq</a>
+  - <a href='#counting'>A counting problem</a>
 
-We will let $$x_i$$ denote the class of node $$i$$ and $$x_i \in \{-1,+1\}$$. Let $$Y_{ij}$$ represent the edge data between nodes $$i$$ and $$j$$ where $$Y_{ij} = 1$$ if $$x_i = x_j$$ and $$-1$$ otherwise. We will set $$Y_{ij} = 0$$ if there is no linking reads between node i and node j. If there is no noise, then $$Y = 1$$ corresponds to an edge where the two nodes are in the same community and vice versa. $$Y = -1$$ would indicate the two nodes being in different communities. The figure below illustrates the notation introduced so far.
-
-<div class="fig figcenter fighighlight">
-  <img src="/Spr2016/assets/lecture13/Figure2.png" width="50%">
-	<div class="figcaption"> The community detection setup for the haplotype phasing problem..</div>
-</div>
-
-When working with real read data, we can think of each measurement (mate-pair read) as a noisy edge on the graph telling us if two nodes are linked. We introduce a random variable $$Z_{ij}$$ to represent the noise in each edge. We assume that all $$Z_{ij}$$ are i.i.d. In summary,
-
-$$
-\begin{align}
-x_i & \in\ \{-1, 1 \} \\
-Z_{ij} & = \left\{ \begin{array}[cc]\\
-1  & \text{w.p. } 1- \epsilon\\
--1 & \text{w.p. } \epsilon
-\end{array}\right. \\
-Y_{ij} & = x_i x_j Z_{ij}
-\end{align}
-$$
-
-$$Y_{ij}$$ essentially tells us if two nodes are in the same community with an $$\epsilon$$ probability of error. Exploiting vector notation, we further define:
-
-$$
-\mathbf{x} = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \in \mathbb{R}^n \\
-\mathbf{Y} = \left[ Y_{ij} \right] \in \mathbb{R}^{n\times n}
-$$
-
-#### <a id='ML'></a>Maximum likelihood
-To solve the community recovery problem, we will use maximum likelihood to infer the $$x_i$$'s':
-
-$$
-\begin{align}
-\hat{\mathbf{x}} & = \text{argmax}_{\mathbf{x}} P\left(\mathbf{Y}|\mathbf{x} \right) \\
- & = \text{argmax}_{\mathbf{x}} \prod_{i,j \in E} P\left(Y_{ij} | x_ix_j \right) \\
-\end{align} \\
-P\left(Y_{ij} | x_ix_j \right) = \left\{ \begin{array}[cc]\\
-1 - \epsilon  & \text{if } Y_{ij} = x_ix_j \\
-\epsilon      & \text{if } Y_{ij} \neq x_ix_j\epsilon
-\end{array}\right.
-$$
-
-where $$E$$ indicates the set of edges in the observed data. This can be further simplified by using the log likelihood:
-
-$$
-\hat{\mathbf{x}} = \text{argmax}_{\mathbf{x}} \sum_{i,j \in E} \log\left(P\left(Y_{ij}|x_ix_j \right)\right)
-$$
-
-where each log term can be expressed as
-
-$$
-\begin{align}
-\log\left(P\left(Y_{ij}|x_ix_j \right)\right) & = \left\{ \begin{array}[cc]\\
-\log\left(1 - \epsilon\right)  & \text{if } Y_{ij} = x_ix_j \\
-\log\left(\epsilon\right)      & \text{if } Y_{ij} \neq x_ix_j\epsilon
-\end{array}\right.\\
-& = Y_{ij}x_ix_j\left(\frac{\log(1-\epsilon) - log(\epsilon)}{2}\right) + \frac{\log(1-\epsilon) + \log(\epsilon)}{2}
-\end{align}
-$$
-
-Since $$\epsilon$$ is a constant, we can further simplify the ML decoder to
-
-$$
-\begin{align}
-\hat{\mathbf{x}} & = \text{argmax}_{\mathbf{x}} \sum_{i,j \in E} Y_{ij}x_ix_j\\
-& = \text{argmax}_{\mathbf{x}} \sum_{i,j} Y_{ij}x_ix_j\\
-& = \text{argmax}_{\mathbf{x}} \ \mathbf{x}^T \mathbf{Y} \mathbf{x}
-\end{align}
-$$
-
-Notice that we threw in the edges that are not in the observed set of edges. We can set $$Y_{ij} = 0$$ for these cases. Ultimately, we want to compute the maximization using this quadratic form. Brute force maximization of this is quite bad because the number of possible $$\mathbf{x}$$'s is $$O(2^n)$$.
-
-Intuitively, when two nodes are in the same community ($$x_i x_j =1$$) and there is no error ($$Z_{ij} = 1$$), $$Y_{ij}$$ is positive, giving us a positive contribution to our maximization objective. We do not want negative terms. We can decompose the sum in objective into:
-
-$$
-\begin{align}
-\sum_{i,j} Y_{ij}x_ix_j & = (\text{# of in-cluster $+1$ edges}) \\
-& + (\text{# of cross-cluster $-1$ edges}) \\
-& - (\text{# of in-cluster $-1$ edges}) \\
-& - (\text{# of cross-cluster $+1$ edges}) \\
-\end{align}
-$$
-
-This is a combinatorial optimization problem. Suppose we are solving a simpler problem where we only have $$-1$$ edges. Then the objective becomes
-
-$$
-\begin{align}
-\sum_{i,j} Y_{ij}x_ix_j & = (\text{# of cross-cluster $-1$ edges}) - (\text{# of in-cluster $-1$ edges}) \\
-& = |E| - (\text{# of cross-edges}) \\
-& = 2 - (\text{# of cross-edges}) - |E|
-\end{align}
-$$
-
-While the number of edges is fixed, the number of cross edges depends on the clustering. Therefore the problem becomes: find a partition of the graph that maximizes the number of cross edges. This is the _max cut_ problem, which is NP hard. If we approach the problem from a general approach, it's NP hard. We will need to exploit some further structure in the problem.
 
 ### <a id ='SMSDP'><a/>Spectral method
 
-In order to solve this NP hard combinatorial optimization problem, we can use the spectral method to arrive at an approximate solution. We relax the problem by allowing each $$x_i$$ to be real. We will also constrain $$\|\mathbf{x}\|_2 = n$$.  We can bound the optimization problem as follows:
-
-$$
-\begin{align}
-& \max_{\mathbf{x}} \sum_{i,j} Y_{ij}x_ix_j \\
-= & \max_{x_i, x_j \in \{\pm1\}} \mathbf{x^TYx}\\
-\le & \max_{\mathbf{x},||\mathbf{x}||_2 = n} \mathbf{x^TYx} \\
-\le & \lambda_{max}n
-\end{align}
-$$
-
-Because $$Y$$ is a symmetric matrix, its eigenvalues are real and positive. We simply set $$\mathbf{x}$$ to equal the eigenvector corresponding to the largest eigenvalue of $$\mathbf{Y}$$. By taking the sign of each entry in $$\mathbf{x}$$, we get an approximate solution to our original problem (where $$x_i \in \{-1,+1\}$$) with a reasonable $$\mathbf{x}$$. This approach is called the _spectral method_ because we pick $$\mathbf{x}$$ according to the spectrum of $$\mathbf{Y}$$.
-
-#### <a id ='Verify'><a/>Correctness of spectral method
-
-Because we relaxed the original problem, we need to exhibit some evidence that this approach is good. Consider the following random graph: for every pair of points, we draw an edge between them with probability $$p$$. Note that Y is a random matrix because the location of the measurements are random and the errors are random. We want to first check what happens when $$\mathbf{Y}$$ is replaced by its expected value. Intuitively, if this method does not work when $$\mathbf{Y}$$ is deterministic at the mean, then there's not much hope of this method working in general.
-
-$$
-\begin{align}
-\bar{Y_{ij}} & = E[Y_{ij}] \\
-& = (1 - p)\dot\ 0 + p[x_ix_j(1-\epsilon) - x_ix_j\epsilon] \\
-& = p(1-2\epsilon)x_ix_j
-\end{align}
-$$
-
-Therefore
-
-$$
-\mathbf{\bar{Y}} = p(1-2\epsilon)\mathbf{xx^T}
-$$
-
-$$\mathbf{\bar{Y}}$$ is a rank 1 matrix, and applying the spectral method on this matrix will give us exactly $$\mathbf{x}$$, our ground truth. The hope is that while $$\mathbf{Y}$$ in actuality is random, statistically it's close to its mean $$\mathbf{\bar{Y}}$$. This shows that using the spectral method, we can expect to get a reasonable answer.
-
-The solution obtained for $$\mathbf{\hat{x}}$$ using the spectral method will be correct in a large number of entries. We can clean up the entries a bit by considering the neighbors of each node. We set each node to the majority community amongst its neighbors. Since most of the nodes are correct, this clean-up step improves our solution.
-
-### <a id ='sim'><a/>Simplifying the haploid phasing problem
-
-When dealing with real heterozygous SNPs, the linking information will be constrained to ranges of ~100 kbp (e.g. 10x technologies) while the chromosomes they reside on are each ~100 Mbp. Since the links are localized, unlike a random graph, we can section the chromosome into segments of length $$r$$ and analyze each segment as shown in the figure below. For small values of $$r$$ we can use Viterbi decoding, but for large values we can use the spectral method.
+Recall that we are looking at the phasing problem, reformulated as a community recovery problem. The community identity is determined by whether a node is [0 1] or [1 0]. The edges we draw in the graph come from mate-pair reads linking nodes. These parity of these edges tell us the likelihood of whether or not two nodes are in the same community. With 100000 nodes, we need to find an algorithm that's both accurate and computationally efficient.
 
 <div class="fig figcenter fighighlight">
-  <img src="/Spr2016/assets/lecture13/Figure3.png" width="70%">
-	<div class="figcaption">For real chromosomes, we obtained localized information about SNPs.</div>
+  <img src="/Win2018/assets/lecture11/commrec.png" width="80%">
+	<div class="figcaption">Haplotype phasing as a community recovery problem.</div>
 </div>
+
+We ended the last lecture by introducing the _adjacency matrix_
+
+$$
+A =
+\begin{bmatrix}
+\star & -1 & 0 & 0 \\
+-1 & \star & 1 & -1 \\
+0 & 1 & \star & 1 \\
+0 & -1 & 1 & \star
+\end{bmatrix}.
+$$
+
+Each row and column represents a SNP. $$A_{ij} = 1$$ indicates that the two SNPs are in the same community, and $$A_{ij} = -1$$ indicates the opposite. This adjacency matrix is typically sparse in practice. We need roughly $$n \log n$$ reads in order recover the communities ($$n$$ indicates the number of nodes). Where is the information we want in terms of this matrix?
+
+We introduced the concept of a _uniform linking model_ where
+
+$$
+\begin{align*}
+A_{ij} & = 0 \text{ w.p. } 1-q \\
+A_{ij} & \neq 0 \text{ w.p. } q.
+\end{align*}
+$$
+
+Additionally, given that $$A_{ij} \neq 0$$, then
+
+$$
+\begin{align*}
+A_{ij} & = +1 \text{ w.p. } 1-p \text{ if } i, j \text{ in same community} \\
+A_{ij} & = -1 \text{ w.p. } 1-p \text{ if } i, j \text{ not in same community} \\
+A_{ij} & = +1 \text{ w.p. } p \text{ if } i, j \text{ not in same community} \\
+A_{ij} & = -1 \text{ w.p. } p \text{ if } i, j \text{ in same community}.
+\end{align*}
+$$
+
+$$p$$ here describes the probability of error. If there are no errors, we would obtain the adjacency matrix
+
+$$
+A =
+\begin{bmatrix}
+1 & 1 & -1 & -1 \\
+1 & 1 & -1 & -1 \\
+-1 & -1 & 1 & 1 \\
+-1 & -1 & 1 & 1
+\end{bmatrix}
+$$
+
+which has rank 1 (each row is a linear combination of the other rows). Can we now extract the community from this matrix? We note that
+
+$$
+v =
+\begin{bmatrix}
+-1 \\
+-1 \\
+ 1 \\
+ 1
+\end{bmatrix}
+$$
+
+is an eigenvector of the matrix. The +1, -1 entries of $$v$$ exactly tells us the community membership of the nodes. Therefore in the ideal situation (every read sampled once and no noise), then the principal eigenvector (the only eigenvector) recovers the communities for us. This approach (taking the adjacency matrix and computing the principal eigenvector) is called the _spectral algorithm_.
+
+The sampling plus the noise adds some randomness to this matrix. Because the randomness is unbiased, we can take the expectation of this matrix, which exactly equals the above matrix in the no noise case. Therefore we are hoping that as we get more data, the estimated adjacency matrix will be close to the expectation of the matrix, which exactly gives us the community membership information.
+
+We want to study how the recovered matrix _concentrates_ around the true mean, and the following plot shows how as we increase the amount of data, the recovered principal eigenvector becomes increasingly aligned with the true node membership. Even in a sparse graph, the spectral algorithm is already quite accurate. Note how the recovery scales with the number of edges.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/concentration.png" width="80%">
+	<div class="figcaption">The recovered principal eigenvector concentrating on the true principal eigenvector as the number of edges increases (left: recovered eigenvector, right: thresholeded recovered eigenvector).</div>
+</div>
+
+#### <a id ='SSA'><a/>Spectral-Stitching Algorithm
+
+To improve this algorithm, we consider a lower bound on the performance of our algorithm (a function of the amount of linking nodes required). Consider the case where a genie tells you the correct community of all SNPs except one. (some more comments on this lower bound)
+
+We will omit the mathematical details and report the final result:
+
+$$
+\text{# of linking reads} > \frac{n \log n}{2[1-e^{-D(0.5\|p)}]}.
+$$
+
+We introduce a two-step algorithm:
+
+1. Approximate recovery using spectral algorithm
+2. Refinement using majority vote per SNP
+
+This algorithm actually achieves the lower bound repeated above. 10X genomics provides technology that generates linking information for these SNPs. In this case, the adjacency matrix is also known as a _contact map_ because it tells you the contact information between SNPs. Notably, the adjacency matrix generated from a uniform linking model is quite different from the contact map estimated from a real dataset. This is because in reality, the technology generating the linking information has some limitations, and SNPs that are closer together are more likely to be linked.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/contactmap.png" width="90%">
+	<div class="figcaption">The contact map obtained on real 10X data in comparison to the contact map obtained from data sampled from the uniform linking model.</div>
+</div>
+
+It turns out that if we zoom in on the diagonal, we notice that locally, the matrix appears more consistent with the uniform linking model. Performing the spectral algorithm within these diagonals results in much better recovery:
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/stitch.png" width="80%">
+	<div class="figcaption">Motivation for a sliding window/stitching spectral algorithm (top right: recovered eigenvector, bottom right: thresholded recovered eigenvector).</div>
+</div>
+
+We need to also stitch together the block-wise results to get the membership of all nodes. This motivates the _spectral-stitching algorithm_:
+
+1. Approximate recovery on overlapping blocks via the spectral algorithm
+2. Stitch across blocks
+3. Take the majority vote for each SNP.
+
+The algorithm used by 10X is similar in flavor to Viterbi decoding. Because the state-space is very large, a complete exhaustive search is too expensive. The 10X algorithm uses branching and bounding to heuristically get some solution. We note that it's almost impossible in reality to phase the chromosome because some regions have very few SNPs, and no linking read will capture the information here.
+
+One method for measuring phasing performance is _N50_. The output of a phasing algorithm is typically in the form of phased blocks (regions of high confidence). Supposed we organize these blocks from longest to shortest. Then N50 is the length of the block such that half the chromosome is contained by the end of the block.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/n50.png" width="70%">
+	<div class="figcaption">Visual definition of the N50 phasing metric.</div>
+</div>
+
+Another method for measuring phasing performance are _switch errors_ within a phased block. We occasionally make some errors within a block, either a short switch error (e.g. 1 SNP) and a long switch error (a long continuous segment of incorrect calls). Intuitively, a long switch error of length, say, 10, should not be worth 10 short switch errors, which is why reporting both these types of errors are useful.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/switching.png" width="70%">
+	<div class="figcaption">Switch errors that can happen within a phased block.</div>
+</div>
+
+We see that with lower coverage, spectral stitching performs better than the 10X algorithm for all metrics. We note that the algorithm requires about 5500 seconds to process the entire human genome. This is relatively fast, because computing the principal eigenvector can be done cheaply even for large matrices using the spectral method.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/stitchresult.png" width="90%">
+	<div class="figcaption">Performance of spectral-stitching algorithm on 10X data in comparison to 10X's algorithm.</div>
+</div>
+
+### <a id='rna'></a>RNA-seq
+
+So far, all the material covered in this course has revolved around working with
+data from DNA. From high school biology, you might recall something called the
+*central dogma of molecular biology*, an illustrative (but very oversimplified)
+diagram of how genetic information flows within an organism.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/Figure1.png" width="80%">
+	<div class="figcaption">The central dogma of molecular biology.</div>
+</div>
+
+The cell functions by using DNA as the blue-print to to create proteins.
+*Ribonucleic acid (RNA)* is produced as an intermediate product.
+While every cell in the body has roughly the same DNA, cells in different tissues
+clearly have varying functions. This is because different cells express different
+RNA. Therefore if one is interested in the dynamics of different cell types,
+one should somehow measure RNA. While DNA is static,
+RNA expression can be different depending on time, tissue, and environmental factors.
+
+DNA consists of two parts: coding and noncoding. The coding part includes objects
+called *genes*. There are roughly 27000 annotated genes in humans, occupying about 1% of
+the entire genome. A lot of biology revolves around these genes; for example,
+RNA is transcribed from these genes. Each gene also consists of multiple parts:
+exons and introns. In the transcription problem, we take a subset of these exons
+to form an RNA transcript. We could obtain multiple transcripts from the same gene.
+In the figure below, we obtain 2 distinct transcripts from gene 1, a transcript
+consisting of exons A and B, and another transcript consisting of exons B and C.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/Figure2.png" width="100%">
+	<div class="figcaption">Transcription of genes into RNA transcripts.</div>
+</div>
+
+There are known genes for which there are 1000s of different types
+of transcripts (for example, [neurexin](https://en.wikipedia.org/wiki/Neurexin))
+produced by the gene. Most genes produce 5-10 versions of transcripts
+(or *isomers*). Transcripts are typically 1000-20000 bp long.
+
+For a given cell, some genes may be expressed and others may not be expressed.
+The genes that get expressed may have 1 or more isoforms, and each isoform may
+be expressed in different abundances. Within a cell, we may see tens of thousand
+of transcripts from the union of all the genes.  
+A biologist would be interested in identifying these transcripts.
+Estimating *gene expression* is the problem of figuring out which transcripts
+are expressed and at what abundance.
+
+As we said at the beginning of the course, high-throughput sequencing (HTS) is
+very useful because HTS technologies can be applied to measure other molecules.
+In *RNA-seq*, we sample a tissue and, after some chemistry, obtain a soup of RNA
+transcripts. Biologists have been able to convert the RNA to a special type of
+DNA (called cDNA) using an enzyme called *reverse transcriptase*, and we can
+feed the DNA into our high-throughput sequencer. The pipeline is summarized in the figure below.
+
+<div class="fig figcenter fighighlight">
+  <img src="/Win2018/assets/lecture11/Figure3.png" width="80%">
+	<div class="figcaption">The RNA-seq pipeline.</div>
+</div>
+
+RNA-seq was developed in
+[Mortazavi et. al., 2008](http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html).
+We will focus on computational problems related to getting short reads
+(100 bp Illumina reads, for example) for RNA-seq.
+
+#### <a id ='counting'><a/>A counting problem
+
+Let's say we have two transcripts that appear in different abundances. We get
+reads randomly from the two transcripts but proportionally to their abundances.
+We want to infer which transcripts are present and what their abundances are.
+There are multiple flavours of the problem (listed in order of increasing
+difficulty):
+
+1. Transcripts are known but the abundances are not.
+2. Neither transcripts nor abundances are known. The genome is known.
+3. Neither transcripts nor abundances are known. The genome is also not known.
+
+We may encounter the first case if we are working with a popular organism such
+as a human or mouse. In this case, there exists a curated set of transcripts
+called the *transcriptome*. Additionally, different tissues will have different
+abundances, and this information is the subject of *differential analysis*. We
+may encounter the second case if we are looking at an
+organism whose transcriptome is not known, or cancerous tissue (where the
+transcriptome is changed by change in genome, but all transcripts seen are
+reasonably long sequences from the original genome
+stitched together).
+
+We will start with the first formulation. The computational problem here is a
+counting problem: we want to count how many reads came from each transcript.
+Mapping reads to transcripts can be done using various alignment algorithms,
+which we've discussed in previous lectures. Notice that there is an intrinsic
+ambiguity here: in some cases, one does not know where a read comes from. For example,
+consider transcripts 1 and 2 in the figure above. If we obtain a read that aligns
+to exon B, then we cannot tell which transcript it came from. This is an inference
+problem. Most ambiguities result from different transcripts sharing exons. For
+simplicity, we currently will not worry about the different lengths of
+transcripts (this is easy to account for later).
+
+In summary, we have two
+types of reads: uniquely mapped and multi-mapped. The processing of
+[Mortazavi et. al., 2008](http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html)
+just used the uniquely mapped reads to do inference.
+
+Let $$t_i, \dots, t_k$$ be $$k$$ transcripts and
+$$\rho = (\rho_1, \dots, \rho_k)^T$$ be the abundances of the transcripts. We obtain N
+reads $$R_1, \dots, R_N$$, and we want to estimate $$\rho$$.
+Let $$N_k$$ be the number of reads that map uniquely to transcript
+$$k$$ and $$N = \sum_k N_k$$ be the total number of unique reads. Let
+
+$$
+\hat{\rho}_k = \frac {N_k}{N}
+$$
+
+In the above example, if we had a third transcript that consists of only exon A,
+then no part of its sequence would be unique. Therefore the
+approach of [Mortazavi et. al., 2008](http://www.nature.com/nmeth/journal/v5/n7/full/nmeth.1226.html)
+ will not see any reads from this transcript and we will always obtain an abundance of 0.
+
+Alternatively, we can assign partial counts.
+In the above example with two transcripts, if we obtain a read that aligns to exon
+B, we can give half a count to each transcript. This also has its own issues.
+For example, if the underlying truth is $$\rho_1 = 1$$ and $$\rho_2 = 0$$,
+then only transcript 1 is expressed. This scheme will not give us an estimate of 0
+for transcript 2. We will address this problem in the next lecture.
