@@ -190,7 +190,7 @@ consisting of exons A and B, and another transcript consisting of exons B and C.
 There are known genes for which there are 1000s of different types
 of transcripts (for example, [neurexin](https://en.wikipedia.org/wiki/Neurexin))
 produced by the gene. Most genes produce 5-10 versions of transcripts
-(or *isomers*). Transcripts are typically 1000-20000 bp long.
+(or *isoforms*). Transcripts are typically 1000-20000 bp long.
 
 For a given cell, some genes may be expressed and others may not be expressed.
 The genes that get expressed may have 1 or more isoforms, and each isoform may
