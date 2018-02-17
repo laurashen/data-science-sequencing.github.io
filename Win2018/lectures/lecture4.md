@@ -88,7 +88,7 @@ in the second sequence, not all state transitions are allowed. They are summariz
 We can now view the optimization problem as a shortest path problem.
 $$ \min_{\mathbf{s}} \sum_{i = 2}^L [c_i(s(i-1), s(i))]^2 + [y(1) - Q_{11}s(1)]^2. $$
 
-where $$c_i(s(i), s(j)) = (y(i) - Q_{ii} s(i) - Q_{i,i-1}s(i-1))^2$$ is the cost associated with transitioning states. Minimizing our objective corresponds to finding the minimum cost path (from left to right) through the  _trellis_.
+where $$c_i(s(i), s(j)) = (y(i) - Q_{ii} s(i) - Q_{i,i-1}s(i-1)) \ $$ is the cost associated with transitioning states. Minimizing our objective corresponds to finding the minimum cost path (from left to right) through the  _trellis_.
 
 <div class="fig figcenter fighighlight">
   <img src="/Win2018/assets/lecture4/lecture4-figure2.png" width="60%">
