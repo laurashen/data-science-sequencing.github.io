@@ -114,7 +114,61 @@ $$
 \hat{\rho}_k^{(m+1)}=\frac{1}{N}\sum_{i=1}^{N}{f_{ik}^{(m)}}
 $$
 
-{% include_relative Logan_code.html  %}
+{% highlight python %}
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+rho1 = 0.5
+rho2 = 0.5
+
+lenT1 = 2
+lenT2 = 1
+
+rho_1_vec = np.zeros(50)
+rho_2_vec = np.zeros(50)
+
+alpha_1_vec = np.zeros(50)
+alpha_2_vec = np.zeros(50)
+
+for i in range(0,50):
+    rho_1_vec[i] = rho1
+    rho_2_vec[i] = rho2
+
+    reads1 = 30. + 40.*(rho1)
+    reads2 = 40.*(rho2)
+
+    alpha1 = reads1 / (reads1 + reads2)
+    alpha2 = reads2 / (reads1 + reads2)
+
+    alpha_1_vec[i] = alpha1
+    alpha_2_vec[i] = alpha2
+
+    rho1 = (alpha1 / lenT1) / ((alpha1/lenT1) + (alpha2/lenT2))
+    rho2 = (alpha2 / lenT2) / ((alpha1/lenT1) + (alpha2/lenT2))
+
+
+plt.plot(range(0,50),rho_1_vec)
+plt.plot(range(0,50),rho_2_vec)
+plt.xlabel('Iteration')
+plt.legend(['Rho1', 'Rho2'])
+plt.grid()
+plt.show()
+print("The value of (rho1, rho2) are (%.3f, %.3f)"%
+( rho_1_vec[-1], rho_2_vec[-1]))
+
+{% endhighlight %}
+
+
+
+![png](/Win2018/assets/lecture12/Output.png)
+
+
+    The value of (rho1, rho2) are (0.750, 0.250)
+
+
+
 
 #### <a id='questions'></a>Questions
 
