@@ -7,11 +7,16 @@ permalink: /Win2018/lectures/lecture12/
 
 Thursday 15 February 2018
 
+_scribed by Logan Spear and edited by the course staff_
+
 -----------------
 
 ## Topics
 
-In the previous lecture, we introduced [RNA-seq](https://en.wikipedia.org/wiki/RNA-Seq) and the quantification problem. In this lecture, we dive deeper into this problem -- in the case when we know the RNA transcripts beforehand -- and examine how we can solve it optimally under some simplicity assumptions.
+In the previous lecture, we introduced [RNA-seq](https://en.wikipedia.org/wiki/RNA-Seq)
+ and the quantification problem. In this lecture, we dive deeper into this problem
+-- in the case when we know the RNA transcripts beforehand -- and
+examine how we can solve it optimally under some simplicity assumptions.
 
 1.	<a href='#intro'>RNA-Seq quantification</a>
     -	<a href='#naive'>A naive approach</a>
@@ -109,6 +114,7 @@ $$
 \hat{\rho}_k^{(m+1)}=\frac{1}{N}\sum_{i=1}^{N}{f_{ik}^{(m)}}
 $$
 
+{% include_relative Logan_code.html  %}
 
 #### <a id='questions'></a>Questions
 
