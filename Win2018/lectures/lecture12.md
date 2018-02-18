@@ -167,10 +167,37 @@ print("The value of (rho1, rho2) are (%.3f, %.3f)"%
 
     The value of (rho1, rho2) are (0.750, 0.250)
 
+#### <a id='goodness'></a> How to decide if an algorithm is good
+Now that we have an algorithm, what characteristics of it can we examine as we decide whether or not it is "good"?
+
+##### 1. Does it converge?
+Obviously, we want an algorithm that converges so that we can have our estimates. In this case, the algorithm is guaranteed to converge, although it is not guaranteed to converge in general. In general, it converges if your generative model belongs to the [exponential family](https://en.wikipedia.org/wiki/Exponential_family).
 
 
+##### 2. Is it accurate?
+This question is a bit trickier, since it is not an absolute statement we can
+make about an algorithm, but rather a relative one. As in, we must compare this
+algorithm to all other algorithms when considering this. In order to answer
+this, we will first examine the idea of Maximum Liklihood (ML).
 
-#### <a id='questions'></a>Questions
+Given some reads $$R_1, \dots, R_N\ $$, for a given model with parameters
+$$\rho_1, \dots, \rho_k \ $$,
+we write the probability of observing the reads
+$$R_1, \dots, R_N\ $$ given the parameters $$\rho_1, \dots, \rho_k\ $$
+as  $$Pr(R_1, \dots, R_N$ ; $\rho_1, \dots, \rho_k)$$
+
+The idea of Maximum Liklihood is that our model should
+maximize this probability over the parameters.
+That is, our model should satisfy
+
+$$\max_{\rho_1, \dots, \rho_k} Pr(R_1, \dots, R_N ; \rho_1, \dots, \rho_k)$$
+
+This is the idea of Maximum Liklihood, and is pretty much a gold standard when
+assessing algorithms. As it turns out, this algorithm gives the ML result.
+Thus we can say this is a good algorithm.
+
+
+<!-- #### <a id='questions'></a>Questions
 
 The natural questions that arise now are
 
@@ -179,4 +206,4 @@ The natural questions that arise now are
 
 The former is crucial, since a non-converging process is, basically, useless. The latter examines the performance of the algorithm in terms of estimation accuracy. Given that we have a finite amount of data, we cannot guarantee that the ground truth is recovered. Our best hope is to find $$\mathbf{\hat{\rho}^{ML}}$$.
 
-This leads us to our next few topics. What is $$\mathbf{\hat{\rho}^{ML}}$$ and how can we compute it efficiently?
+This leads us to our next few topics. What is $$\mathbf{\hat{\rho}^{ML}}$$ and how can we compute it efficiently? -->
