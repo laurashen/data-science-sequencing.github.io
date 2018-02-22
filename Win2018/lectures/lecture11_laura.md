@@ -60,14 +60,20 @@ In the uniform linking model, $$q$$ is the probability of $$A_{ij}$$ being non-z
 #### Efficient approximate recovery
 In the ideal situation of no noise and every link is sampled, we can get a rank1 matrix with a unique eigen vector. The sampling process and errors are similar to noise and add randomness which allows us to compute the expectation of the adjacency matrix.
 
-[insert picture of ideal adjacency matrix]
+<div class="fig figcenter fighighlight">
+  <img src="Win2018/assets/lecture11/expectation_adj_matrix.PNG" width="80%">
+	<div class="figcaption">Expectation adjacency matrix with no errors</div>
+</div>
 
 This becomes a random matrix fluctuating about the mean matrix. For each random matrix, the principal eigen vector (inner product) is computed. We can then take the principal eigen vector (usually a non-integer value) and round to either +1 or -1). This is the basis of the spectral algorithm where we take the adjacency matrix, compute the principal eigen vector and threshold each element to determine the community. With more samples, the expectation of the eigen vector of the random matrix becomes closer and closer to the community vector. Even with a sparse matrix, spectral is quite accurate.
 
 #### Genie-aided lower bound
 We want to compute a lower bound on the number of reads required to produce a correct result. Suppose a genie told us the correct community of all SNPs except one (the blue node):
 
-[insert picture of this]
+<div class="fig figcenter fighighlight">
+  <img src="Win2018/assets/lecture11/genie_phasing.PNG" width="80%">
+	<div class="figcaption">Genie tells us communities of all SNPs expect one.</div>
+</div>
 
 It is still possible to make a mistake if the majority of the linking reads are wrong. A lower bound such that this event happens with very lower probability:
 $$\text{# of linking reads} > \frac{n \log n}{2[1-e^{-D(0.5\|p)}]}.$$
